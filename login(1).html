@@ -191,7 +191,7 @@ var transitionEnd=function(style){
   var siderbar=function(){
     if($('.left_sidebar').hasClass('active')) {
       $('.panel-overlay').css('display','block');
-      return;
+      
     }
       $('.left_sidebar,.panel-overlay').css('display','none');
       $('body').removeClass('panel-closing');
@@ -232,7 +232,16 @@ var transitionEnd=function(style){
    }
   var isarray=[false,false,false,false,false];
   var mobile=$("#registerPhone").val();
+  var touch=function(){
+    // if($("#registerPhone").val()!='' && $('#pwd').val()!='' && $('#pwdAgain').val()!='' && $('#mobile_code').val()!='' && $('#agree').attr('class')=='agree_img'){
+    if(isarray[0]==true && isarray[1]==true && isarray[2]==true && isarray[3]==true && isarray[4]==true){
+        $('#register .login_menu').addClass('on');
+         }else{       
+              $('#register .login_menu').removeClass('on');
+         }
+  }
   $('#registerPhone').get(0).onkeyup=function(event){
+    
     event=event||window.event;
     if(event.keyCode>57||event.keyCode<48){
       this.value=''; 
@@ -241,9 +250,9 @@ var transitionEnd=function(style){
      if( $("#registerPhone").val()==''){
             $('#get_mobile_code').removeClass('available');
             $('#get_mobile_code').val('获取验证码');
-            onOff=false;
             isarray[0]=false;
            } 
+      touch();
   }
   //验证号码格式是否错误
   var onOff='';
@@ -253,24 +262,23 @@ var transitionEnd=function(style){
         var dialog1=$('.km-dialog-mask,.regist_phone_dialog1');
         maskShow(dialog1);
         isarray[0]=false;
-        return false;
+        
        }else if($.YGG.regExp.cellPhone.test(this.value)  && $("#registerPhone").val()!=''){
         $.ajax({
           type:"POST",
           dataType:"json",
-          url:"/center/check.php?cellnumber="+mobile+"&type=cellnumber&random="+Math.random(),
+          url:"/center/check.php?cellnumber="+$('#registerPhone').val()+"&type=cellnumber&random="+Math.random(),
           success:function(json){
-            if(json.status=="true"){
+            if(json.status=="false"){
                 var dialog2=$('.km-dialog-mask,.regist_phone_dialog2');
                 maskShow(dialog2);
                  isarray[0]=false;
-                  return false;
+                  
              }
-              if(json.status=="false"){
+              if(json.status=="true"){
                isarray[0]=true;
                $('#get_mobile_code').addClass('available');
                onOff=true;
-               return onOff;
              }
           }
         });
@@ -321,30 +329,30 @@ var transitionEnd=function(style){
        pass=$.trim(pass);
     if($('#pwd').val()==''){
       isarray[1]=false;
-      return;
+      
     }else if($('#pwd').val()!='' && $('#pwd').val().length>16 || $('#pwd').val().length<6){
         var dialog5=$('.km-dialog-mask,.regist_phone_dialog5');
         maskShow(dialog5);
         isarray[1]=false;
-        return false;
+        
      }else{
         isarray[1]=true;
-        return false;
+        
      }
    }
    //验证密码是否一致
     $('#pwdAgain').get(0).onblur=function(){
       if($('#pwdAgain').val()==''){
         isarray[2]=false;
-        return;
+        
       }else if($('#pwdAgain').val()!=$('#pwd').val()){
            var dialog6=$('.km-dialog-mask,.regist_phone_dialog6');
            maskShow(dialog6);
            isarray[2]=false;
-           return false;
+           
         }else if($('#pwdAgain').val()===$('#pwd').val()){
            isarray[2]=true;
-           return false;
+           
         }
       }
     //验证验证码
@@ -365,7 +373,7 @@ var transitionEnd=function(style){
                 var dialog8=$('.km-dialog-mask,.regist_phone_dialog8');
                 maskShow(dialog8);
                  isarray[3]=false;
-                 return false;
+                 
              }else if( rs ['suc']==true){
                isarray[3]=true;
              }
@@ -373,6 +381,9 @@ var transitionEnd=function(style){
         });
       }
     }
+    $('#pwd').get(0).onkeyup=touch;
+    $('#pwdAgain').get(0).onkeyup=touch;
+    $('#mobile_code').get(0).onkeyup=touch;
     // 检查是否同意协议
     $('#agree').click(function(){
       if($(this).attr('class')!='agree_img'){
@@ -382,10 +393,13 @@ var transitionEnd=function(style){
        $(this).removeAttr('class');
        isarray[4]=false;
       }
+      touch();
     });
+
+   
     //点击立即注册按钮
     $('#register_menu').click(function(){
-      if(isarray[0]===isarray[1]===isarray[2]===isarray[4]===isarray[4]===true){
+      if(isarray[0]==isarray[1]==isarray[2]==isarray[3]==isarray[4]==true){
         $.ajax({
                type:"POST",
                dataType:"json",
