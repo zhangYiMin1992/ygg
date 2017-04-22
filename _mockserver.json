@@ -31,7 +31,7 @@
                 "username":"13918442041",
                 "password":"11"
             },
-            "response": {"isSuccess":true,"message":"登录成功!"}       
+            "response": {"isSuccess":false,"message":"登录失败!"}       
         },
         //发送校验码
            "GET /newwap/message/sendVerificationCode": {
@@ -45,7 +45,7 @@
 		             "request": {
 		             "username":"13465756786"
 	           },
-	            "response": {"isExist":false,"message": "此号码没有注册过"} 
+	            "response": {"isExist":false,"message": "未注册"} 
 	        },
             //验证验证码
             "POST /newwap/message/verifyVerificationCode": {
