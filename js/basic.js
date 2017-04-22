@@ -1883,12 +1883,23 @@ window.$ === undefined && (window.$ = Zepto)
   }
 })(Zepto);
 
+
+
+
 if (typeof Function.prototype.method != 'function') {
     Function.prototype.method = function(funcName, func) {
         this[funcName] = func;
         return this
     }
 }
+"function" != typeof String.isBlank && (String.isBlank = function(e) {
+    return e ? "string" == typeof e && 0 == e.trim().length ? !0 : !1 : !0
+}
+);
+"function" != typeof Array.isEmpty && (Array.isEmpty = function(e) {
+    return $.isArray(e) ? e.length <= 0 : !0
+}
+);
 $.extend($, {
     App: {
         bind: function(ev, callback) {
@@ -2143,3 +2154,250 @@ $.extend($, {
         })
     }
 });
+!function(e, t) {
+    var n = {};
+    t.Prompter = n,
+    n.AlertDialog = {
+        builder: function(t) {
+            if (String.isBlank(t.title) && String.isBlank(t.message) && "form" !== t.type && null == t.form)
+                return null;
+            if (null == t.positiveButton || String.isBlank(t.positiveButton.name) || "function" != typeof t.positiveButton.handler)
+                return null;
+            var n = "";
+           // browser.versions.android && (n = 'style="color: #B8D75A;"');
+            var i = "<div>"
+              , o = "form" === t.type ? "my_pay_pop" : "my_recharge_safe";
+            if (i += '<div style="position: fixed;" class="dialogBody ' + o + '"><a href="javascript:;" class="allpop_close"></a><dl>',
+            i += "<dt>",
+            String.isBlank(t.title) || (i += "<em>" + t.title + "</em>"),
+            "form" === t.type) {
+                if (i += '<div class="box"><form>',
+                !Array.isEmpty(t.form.inputs))
+                    for (var a = 0; a < t.form.inputs.length; a++)
+                        i += t.form.inputs[a];
+                if (!Array.isEmpty(t.form.bts))
+                    for (var a = 0; a < t.form.bts.length; a++)
+                        i += t.form.bts[a];
+                i += '<font id="errorMsg" style="font: 400 0.14rem/0.4rem 黑体;color: #FF9600;"></font>',
+                i += "</form></div>"
+            } else
+                String.isBlank(t.message) || (i += '<p class="tac mb15">' + t.message + "</p>");
+            i += "</dt>",
+            i += "<dd>",
+            0 != t.cancelable && (i += null == t.negativeButton || String.isBlank(t.negativeButton.name) ? '<a name="negativeButton" ' + n + ' href="javascript:void(0);" class="safe_border">取消</a>' : '<a name="negativeButton" ' + n + ' href="javascript:void(0);" class="safe_border">' + t.negativeButton.name + "</a>"),
+            null != t.positiveButton && (i += null != t.positiveHref ? '<a name="positiveButton" ' + n + ' href="' + t.positiveHref + '">' + t.positiveButton.name + "</a>" : '<a name="positiveButton" ' + n + ' href="javascript:void(0);">' + t.positiveButton.name + "</a>"),
+            i += "</dd>",
+            i += "</dl></div>",
+            i += '<div class="mask"></div>',
+            i += "</div>";
+            var r = e(i);
+            null != t.negativeButton && "function" == typeof t.negativeButton.handler ? r.find("a[name=negativeButton]").on("click", e.proxy(t.negativeButton.handler, r)) : r.find("a[name=negativeButton]").on("click", function() {
+                r.hide()
+            }),
+            r.find("a[name=positiveButton]").on("click", e.proxy(t.positiveButton.handler, r));
+            var s = r.find("dd>a")
+              , c = 100 / s.length;
+            e.each(s, function(t, n) {
+                e(n).css("width", c + "%")
+            }),
+            r.appendTo("body");
+            var l = r.find(".dialogBody")
+              , d = l.height();
+            return l.css("margin-top", -d / 2),
+            r.find("a.allpop_close").on("click", function() {
+                r.hide(),
+                e(".my_mask").hide(),
+                0 != e("#sitePrompt").length && "1" == e("#sitePrompt").attr("notOut") && "1" == e("#sitePrompt").attr("isAlertSite") && (e("#city_prompt").hide(),
+                e("#sitePrompt").show(),
+                e("#sitePromptMask").show())
+            }),
+            r
+        }
+    }
+}($, window);
+
+
+/*
+ *弹框
+*/
+function initMessage() {
+    message = {
+        title: "",
+        error: "false",
+        info: "",
+        btns: [],
+        btnsClick: [],
+        keyValues: {},
+        hide: "false",
+        grade: "0",
+        showWidth: 0,
+        showHeight: 0,
+        showClose: "true"
+    }
+}
+function showMsg(a) {
+    var contentMsg = a.info
+      , contentTitle = a.title || "温馨提示"
+      , cancelable = !0
+      , positiveButton = {}
+      , negativeButton = {}
+      , onlyContent = !1;
+    2 == a.btns.length ? (negativeButton = {
+        name: a.btns[0].actionName,
+        handler: function() {
+            -1 != a.btns[0].actionValue.indexOf("javascript") ? eval(a.btns[0].actionValue.split(":")[1]) : window.location.href = a.btns[0].actionValue,
+            $(this).hide()
+        }
+    },
+    positiveButton = {
+        name: a.btns[1].actionName,
+        handler: function() {
+            -1 != a.btns[1].actionValue.indexOf("javascript") ? eval(a.btns[1].actionValue.split(":")[1]) : window.location.href = a.btns[1].actionValue,
+            $(this).hide()
+        }
+    }) : 1 == a.btns.length ? "true" == a.showClose ? (negativeButton = {
+        name: "关闭",
+        handler: function() {
+            $(this).hide()
+        }
+    },
+    positiveButton = {
+        name: a.btns[0].actionName,
+        handler: function() {
+            -1 != a.btns[0].actionValue.indexOf("javascript") ? eval(a.btns[0].actionValue.split(":")[1]) : window.location.href = a.btns[0].actionValue,
+            $(this).hide()
+        }
+    }) : (cancelable = !1,
+    positiveButton = {
+        name: a.btns[0].actionName,
+        handler: function() {
+            -1 != a.btns[0].actionValue.indexOf("javascript") ? eval(a.btns[0].actionValue.split(":")[1]) : window.location.href = a.btns[0].actionValue,
+            $(this).hide()
+        }
+    }) : 2 == a.btnsClick.length ? (positiveButton = {
+        name: a.btnsClick[0].actionName,
+        handler: a.btnsClick[0].actionValue
+    },
+    negativeButton = {
+        name: a.btnsClick[1].actionName,
+        handler: a.btnsClick[1].actionValue
+    }) : 1 == a.btnsClick.length ? "true" == a.showClose ? (positiveButton = {
+        name: "关闭",
+        handler: function() {
+            $(this).hide()
+        }
+    },
+    negativeButton = {
+        name: a.btnsClick[0].actionName,
+        handler: a.btnsClick[0].actionValue
+    }) : (cancelable = !1,
+    positiveButton = {
+        name: a.btnsClick[0].actionName,
+        handler: a.btnsClick[0].actionValue
+    }) : (onlyContent = !0,
+    cancelable = !1,
+    "true" == a.showClose && (positiveButton = {
+        name: "关闭",
+        handler: function() {
+            $(this).hide()
+        }
+    })),
+    "true" == a.hide && onlyContent ? ($("#baseErrorMsg").html(contentMsg),
+    $("#baseErrorMsg").show(),
+    showBack(),
+    "1" == a.grade ? setTimeout(function() {
+        $("#baseErrorMsg").hide(),
+        hideBack()
+    }, 8e3) : setTimeout(function() {
+        $("#baseErrorMsg").hide(),
+        hideBack()
+    }, 3e3)) : (showDigNew = Prompter.AlertDialog.builder({
+        title: contentTitle,
+        message: contentMsg,
+        cancelable: cancelable,
+        positiveButton: positiveButton,
+        negativeButton: negativeButton
+    }),
+    $(".mb15").css("text-align", "center"),
+    "true" == a.hide && ("1" == a.grade ? setTimeout(function() {
+        showDigNew.hide()
+    }, 8e3) : setTimeout(function() {
+        showDigNew.hide()
+    }, 3e3)))
+}
+function resetMsg() {
+    message = {
+        title: "提示",
+        error: "false",
+        info: "",
+        btns: [],
+        hide: "false",
+        grade: "0",
+        showWidth: 0,
+        showHeight: 0,
+        showClose: "true"
+    }
+}
+function showOldMsg(e) {
+    $("#msgArea").css(isNumber(e.showWidth) && 0 != e.showWidth ? {
+        width: (e.showWidth / 200).toFixed(2) + "rem"
+    } : {
+        width: "2.5rem"
+    }),
+    $("#msgArea").css(isNumber(e.showHeight) && 0 != e.showHeight ? {
+        height: (e.showHeight / 200).toFixed(2) + "rem"
+    } : e.info.length > 60 ? {
+        height: "1.5rem"
+    } : {
+        height: "1.15rem"
+    }),
+    $("#msgTitleArea").html("false" == e.error || "true" == e.error && "" != e.title ? e.title : "<span style='color:red;font-size:0.08rem'>错误提示</span>"),
+    $("#msgContentArea").html(e.info),
+    2 == e.btns.length ? ($("#msgBtn1").html(e.btns[0].actionName),
+    $("#msgBtn1").attr("href", e.btns[0].actionValue),
+    $("#msgBtn1").addClass("mr35"),
+    $("#msgBtn2").html(e.btns[1].actionName),
+    $("#msgBtn2").attr("href", e.btns[1].actionValue),
+    $("#msgBtnArea").show()) : 1 == e.btns.length ? ($("#msgBtn1").html(e.btns[0].actionName),
+    $("#msgBtn1").attr("href", e.btns[0].actionValue),
+    $("#msgBtn2").hide(),
+    $("#msgBtnArea").show()) : 2 == e.btnsClick.length ? ($("#msgBtn1").html(e.btnsClick[0].actionName),
+    $("#msgBtn1").bind("click", e.btnsClick[0].actionValue),
+    $("#msgBtn2").html(e.btnsClick[1].actionName),
+    $("#msgBtn2").bind("click", e.btnsClick[1].actionValue),
+    $("#msgBtnArea").show()) : 1 == e.btnsClick.length ? ($("#msgBtn1").html(e.btnsClick[0].actionName),
+    $("#msgBtn1").bind("click", e.btnsClick[0].actionValue),
+    $("#msgBtn2").hide(),
+    $("#msgBtnArea").show()) : $("#msgBtnArea").hide(),
+    "false" == e.showClose && $("#msgCloseBtn").hide(),
+    $("#fullScreen").show().css({
+        opacity: .5
+    }),
+    $("#msgArea").show(),
+    "true" == e.hide && ("1" == e.grade ? setTimeout(function() {
+        $("#fullScreen").hide(),
+        $("#msgArea").hide()
+    }, 8e3) : setTimeout(function() {
+        $("#fullScreen").hide(),
+        $("#msgArea").hide()
+    }, 2e3))
+}
+function showcConfirm(e) {
+    $("#msgTitleArea").html(e.title),
+    $("#msgContentArea").html(e.info),
+    2 == e.btns.length && ($("#msgBtn1").html(e.btns[0].actionName),
+    $("#msgBtn1").attr("href", e.btns[0].actionValue),
+    $("#msgBtn2").html(e.btns[1].actionName),
+    $("#msgBtn2").attr("href", e.btns[1].actionValue),
+    $("#msgBtnArea").show()),
+    showBack(),
+    $("#msgArea").show()
+}
+function closeMsg() {
+    0 != $("#msgArea").length && (hideBack(),
+    $("#msgArea").hide()),
+    showDigNew.hide(),
+    0 != $("#sitePrompt").length && "1" == $("#sitePrompt").attr("notOut") && "1" == $("#sitePrompt").attr("isAlertSite") && ($("#city_prompt").hide(),
+    $("#sitePrompt").show(),
+    $("#sitePromptMask").show())
+}

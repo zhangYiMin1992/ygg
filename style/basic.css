@@ -124,4 +124,66 @@ table{
  a{
  	-webkit-tap-highlight-color:rgba(0,0,0,0);
  }
+ .my_recharge_safe {
+    position: absolute;
+    width: 2.7rem;
+    top: 50%;
+    left: 50%;
+    margin: -.95rem 0rem 0rem -1.35rem;
+    background-color: #fff;
+    z-index: 99999;
+    border-radius: .15rem;
+}
+.allpop_close {
+    position: absolute;
+    width: .4rem;
+    height: .6rem;
+    z-index: 30;
+    top: -.6rem;
+    right: -.05rem;
+    background: url(../images/allpop_close.png) center bottom no-repeat;
+    background-size: .33rem .51rem;
+}
+.my_recharge_safe dl dt {
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: .1rem .16rem 0rem;
+}
+.my_recharge_safe dl dt em {
+    width: 100%;
+    text-align: center;
+    font: 400 .18rem/0.5rem "黑体";
+    color: #111;
+    display: block;
+}
+.my_recharge_safe dl dt p {
+    font: 400 .14rem/0.16rem "黑体";
+    color: #333;
+    padding-bottom: .1rem;
+    text-align: center;
+}
+.my_recharge_safe dl dd {
+    width: 100%;
+    float: left;
+    border-top: 1px solid #dedede;
+}
+.my_recharge_safe dl dd a {
+    width: 50%;
+    float: left;
+    display: block;
+    text-align: center;
+    font: 400 .18rem/0.44rem "黑体";
+    color: #0479fa;
+    box-sizing: border-box;
+}
+.mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: rgba(0,0,0,.4);
+}
 
