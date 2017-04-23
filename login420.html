@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./style/basic.css">
-    <link rel="stylesheet" type="text/css" href="http://www.artgogo.com/zhangyimin_test/style/login.css">
+    <link rel="stylesheet" type="text/css" href="./style/login.css">
     <meta name="Keywords" content="登陆页面">
     <meta name="description" content="登陆页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -177,32 +177,94 @@ $(function(){
 /**
  * 侧边栏 二级菜单
  */
+
 $(function(){
+    //设置位置
+    function setPos(pos, needTransition) {
+        var ani = {};
+        ani.transition = needTransition ? "all 0.15s ease": "all 0s ease";
+        ani.transform = "translate3d(" + pos + ", 0, 0)";
+        $("#login").css(CSS3(ani));
+        // $(".panel-overlay").css(CSS3(ani));
+    }
+
+    //滑动切换
+    var leftSwipe=function(){
+        var $el=$(".with-panel-left-reveal");
+        var pos = {};
+        var arr=$("#login").css('transform').split(',');
+        var maxLeft=arr[arr.length-2]*1;
+
+        $el[0].addEventListener("touchstart", 
+            function(ev) {
+                pos.x1 = ev.touches[0].pageX;
+                pos.y1 = ev.touches[0].pageY;
+                return
+            },
+            false);
+        $el[0].addEventListener("touchmove", 
+            function(ev) {
+                pos.x2 = ev.touches[0].pageX;
+                pos.y2 = ev.touches[0].pageY;
+                var x = pos.x2 - pos.x1;
+                var y = pos.y2 - pos.y1;                 
+                if (Math.abs(y) > Math.abs(x) || x>0) {
+                    return;
+                }
+                setPos(maxLeft+x+"px", false);
+                return false;
+            },
+            false);
+        $el[0].addEventListener("touchend", 
+            function(ev) {
+                console.log(11);
+                pos.x2 = ev.changedTouches[0].pageX;
+                pos.y2 = ev.changedTouches[0].pageY;
+                var x = pos.x2 - pos.x1;
+                var y = pos.y2 - pos.y1;
+                if ((Math.abs(y) > Math.abs(x) && Math.abs(y)<5)|| (Math.abs(x) < 30 && Math.abs(x)<5)) {
+                   setPos(maxLeft+"px", false)
+                    return
+                } 
+                setPos(0, true); 
+                $('.left_sidebar').removeClass('active');
+                $('body').removeClass('with-panel-left-reveal').addClass('panel-closing');             
+                ev.preventDefault();
+                return false
+            },
+            false);
+
+    }
     //点击菜单键
     $('.top_menu').click(function() {
         $('body').addClass('with-panel-left-reveal');
         $('.left_sidebar').css('display', 'block');
         $('.left_sidebar').addClass('active');
+
     });
     // 点击隐藏左侧边栏
-    $('.panel-overlay').click(function() {
+    $('.panel-overlay')[0].addEventListener("touchend",function(e) {
+        e.stopPropagation();
         $('.left_sidebar').removeClass('active');
         $('body').removeClass('with-panel-left-reveal').addClass('panel-closing');
     });
     var siderbar = function() {
             if ($('.left_sidebar').hasClass('active')) {
+                leftSwipe();
                 $('.panel-overlay').css('display', 'block');
                 return;
             }
             $('.left_sidebar,.panel-overlay').css('display', 'none');
             $('body').removeClass('panel-closing');
         }
-        //监听动画是否完成
+    //监听动画是否完成
     $(".page").get(0).addEventListener(transitionEnd($('.page').get(0).style), siderbar);
     $(".page").get(1).addEventListener(transitionEnd($('.page').get(1).style), siderbar);
 
+
+
     // 侧边栏菜单
-    $('#leftSidebar .select dt').click(function() {
+    $('#leftSidebar .select dt').click(function(e) {
         if ($(this).parent().attr('class') != 'select on') {
             $(this).parent().addClass('on');
         } else {
@@ -212,6 +274,7 @@ $(function(){
         $dd.slideToggle(100);
     });
 })
+
 /**
  * 登录
  */
@@ -275,7 +338,7 @@ $(function() {
 
     $('#registerPhone').get(0).onkeyup = phoneInputCheck;
 
-    // 检查是否同意协议
+    // 切换是否同意协议
     $('#agree').click(function() {
         if ($(this).attr('class') != 'agree_img') {
             $(this).addClass('agree_img');
