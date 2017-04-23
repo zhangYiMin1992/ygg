@@ -1,7 +1,7 @@
-html{
+html,body{
 	width:100%;
 	height: 100%;
-	overflow:hidden;
+	overflow: hidden;
 }
 body.with-panel-left-reveal .page {
     -webkit-transform: translate3d(2.09rem, 0, 0);
@@ -319,7 +319,7 @@ body.with-panel-left-reveal .page {
 .left_sidebar dl dt{
 	padding:.08rem 0 .08rem 0.27rem;
 	height:.16rem;
-	font:400 .12rem/.16rem "ºÚÌå";
+	font:400 .12rem/.16rem "黑体";
 	color:#b0b0b0;
 	background: url(../images/listimg.png) no-repeat;
 	background-size:.18rem 1.915rem ;
@@ -382,6 +382,8 @@ body.with-panel-left-reveal .page {
 
 body.with-panel-left-reveal .panel-overlay {
     margin-left: 2.09rem;
+    /*-webkit-transform: translate3d(2.09rem, 0, 0);
+    transform: translate3d(2.09rem, 0, 0);*/
 }
 
 body.panel-closing .page {
@@ -391,8 +393,7 @@ body.panel-closing .page {
   transition-property: transform;
 }
 
-.km-dialog,.regist_phone_dialog1,.regist_phone_dialog2,.regist_phone_dialog3,.regist_phone_dialog4,.regist_phone_dialog5,.regist_phone_dialog6,
-.regist_phone_dialog7,.regist_phone_dialog8,.regist_phone_dialog9,.regist_phone_dialog10,.regist_phone_dialog11,.regist_phone_dialog12{
+.km-dialog,.regist_phone_dialog{
 	display: none;
     font-size: .12rem;
     position: fixed;
@@ -442,8 +443,7 @@ body.panel-closing .page {
     left: 0;
     top: 0;
 }
-.regist_phone_dialog1,.regist_phone_dialog2,.regist_phone_dialog3,.regist_phone_dialog4,.regist_phone_dialog5,.regist_phone_dialog6,
-.regist_phone_dialog7,.regist_phone_dialog8,.regist_phone_dialog9,.regist_phone_dialog10,.regist_phone_dialog11,.regist_phone_dialog12{
+.regist_phone_dialog{
 	padding:.05rem;
     line-height: .3rem;
     width: 2rem;

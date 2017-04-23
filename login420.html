@@ -177,15 +177,17 @@ $(function(){
 /**
  * 侧边栏 二级菜单
  */
+
 $(function(){
     //点击菜单键
     $('.top_menu').click(function() {
         $('body').addClass('with-panel-left-reveal');
         $('.left_sidebar').css('display', 'block');
         $('.left_sidebar').addClass('active');
+
     });
     // 点击隐藏左侧边栏
-    $('.panel-overlay').click(function() {
+    $('.panel-overlay').click(function(){
         $('.left_sidebar').removeClass('active');
         $('body').removeClass('with-panel-left-reveal').addClass('panel-closing');
     });
@@ -197,12 +199,14 @@ $(function(){
             $('.left_sidebar,.panel-overlay').css('display', 'none');
             $('body').removeClass('panel-closing');
         }
-        //监听动画是否完成
+    //监听动画是否完成
     $(".page").get(0).addEventListener(transitionEnd($('.page').get(0).style), siderbar);
     $(".page").get(1).addEventListener(transitionEnd($('.page').get(1).style), siderbar);
 
+
+
     // 侧边栏菜单
-    $('#leftSidebar .select dt').click(function() {
+    $('#leftSidebar .select dt').click(function(e) {
         if ($(this).parent().attr('class') != 'select on') {
             $(this).parent().addClass('on');
         } else {
@@ -212,6 +216,7 @@ $(function(){
         $dd.slideToggle(100);
     });
 })
+
 /**
  * 登录
  */
@@ -275,7 +280,7 @@ $(function() {
 
     $('#registerPhone').get(0).onkeyup = phoneInputCheck;
 
-    // 检查是否同意协议
+    // 切换是否同意协议
     $('#agree').click(function() {
         if ($(this).attr('class') != 'agree_img') {
             $(this).addClass('agree_img');
