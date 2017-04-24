@@ -3278,3 +3278,569 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
         return o
     };
 
+
+
+(function($) {
+    "use strict";
+    ['width', 'height'].forEach(function(dimension) {
+        var  Dimension = dimension.replace(/./, function(m) {
+            return m[0].toUpperCase();
+        });
+        $.fn['outer' + Dimension] = function(margin) {
+            var elem = this;
+            if (elem) {
+                var size = elem[dimension]();
+                var sides = {
+                    'width': ['left', 'right'],
+                    'height': ['top', 'bottom']
+                };
+                sides[dimension].forEach(function(side) {
+                    if (margin) size += parseInt(elem.css('margin-' + side), 10);
+                });
+                return size;
+            } else {
+                return null;
+            }
+        };
+    });
+
+    //support
+    $.support = (function() {
+        var support = {
+            touch: !!(('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch)
+        };
+        return support;
+    })();
+
+    $.touchEvents = {
+        start: $.support.touch ? 'touchstart' : 'mousedown',
+        move: $.support.touch ? 'touchmove' : 'mousemove',
+        end: $.support.touch ? 'touchend' : 'mouseup'
+    };
+
+    $.getTranslate = function (el, axis) {
+        var matrix, curTransform, curStyle, transformMatrix;
+
+        // automatic axis detection
+        if (typeof axis === 'undefined') {
+            axis = 'x';
+        }
+
+        curStyle = window.getComputedStyle(el, null);
+        if (window.WebKitCSSMatrix) {
+            // Some old versions of Webkit choke when 'none' is passed; pass
+            // empty string instead in this case
+            transformMatrix = new WebKitCSSMatrix(curStyle.webkitTransform === 'none' ? '' : curStyle.webkitTransform);
+        }
+        else {
+            transformMatrix = curStyle.MozTransform || curStyle.transform || curStyle.getPropertyValue('transform').replace('translate(', 'matrix(1, 0, 0, 1,');
+            matrix = transformMatrix.toString().split(',');
+        }
+
+        if (axis === 'x') {
+            //Latest Chrome and webkits Fix
+            if (window.WebKitCSSMatrix)
+                curTransform = transformMatrix.m41;
+            //Crazy IE10 Matrix
+            else if (matrix.length === 16)
+                curTransform = parseFloat(matrix[12]);
+            //Normal Browsers
+            else
+                curTransform = parseFloat(matrix[4]);
+        }
+        if (axis === 'y') {
+            //Latest Chrome and webkits Fix
+            if (window.WebKitCSSMatrix)
+                curTransform = transformMatrix.m42;
+            //Crazy IE10 Matrix
+            else if (matrix.length === 16)
+                curTransform = parseFloat(matrix[13]);
+            //Normal Browsers
+            else
+                curTransform = parseFloat(matrix[5]);
+        }
+
+        return curTransform || 0;
+    };
+    /* jshint ignore:start */
+    $.requestAnimationFrame = function (callback) {
+        if (requestAnimationFrame) return requestAnimationFrame(callback);
+        else if (webkitRequestAnimationFrame) return webkitRequestAnimationFrame(callback);
+        else if (mozRequestAnimationFrame) return mozRequestAnimationFrame(callback);
+        else {
+            return setTimeout(callback, 1000 / 60);
+        }
+    };
+    $.cancelAnimationFrame = function (id) {
+        if (cancelAnimationFrame) return cancelAnimationFrame(id);
+        else if (webkitCancelAnimationFrame) return webkitCancelAnimationFrame(id);
+        else if (mozCancelAnimationFrame) return mozCancelAnimationFrame(id);
+        else {
+            return clearTimeout(id);
+        }
+    };
+    /* jshint ignore:end */
+
+    $.fn.dataset = function() {
+        var dataset = {},
+            ds = this[0].dataset;
+        for (var key in ds) { // jshint ignore:line
+            var item = (dataset[key] = ds[key]);
+            if (item === 'false') dataset[key] = false;
+            else if (item === 'true') dataset[key] = true;
+            else if (parseFloat(item) === item * 1) dataset[key] = item * 1;
+        }
+        // mixin dataset and __eleData
+        return $.extend({}, dataset, this[0].__eleData);
+    };
+    $.fn.data = function(key, value) {
+        var tmpData = $(this).dataset();
+        if (!key) {
+            return tmpData;
+        }
+        // value may be 0, false, null
+        if (typeof value === 'undefined') {
+            // Get value
+            var dataVal = tmpData[key],
+                __eD = this[0].__eleData;
+
+            //if (dataVal !== undefined) {
+            if (__eD && (key in __eD)) {
+                return __eD[key];
+            } else {
+                return dataVal;
+            }
+
+        } else {
+            // Set value,uniformly set in extra ```__eleData```
+            for (var i = 0; i < this.length; i++) {
+                var el = this[i];
+                // delete multiple data in dataset
+                if (key in tmpData) delete el.dataset[key];
+
+                if (!el.__eleData) el.__eleData = {};
+                el.__eleData[key] = value;
+            }
+            return this;
+        }
+    };
+    function __dealCssEvent(eventNameArr, callback) {
+        var events = eventNameArr,
+            i, dom = this;// jshint ignore:line
+
+        function fireCallBack(e) {
+            /*jshint validthis:true */
+            if (e.target !== this) return;
+            callback.call(this, e);
+            for (i = 0; i < events.length; i++) {
+                dom.off(events[i], fireCallBack);
+            }
+        }
+        if (callback) {
+            for (i = 0; i < events.length; i++) {
+                dom.on(events[i], fireCallBack);
+            }
+        }
+    }
+    $.fn.animationEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitAnimationEnd', 'animationend'], callback);
+        return this;
+    };
+    $.fn.transitionEnd = function(callback) {
+        __dealCssEvent.call(this, ['webkitTransitionEnd', 'transitionend'], callback);
+        return this;
+    };
+    $.fn.transition = function(duration) {
+        if (typeof duration !== 'string') {
+            duration = duration + 'ms';
+        }
+        for (var i = 0; i < this.length; i++) {
+            var elStyle = this[i].style;
+            elStyle.webkitTransitionDuration = elStyle.MozTransitionDuration = elStyle.transitionDuration = duration;
+        }
+        return this;
+    };
+    $.fn.transform = function(transform) {
+        for (var i = 0; i < this.length; i++) {
+            var elStyle = this[i].style;
+            elStyle.webkitTransform = elStyle.MozTransform = elStyle.transform = transform;
+        }
+        return this;
+    };
+    $.fn.prevAll = function (selector) {
+        var prevEls = [];
+        var el = this[0];
+        if (!el) return $([]);
+        while (el.previousElementSibling) {
+            var prev = el.previousElementSibling;
+            if (selector) {
+                if($(prev).is(selector)) prevEls.push(prev);
+            }
+            else prevEls.push(prev);
+            el = prev;
+        }
+        return $(prevEls);
+    };
+    $.fn.nextAll = function (selector) {
+        var nextEls = [];
+        var el = this[0];
+        if (!el) return $([]);
+        while (el.nextElementSibling) {
+            var next = el.nextElementSibling;
+            if (selector) {
+                if($(next).is(selector)) nextEls.push(next);
+            }
+            else nextEls.push(next);
+            el = next;
+        }
+        return $(nextEls);
+    };
+
+    //重置zepto的show方法，防止有些人引用的版本中 show 方法操作 opacity 属性影响动画执行
+    $.fn.show = function(){
+        var elementDisplay = {};
+        function defaultDisplay(nodeName) {
+            var element, display;
+            if (!elementDisplay[nodeName]) {
+                element = document.createElement(nodeName);
+                document.body.appendChild(element);
+                display = getComputedStyle(element, '').getPropertyValue("display");
+                element.parentNode.removeChild(element);
+                display === "none" && (display = "block");
+                elementDisplay[nodeName] = display;
+            }
+            return elementDisplay[nodeName];
+        }
+
+        return this.each(function(){
+            this.style.display === "none" && (this.style.display = '');
+            if (getComputedStyle(this, '').getPropertyValue("display") === "none");
+            this.style.display = defaultDisplay(this.nodeName);
+        });
+    };
+})(Zepto);
+
+
+
+
+(function(){
+  $.allowPanelOpen = true;
+       $.getCurrentPage = function() {
+          return $(".page-current")[0] || $(".page")[0] || document.body;
+       };
+       $.openPanel = function (panel) {
+
+          $(".panel-overlay").css("zIndex",5999);//hack
+
+          panel = panel ? $(panel) : $(".panel").eq(0);
+          if (panel.length === 0 || panel.hasClass('active')) return false;
+          $.closePanel();
+          $.allowPanelOpen = false;
+          panel.css({display: 'block'}).addClass('active');
+
+          // Transition End;
+          var transitionEndTarget = $($.getCurrentPage());
+          function panelTransitionEnd() {
+              transitionEndTarget.transitionEnd(function (e) {
+                  if (e.target === transitionEndTarget[0]) {
+                      if (panel.hasClass('active')) {
+                          $('.panel-overlay').css('display', 'block');
+                      }
+                      $.allowPanelOpen = true;
+                  }
+                  else panelTransitionEnd();
+              });
+          }
+          panelTransitionEnd();
+          $('body').addClass('with-panel-left-reveal');
+       };
+       $.closePanel= function () {
+          var activePanel = $('.panel.active');
+          if (activePanel.length === 0) return false;
+          activePanel.removeClass('active');
+          var transitionEndTarget = $($.getCurrentPage());
+          $.allowPanelOpen = false;
+          transitionEndTarget.transitionEnd(function () {
+              if (activePanel.hasClass('active')) return;
+              activePanel.css({display: ''});
+              $('.panel-overlay').css('display', 'none');
+              $('body').removeClass('panel-closing');
+              $.allowPanelOpen = true;
+          });
+          $('body').removeClass('with-panel-left-reveal').addClass('panel-closing');
+       }
+
+  $.initSwipePanels = function () {
+          var panel, side;
+          var swipePanel = "left";//$.smConfig.swipePanel;
+          var swipePanelOnlyClose = true;//$.smConfig.swipePanelOnlyClose;
+          var swipePanelCloseOpposite = true;
+          var swipePanelActiveArea = false;
+          var swipePanelThreshold = 2;
+          var swipePanelNoFollow = false;
+
+          if(!(swipePanel || swipePanelOnlyClose)) return;
+
+          var panelOverlay = $('.panel-overlay');
+          var isTouched, isMoved, isScrolling, touchesStart = {}, touchStartTime, touchesDiff, translate, opened, panelWidth, effect, direction;
+          var views = $('.page');
+
+          function handleTouchStart(e) {
+              //if (!$.allowPanelOpen || (!swipePanel && !swipePanelOnlyClose) || isTouched) return;
+              if (!true || (!swipePanel && !swipePanelOnlyClose) || isTouched) return;
+              if ($('.modal-in, .photo-browser-in').length > 0) return;
+              if (!(swipePanelCloseOpposite || swipePanelOnlyClose)) {
+                  if ($('.panel.active').length > 0 && !panel.hasClass('active')) return;
+              }
+              touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
+              touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+              if (swipePanelCloseOpposite || swipePanelOnlyClose) {
+                  if ($('.panel.active').length > 0) {
+                      side = $('.panel.active').hasClass('panel-left') ? 'left' : 'right';
+                  }
+                  else {
+                      if (swipePanelOnlyClose) return;
+                      side = swipePanel;
+                  }
+                  if (!side) return;
+              }
+              panel = $('.panel.panel-' + side);
+              if(!panel[0]) return;
+              opened = panel.hasClass('active');
+              if (swipePanelActiveArea && !opened) {
+                  if (side === 'left') {
+                      if (touchesStart.x > swipePanelActiveArea) return;
+                  }
+                  if (side === 'right') {
+                      if (touchesStart.x < window.innerWidth - swipePanelActiveArea) return;
+                  }
+              }
+              isMoved = false;
+              isTouched = true;
+              isScrolling = undefined;
+
+              touchStartTime = (new Date()).getTime();
+              direction = undefined;
+          }
+          function handleTouchMove(e) {
+              if (!isTouched) return;
+              if(!panel[0]) return;
+              if (e.f7PreventPanelSwipe) return;
+              var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
+              var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+              if (typeof isScrolling === 'undefined') {
+                  isScrolling = !!(isScrolling || Math.abs(pageY - touchesStart.y) > Math.abs(pageX - touchesStart.x));
+              }
+              if (isScrolling) {
+                  isTouched = false;
+                  return;
+              }
+              if (!direction) {
+                  if (pageX > touchesStart.x) {
+                      direction = 'to-right';
+                      return;
+                  }
+                  else {
+                       $(".panel-overlay").css("zIndex",0);//hack
+                      direction = 'to-left';
+                  }
+
+                  if (
+                          side === 'left' &&
+                          (
+                           direction === 'to-left' && !panel.hasClass('active')
+                          ) ||
+                          side === 'right' &&
+                          (
+                           direction === 'to-right' && !panel.hasClass('active')
+                          )
+                     )
+                  {
+                      isTouched = false;
+                      return;
+                  }
+              }
+
+              if (swipePanelNoFollow) {
+                  var timeDiff = (new Date()).getTime() - touchStartTime;
+                  if (timeDiff < 300) {
+                      if (direction === 'to-left') {
+                          if (side === 'right') $.openPanel(side);
+                          if (side === 'left' && panel.hasClass('active')) $.closePanel();
+                      }
+                      if (direction === 'to-right') {
+                          if (side === 'left') $.openPanel(side);
+                          if (side === 'right' && panel.hasClass('active')) $.closePanel();
+                      }
+                  }
+                  isTouched = false;
+                  console.log(3);
+                  isMoved = false;
+                  return;
+              }
+
+              if (!isMoved) {
+                  effect = panel.hasClass('panel-cover') ? 'cover' : 'reveal';
+                  if (!opened) {
+                      panel.show();
+                      panelOverlay.show();
+                  }
+                  panelWidth = panel[0].offsetWidth;
+                  panel.transition(0);
+                  /*
+                     if (panel.find('.' + app.params.viewClass).length > 0) {
+                     if (app.sizeNavbars) app.sizeNavbars(panel.find('.' + app.params.viewClass)[0]);
+                     }
+                     */
+              }
+
+              isMoved = true;
+
+              e.preventDefault();
+              var threshold = opened ? 0 : -swipePanelThreshold;
+              if (side === 'right') threshold = -threshold;
+
+              touchesDiff = pageX - touchesStart.x + threshold;
+
+              if (side === 'right') {
+                  translate = touchesDiff  - (opened ? panelWidth : 0);
+                  if (translate > 0) translate = 0;
+                  if (translate < -panelWidth) {
+                      translate = -panelWidth;
+                  }
+              }
+              else {
+                  translate = touchesDiff  + (opened ? panelWidth : 0);
+                  if (translate < 0) translate = 0;
+                  if (translate > panelWidth) {
+                      translate = panelWidth;
+                  }
+              }
+              if (effect === 'reveal') {
+                  views.transform('translate3d(' + translate + 'px,0,0)').transition(0);
+                  direction != 'to-right' && panelOverlay.transform('translate3d(' + translate + 'px,0,0)');
+                  //app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
+              }
+              else {
+                  panel.transform('translate3d(' + translate + 'px,0,0)').transition(0);
+                  //app.pluginHook('swipePanelSetTransform', views[0], panel[0], Math.abs(translate / panelWidth));
+              }
+          }
+          function handleTouchEnd(e) {
+              if (!isTouched || !isMoved || direction == 'to-right') {
+                  isTouched = false;
+                  isMoved = false;
+                  return;
+              }
+              isTouched = false;
+              isMoved = false;
+              var timeDiff = (new Date()).getTime() - touchStartTime;
+              var action;
+              var edge = (translate === 0 || Math.abs(translate) === panelWidth);
+
+              if (!opened) {
+                  if (translate === 0) {
+                      action = 'reset';
+                  }
+                  else if (
+                          timeDiff < 300 && Math.abs(translate) > 0 ||
+                          timeDiff >= 300 && (Math.abs(translate) >= panelWidth / 2)
+                          ) {
+                              action = 'swap';
+                          }
+                  else {
+                      action = 'reset';
+                  }
+              }
+              else {
+                  if (translate === -panelWidth) {
+                      action = 'reset';
+                  }
+                  else if (
+                          timeDiff < 300 && Math.abs(translate) >= 0 ||
+                          timeDiff >= 300 && (Math.abs(translate) <= panelWidth / 2)
+                          ) {
+                              if (side === 'left' && translate === panelWidth) action = 'reset';
+                              else action = 'swap';
+                          }
+                  else {
+                      action = 'reset';
+                  }
+              }
+              if (action === 'swap') {
+                  $.allowPanelOpen = true;
+                  if (opened) {
+                      $.closePanel();
+                      if (edge) {
+                          panel.css({display: ''});
+                          $('body').removeClass('panel-closing');
+                      }
+                  }
+                  else {
+                      $.openPanel(side);
+                  }
+                  if (edge) $.allowPanelOpen = true;
+              }
+              if (action === 'reset') {
+                  if (opened) {
+                      $.allowPanelOpen = true;
+                      $.openPanel(side);
+                      var transitionEndTarget = $($.getCurrentPage());
+                      function panelTransitionEnd() {
+                          transitionEndTarget.transitionEnd(function (e) {
+                              if (e.target === transitionEndTarget[0]) {
+                                  if (panel.hasClass('active')) {
+                                      $('.panel-overlay').css('display', 'block');
+                                  }
+                              }
+                              else panelTransitionEnd();
+                          });
+                      }
+                      panelTransitionEnd();
+                  }
+                  else {
+                      $.closePanel();
+                      if (edge) {
+                          $.allowPanelOpen = true;
+                          panel.css({display: ''});
+                      }
+                      else {
+                          var target = effect === 'reveal' ? views : panel;
+                          $('body').addClass('panel-closing');
+                          target.transitionEnd(function () {
+                              $.allowPanelOpen = true;
+                              panel.css({display: ''});
+                              $('body').removeClass('panel-closing');
+                          });
+                      }
+                  }
+              }
+              if (effect === 'reveal') {
+                  views.transition('');
+                  views.transform('');
+              }
+              panel.transition('').transform('');
+              panelOverlay.css({display: ''}).transform('');
+          }
+          $(document).on($.touchEvents.start, handleTouchStart);
+          $(document).on($.touchEvents.move, handleTouchMove);
+          $(document).on($.touchEvents.end, handleTouchEnd);
+      };
+
+      $.initSwipePanels();
+})(Zepto)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -144,14 +144,10 @@ body.with-panel-left-reveal .page {
 	width:100%;
 	height:0;
 	padding-bottom:.41rem;
-    background-color: #dddddd;
+    background-color: #000;
     color:#fff;
     text-align:center;
     font:400 .12rem/.41rem "ºÚÌå";
-}
-
-.login_box .login_menu.on{
-	background-color: #000; 
 }
 
 .login_box .inline{
@@ -168,14 +164,9 @@ body.with-panel-left-reveal .page {
 .login_box .inline .short{
 	width:35%;
 	float: left;
-	background-color: #dddddd;
-	color: #fff;
-	font:400 .12rem/.395rem "ºÚÌå";
-}
-
-.login_box .inline .available{
-	color:#000;
 	background-color: #fff;
+	color: #000;
+	font:400 .12rem/.395rem "ºÚÌå";
 }
 
 .login_box dl{
@@ -402,16 +393,17 @@ body.panel-closing .page {
     left: 0;
     top: 0;
     margin:auto;
-    border-radius: .1rem;
-    background-color: #fff;
     z-index: 6001;
     text-align: center;	
+    width:100%;
+    height:.3rem;
 }
 
 .km-dialog {
     padding-top: .3rem;
     width:2.75rem;
     height:1rem;
+    border-radius: .05rem;
 }
 
 .km-dialog .km-dialog-buttons {
@@ -443,9 +435,16 @@ body.panel-closing .page {
     left: 0;
     top: 0;
 }
-.regist_phone_dialog{
-	padding:.05rem;
-    line-height: .3rem;
-    width: 2rem;
+
+.regist_phone_dialog span{
+    text-align: center;
+	background-color: #fff;
+	padding:.13rem .1rem;
+	line-height: .3rem;
     height: .3rem;
+    color:#000;
+    border-radius:.06rem;
+    z-index: 6001;
+    min-width: .16rem;
+    max-width: .3rem;
 }

@@ -1,0 +1,38 @@
+html,body{
+	width:100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+header{
+	width:100%;
+	position: fixed;
+	top:0;
+	left:0;
+}
+
+.sign{
+	width:100%;
+	height:.435rem;
+	background: #333;
+	padding:.085rem .215rem;
+	box-sizing: border-box;
+}
+
+.sign a{
+	display: inline-block;
+	width:40.62%;
+	height:.265rem;
+	text-align: center;
+	color:#c5c5c5;
+	border:1px solid rgba(255,255,255,.2);
+    font: 400 .06rem/.265rem "Microsoft YaHei";
+}
+
+.sign a span{
+	color:rgba(255,255,255,0);
+}
+
+.sign a:first-child{
+    margin-right:.125rem;
+}
