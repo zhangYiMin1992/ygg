@@ -1884,7 +1884,7 @@ window.$ === undefined && (window.$ = Zepto)
 })(Zepto);
 
 
-
+//以上为zepto内容
 
 if (typeof Function.prototype.method != 'function') {
     Function.prototype.method = function(funcName, func) {
@@ -2154,6 +2154,9 @@ $.extend($, {
         })
     }
 });
+/*
+ *弹框
+*/
 !function(e, t) {
     var n = {};
     t.Prompter = n,
@@ -2216,10 +2219,6 @@ $.extend($, {
     }
 }($, window);
 
-
-/*
- *弹框
-*/
 function initMessage() {
     message = {
         title: "",
@@ -3520,9 +3519,6 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
     };
 })(Zepto);
 
-
-
-
 (function(){
   $.allowPanelOpen = true;
        $.getCurrentPage = function() {
@@ -3727,11 +3723,16 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
               }
           }
           function handleTouchEnd(e) {
-              if (!isTouched || !isMoved || direction == 'to-right') {
+              if (!isTouched || !isMoved) {
                   isTouched = false;
                   isMoved = false;
                   return;
               }
+              // if(direction == 'to-right'){
+              //   panel.transition('').transform('');
+              //    $('.panel-overlay').css('display', 'block');
+              //    return;
+              // }
               isTouched = false;
               isMoved = false;
               var timeDiff = (new Date()).getTime() - touchStartTime;
@@ -3821,6 +3822,9 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
               }
               panel.transition('').transform('');
               panelOverlay.css({display: ''}).transform('');
+              if(direction=="to-right"){
+                  $('.panel-overlay').css('display', 'block');
+              }
           }
           $(document).on($.touchEvents.start, handleTouchStart);
           $(document).on($.touchEvents.move, handleTouchMove);
