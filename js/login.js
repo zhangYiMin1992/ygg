@@ -1,280 +1,246 @@
-// 动画兼容处理
-var transitionEnd=function(style){
-            var transEndEventNames = {
-              WebkitTransition : 'webkitTransitionEnd',
-              MozTransition    : 'transitionend',
-              OTransition      : 'oTransitionEnd otransitionend',
-              transition       : 'transitionend'
-            }
-            for(var name in transEndEventNames){
-                if(typeof style[name] === "string"){
-                    return transEndEventNames[name]
-                }
-            }
-        };
 
-  $(function(){
-    $('#registerBtn').click(function(){
-      $('#login').hide();
-      $('#register').show();
-    });
-    $('#pleaseLogin,#registerCancel').click(function(){
-      $('#login').show();
-      $('#register').hide();
-    });
-    
-  //点击菜单键
-   $('.top_menu').click(function(){
-      $('body').addClass('with-panel-left-reveal');
-      $('.left_sidebar').css('display','block');
-      $('.left_sidebar').addClass('active');
-   });
-   // 点击隐藏左侧边栏
-  $('.panel-overlay').click(function () {
-    $('.left_sidebar').removeClass('active');
-    $('body').removeClass('with-panel-left-reveal').addClass('panel-closing');
-  });
-  var siderbar=function(){
-    if($('.left_sidebar').hasClass('active')) {
-      $('.panel-overlay').css('display','block');
-      return;
-    }
-      $('.left_sidebar,.panel-overlay').css('display','none');
-      $('body').removeClass('panel-closing');
-  }
-  //监听动画是否完成
-    $(".page").get(0).addEventListener(transitionEnd($('.page').get(0).style),siderbar);
-    $(".page").get(1).addEventListener(transitionEnd($('.page').get(1).style),siderbar);
 
-  // 侧边栏菜单
-  $('#leftSidebar .select dt').click(function(){
-     if($(this).parent().attr('class')!='select on'){
-        $(this).parent().addClass('on');
-      }else{
-        $(this).parent().removeClass('on');
-      }
-       var $dd=$(this).siblings();
-       $dd.slideToggle(100);
-  });
-  //验证输入是否为数字
-  function isPhoneNum(event){
-    event=event||window.event;
-    if(event.keyCode>57||event.keyCode<48){
-      this.value=''; 
+//遮罩弹框提醒
+var timer_dialog = null;
+function maskShow(message) {
+    clearTimeout(timer_dialog);
+    timer_dialog = setTimeout(function() {
+        $('.regist_phone_dialog').html(message);
+        $('.regist_phone_dialog,.km-dialog-mask').css('display', 'block');
+        setTimeout(function() {
+            $('.regist_phone_dialog,.km-dialog-mask').css('display', 'none');
+        }, 2000);
+    }, 100);
+}
+
+var phoneInputCheck=function(e){
+    var e = event || window.event;
+    var code=e.keyCode;
+    var isInput=(code>=48 && code<=57) || (code>=96 && code <=105) || code==37 || code==39 || code==8;
+    !isInput &&  (this.value = this.value.replace(/[^\d]+/g,''));
+}
+
+/**
+ * 弹框
+ */
+$(function(){
+    initMessage(),
+    window.alert = function(e) {
+        message.info = e,
+        showMsg(message)
     }
-  }
-   //遮罩弹框提醒
-   function maskShow(obj){
-        timer_dialog=setTimeout(function(){
-           obj.css('display','block');
-          setTimeout(function(){
-          obj.css('display','none');
-          // _this_.value='';
-          },2000);
-        },100);
-   }
-  //注册页面手机号码验证
-  var timer_dialog=null;
-  var phoneNum=$('#registerPhone').val();
-  var isarray=[false,false,false,false];
-  var onOff=true;
- 
-  $('#registerPhone').get(0).onkeyup=isPhoneNum;
-  //验证号码格式是否错误
-  $('#registerPhone').get(0).onblur=function(){
-       var _this_=this;
-       if(!$.YGG.regExp.cellPhone.test(this.value)){
-        var dialog1=$('.km-dialog-mask,.regist_phone_dialog1');
-        maskShow(dialog1);
-        isarray[0]=false;
-        onOff=false;
-        return false;
-       }else{
-        $.ajax({
-          type:"POST",
-          dataType:"json",
-          url:"?username ="+phoneNum+"&type=username&random="+Math.random(),
-          success:function(userSignup ){
-            if(userSignup['status']=="false"){
-                
-                var dialog2=$('.km-dialog-mask,.regist_phone_dialog2');
-                maskShow(dialog2);
-                 isarray[0]=false;
-                 return false;
-             }else if(userSignup['status']=="true"){
-               isarray[0]=true;
-               $('#get_mobile_code').addClass('available').attr("disabled", true); 
-               onOff=true;
-             }
-          }
-        });
-       }
-  }
- //短信发送
-  $('#get_mobile_code').click(function(){
-    if(onOff){
-      var mobile=$('#registerPhone').val();
-      if(mobile){
-        $.ajax({
-                type:'GET',
-                dataType:'json',
-                // url:,
-                success:function(sendVerificationCode){
-                        if(sendVerificationCode['status']==true){
-                          setTimeout(function(){
-                                $('#get_mobile_code').val('已发送');
-                                    setTimeout(function(){
-                                    $('#get_mobile_code').val('获取验证码');
-                                    },1800000);
-                                  },100);
-                              var dialog4=$('.km-dialog-mask,.regist_phone_dialog4');
-                              maskShow(dialog4);
-                        }else if(sendVerificationCode['status']==false){
-                               var dialog3=$('.km-dialog-mask,.regist_phone_dialog3');
-                               maskShow(dialog3);
-                        }
-                }
-        });
-      }
-    }
-  });
-//验证密码
- var pwd=$('#pwd').val();
- var pwdAgain=$('#pwdAgain').val();
-     pwd=$.trim(pwd);
-     pwdAgain=$.trim(pwdAgain);
-   $('#pwd').get(0).onblur=function(){
-     if(!pwd==''&&pwd.length>16 || pwd.length<6){//有问题
-      // &&pwd.length>16 || pwd.length<6
-      console.log('1');
-        var dialog5=$('.km-dialog-mask,.regist_phone_dialog5');
-        maskShow(dialog5);
-        isarray[1]=false;
-        return false;
-     }else{
-        isarray[1]=true;
-        return false;
-     }
-   }
-   //验证密码是否一致
-    $('#pwdAgain').get(0).onblur=function(){
-      if(!pwd===pwdAgain){
-           var dialog6=$('.km-dialog-mask,.regist_phone_dialog6');
-           maskShow(dialog6);
-           isarray[2]=false;
-           return false;
-        }else{
-           isarray[2]=true;
-           return false;
+});
+
+/**
+ * 侧边栏 二级菜单
+ */
+
+$(function(){
+    $(document).on("click",".open-panel",function(e){
+        var panel = $(e.target).data('panel');
+        $.openPanel(panel);
+    })
+    $(document).on("click", ".panel-overlay", function(e) {
+        $.closePanel();
+    });
+
+
+
+    // 侧边栏菜单
+    $('#leftSidebar .select dt').click(function(e) {
+        if ($(this).parent().attr('class') != 'select on') {
+            $(this).parent().addClass('on');
+        } else {
+            $(this).parent().removeClass('on');
         }
-      }
-    //验证验证码
-    $('#mobile_code').get(0).onblur=function(){
-    var mobile_code=$('#mobile_code').val();
-        mobile_code=$.trim(mobile_code);
-        if(mobile_code==''){
-          var dialog7=$('.km-dialog-mask,.regist_phone_dialog7');
-          maskShow(dialog7);
-          isarray[3]=false;
-           return false;
-        }else{
-        $.ajax({
-          type:"POST",
-          dataType:"json",
-          url:"?username ="+phoneNum+"&type=username&random="+Math.random(),
-          success:function( verificationCode ){
-            if( verificationCode ['status']=="false"){
-                
-                var dialog8=$('.km-dialog-mask,.regist_phone_dialog8');
-                maskShow(dialog8);
-                 isarray[3]=false;
-                 return false;
-             }else if( verificationCode ['status']=="true"){
-               isarray[3]=true;
-             }
-          }
-        });
-      }
-    }
-    // 检查是否同意协议
-    $('#agree').click(function(){
-      if($(this).attr('class')!='agree_img'){
-       $(this).addClass('agree_img');
-       $('#register .login_menu').addClass('on');
-       isarray[4]=true;
-      }else{
-       $(this).removeAttr('class');
-       $('#register .login_menu').removeClass('on');
-       isarray[4]=false;
-      }
+        var $dd = $(this).siblings();
+        $dd.slideToggle(100);
     });
-    //点击立即注册按钮
-    $('#register_menu').click(function(){
-      if(isarray[0]===isarray[1]===isarray[2]===isarray[4]===isarray[4]===true){
-        $.ajax({
-               type:"POST",
-               dataType:"json",
-               url:"/center/register.php?random="+Math.random(),
-               data:{
-                   mobile:mobile,
-                   pass:password,
-                   mobile_code:mobile_code,
-                   _2bind:_2bind
-               },
-               success:function(json){}
-        });
-      }
-   });
-    //登录页面验证
-    //验证是否登录
-    /*$.ajax({
-      async:false,
-      type:"POST",
-      dataType:"josn",
-      url:"?random="+Math.random(),
-      success:function(true){
-        if(true){
-          window.location.href="/newwap/usercenter/index.php";
-        }
-      }
-    });*/
+})
 
-      // 验证登陆页面输入号码是否为数字
-    $('#loginPhone').get(0).onkeyup=isPhoneNum;
-    var loginPhone=$('#loginPhone').val();
-    var loginPwd=$('#loginPwd').val();
-    loginPhone=$.trim(loginPhone);
-    loginPwd=$.trim(loginPwd);
-    $('#loginPwd,#loginPhone').get(0).onblur=function(){
-      
-       if(loginPwd==''&&loginPhone==''){//这个条件要取反
-       $('#loginBox .login_menu').addClass('on');
-       }
-    }
-    
-     //点击登录按钮
-    $('#login_menu').click(function(){
-        var rsa_n="DEF1F0446302D3F53875A97062335A7C392005174775B3F2879A97F4F2E2648C549882D379FE48E0B4A6FC795318959D729F2782AC97B793AFEC97E458A01CBF63C273DBBE773E30D91DF6D977907198D3420353167A9CDDB186844C666E00FF1D0388FB917EF9325678CFD4674EF6C7CA5F4047570C44B1C1C4FE4EA31BEE67";
-              setMaxDigits(131); //131 => n的十六进制位数/2+3
-              var key      = new RSAKeyPair("010001", '', rsa_n);//010001 => e的十六进制
-              var password = encryptedString(key,psw);//不支持汉字
-       $.ajax({
-        type:"POST",
-              url:'/newwap/usercenter/login_ajax.php',
-              data:"login_username="+name+"&login_pass="+password+"&type=login&randowm="+Math.random()+"&rember="+rember,
-              dataType:'json',
-              success:function(data){
-                if(data['data']=="true"){
-                  window.location.href='/newwap/usercenter/artwork_add.php';
-                }else{
-                  $('.km-dialog-mask,.km-dialog').css('display','block');
+/**
+ * 登录
+ */
+$(function(){
+    //检测是否登录过,新版没有可删除
+    // $.ajax({
+    //     async: false,
+    //     type: "POST",
+    //     url: "/201405/checkusername.php?random=" + Math.random(),
+    //     success: function(json) {
+    //         if (json['login'] === "true") {
+    //             window.location.href = "/newwap/usercenter/index.php";
+    //         }
+    //     }
+    // });
+    $('#loginPhone').get(0).onkeyup = phoneInputCheck;
+        //点击登录按钮
+    $('#login_menu').click(function() {
+        var name = $.trim($('#loginPhone').val());
+        var psw = $.trim($("#loginPwd").val());
+        if (!$.YGG.regExp.cellPhone.test(name)) {          
+            alert('请输入正确的手机号码');
+            $('#loginPhone').focus();  
+            return;      
+        }
+        if(psw == ''){
+            maskShow('请输入密码');
+            $("#loginPwd").focus();
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: '/newwap/user/userLogin',
+            data: "username=" + name + "&password=" + psw,
+            success: function(res) {
+                if (res.isSuccess) {
+                    window.location.href = '/newwap/usercenter/artwork_add.php';
+                } else {
+                    $('.km-dialog-mask,.km-dialog').css('display', 'block');
                 }
-               }
-                   
-       });
+            }
+        });
     });
     //隐藏弹出层
-    $('.km-dialog-buttons span').click(function(){
-       $('.km-dialog-mask,.km-dialog').css('display','none');
+    $('.km-dialog-buttons span').click(function() {
+        $('.km-dialog-mask,.km-dialog').css('display', 'none');
     });
+})
+/**
+ * 注册
+ */
+$(function() {
+    $('#registerBtn').click(function() {
+        $('#login').hide();
+        $('#register').show();
+
+        $('#register').addClass('page-current');
+        $('#login').removeClass('page-current');
+    });
+    $('#pleaseLogin,#registerCancel').click(function() {
+        $('#login').show();
+        $('#register').hide();
+
+        $('#login').addClass('page-current');
+        $('#register').removeClass('page-current');
+    });
+
+    $('#registerPhone').get(0).onkeyup = phoneInputCheck;
+
+    // 切换是否同意协议
+    $('#agree').click(function() {
+        if ($(this).attr('class') != 'agree_img') {
+            $(this).addClass('agree_img');
+        } else {
+            $(this).removeAttr('class');
+        }
+    });
+
+    //短信发送
+    $('#get_mobile_code').click(function() {
+        var mobile=$.trim($('#registerPhone').val());
+        if (!$.YGG.regExp.cellPhone.test(mobile)) {
+            maskShow('请输入正确的手机号码');
+            return;
+        }
+        $.YGG.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "newwap/user/userExist?username=" +mobile,
+            success: function(res) {
+                if (res.isExist) { 
+                    maskShow("此手机号已经注册");
+                    $('#registerPhone').focus();
+                }else{
+                    $.YGG.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: "/newwap/message/sendVerificationCode?mobile=" + mobile,
+                        success: function(res) {
+                            if(res.isSuccess){
+                                maskShow("验证码已发送至手机");
+                            }else{
+                                maskShow(res.message);
+                            }
+                            $("#mobile_code").focus();
+                        }
+                    });
+                }
+            }
+        });
+    });
+    //点击立即注册按钮
+    $('#register_menu').click(function() {
+        var mobile=$.trim($('#registerPhone').val());
+        var mobileCode=$.trim($('#mobile_code').val());
+        var pwd=$.trim($("#pwd").val());
+        var pwdAgain=$.trim($("#pwdAgain").val());
+        if (!$.YGG.regExp.cellPhone.test(mobile)) {
+            maskShow('请输入正确的手机号码');
+            $('#registerPhone').focus();
+            return;
+        }
+        if(pwd==''){
+             maskShow('请输入密码');
+             $("#pwd").focus();
+             return;
+        }
+        if(pwd.length<6 || pwd.length>16){
+            maskShow('密码长度为6-16位数字字母符号组合');
+            $("#pwd").focus();
+            return;
+        }
+        if(pwdAgain==''){
+             maskShow('请再次输入密码');
+             $("#pwdAgain").focus();
+             return;
+        }
+        if(pwd!==pwdAgain){
+            maskShow('密码输入不一致');
+            $("#pwdAgain").focus();
+            return;
+        }
+        if(mobileCode==""){
+            maskShow('请输入验证码');
+            $('#mobile_code').focus();
+            return;
+        }
+        if ($('#agree').attr('class') != 'agree_img') {
+            maskShow('需同意服务条款才能注册，谢谢您的支持！');
+            return;
+        }
+        $.YGG.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/newwap/message/verifyVerificationCode?verificationCode=" + mobileCode,
+            success: function(res) {
+                if (res.isSuccess) {
+                     $.YGG.ajax({
+                         type: "POST",
+                         dataType: "json",
+                         url: 'newwap/user/userSignup',
+                         data: {
+                             username: mobile,
+                             password: pwdAgain,
+                             verificationCode: mobileCode
+                         },
+                         success: function(res) {
+                             if (res.isSuccess) {
+                                  maskShow("注册成功");
+                                 // window.location.href="/newwap/usercenter/index.php"; 
+                             } else {
+                                  maskShow("注册失败，请检查填写信息是否准确");
+                             }
+                         }
+                     });
+                }else{
+                    maskShow(res.message);
+                }  
+            }
+        });
+    });
+
+
 });
+
+
