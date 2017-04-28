@@ -1,184 +1,182 @@
-.artist_works{
-	width:100%;
-	height:0;
-	padding-bottom:96.8%; 
+.artist_works {
+    width: 100%;
+    height: 0;
+    padding-bottom: 96.8%;
 }
 
-.artist_works a{
-	display: block;
+.artist_works a {
+    display: block;
 }
 
-.artist_works a img{
-	width:100%;
-	height:auto;
+.artist_works a img {
+    width: 100%;
+    height: auto;
 }
 
-.artist_personal{
-	width:100%;
-	box-sizing: border-box;
-	padding:.3rem .18rem 0 .18rem;
-
+.artist_personal {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .3rem .18rem 0 .18rem;
 }
 
-.artist_head_box{
-	
-	width:30%;
-	height:30%;
+.artist_head_box {
+    width: 30%;
+    height: 30%;
     margin: 0 auto;
-	position: relative;
+    position: relative;
 }
 
-.artist_head{
-	width:100%;
-	height:0;
-	padding-bottom:100%;/***************/
-	background-color: #ccc;
-	border-radius: 100%; 
+.artist_head {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    /***************/
+    background-color: #ccc;
+    border-radius: 100%;
 }
 
-.artist_head img{
-	width:100%;
-	height:auto;
-	border-radius: 100%;
+.artist_head img {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
 }
 
-.artist_head_box .yellow{
-	position: absolute;
-	bottom:0;
-	right:.03rem;
-	display: block;
-	width:.19rem;
-	height:.19rem;
-	background:url(../images/art_details.png) no-repeat 0 -1.185rem;
-	background-size:.26rem 1.7rem;
+.artist_head_box .yellow {
+    position: absolute;
+    bottom: 0;
+    right: .03rem;
+    display: block;
+    width: .19rem;
+    height: .19rem;
+    background: url(../images/art_details.png) no-repeat 0 -1.185rem;
+    background-size: .26rem 1.7rem;
 }
 
- .artist_name{
-	font:400 .2rem/.22rem "黑体";
-	color:#222222;
-	margin:.21rem 0 .14rem 0;
-	text-align: center;
+.artist_name {
+    font: 400 .2rem/.22rem "黑体";
+    color: #222222;
+    margin: .21rem 0 .14rem 0;
+    text-align: center;
 }
 
-.artist_message{
-    font:400 .12rem/.12rem "黑体";
-	color:#222222;
-	text-align: center;
+.artist_message {
+    font: 400 .12rem/.12rem "黑体";
+    color: #222222;
+    text-align: center;
 }
 
-.cut{
-    width:.24rem;
-    height:.28rem;
-    background:url(../images/art_details.png) no-repeat 0 -1.42rem;
-    background-size:.26rem 1.7rem;
-    margin:.275rem auto .23rem;
+.cut {
+    width: .24rem;
+    height: .28rem;
+    background: url(../images/art_details.png) no-repeat 0 -1.42rem;
+    background-size: .26rem 1.7rem;
+    margin: .275rem auto .23rem;
 }
 
-.artist_personal .description{
-   width:100%;
-   height:2.64rem;
-   overflow: hidden;
-	padding:.09rem 0;
+.artist_personal .description {
+    width: 100%;
+    height: 2.64rem;
+    overflow: hidden;
+    padding: .09rem 0;
     border-top: 1px solid #d2d2d2;
 }
 
-.artist_personal .description p{
-	padding:.09rem 0;
-	font:400 .12rem/.18rem "黑体";
-	color:#1a1a1a;
+.artist_personal .description p {
+    padding: .09rem 0;
+    font: 400 .12rem/.18rem "黑体";
+    color: #1a1a1a;
 }
 
- .carry{
- 	width:100%;
- 	height:.6rem;
-    line-height:.6rem;
-    border-bottom:1px solid #d2d2d2;
+.carry {
+    width: 100%;
+    height: .6rem;
+    line-height: .6rem;
+    border-bottom: 1px solid #d2d2d2;
     text-align: center;
     line-height: .6rem;
 }
 
- .carry span{
-	padding:.075rem .3rem;
+.carry span {
+    padding: .075rem .3rem;
     border: 1px solid #534c49;
     border-radius: 2px;
- }
+}
 
+.recommend {
+    width: 100%;
+    height: .44rem;
+    position: relative;
+}
 
- .recommend{
- 	width:100%;
- 	height:.44rem;
- 	position: relative;
- }
+.recommend span {
+    width: .5rem;
+    height: .18rem;
+    position: absolute;
+    padding-right: .25rem;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: url(../images/art_details.png) no-repeat;
+    background-size: .26rem 1.7rem;
+    background-position: right 0 top -.6rem;
+}
 
- .recommend span{
- 	width: .5rem;
-     height: .18rem;
- 	position: absolute;
- 	padding-right:.25rem; 
- 	margin:auto;
- 	left:0;
- 	top:0;
- 	bottom:0;
- 	right:0;
-     background:url(../images/art_details.png) no-repeat;
-     background-size:.26rem 1.7rem;
-     background-position:right 0 top -.6rem; 
+.pic_list {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 .18rem;
+    font-size: 0;
+}
 
- }
+.pic_list li {
+    display: inline-block;
+    width: 48.7%;
+    margin-right: 2.6%;
+}
 
- .pic_list{
- 	width:100%;
- 	box-sizing: border-box;
- 	padding:0 .18rem;
- 	font-size:0;
- }
+.pic_list li:nth-child(2n) {
+    margin-right: 0;
+}
 
- .pic_list li{
-     display: inline-block;
-     width:48.7%;
-     margin-right:2.6%;
- }
+.pic_list li a .pic {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+}
 
- .pic_list li:nth-child(2n){
- 	margin-right:0;
- }
+.pic_list li .pic img {
+    width: 100%;
+    height: auto;
+}
 
+.pic_list li .pic span {
+    position: absolute;
+    right: .11rem;
+    bottom: .11rem;
+    font: 400 .12rem "黑体";
+    color: #fff;
+    z-index: 1000;
+}
 
- .pic_list li a .pic{
-     width:100%;
-     height:0;
-     padding-bottom: 100%;
-     position: relative;
- }
+.pic_list li .pic_name,
+.pic_list li .artist,
+.pic_list li .pic_size {
+    color: #1a1a1a;
+}
 
- .pic_list li .pic img{
- 	width:100%;
- 	height:auto;
- }
+.pic_list li .pic_name {
+    margin-top: .075rem;
+    font: 400 .13rem/.21rem "黑体";
+}
 
- .pic_list li .pic span{
- 	position: absolute;
- 	right:.11rem;
- 	bottom:.11rem;
- 	font:400 .12rem "黑体";
- 	color:#fff;
- 	z-index:1000;
- }
+.pic_list li .artist {
+    font: 400 .11rem/.185rem "黑体";
+}
 
- .pic_list li .pic_name, .pic_list li .artist, .pic_list li .pic_size{
- 	color:#1a1a1a;
- }
-
- .pic_list li .pic_name{
- 	margin-top:.075rem;
- 	font:400 .13rem/.21rem "黑体";
- }
-
- .pic_list li .artist{
-     font:400 .11rem/.185rem "黑体";
- }
-
- .pic_list li .pic_size{
-     font:400 .12rem/.185rem "黑体";
-     margin-bottom: .1rem;
- }
+.pic_list li .pic_size {
+    font: 400 .12rem/.185rem "黑体";
+    margin-bottom: .1rem;
+}

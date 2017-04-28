@@ -1,212 +1,169 @@
-
-.art_details .details_pic{
+.intro
+.art_details .details_pic {
     position: relative;
 }
 
-.art_details .art_pic{
-	display: block;
-	width:100%;
-	height:0;
-	padding-bottom:96.8%; 
+.art_details .art_pic {
+    display: block;
+    width: 100%;
+    height: 0;
+    padding-bottom: 96.8%;
 }
 
-.art_details .art_pic img{
-	width:100%;
-	height:auto;
+.art_details .art_pic img {
+    width: 100%;
+    height: auto;
 }
 
-.details_pic .atlas_menu{
-	z-index:1000;
-	display: block;
-	background:url(../images/art_details.png) no-repeat;
-	background-size:.26rem 1.7rem; 
-	width:.26rem;
-	height:.195rem;
-	position: absolute;
-	right:.18rem;
-	bottom:.12rem;
+.details_pic .atlas_menu {
+    z-index: 1000;
+    display: block;
+    background: url(../images/art_details.png) no-repeat;
+    background-size: .26rem 1.7rem;
+    width: .26rem;
+    height: .195rem;
+    position: absolute;
+    right: .18rem;
+    bottom: .12rem;
 }
 
-.intro{
-	width:100%;
-	padding:.16rem .2rem 0 .2rem;
-	box-sizing: border-box;
+.intro {
+    width: 100%;
+    padding: .16rem .2rem 0 .2rem;
+    box-sizing: border-box;
 }
 
 .intro .art_name {
-   padding:.1rem 0;
+    padding: .1rem 0;
 }
 
-.intro .art_name span{
+.intro .art_type{
+    transform:scale(0.9);
+    -ms-transform:scale(0.9);     /* IE 9 */
+    -moz-transform:scale(0.9);    /* Firefox */
+    -webkit-transform:scale(0.9); /* Safari 和 Chrome */
+    -o-transform:scale(0.9);
+}
+
+.intro .art_name span {
     font: 400 0.2rem/0.2rem 黑体;
-    color:#222222;
-    float:left;
+    color: #222222;
+    float: left;
 }
 
-.intro .art_name font{
-	float:right;
-	padding-right: .30rem;
-	height:.2rem;
+.intro .art_name font {
+    float: right;
+    padding-right: .30rem;
+    height: .2rem;
     font: 400 0.12rem/0.2rem 黑体;
-    color:#8f272c;
-    background:url(../images/art_details.png) no-repeat;
-	background-size:.26rem 1.7rem;
+    color: #8f272c;
+    background: url(../images/art_details.png) no-repeat;
+    background-size: .26rem 1.7rem;
     background-position: right 0 top -0.23rem;
 }
 
-.intro .price{
-	font:400 .15rem/.3rem "微软雅黑";
-	color:#444444;
-	padding:.11rem 0;
+.intro .price {
+    font: 400 .15rem/.3rem "微软雅黑";
+    color: #444444;
+    padding: .11rem 0;
 }
 
-.intro .buy{
+.intro .buy {
     padding-bottom: .235rem;
     border-bottom: 1px solid #d2d2d2;
 }
 
-.buy .buy_menu{
-	float: left;
-	padding:.06rem .075rem .06rem .275rem;
-    border:1px solid #534c49;
-    border-radius:2px;
-    background:url(../images/art_details.png) no-repeat .08rem -.95rem;
-	background-size:.26rem 1.7rem;
-	font:400 .12rem/.12rem "黑体";
-	color:#221815;
+.buy .buy_menu {
+    float: left;
+    padding: .06rem .075rem .06rem .275rem;
+    border: 1px solid #534c49;
+    border-radius: 2px;
+    background: url(../images/art_details.png) no-repeat .08rem -.95rem;
+    background-size: .26rem 1.7rem;
+    font: 400 .12rem/.12rem "黑体";
+    color: #221815;
 }
 
-.buy .art_call{
-	float: right;
-	padding:.03rem .075rem .03rem .275rem;
-    background:url(../images/art_details.png) no-repeat .08rem -.43rem;
-	background-size:.26rem 1.7rem;
-	font:400 .1rem/.12rem "黑体";
-	color:#57ad68;
+.buy .art_call {
+    float: right;
+    padding: .03rem .075rem .03rem .275rem;
+    background: url(../images/art_details.png) no-repeat .08rem -.43rem;
+    background-size: .26rem 1.7rem;
+    font: 400 .1rem/.12rem "黑体";
+    color: #57ad68;
 }
 
-.intro .artist_box{
-	height:0.51rem;
-	width:100%;
+.intro .artist_box {
+    height: 0.51rem;
+    width: 100%;
 }
 
-.artist_box .artist_img{
-	width:.25rem;
-	height: .25rem;
-	border-radius: 50%;
-	background: #ccc;
-	float:left;
-	margin-top:.13rem;
+.artist_box .artist_img {
+    width: .25rem;
+    height: .25rem;
+    border-radius: 50%;
+    background: #ccc;
+    float: left;
+    margin-top: .13rem;
 }
 
-.artist_box .artist_img img{
-	margin-top: .13rem;
-	width:.25rem;
-	height:0;
-	padding-bottom:100%;
-	border-radius: 50%;
+.artist_box .artist_img img {
+    margin-top: .13rem;
+    width: .25rem;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
 }
 
-.artist_box .artist_name{
-    font:400 .12rem/.51rem "黑体";
-    color:#1b1b1b;
-    margin-left:.1rem;
+.artist_box .artist_name {
+    font: 400 .12rem/.51rem "黑体";
+    color: #1b1b1b;
+    margin-left: .1rem;
     float: left;
 }
 
-.artist_box .num,.artist_box .line,.artist_box .zan{
-	font:400 .12rem/.51rem "黑体";
-	color:#b5b5b5;
-	float:right;
+.artist_box .num,
+.artist_box .line,
+.artist_box .zan {
+    font: 400 .12rem/.51rem "黑体";
+    color: #b5b5b5;
+    float: right;
 }
 
-.intro .description{
-	width:100%;
-	padding:.09rem 0;
-	border-bottom:1px solid #d2d2d2;
+.intro .description {
+    width: 100%;
+    padding: .09rem 0;
+    border-bottom: 1px solid #d2d2d2;
     border-top: 1px solid #d2d2d2;
 }
-.description p{
-	padding:.09rem 0;
-	font:400 .12rem/.18rem "黑体";
-	color:#1a1a1a;
+
+.description p {
+    padding: .09rem 0;
+    font: 400 .12rem/.18rem "黑体";
+    color: #1a1a1a;
 }
 
-.intro .recommend{
-	width:100%;
-	height:.44rem;
-	position: relative;
-}
-
-.intro .recommend span{
-	width: .5rem;
-    height: .18rem;
-	position: absolute;
-	padding-right:.25rem; 
-	margin:auto;
-	left:0;
-	top:0;
-	bottom:0;
-	right:0;
-    background:url(../images/art_details.png) no-repeat;
-    background-size:.26rem 1.7rem;
-    background-position:right 0 top -.6rem; 
-
-}
-
-.pic_list{
-	width:100%;
-	box-sizing: border-box;
-	padding:0 .18rem;
-	font-size:0;
-}
-
-.pic_list li{
-    display: inline-block;
-    width:48.7%;
-    margin-right:2.6%;
-}
-
-.pic_list li:nth-child(2n){
-	margin-right:0;
-}
-
-
-.pic_list li a .pic{
-    width:100%;
-    height:0;
-    padding-bottom: 100%;
+.intro .recommend {
+    width: 100%;
+    height: .44rem;
     position: relative;
 }
 
-.pic_list li .pic img{
-	width:100%;
-	height:auto;
+.intro .recommend span {
+    width: .5rem;
+    height: .18rem;
+    position: absolute;
+    padding-right: .25rem;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: url(../images/art_details.png) no-repeat;
+    background-size: .26rem 1.7rem;
+    background-position: right -0.03rem top -.6rem;
 }
 
-.pic_list li .pic span{
-	position: absolute;
-	right:.11rem;
-	bottom:.11rem;
-	font:400 .12rem "黑体";
-	color:#fff;
-	z-index:1000;
-}
-
-.pic_list li .pic_name, .pic_list li .artist, .pic_list li .pic_size{
-	color:#1a1a1a;
-}
-
-.pic_list li .pic_name{
-	margin-top:.075rem;
-	font:400 .13rem/.21rem "黑体";
-}
-
-.pic_list li .artist{
-    font:400 .11rem/.185rem "黑体";
-}
-
-.pic_list li .pic_size{
-    font:400 .12rem/.185rem "黑体";
-    margin-bottom: .1rem;
+.pic_list.no_padding{
+    padding:0;
 }

@@ -5,7 +5,7 @@ var timer_dialog = null;
 function maskShow(message) {
     clearTimeout(timer_dialog);
     timer_dialog = setTimeout(function() {
-        $('.regist_phone_dialog').html(message);
+        $('.regist_phone_dialog span').html(message);
         $('.regist_phone_dialog,.km-dialog-mask').css('display', 'block');
         setTimeout(function() {
             $('.regist_phone_dialog,.km-dialog-mask').css('display', 'none');
@@ -79,7 +79,7 @@ $(function(){
         var name = $.trim($('#loginPhone').val());
         var psw = $.trim($("#loginPwd").val());
         if (!$.YGG.regExp.cellPhone.test(name)) {          
-            alert('请输入正确的手机号码');
+            maskShow('请输入正确的手机号码');
             $('#loginPhone').focus();  
             return;      
         }
@@ -90,20 +90,17 @@ $(function(){
         }
         $.ajax({
             type: "POST",
-            url: '/newwap/user/userLogin',
+            dataType: "json",
+            url: "/newwap/user/userLogin",
             data: "username=" + name + "&password=" + psw,
             success: function(res) {
                 if (res.isSuccess) {
                     window.location.href = '/newwap/usercenter/artwork_add.php';
                 } else {
-                    $('.km-dialog-mask,.km-dialog').css('display', 'block');
+                    maskShow('您输入的账户名和密码不匹配');
                 }
             }
         });
-    });
-    //隐藏弹出层
-    $('.km-dialog-buttons span').click(function() {
-        $('.km-dialog-mask,.km-dialog').css('display', 'none');
     });
 })
 /**
@@ -126,15 +123,6 @@ $(function() {
     });
 
     $('#registerPhone').get(0).onkeyup = phoneInputCheck;
-
-    // 切换是否同意协议
-    $('#agree').click(function() {
-        if ($(this).attr('class') != 'agree_img') {
-            $(this).addClass('agree_img');
-        } else {
-            $(this).removeAttr('class');
-        }
-    });
 
     //短信发送
     $('#get_mobile_code').click(function() {
@@ -159,6 +147,7 @@ $(function() {
                         success: function(res) {
                             if(res.isSuccess){
                                 maskShow("验证码已发送至手机");
+                                $('#get_mobile_code').val('已发送');
                             }else{
                                 maskShow(res.message);
                             }
@@ -203,10 +192,6 @@ $(function() {
         if(mobileCode==""){
             maskShow('请输入验证码');
             $('#mobile_code').focus();
-            return;
-        }
-        if ($('#agree').attr('class') != 'agree_img') {
-            maskShow('需同意服务条款才能注册，谢谢您的支持！');
             return;
         }
         $.YGG.ajax({

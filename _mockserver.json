@@ -61,7 +61,7 @@
                      "password":"546545",
                      "verificationCode":"566555"
                },
-                "response": {"isSuccess":true,"message": "注册成功"} 
+                "response": {"isSuccess":false,"message": "注册失败，请检查填写信息是否准确"} 
             }
 
 

@@ -1,5 +1,5 @@
-$(function(){
-    $(document).on("click",".open-panel",function(e){
+$(function() {
+    $(document).on("click", ".open-panel", function(e) {
         var panel = $(e.target).data('panel');
         $.openPanel(panel);
     })
