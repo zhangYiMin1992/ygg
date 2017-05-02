@@ -115,8 +115,12 @@
 <script src='./js/basic.js'></script>
 <script src='./js/login.js'></script>
 <script>
-    $('#loginPhone').get(0).onkeyup = phoneInputCheck;
-    $('#registerPhone').get(0).onkeyup = phoneInputCheck;
+
+    $(function(){
+        $('#loginPhone').get(0).onkeyup = phoneInputCheck;
+        $('#registerPhone').get(0).onkeyup = phoneInputCheck;
+    });
+
 </script>
 </html>
 

@@ -67,6 +67,9 @@ img {
 
 input {
     outline: 0;
+    border-radius:0;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 td {
@@ -236,6 +239,7 @@ a {
     background-color: #fff;
     background-size: 1.485rem 1.905rem;
     position: relative;
+    cursor:pointer;
 }
 
 .con_top .top_menu span,
@@ -426,6 +430,7 @@ body.with-panel-left-reveal .page {
     opacity: 0.5;
     z-index: 5999;
     display: none;
+    cursor:pointer;
 }
 
 body.with-panel-left-reveal .panel-overlay {
@@ -441,21 +446,21 @@ body.panel-closing .page {
     transition-property: transform;
 }
 /*艺术品列表*/
-.pic_details_box{
+/*.pic_details_box{
     position: absolute;
     left:-.04rem;
     bottom:0.005rem;
     transform:scale(0.9);
-    -ms-transform:scale(0.9);     /* IE 9 */
-    -moz-transform:scale(0.9);    /* Firefox */
-    -webkit-transform:scale(0.9); /* Safari 和 Chrome */
+    -ms-transform:scale(0.9);      IE 9 
+    -moz-transform:scale(0.9);    /* Firefox 
+    -webkit-transform:scale(0.9)
     -o-transform:scale(0.9);
 }
-
+*/
 .pic_list {
     width: 100%;
     box-sizing: border-box;
-    padding: 0 .18rem;
+    /*padding: 0 .18rem;*/
     font-size: 0;
 }
 
@@ -464,7 +469,6 @@ body.panel-closing .page {
     width: 48.7%;
     margin-right: 2.6%;
     position: relative;
-    height:2.1rem;
 }
 
 .pic_list li:nth-child(2n) {
@@ -486,7 +490,7 @@ body.panel-closing .page {
 .pic_list li .pic span {
     position: absolute;
     right: .11rem;
-    bottom: .11rem;
+    bottom: .09rem;
     font-size:.14rem;
     font-family: "黑体";
     font-weight:normal;
@@ -506,7 +510,7 @@ body.panel-closing .page {
 }
 
 .pic_list li .artist,.pic_list li .pic_size  {
-    font: 400 .12rem/.2rem "黑体";
+    font: 400 .1rem/.2rem "黑体";
 }
 
 .pic_list li .pic_size{
@@ -539,3 +543,45 @@ body.panel-closing .page {
 .line{
     padding:0 0.03rem;
 }
+
+.artist_box {
+    height: 0.51rem;
+    width: 100%;
+}
+
+.artist_box .artist_img {
+    width: .25rem;
+    height: .25rem;
+    border-radius: 50%;
+    background: #ccc;
+    float: left;
+    margin-top: .13rem;
+}
+
+.artist_box .artist_img img {
+    margin-top: .13rem;
+    width: .25rem;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+}
+
+.artist_box .artist_name {
+    font: 400 .12rem/.51rem "黑体";
+    color: #1b1b1b;
+    margin-left: .1rem;
+    float: left;
+}
+
+.artist_box .num,
+.artist_box .line,
+.artist_box .zan {
+    font: 400 .1rem/.51rem "黑体";
+    color: #b5b5b5;
+    float: right;
+}
+
+/*.artist_box .line{
+    padding:0 .04rem;
+}
+*/

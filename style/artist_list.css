@@ -1,3 +1,4 @@
+
 .artist_list {
     padding-top: .31rem;
 }
@@ -20,7 +21,8 @@
 .rec span {
     width: .8rem;
     height: .18rem;
-    padding-left:.11rem;
+    padding-right: .15rem;
+    text-align: center;
     position: absolute;
     left: 0;
     top: 0;
@@ -43,6 +45,47 @@
     box-sizing: border-box;
 }
 
+.artist_box {
+    height: 0.51rem;
+    width: 100%;
+}
+
+.artist_box .artist_img {
+    width: .25rem;
+    height: .25rem;
+    border-radius: 50%;
+    background: #ccc;
+    float: left;
+    margin-top: .13rem;
+}
+
+.artist_box .artist_img img {
+    margin-top: .13rem;
+    width: .25rem;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+}
+
+.artist_box .artist_name {
+    font: 400 .12rem/.51rem "黑体";
+    color: #1b1b1b;
+    margin-left: .1rem;
+    float: left;
+}
+
+.artist_box .num,
+.artist_box .line,
+.artist_box .zan {
+    font: 400 .1rem/.51rem "黑体";
+    color: #b5b5b5;
+    float: right;
+}
+
+/*.artist_box .line{
+    padding:0 .04rem;
+}
+*/
 .art_book_box {
     width: 100%;
     padding: 0 0 0 .2rem;
@@ -70,7 +113,6 @@ ul.art_book li a img {
     width: 100%;
     height: auto;
 }
-
 .ad{
     margin:.2rem 0 0 0 ;
 }
