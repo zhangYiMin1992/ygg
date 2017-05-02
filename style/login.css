@@ -29,10 +29,11 @@ body {
 }
 
 .line_font .font1,
-.line_font .font2 {
+.line_font .font2,
+.line_font .font3 {
     height: 0;
     text-align: center;
-    padding-bottom: .11rem;
+    padding-bottom: .15rem;
     font: 400 .12rem/.11rem "Microsoft YaHei";
     background-color: #fff;
     position: absolute;
@@ -51,7 +52,11 @@ body {
     width: 1.63rem;
 }
 
-.login_box input {
+.line_font .font3{
+    width:1.63rem;
+}
+
+.login_box input,.forgot_box input ,.reset_box input{
     width: 100%;
     box-sizing: border-box;
     height: .4rem;
@@ -61,11 +66,11 @@ body {
     border-bottom: none;
 }
 
-.login_box .on {
+.login_box .on,.forgot_box .on,.reset_box .on{
     border-bottom: 1px solid #dddddd;
 }
 
-.login_box .login_menu {
+.login_menu {
     display: block;
     margin-top: .15rem;
     width: 100%;
@@ -77,18 +82,18 @@ body {
     font: 400 .12rem/.41rem "ºÚÌå";
 }
 
-.login_box .inline {
+.inline {
     width: 100%;
     height: 0;
     padding-bottom: .395rem;
 }
 
-.login_box .inline .long {
+.inline .long {
     width: 65%;
     float: left;
 }
 
-.login_box .inline .short {
+.inline .short {
     width: 35%;
     float: left;
     background-color: #fff;
@@ -120,7 +125,7 @@ body {
     line-height: .21rem;
 }
 
-.login_box .login_bottom {
+.login_bottom {
     margin-top: .065rem;
     border-bottom: 1px solid #454545;
     width: 100%;
@@ -128,12 +133,12 @@ body {
     padding-bottom: .515rem;
 }
 
-.login_box .login_bottom span {
+.login_bottom span {
     float: left;
     line-height: .515rem;
 }
 
-.login_box .login_bottom span:last-child {
+.login_bottom span:last-child {
     float: right;
 }
 

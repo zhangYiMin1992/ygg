@@ -128,7 +128,6 @@ a {
 }
 
 a:active {
-    color: #ff9600;
     text-decoration: none;
 }
 
@@ -209,6 +208,7 @@ a {
 
 /*顶部logo*/
 
+
 .con_top {
     position: fixed;
     top: 0;
@@ -222,6 +222,10 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.slideshow .con_top{/*首页顶部*/
+    position: static;
 }
 
 .con_top .top_menu {
@@ -262,9 +266,11 @@ a {
     color: #454545;
 }
 
-.con_top .cancel {
-    width: 11%;
-    font: 400 .12rem/.15rem "黑体";
+.con_top .search {
+    width: 6%;
+    height: .175rem;
+    background: url(../images/result.png) no-repeat 0rem -1.26rem;
+    background-size: 1.485rem 1.905rem;
 }
 
 
@@ -298,7 +304,6 @@ body.with-panel-left-reveal .page {
     display: none;
     color: white;
     box-sizing: border-box;
-    padding: .175rem 0 0 0;
     overflow-x: hidden;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -315,30 +320,7 @@ body.with-panel-left-reveal .page {
     z-index: 6002;
 }
 
-.left_sidebar .account_area {
-    width: 100%;
-    height: .55rem;
-    padding: 0 0 0 .175rem;
-    border-bottom: 1px solid #444444;
-}
 
-.left_sidebar .account_area .account_img {
-    float: left;
-    width: .43rem;
-    height: 0;
-    padding-bottom: .43rem;
-    background: #fff;
-    border-radius: 100%;
-}
-
-.left_sidebar .account_area .account_name {
-    float: left;
-    height: .43rem;
-    width: 1.2rem;
-    margin-left: .125rem;
-    font: 400 .12rem/.43rem "ºÚÌå";
-    color: #b0b0b0;
-}
 
 .left_sidebar dl {
     width: 100%;
@@ -383,39 +365,43 @@ body.with-panel-left-reveal .page {
     font: 400 .12rem/.16rem "黑体";
     color: #b0b0b0;
     background: url(../images/listimg.png) no-repeat;
-    background-size: .18rem 1.915rem;
+    background-size: .18rem 2.16rem;
 }
 
 .left_sidebar dl dt.list_bck1 {
-    background-position: 0 -5%;
+    background-position: 0 -1.4rem;
 }
 
 .left_sidebar dl dt.list_bck2 {
-    background-position: 0 10%;
+    background-position: 0 .09rem;
 }
 
 .left_sidebar dl dt.list_bck3 {
-    background-position: 0 26%;
+    background-position: 0 -0.15rem;
 }
 
 .left_sidebar dl dt.list_bck4 {
-    background-position: 0 42%;
+    background-position: 0 -.42rem;
 }
 
 .left_sidebar dl dt.list_bck5 {
-    background-position: 0 57%;
+    background-position: 0 -.67rem;
 }
 
 .left_sidebar dl dt.list_bck6 {
-    background-position: 0 72%;
+    background-position: 0 -.91rem;
 }
 
 .left_sidebar dl dt.list_bck7 {
-    background-position: 0 88%;
+    background-position: 0 -1.15rem;
 }
 
 .left_sidebar dl dt.list_bck8 {
-    background-position: 0 104%;
+    background-position: 0 -1.93rem;
+}
+
+.left_sidebar dl dt.list_bck9 {
+    background-position: 0 -1.69rem;
 }
 
 .left_sidebar dl.select dd {
@@ -532,4 +518,24 @@ body.panel-closing .page {
 
 .pic_list li .pic_size em{
     padding-left:.02rem;
+}
+
+.display_page{
+    padding-top:.5rem;
+}
+
+.ad{
+    width:100%;
+    height:0;
+    padding-bottom:2.135rem;
+    overflow: hidden;
+} 
+
+.ad img{
+    width:100%;
+    height:auto;
+}
+
+.line{
+    padding:0 0.03rem;
 }

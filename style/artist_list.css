@@ -20,8 +20,7 @@
 .rec span {
     width: .8rem;
     height: .18rem;
-    padding-right: .15rem;
-    text-align: center;
+    padding-left:.11rem;
     position: absolute;
     left: 0;
     top: 0;
@@ -44,52 +43,6 @@
     box-sizing: border-box;
 }
 
-.artist_box {
-    height: 0.51rem;
-    width: 100%;
-}
-
-.artist_box .artist_img {
-    width: .25rem;
-    height: .25rem;
-    border-radius: 50%;
-    background: #ccc;
-    float: left;
-    margin-top: .13rem;
-}
-
-.artist_box .artist_img img {
-    margin-top: .13rem;
-    width: .25rem;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-}
-
-.artist_box .artist_name {
-    font: 400 .12rem/.51rem "黑体";
-    color: #1b1b1b;
-    margin-left: .1rem;
-    float: left;
-}
-
-.artist_box .num,
-.artist_box .line,
-.artist_box .zan {
-    font: 400 .12rem/.51rem "黑体";
-    color: #b5b5b5;
-    float: right;
-    transform:scale(0.9);
-    -ms-transform:scale(0.9);     /* IE 9 */
-    -moz-transform:scale(0.9);    /* Firefox */
-    -webkit-transform:scale(0.9); /* Safari 和 Chrome */
-    -o-transform:scale(0.9);
-}
-
-/*.artist_box .line{
-    padding:0 .04rem;
-}
-*/
 .art_book_box {
     width: 100%;
     padding: 0 0 0 .2rem;
@@ -118,41 +71,6 @@ ul.art_book li a img {
     height: auto;
 }
 
-.shufameili {
-    width: 100%;
-    height: 2.135rem;
-    background: #222222;
-    position: relative;
-    margin-bottom: .18rem;
-}
-
-.shufameili .shufa,
-.shufameili p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-}
-
-.shufameili .shufa {
-    width: 1.45rem;
-    height: 0.43rem;
-    background: url(../images/result.png)no-repeat 0 -.575rem;
-    background-color: #222222;
-    background-size: 1.485rem 1.905rem;
-    -webkit-transform: translate(-50%, -60%);
-    -ms-transform: translate(-50%, -60%);
-    transform: translate(-50%, -60%);
-}
-
-.shufameili p {
-    -webkit-transform: translate(-50%, 350%);
-    -ms-transform: translate(-50%, 350%);
-    transform: translate(-50%, 350%);
-    font-weight: normal;
-    color: #fff;
-    font-size: .1rem;
-}
-
-.artist_list .shufameili {
-    margin: .22rem 0 0 0;
+.ad{
+    margin:.2rem 0 0 0 ;
 }

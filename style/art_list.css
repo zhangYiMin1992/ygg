@@ -1,7 +1,7 @@
 .art_list_top {
     background-color: #fff;
     width: 100%;
-    height: 1.374rem;
+    height: .93rem;
     position: fixed;
     left: 0;
     top: 0;
@@ -19,31 +19,14 @@
     height: .5rem;
 }
 
-.search_box {
-    margin-top: .5rem;
+.list_menu {
     padding: 0 .18rem;
     margin: .5rem auto 0;
-}
-
-.search_box .search_bar {
-    border: none;
-    width: 100%;
-    height: 0.315rem;
-    box-sizing: border-box;
-    border-radius: .04rem;
-    padding-left: .41rem;
-    background: url(../images/result.png) no-repeat .1rem -1.2rem;
-    background-size: 1.485rem 1.905rem;
-    background-color: #f2f2f2;
-}
-
-.list_menu {
     height: .425rem;
     padding: 0 .18rem 0;
     box-sizing: border-box;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-    margin: .135rem 0 .12rem;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -88,40 +71,10 @@
 }
 
 .art_list {
-    padding-top: 1.5rem;
+    padding-top: 1.08rem;
 }
 
-.shufameili {
-    width: 100%;
-    height: 2.135rem;
-    background: #222222;
-    position: relative;
+.ad{
     margin-bottom: .18rem;
 }
 
-.shufameili .shufa,
-.shufameili p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-}
-
-.shufameili .shufa {
-    width: 1.45rem;
-    height: 0.43rem;
-    background: url(../images/result.png)no-repeat 0 -.575rem;
-    background-color: #222222;
-    background-size: 1.485rem 1.905rem;
-    -webkit-transform: translate(-50%, -60%);
-    -ms-transform: translate(-50%, -60%);
-    transform: translate(-50%, -60%);
-}
-
-.shufameili p {
-    -webkit-transform: translate(-50%, 350%);
-    -ms-transform: translate(-50%, 350%);
-    transform: translate(-50%, 350%);
-    font-weight: normal;
-    color: #fff;
-    font-size: .1rem;
-}

@@ -1,61 +1,6 @@
-.display_pag {
-    padding: .2rem 0 0 0;
+
+.ad{
+    margin:0;
 }
 
-.page {
-    padding-top: .08rem;
-}
 
-.display {
-    width: 100%;
-}
-
-.dis_box {
-    display: block;
-    width: 100%;
-    height: 66.7%;
-    position: relative;
-}
-
-.dis_box .dis_pic {
-    width: 100%;
-    height: 0;
-    padding-bottom: 66.7%;
-    overflow: hidden;
-}
-
-.dis_box .dis_pic img {
-    width: 100%;
-    height: auto;
-}
-
-.dis_box .speegle,
-.dis_box .no_one {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-}
-
-.dis_box .speegle {
-    width: 1.45rem;
-    height: 0.43rem;
-    background: url(../images/result.png)no-repeat 0 -0.57rem;
-    background-size: 1.485rem 1.905rem;
-    -webkit-transform: translate(-50%, -60%);
-    -ms-transform: translate(-50%, -60%);
-    transform: translate(-50%, -60%);
-}
-
-.dis_box .no_one {
-    -webkit-transform: translate(-50%, 350%);
-    -ms-transform: translate(-50%, 350%);
-    transform: translate(-50%, 350%);
-    font-weight: normal;
-    color: #fff;
-    font-size: .1rem;
-}
-
-.display2 .dis_box .speegle {
-    background: url(../images/result.png)no-repeat 0 -1.5rem;
-    background-size: 1.485rem 1.905rem;
-}

@@ -38,15 +38,11 @@
 }
 
 .intro .art_type{
-    transform:scale(0.9);
-    -ms-transform:scale(0.9);     /* IE 9 */
-    -moz-transform:scale(0.9);    /* Firefox */
-    -webkit-transform:scale(0.9); /* Safari 和 Chrome */
-    -o-transform:scale(0.9);
+    font-size:10px;
 }
 
 .intro .art_name span {
-    font: 400 0.2rem/0.2rem 黑体;
+    font: 400 20px/0.2rem 黑体;
     color: #222222;
     float: left;
 }
@@ -55,7 +51,7 @@
     float: right;
     padding-right: .30rem;
     height: .2rem;
-    font: 400 0.12rem/0.2rem 黑体;
+    font: 400 12px/0.2rem 黑体;
     color: #8f272c;
     background: url(../images/art_details.png) no-repeat;
     background-size: .26rem 1.7rem;
@@ -63,7 +59,7 @@
 }
 
 .intro .price {
-    font: 400 .15rem/.3rem "微软雅黑";
+    font: 400 15px/.3rem "微软雅黑";
     color: #444444;
     padding: .11rem 0;
 }
@@ -89,45 +85,8 @@
     padding: .03rem .075rem .03rem .275rem;
     background: url(../images/art_details.png) no-repeat .08rem -.43rem;
     background-size: .26rem 1.7rem;
-    font: 400 .1rem/.12rem "黑体";
+    font: 400 10px/.12rem "黑体";
     color: #57ad68;
-}
-
-.intro .artist_box {
-    height: 0.51rem;
-    width: 100%;
-}
-
-.artist_box .artist_img {
-    width: .25rem;
-    height: .25rem;
-    border-radius: 50%;
-    background: #ccc;
-    float: left;
-    margin-top: .13rem;
-}
-
-.artist_box .artist_img img {
-    margin-top: .13rem;
-    width: .25rem;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-}
-
-.artist_box .artist_name {
-    font: 400 .12rem/.51rem "黑体";
-    color: #1b1b1b;
-    margin-left: .1rem;
-    float: left;
-}
-
-.artist_box .num,
-.artist_box .line,
-.artist_box .zan {
-    font: 400 .12rem/.51rem "黑体";
-    color: #b5b5b5;
-    float: right;
 }
 
 .intro .description {
@@ -139,31 +98,6 @@
 
 .description p {
     padding: .09rem 0;
-    font: 400 .12rem/.18rem "黑体";
+    font: 400 12px/.18rem "黑体";
     color: #1a1a1a;
-}
-
-.intro .recommend {
-    width: 100%;
-    height: .44rem;
-    position: relative;
-}
-
-.intro .recommend span {
-    width: .5rem;
-    height: .18rem;
-    position: absolute;
-    padding-right: .25rem;
-    margin: auto;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: url(../images/art_details.png) no-repeat;
-    background-size: .26rem 1.7rem;
-    background-position: right -0.03rem top -.6rem;
-}
-
-.pic_list.no_padding{
-    padding:0;
 }

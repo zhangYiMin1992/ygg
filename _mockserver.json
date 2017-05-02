@@ -45,7 +45,7 @@
 		             "request": {
 		             "username":"13465756786"
 	           },
-	            "response": {"isExist":false,"message": "未注册"} 
+	            "response": {"isExist":true,"message": "已经注册"} 
 	        },
             //验证验证码
             "POST /newwap/message/verifyVerificationCode": {
@@ -62,6 +62,21 @@
                      "verificationCode":"566555"
                },
                 "response": {"isSuccess":false,"message": "注册失败，请检查填写信息是否准确"} 
+            },
+            //找回密码页面获取验证码
+            "POST /newwap/user/userFindPassword ": {
+                     "request": {
+                     "username":"13576556666",
+                     "verificationCode":"566555"
+               },
+                "response": {"isSuccess":true,"message": "此号码未注册"} 
+            },
+            // 密码重置页面
+            "POST /newwap/user/userreset ": {
+                     "request": {
+                     "pwdAgain":"333333"
+               },
+                "response": {"isSuccess":true,"message": "修改成功"} 
             }
 
 
