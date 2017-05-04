@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="./style/basic.css">
-    <link rel="stylesheet" type="text/css" href="./style/login.css">
-    <meta name="Keywords" content="找回密码页面">
-    <meta name="description" content="找回密码页面">
+    <link rel="stylesheet" type="text/css" href="style/basic.css">
+    <link rel="stylesheet" type="text/css" href="style/auction.css">
+    <meta name="Keywords" content="捡漏列表页面">
+    <meta name="description" content="捡漏列表页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
@@ -18,38 +15,51 @@
 </head>
 
 <body>
-    <!--找回密码页面-->
-    <div id="forgot" class="wrap page page-current">
-        <!-- 头部 -->
+    <div class="wrap page page-current">
         <div class="con_top">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
         </div>
-        <!-- 头部结束 -->
-        <div class="login_contant">
-            <div class="line_font">
-                <div class="waterline"></div>
-                <div class="font3">FORGOT PASSWORD</div>
+        <div class="auction_page">
+            <div class="explain">
+                <h1>每日早晚漏 画作推荐</h1>
+                <h2>(2017-03-27至2017-03-31)</h2>
+                <p>每日早一漏，晚一漏，每日早晚一漏，</p>
+                <p>早晚总能捡到漏。</p>
+                <p>选出你喜欢的作品，请微信发出它的编号！</p>
+                <p>艺术家如需参加捡漏活动，请发送“参与捡漏+真实姓名+微信号”至art@artgogo.com</p>
             </div>
-            <!-- 找回密码部分 -->
-            <div class="forgot_box" id="forgotBox">
-                <input type="tel" id="findPhone" placeholder="手机号" maxlength="11">
-                <div class="inline">
-                    <input type="text" id="forgot_mobile_code" name="mobile_code" class="on long" placeholder="请输入验证码">
-                    <input type="button" value="获取验证码" id="forgot_get_mobile_code" class="on short">
-                </div>
-                <a class="login_menu " id="find_menu" href="javascript:;">找回密码</a>
-            </div>
+            <ul class="auction_list">
+                <li>
+                    <a href="javascript:;"><img src="images/art_details_pic.jpg"></a>
+                    <div class="pic_auction">
+                        <h1>外面的世界</h1>
+                        <p class="art_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                        <p class="original">原价:<span class="reb">RMB</span><a>4970</a></p>
+                        <h3>￥800元起拍</h3>
+                    </div>
+                    <div class="num"></div>
+                </li>
+                <li>
+                    <a href="javascript:;"><img src="images/art_details_pic.jpg"></a>
+                    <div class="pic_auction">
+                        <h1>外面的世界</h1>
+                        <p class="art_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                        <p class="original">原价:<span class="reb">RMB</span><a>4970</a></p>
+                        <h3>￥800元起拍</h3>
+                    </div>
+                </li>
+            </ul>
         </div>
+
     </div>
-   
     <!-- 侧边栏 -->
     <div class="panel-overlay"></div>
     <div class="panel left_sidebar panel-left" id="leftSidebar">
         <dl>
             <dt class="list_bck1">首页</dt>
-        </dl>        
+        </dl>
         <dl>
             <dt class="list_bck2">中国爱艺术</dt>
         </dl>
@@ -80,15 +90,7 @@
         </dl>
     </div>
     <!-- 侧边栏结束-->
-    <!-- 错误弹框提示 -->
-    <div class="km-dialog-mask"></div>
-    <div  class="regist_phone_dialog"><span></span></div>
 </body>
 <script src='./js/basic.js'></script>
-<script src='./js/login.js'></script>
-<script>
-    $(function(){
-        $('#findPhone').get(0).onkeyup=phoneInputCheck;
-    });
-</script>
+
 </html>

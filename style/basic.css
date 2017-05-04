@@ -275,6 +275,7 @@ a {
     height: .175rem;
     background: url(../images/result.png) no-repeat 0rem -1.26rem;
     background-size: 1.485rem 1.905rem;
+    cursor:pointer;
 }
 
 
@@ -299,6 +300,8 @@ body.with-panel-left-reveal .page {
     transition: 150ms;
     -webkit-transition-property: -webkit-transform;
     transition-property: transform;
+    height:100%;
+    overflow:hidden;
 }
 
 .left_sidebar {
@@ -446,17 +449,7 @@ body.panel-closing .page {
     transition-property: transform;
 }
 /*艺术品列表*/
-/*.pic_details_box{
-    position: absolute;
-    left:-.04rem;
-    bottom:0.005rem;
-    transform:scale(0.9);
-    -ms-transform:scale(0.9);      IE 9 
-    -moz-transform:scale(0.9);    /* Firefox 
-    -webkit-transform:scale(0.9)
-    -o-transform:scale(0.9);
-}
-*/
+
 .pic_list {
     width: 100%;
     box-sizing: border-box;
@@ -492,7 +485,6 @@ body.panel-closing .page {
     right: .11rem;
     bottom: .09rem;
     font-size:.14rem;
-    font-family: "黑体";
     font-weight:normal;
     color: #fff;
     z-index: 1000;
@@ -510,7 +502,9 @@ body.panel-closing .page {
 }
 
 .pic_list li .artist,.pic_list li .pic_size  {
-    font: 400 .1rem/.2rem "黑体";
+    font: 400 .12rem/.16rem "黑体";
+   transform: scale(0.833);
+   transform-origin: left;
 }
 
 .pic_list li .pic_size{
@@ -576,12 +570,10 @@ body.panel-closing .page {
 .artist_box .num,
 .artist_box .line,
 .artist_box .zan {
-    font: 400 .1rem/.51rem "黑体";
+    font: 400 .12rem/.51rem "黑体";
     color: #b5b5b5;
     float: right;
+    transform: scale(0.833);
 }
 
-/*.artist_box .line{
-    padding:0 .04rem;
-}
-*/
+

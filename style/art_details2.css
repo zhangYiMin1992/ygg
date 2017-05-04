@@ -102,7 +102,7 @@
 }
 
 .art_name {
-    font: 400 0.2rem/0.2rem 黑体;
+    font: 400 0.2rem/0.2rem "黑体";
     color: #222222;
     float: left;
 }
@@ -112,13 +112,15 @@
     width: 100%;
 }
 
-.art_type span,
+.art_type .pic_font,
 .art_type a {
-    font: 400 .1rem/.1rem "黑体";
+    font-size:.12rem;
+    transform: scale(0.833);
 }
 
-.art_type span {
+.art_type .pic_font {
     float: left;
+    transform-origin: left;
 }
 
 .art_type a {
@@ -211,7 +213,4 @@
     background-position: right 0 top -.6rem;
 }
 
-.display2 .dis_box .speegle {
-    background: url(../images/result.png)no-repeat 0 -1.5rem;
-    background-size: 1.485rem 1.905rem;
-}
+

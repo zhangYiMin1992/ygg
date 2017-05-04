@@ -45,7 +45,7 @@
     box-sizing: border-box;
 }
 
-.artist_box {
+/*.artist_box {
     height: 0.51rem;
     width: 100%;
 }
@@ -80,12 +80,13 @@
     font: 400 .1rem/.51rem "黑体";
     color: #b5b5b5;
     float: right;
-}
-
-/*.artist_box .line{
-    padding:0 .04rem;
+    transform: scale(0.833);
 }
 */
+.artist_box .line{
+   padding:0;
+}
+
 .art_book_box {
     width: 100%;
     padding: 0 0 0 .2rem;
