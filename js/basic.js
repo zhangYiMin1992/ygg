@@ -3861,6 +3861,25 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
         $dd.slideToggle(100);
     });
 })
+// 艺术品点赞
+;$(function(){
+    var onOff=true;
+    var num=$(".praise font").html();
+    $(".praise").click(function(){
+        if(onOff){
+            $(this).addClass("color");
+            num++;
+            $(".praise font").html(num);
+            onOff=false;
+        }else{
+           $(this).removeClass("color");
+            num--;
+            $(".praise font").html(num);
+            onOff=true;
+        }
+        });
+     
+    });
 
 
 

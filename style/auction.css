@@ -49,6 +49,7 @@
 .auction_list li{
     width: 100%;
     height: 4.6rem;
+    position: relative;
 
 }
 
@@ -92,6 +93,23 @@ li .pic_auction .art_type,li .pic_auction .original{
 }
 
 .pic_auction h3{
+    cursor:pointer;
     color:#ff8000;
     font:400 .18rem/.25rem "黑体";
+}
+
+.auction_list li .num{
+    width:.365rem;
+    height:.365rem;
+    background: #222;
+    border-radius: 100%;
+    position: absolute;
+    right:.19rem;
+    bottom:0.98rem;
+    text-align: center;
+    line-height: .365rem;
+    color:#fff;
+    font-size:.25rem;
+    font-weight: 900;
+    font-family: "Microsoft YaHei";
 }

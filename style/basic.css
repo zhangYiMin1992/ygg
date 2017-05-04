@@ -237,7 +237,7 @@ a {
     padding-bottom: .13rem;
     background: url(../images/result.png) no-repeat;
     background-color: #fff;
-    background-size: 1.485rem 1.905rem;
+    background-size: 1.485rem 2.12rem;
     position: relative;
     cursor:pointer;
 }
@@ -266,7 +266,7 @@ a {
     padding-bottom: .21rem;
     background: url(../images/result.png) no-repeat 0 -.18rem;
     background-color: #fff;
-    background-size: 1.485rem 1.905rem;
+    background-size: 1.485rem 2.12rem;
     color: #454545;
 }
 
@@ -274,7 +274,7 @@ a {
     width: 6%;
     height: .175rem;
     background: url(../images/result.png) no-repeat 0rem -1.26rem;
-    background-size: 1.485rem 1.905rem;
+    background-size: 1.485rem 2.12rem;
     cursor:pointer;
 }
 
@@ -472,12 +472,33 @@ body.panel-closing .page {
     width: 100%;
     height: 0;
     padding-bottom: 100%;
+    overflow:hidden;
     position: relative;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
 }
 
 .pic_list li .pic img {
     width: 100%;
     height: auto;
+}
+
+.gradients{
+    width:100%;
+    height:40%;
+    position: absolute;
+    left:0;
+    bottom:0;
+    z-index: 1000;
+    background: -webkit-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0));
+    background: -o-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0));
+    background: -moz-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0)); 
+    background: linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0)); 
+    background:linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0));
+}
+.ad .gradients{
+    height:60%;
 }
 
 .pic_list li .pic span {
@@ -487,7 +508,7 @@ body.panel-closing .page {
     font-size:.14rem;
     font-weight:normal;
     color: #fff;
-    z-index: 1000;
+    z-index: 1001;
 }
 
 .pic_list li .pic_name,
@@ -527,7 +548,12 @@ body.panel-closing .page {
     height:0;
     padding-bottom:2.135rem;
     overflow: hidden;
+    position: relative;
 } 
+
+.nomargin{
+    margin:0;
+}
 
 .ad img{
     width:100%;
@@ -541,39 +567,293 @@ body.panel-closing .page {
 .artist_box {
     height: 0.51rem;
     width: 100%;
+     position: relative;
 }
 
 .artist_box .artist_img {
     width: .25rem;
     height: .25rem;
-    border-radius: 50%;
-    background: #ccc;
+    display: block;
     float: left;
     margin-top: .13rem;
 }
 
 .artist_box .artist_img img {
-    margin-top: .13rem;
-    width: .25rem;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
+    width: 100%;
+    height:auto;
+    border-radius: 100%;
 }
 
 .artist_box .artist_name {
-    font: 400 .12rem/.51rem "黑体";
+    font: 400 .12rem/.12rem "黑体";
     color: #1b1b1b;
     margin-left: .1rem;
     float: left;
 }
 
-.artist_box .num,
+/*.artist_box .num,*/
 .artist_box .line,
 .artist_box .zan {
     font: 400 .12rem/.51rem "黑体";
     color: #b5b5b5;
     float: right;
     transform: scale(0.833);
+}
+
+
+/*捡漏以及艺术品列表页面*/
+.auction_content{
+    width: 100%;
+    padding-top:.5rem;
+}
+
+.auction_content .pic{
+    width: 100%;
+    height: 0;
+    padding-bottom: 3.1rem;
+    overflow: hidden;
+}
+
+.auction_content .pic img{
+    width: 100%;
+    height: auto;
+}
+
+.intro {
+    width: 100%;
+    padding: .16rem .2rem 0 .2rem;
+    box-sizing: border-box;
+}
+
+.intro .art_name {
+    padding: .08rem 0;
+}
+
+.intro .art_type{
+    font-size:.12rem;
+    transform: scale(0.833);
+    transform-origin: left;
+    margin-bottom: .5rem;
+}
+
+.intro .art_name span {
+    font: 400 20px/0.2rem "黑体";
+    color: #222222;
+    float: left;
+}
+
+/*.praise {
+    float: right;
+    padding-right: .30rem;
+    height: .2rem;
+    font: 400 .12rem/0.2rem "黑体";
+    color: #646464;
+    background: url(../images/result.png) no-repeat;
+    background-size: 1.485rem 2.12rem;
+    background-position: left 0.4rem top -1.94rem;
+}*/.praise{
+    float: right;
+        height: .2rem;
+    line-height: .2rem;
+   
+}
+.praise:after {
+    content: "";
+    display: block;
+    float: right;
+    height: .2rem;
+    width:.2rem;
+    color: #646464;
+    background: url(../images/result.png) no-repeat;
+    background-size: 1.485rem 2.12rem;
+    background-position: left 0rem top -1.95rem;
+    position: absolute;
+    right:0;
+    bottom:.14rem;
+}
+.praise.mt{
+    margin-top: .17rem;
+}
+
+.praise{
+    margin-right:.26rem;
+}
+
+.praise.color{
+    color: #8f272c;
+    background: url(../images/art_details.png) no-repeat;
+    background-position: right 0 top -0.24rem;
+    background-size: .26rem 1.7rem;
+}
+
+.original{
+    font:400 .12rem/.2rem "黑体";
+    color: #222;
+    transform: scale(0.833);
+    transform-origin: left;
+}
+
+ .original .reb, .original a{
+    font-size:.12rem;
+}
+
+ .original .reb{
+    padding:0 .03rem 0 .04rem;
+}
+
+.intro .price2{
+    cursor:pointer;
+    color:#ff8000;
+    font:400 .18rem/.25rem "黑体";
+}
+
+.art_call {
+    float: right;
+    padding: .08rem .075rem .03rem .275rem;
+    background: url(../images/art_details.png) no-repeat .08rem -.41rem;
+    background-size: .26rem 1.7rem;
+    font: 400 .12rem/.08rem "黑体";
+    color: #57ad68;
+    transform: scale(0.833);
+    transform-origin: right;
+}
+/*相关推荐*/
+
+.recommend {
+    width: 100%;
+    height: .44rem;
+    position: relative;
+}
+
+.recommend span {
+    width: .67rem;
+    height: .18rem;
+    line-height:.18rem;
+    font-size:.12rem;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: url(../images/art_details.png) no-repeat;
+    background-size: .26rem 1.7rem;
+    background-position: right -0.13rem top -.59rem;
+}
+/*艺术家详情介绍*/
+.artist_personal {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .3rem .18rem 0 .18rem;
+}
+
+.artist_head_box {
+    width: .845rem;
+    height: .845rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.artist_head {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    /***************/
+    background-color: #ccc;
+    border-radius: 100%;
+}
+
+.artist_head img {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
+}
+
+.artist_head_box .yellow {
+    position: absolute;
+    bottom: 0;
+    right: .03rem;
+    display: block;
+    width: .19rem;
+    height: .19rem;
+    background: url(../images/art_details.png) no-repeat 0 -1.185rem;
+    background-size: .26rem 1.7rem;
+}
+
+.artist_name {
+    font: 400 .2rem/.22rem "黑体";
+    color: #222222;
+    margin: .21rem 0 .14rem 0;
+    text-align: center;
+}
+
+.artist_message {
+    font: 400 .12rem/.12rem "黑体";
+    color: #222222;
+    text-align: center;
+}
+
+.cut {
+    width: .24rem;
+    height: .28rem;
+    background: url(../images/art_details.png) no-repeat 0 -1.42rem;
+    background-size: .26rem 1.7rem;
+    margin: .275rem auto .23rem;
+}
+
+.artist_personal .description {
+    width: 100%;
+    height: 2.925rem;
+    overflow: hidden;
+    border-top: 1px solid #d2d2d2;
+}
+
+.artist_personal .online{
+    width:100%;
+    height:.35rem;
+    position: relative;
+}
+
+.artist_personal .online:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    border-top:1px solid #d2d2d2;
+    position: absolute;
+    left:0;
+    top:0;
+}
+
+.artist_personal .description p {
+    padding: .09rem 0;
+    font: 400 .12rem/.18rem "黑体";
+    color: #1a1a1a;
+}
+
+.carry {
+    width: 100%;
+    height: .44rem;
+    border-bottom: 1px solid #d2d2d2;
+    text-align: center;
+}
+
+.carry span {
+    display: block;
+    width:.85rem;
+    height:.25rem;
+    border: 1px solid #534c49;
+    border-radius: 2px;
+    text-align:center;
+    line-height: .25rem;
+    margin:0 auto;
+    cursor: pointer;
+}
+
+.carry.underline{
+    height:.53rem;
+    width:100%;
+    border-bottom:1px solid #d2d2d2;
 }
 
 

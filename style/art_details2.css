@@ -128,47 +128,6 @@
     color: #ccc;
 }
 
-.details_show .artist_box {
-    height: 0.51rem;
-    width: 100%;
-}
-
-.artist_box .artist_img {
-    width: .25rem;
-    height: .25rem;
-    border-radius: 50%;
-    background: #ccc;
-    float: left;
-    margin-top: .13rem;
-}
-
-.artist_box .artist_img img {
-    margin-top: .13rem;
-    width: .25rem;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-}
-
-.artist_box .artist_name {
-    font: 400 .12rem/.51rem "黑体";
-    color: #1b1b1b;
-    margin-left: .1rem;
-    float: left;
-}
-
-.artist_box font {
-    float: right;
-    padding-right: .26rem;
-    height: .2rem;
-    font: 400 0.12rem/.21rem "黑体";
-    color: #8f272c;
-    background: url(../images/art_details.png) no-repeat;
-    background-size: .26rem 1.7rem;
-    background-position: right -0.05rem top -0.23rem;
-    margin-top: .14rem
-}
-
 .details_show .buy {
     height: .64rem;
     width: 100%;
@@ -190,27 +149,6 @@
     background-size: .26rem 1.7rem;
     font: 400 .12rem/.12rem "黑体";
     color: #221815;
-}
-
-.recommend {
-    width: 100%;
-    height: .44rem;
-    position: relative;
-}
-
-.recommend span {
-    width: .5rem;
-    height: .18rem;
-    position: absolute;
-    padding-right: .25rem;
-    margin: auto;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: url(../images/art_details.png) no-repeat;
-    background-size: .26rem 1.7rem;
-    background-position: right 0 top -.6rem;
 }
 
 
