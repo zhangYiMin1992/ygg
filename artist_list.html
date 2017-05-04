@@ -16,7 +16,7 @@
 
 <body>
     <div class="wrap page page-current">
-        <div class="con_top" id="conTop">
+        <div class="con_top" id="conTop" data-header="scroll">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
@@ -37,7 +37,7 @@
                         <span class="num">30件作品</span>
                     </div>
                 </div>
-                <div class="art_book_box">
+                <div class="art_book_box">       
                     <ul class="art_book">
                         <li>
                             <a href="javascript:;"><img src="images/art_details_pic.jpg"></a>
@@ -251,5 +251,10 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/swipe.js'></script>
+<script type="text/javascript">
+$(function(){
+    $("[data-header=scroll]").Scroll()
+})
+</script>
 
 </html>

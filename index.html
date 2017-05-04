@@ -19,7 +19,7 @@
 
 <body>
     <div class="slideshow wrap page page-current">
-        <header>
+        <header data-header="scroll">
             <div class="sign clearfix">
                 <a href="javascript:;">SIGN<span>UP</span>注册</a>
                 <a href="javascript:;">LOG<span>IN</span>登录</a>
@@ -54,6 +54,8 @@
                     </li>
                 </ul>
             </div>
+        </div>
+        <div style="height:1000px;">
         </div>
     </div>
     <!-- 侧边栏 -->
@@ -95,5 +97,9 @@
 </body>
 <script type="text/javascript" src='./js/basic.js'></script>
 <script type="text/javascript" src='./js/index.js'></script>
-
+<script type="text/javascript">
+$(function(){
+    $("[data-header=scroll]").Scroll()
+})
+</script>
 </html>
