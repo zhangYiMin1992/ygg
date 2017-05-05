@@ -438,8 +438,6 @@ body.with-panel-left-reveal .page {
 
 body.with-panel-left-reveal .panel-overlay {
     margin-left: 2.09rem;
-    /*-webkit-transform: translate3d(2.09rem, 0, 0);
-    transform: translate3d(2.09rem, 0, 0);*/
 }
 
 body.panel-closing .page {
@@ -453,7 +451,6 @@ body.panel-closing .page {
 .pic_list {
     width: 100%;
     box-sizing: border-box;
-    /*padding: 0 .18rem;*/
     font-size: 0;
 }
 
@@ -490,7 +487,7 @@ body.panel-closing .page {
     position: absolute;
     left:0;
     bottom:0;
-    z-index: 1000;
+    z-index: 1;
     background: -webkit-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0));
     background: -o-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0));
     background: -moz-linear-gradient(to top, rgba(41,40,40,0.4),rgba(255,255,255,0)); 
@@ -591,7 +588,7 @@ body.panel-closing .page {
     float: left;
 }
 
-/*.artist_box .num,*/
+.artist_box .num,
 .artist_box .line,
 .artist_box .zan {
     font: 400 .12rem/.51rem "黑体";
@@ -642,47 +639,35 @@ body.panel-closing .page {
     float: left;
 }
 
-/*.praise {
+.praise {
     float: right;
-    padding-right: .30rem;
     height: .2rem;
     font: 400 .12rem/0.2rem "黑体";
     color: #646464;
-    background: url(../images/result.png) no-repeat;
-    background-size: 1.485rem 2.12rem;
-    background-position: left 0.4rem top -1.94rem;
-}*/.praise{
-    float: right;
-        height: .2rem;
-    line-height: .2rem;
-   
 }
-.praise:after {
-    content: "";
-    display: block;
-    float: right;
-    height: .2rem;
+
+.praise s{
+    display: inline-block;
     width:.2rem;
-    color: #646464;
-    background: url(../images/result.png) no-repeat;
-    background-size: 1.485rem 2.12rem;
-    background-position: left 0rem top -1.95rem;
-    position: absolute;
-    right:0;
-    bottom:.14rem;
+    height:.2rem;
+    float: right;
+   background: url(../images/result.png) no-repeat;
+   background-size: 1.485rem 2.12rem;
+   background-position: left 0 top -1.94rem ;
+   margin-left: .03rem;
 }
+
 .praise.mt{
     margin-top: .17rem;
 }
 
-.praise{
-    margin-right:.26rem;
-}
-
 .praise.color{
     color: #8f272c;
+}
+
+.praise.color s{
     background: url(../images/art_details.png) no-repeat;
-    background-position: right 0 top -0.24rem;
+    background-position: left 0 top -0.23rem;
     background-size: .26rem 1.7rem;
 }
 
@@ -758,15 +743,13 @@ body.panel-closing .page {
     width: 100%;
     height: 0;
     padding-bottom: 100%;
-    /***************/
-    background-color: #ccc;
+    overflow: hidden;
     border-radius: 100%;
 }
 
 .artist_head img {
     width: 100%;
     height: auto;
-    border-radius: 100%;
 }
 
 .artist_head_box .yellow {
