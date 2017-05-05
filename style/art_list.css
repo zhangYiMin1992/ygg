@@ -1,6 +1,11 @@
 .pic_list {
     padding: 0 .18rem;   
 }
+
+.art_list {
+    padding-top: 1.08rem;
+}
+
 .art_list_top {
     background-color: #fff;
     width: 100%;
@@ -14,7 +19,6 @@
 .con_top,
 .list_menu {
     width: 100%;
-    box-sizing: border-box;
 }
 
 .con_top {
@@ -22,7 +26,6 @@
 }
 
 .list_menu {
-    padding: 0 .18rem;
     margin: .5rem auto 0;
     height: .425rem;
     padding: 0 .18rem 0;
@@ -33,15 +36,22 @@
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-}
-
-.list_menu a {
-    display: block;
     position: relative;
-    font: 400 .12rem/.18rem "黑体";
 }
 
-.list_menu a:not(:last-child):after {
+.list_menu dl {
+    display: block;
+    font: 400 .12rem/.425rem "黑体";
+    width: 18%;
+    height: .425rem;
+}
+
+.list_menu dl dt{
+     position: relative;
+     cursor: pointer;
+}
+
+.list_menu dl:not(:last-child) dt:after {
     content: "";
     display: block;
     width: 0;
@@ -51,15 +61,15 @@
     border-top: .038rem solid #191919;
     position: absolute;
     left: .28rem;
-    top: .08rem;
+    top: .2rem;
 }
 
-.list_menu a:last-child {
+.list_menu dl:last-child dt{
     color: #953338;
     margin-right: .16rem;
 }
 
-.list_menu a:last-child:after {
+.list_menu dl:last-child dt:after {
     content: "";
     display: block;
     width: .09rem;
@@ -69,14 +79,37 @@
     background-color: #fff;
     position: absolute;
     left: .28rem;
-    top: .06rem;
+    top: .18rem;
 }
 
-.art_list {
-    padding-top: 1.08rem;
+.list_menu dl dd{
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    top:.42rem;
+    background: #f9f9f9;
+    width:100%;
+    box-sizing: border-box;
+    padding:.15rem 0 .2rem .2rem;
+    display: none;
 }
 
-.ad{
+.list_menu dl dd.on{
+    display: block;
+}
+
+.list_menu dl dd a{
+    width:50%;
+    color:#1d1d1d;
+    float: left;
+    font:400 .12rem/.27rem "黑体";
+
+}
+
+.list_menu dl dd a.on{
+    color:#f40b0f;
+}
+.art_list .ad{
     margin:.06rem 0 .18rem 0;
 }
 

@@ -3904,82 +3904,82 @@ var CSS3 = function() {// $(this).css( CSS3({ "transform": "translate3d(" + 100 
 })(Zepto)
 
 
-/**
- * 侧边栏 二级菜单
- */
+// /**
+//  * 侧边栏 二级菜单
+//  */
 
-;$(function(){
-    $(document).on("click",".open-panel",function(e){
-        var panel = $(e.target).data('panel');
-        $.openPanel(panel);
-    })
-    $(document).on("click", ".panel-overlay", function(e) {
-        $.closePanel();
-        $('#leftSidebar dl dd').slideUp();
-        $('#leftSidebar dl').removeClass('on'); 
-    });
+// ;$(function(){
+//     $(document).on("click",".open-panel",function(e){
+//         var panel = $(e.target).data('panel');
+//         $.openPanel(panel);
+//     })
+//     $(document).on("click", ".panel-overlay", function(e) {
+//         $.closePanel();
+//         $('#leftSidebar dl dd').slideUp();
+//         $('#leftSidebar dl').removeClass('on'); 
+//     });
 
-    // 侧边栏菜单
-    $('#leftSidebar .select dt').click(function(e) {
-        if ($(this).parent().attr('class') != 'select on') {
-            $(this).parent().addClass('on');
-        } else {
-            $(this).parent().removeClass('on');
-        }
-        var $dd = $(this).siblings();
-        $dd.slideToggle(100);
-    });
-})
-// 艺术品点赞
-;$(function(){
-    var onOff=true;
-    var num=$(".praise font").html();
-    $(".praise").click(function(){
-        if(onOff){
-            $(this).addClass("color");
-            num++;
-            $(".praise font").html(num);
-            onOff=false;
-        }else{
-           $(this).removeClass("color");
-            num--;
-            $(".praise font").html(num);
-            onOff=true;
-        }
-        });
+//     // 侧边栏菜单
+//     $('#leftSidebar .select dt').click(function(e) {
+//         if ($(this).parent().attr('class') != 'select on') {
+//             $(this).parent().addClass('on');
+//         } else {
+//             $(this).parent().removeClass('on');
+//         }
+//         var $dd = $(this).siblings();
+//         $dd.slideToggle(100);
+//     });
+// })
+// // 艺术品点赞
+// ;$(function(){
+//     var onOff=true;
+//     var num=$(".praise font").html();
+//     $(".praise").click(function(){
+//         if(onOff){
+//             $(this).addClass("color");
+//             num++;
+//             $(".praise font").html(num);
+//             onOff=false;
+//         }else{
+//            $(this).removeClass("color");
+//             num--;
+//             $(".praise font").html(num);
+//             onOff=true;
+//         }
+//         });
      
-    });
-// header scroll
-    ;(function($){
-        var bindScroll=function(fn){
-            var beforeScrollTop = document.body.scrollTop,
-            fn = fn || function() {};
-            window.addEventListener("scroll", function() {
-                var afterScrollTop = document.body.scrollTop,
-                    delta = afterScrollTop - beforeScrollTop;
-                if( delta === 0 ) return false;
-                fn( delta > 0 ? "down" : "up" );
-                beforeScrollTop = afterScrollTop;
-            }, false);
-        }
-        var Scroll=function($h){
-            bindScroll(function(direction) {
-              if(direction=='down'){
-                $h.fadeOut({height:'0%'},1500);
-              }
-              if(direction=='up'){
-                  if($h.css('opacity')==1) return;
-                  $h.fadeIn({height:'100%'},1500);
-                  $h.css('opacity','1');
-              }
-            });
-        }
-         $.fn.Scroll = function() {
-            return this.each(function() {
-                new Scroll($(this))
-            })
-        }
-    })($);
+//     });
+// // header scroll
+//     ;(function($){
+//         var bindScroll=function(fn){
+//             var beforeScrollTop = document.body.scrollTop,
+//             fn = fn || function() {};
+//             window.addEventListener("scroll", function() {
+//                 var afterScrollTop = document.body.scrollTop,
+//                     delta = afterScrollTop - beforeScrollTop;
+//                 if( delta === 0 ) return false;
+//                 fn( delta > 0 ? "down" : "up" );
+//                 beforeScrollTop = afterScrollTop;
+//             }, false);
+//         }
+//         var Scroll=function($h){
+//             bindScroll(function(direction) {
+//               if(direction=='down'){
+//                 $h.fadeOut({height:'0%'},1500);
+//               }
+//               if(direction=='up'){
+//                   if($h.css('opacity')==1) return;
+//                   $h.fadeIn({height:'100%'},1500);
+//                   $h.css('opacity','1');
+//               }
+//             });
+//         }
+//          $.fn.Scroll = function() {
+//             return this.each(function() {
+//                 new Scroll($(this))
+//             })
+//         }
+//     })($);
 
 
 

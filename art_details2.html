@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style/basic.css">
-    <link rel="stylesheet" type="text/css" href="style/art_details2.css">
+    <link rel="stylesheet" type="text/css" href="style/display_details.css">
     <meta name="Keywords" content="展销页面">
     <meta name="description" content="展销页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -19,7 +19,7 @@
 
 <body>
     <div class="wrap page page-current">
-        <div class="con_top">
+        <div class="con_top"  id="conTop" data-header="scroll">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
@@ -27,6 +27,7 @@
         <div class="display_page">
             <div class="ad">
                 <img src="images/art_details_pic.jpg">
+                <div class="gradients"></div>
             </div>
         </div>
         <div class="explain">
@@ -51,7 +52,7 @@
                             <div class="artist_box clearfix">
                                 <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
                                 <span class="artist_name">小春哥</span>
-                                <a class="praise mt"><font>56</font>次赞</a>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
                             </div>
                             <div class="buy">
                                 <span class="price">￥25000.00</span>
@@ -73,7 +74,7 @@
                             <div class="artist_box clearfix">
                                 <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
                                 <span class="artist_name">小春哥</span>
-                                <a class="praise mt"><font>5623</font>次赞</a>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
                             </div>
                             <div class="buy">
                                 <span class="price">￥25000.00</span>
@@ -132,7 +133,7 @@
     <!-- 侧边栏结束-->
 </body>
 <script src='./js/basic.js'></script>
-<script src='./js/login.js'></script>
+<script src='./js/index.js'></script>
 
 </html>
 
