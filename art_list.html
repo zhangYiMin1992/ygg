@@ -139,7 +139,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/07.jpg">
+                            <img src="images/07.jpg" lazyload='images/06.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -231,7 +231,8 @@ var LazyLoad = {
                 $this.attr("src", src);
                 $this.show();
             }
-            o && o.isImgCenter && this.onload=function(){
+            if(!o.isImgCenter || !o){return}
+            this.onload=function(){
                     var imgBoxW=$parent.width();
                     var imgBoxH=$parent.height();
                     var imgW=$this.width();
