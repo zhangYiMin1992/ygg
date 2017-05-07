@@ -40,7 +40,7 @@
             <p class="artist_name">赵笑笑</p>
             <p class="artist_message"><span>30件作品</span> | <span>6655次赞</span> | <span>北京</span></p>
             <p class="cut"></p>
-            <div class="description">
+            <div class="description" id="description">
                 <p>1989.2.20生于上海</p>
                 <p>2011年本科毕业中央美术学院油画系</p>
                 <p>现工作于上海，北京</p>
@@ -56,7 +56,7 @@
                 <p>2015，国际艺术家圣诞群展————全球印象，柏林狮子行宫，柏林</p>
                 <p>2015，新青年当代艺术国际推广计划，上海新美术馆，上海</p>
             </div>
-            <div class="carry"><span>展开</span></div>
+            <div class="carry"><span id="spread">展开</span></div>
             <div class="recommend">
                 <span>相关作品</span>
             </div>
@@ -64,7 +64,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/01.jpg">
+                            <img src="images/01.jpg"  lazyload='images/09.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -76,7 +76,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/03.jpg">
+                            <img src="images/03.jpg"   lazyload='images/10.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -88,7 +88,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/02.jpg">
+                            <img src="images/02.jpg"  lazyload='images/08.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -100,7 +100,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/02.jpg">
+                            <img src="images/02.jpg"  lazyload='images/07.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -151,5 +151,22 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
+<script type="text/javascript">
+$(function(){
+    LazyLoad.Run({
+        isImgCenter:true
+    });
 
+    $('#spread').click(function(){
+        if($('#description').attr('class')!='description details_show'){
+            $('#description').addClass('details_show');
+            $('#spread').html('收起');
+        }else{
+            $('#description').removeClass('details_show');
+            $('#spread').html('展开');
+        }
+      
+    });
+});
+</script>
 </html>

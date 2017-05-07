@@ -45,44 +45,6 @@
     box-sizing: border-box;
 }
 
-/*.artist_box {
-    height: 0.51rem;
-    width: 100%;
-}
-
-.artist_box .artist_img {
-    width: .25rem;
-    height: .25rem;
-    border-radius: 50%;
-    background: #ccc;
-    float: left;
-    margin-top: .13rem;
-}
-
-.artist_box .artist_img img {
-    margin-top: .13rem;
-    width: .25rem;
-    height: 0;
-    padding-bottom: 100%;
-    border-radius: 50%;
-}
-
-.artist_box .artist_name {
-    font: 400 .12rem/.51rem "黑体";
-    color: #1b1b1b;
-    margin-left: .1rem;
-    float: left;
-}
-
-.artist_box .num,
-.artist_box .line,
-.artist_box .zan {
-    font: 400 .1rem/.51rem "黑体";
-    color: #b5b5b5;
-    float: right;
-    transform: scale(0.833);
-}
-*/
 .artist_box .line{
    padding:0;
 }
@@ -102,11 +64,12 @@ ul.art_book {
 
 ul.art_book li {
     /*float: left;*/
-    /*margin-right: .03rem;*/
+    position: relative;
+    margin-right: .03rem;
     display: inline-block;
     width:28.58%;
     box-sizing: border-box;
-    padding-right:.03rem;
+    /*padding-right:.03rem;*/
 }
 
 ul.art_book li a {

@@ -283,3 +283,86 @@ $(function(){
         });
 
     });
+    // 艺术家列表页滑动效果
+ $(function(){
+    $('body').on("touchstart","[data-module=hscroll] ul",function(t){
+        var e = this;
+        t = t.touches ? t.touches[0] : t;
+        var i = t.pageX
+          , a = e.scrollLeft
+          , o = function(t) {
+            var t = t.touches ? t.touches[0] : t;
+            Math.abs(i - t.pageX) < 24 || (e.scrollLeft = a + (i - t.pageX))
+        }
+          , r = function(t) {
+            $("body").off("touchmove", o).off("touchend", r)
+        };
+        $("body").on("touchmove", o).on("touchend", r)
+    })
+});
+
+ //图片居中
+ var LazyLoad = {
+     IsShow: function($el) {
+         return $(window).height() + $(window).scrollTop() > $el.offset().top
+     },
+     LoadImage: function(o) {
+         var _self = this;
+         var $imgs = $("img[lazyload]");
+         $imgs.each(function() {
+             var $this = $(this);
+             var $parent=$this.parent();
+             if (_self.IsShow($this)) {
+                 var src = $this.attr("lazyload");
+                 $this.removeAttr("lazyload");
+                 $this.attr("src", src);
+                 $this.show();
+             }
+             if(!o.isImgCenter || !o){return}
+             this.onload=function(){
+
+                     var imgBoxW=$parent.width();
+                     var imgBoxH=$parent.height();
+                     console.log(this);
+                     console.log(imgBoxW);
+                     console.log(imgBoxH);
+                     var imgW=$this.width();
+                     var imgH=$this.height();
+                     console.log(imgW);
+                     console.log(imgH);
+                     var rate =imgBoxW / imgBoxH;
+                     var ratio = imgW / imgH;
+                     var sw, sh, sx, sy;
+                     if (ratio > rate) {
+                         sw = imgBoxW;
+                         sh = imgBoxW/ratio;
+                         sx = 0
+                         sy = (imgBoxH - sh)/ 2;
+                     } else {
+                         sw = imgBoxH*ratio;
+                         sh = imgBoxH;
+                         sx = (imgBoxW-sw)/2;
+                         sy = 0;
+                     }
+                     $this.css({
+                         position:'absolute',
+                         left:sx+'px',
+                         top:sy+'px',
+                         width:sw+'px',
+                         height:sh+'px'
+                     });
+                     this.onload=null;
+                 }
+         })
+     },
+     Run: function(o) {
+         var _self = this;
+         _self.LoadImage(o);
+         if (_self.bind) return;
+         $(window).bind("touchmove touchend scroll", 
+         function() {
+             _self.LoadImage(o)
+         });
+         _self.bind = true
+     }
+ };

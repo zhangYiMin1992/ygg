@@ -543,7 +543,8 @@ body.panel-closing .page {
 .ad{
     width:100%;
     height:0;
-    padding-bottom:2.135rem;
+    /*padding-bottom:2.135rem;*/
+    padding-bottom: 66.72%;
     overflow: hidden;
     position: relative;
 } 
