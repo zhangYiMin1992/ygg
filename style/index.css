@@ -105,3 +105,114 @@ header {
 .wap_banner li.on a{
     background-color:#fff;
 }
+
+.index_list{
+    width:100%;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.scale {
+    transform-origin: center;
+    transform: scale(1)!important;
+}
+
+ul.production {
+    font-size: 0;
+    position: relative;
+    top:0;
+    padding-top:.23rem;
+    left: -55.5%; 
+}
+
+
+.production {
+    padding: 0rem 0 0 0;
+    width: 100%;
+}
+
+.index_list .production li {
+    display: inline-block;
+    transition: all 1s ease;
+    font-size: 0;
+    position: relative;
+    transform-origin: center;
+    transform: scale(0.8);
+}
+
+.box_shadow {
+    width: 2.25rem;
+    height: 2.2rem;
+    box-shadow: 0.08rem 0.08rem 0.08rem #ccc;
+    background: url(../images/pic_box.png)no-repeat;
+    background-size: 2.25rem 2.2rem;
+    margin: 0 auto .2rem;
+}
+
+.pro_pic {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.box_shadow .pro_img {
+    width: 86%;
+    height: 0;
+    padding-bottom: 98%;
+    padding: .17rem 0 98% .15rem;
+}
+
+.pro_img img {
+    width: 100%;
+    height: auto;
+}
+
+.explain_box{
+    width:100%;
+    overflow: hidden; 
+    
+}
+
+.pro_explain{
+    white-space: nowrap;
+    width:10000px;
+    
+}
+
+.pro_explain li.show{
+    /*display: block;*/
+}
+
+.pro_explain li{
+    padding:0 .26rem;
+    width: 2.25rem;
+    height: 1.565rem;
+    position: relative;
+    left:.2rem;
+    display: inline-block;
+   /* display: none;*/
+
+}
+
+.pro_explain li:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: .63rem;
+    left: 0;
+}
+
+.pro_explain .buy .price {
+    float: left;
+    font: 400 .15rem/.26rem "微软雅黑";
+    color: #444444;
+}
+
+.pic_masseag .buy {
+    height: .64rem;
+    width: 100%;
+    padding-top: .13rem;
+}

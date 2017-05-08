@@ -323,13 +323,8 @@ $(function(){
 
                      var imgBoxW=$parent.width();
                      var imgBoxH=$parent.height();
-                     console.log(this);
-                     console.log(imgBoxW);
-                     console.log(imgBoxH);
                      var imgW=$this.width();
                      var imgH=$this.height();
-                     console.log(imgW);
-                     console.log(imgH);
                      var rate =imgBoxW / imgBoxH;
                      var ratio = imgW / imgH;
                      var sw, sh, sx, sy;

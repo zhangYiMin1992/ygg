@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./style/basic.css">
     <link rel="stylesheet" type="text/css" href="./style/index.css">
+    <link rel="stylesheet" type="text/css" href="style/display_details.css">
     <meta name="Keywords" content="轮播页面">
     <meta name="description" content="轮播页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -55,7 +56,102 @@
                 </ul>
             </div>
         </div>
-        <div style="height:1000px;">
+        <!-- 作品列表 -->
+       
+        <div  class="index_list" >
+             <ul class="pic_show">
+                <li>
+                    <div class="details_show  clearfix">
+                        <div class="pic_shadow">
+                            <div class="pic_box"><img src="images/art_details_pic.jpg"></div>
+                        </div>
+                        <div class="pic_masseag">
+                            <p class="art_name">
+                                <span>外面的世界</span>
+                            </p>
+                            <p class="art_type clearfix">
+                                <span class="pic_font">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</span>
+                                <a href="javascript:;">详情</a>
+                            </p>
+                            <div class="artist_box clearfix">
+                                <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
+                                <span class="artist_name">小春哥</span>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
+                            </div>
+                            <div class="buy">
+                                <span class="price">￥25000.00</span>
+                                <a href="javascript:;" class="buy_menu">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="details_show  clearfix">
+                        <div class="pic_shadow">
+                            <div class="pic_box"><img src="images/art_details_pic.jpg"></div>
+                        </div>
+                        <div class="pic_masseag">
+                            <p class="art_name">
+                                <span>外面的世界</span>
+                            </p>
+                            <p class="art_type clearfix"> <span class="pic_font">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</span><a href="javascript:;">详情</a></p>
+                            <div class="artist_box clearfix">
+                                <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
+                                <span class="artist_name">小春哥</span>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
+                            </div>
+                            <div class="buy">
+                                <span class="price">￥25000.00</span>
+                                <a href="javascript:;" class="buy_menu">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                 <li>
+                    <div class="details_show  clearfix">
+                        <div class="pic_shadow">
+                            <div class="pic_box"><img src="images/art_details_pic.jpg"></div>
+                        </div>
+                        <div class="pic_masseag">
+                            <p class="art_name">
+                                <span>外面的世界</span>
+                            </p>
+                            <p class="art_type clearfix"> <span class="pic_font">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</span><a href="javascript:;">详情</a></p>
+                            <div class="artist_box clearfix">
+                                <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
+                                <span class="artist_name">小春哥</span>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
+                            </div>
+                            <div class="buy">
+                                <span class="price">￥25000.00</span>
+                                <a href="javascript:;" class="buy_menu">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                 <li>
+                    <div class="details_show  clearfix">
+                        <div class="pic_shadow">
+                            <div class="pic_box"><img src="images/art_details_pic.jpg"></div>
+                        </div>
+                        <div class="pic_masseag">
+                            <p class="art_name">
+                                <span>外面的世界</span>
+                            </p>
+                            <p class="art_type clearfix"> <span class="pic_font">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</span><a href="javascript:;">详情</a></p>
+                            <div class="artist_box clearfix">
+                                <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
+                                <span class="artist_name">小春哥</span>
+                                <a class="praise mt"><font>56</font>次赞<s></s></a>
+                            </div>
+                            <div class="buy">
+                                <span class="price">￥25000.00</span>
+                                <a href="javascript:;" class="buy_menu">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- 侧边栏 -->
@@ -97,4 +193,11 @@
 </body>
 <script type="text/javascript" src='./js/basic.js'></script>
 <script type="text/javascript" src='./js/index.js'></script>
+<script type="text/javascript">
+$(function(){
+    LazyLoad.Run({
+        isImgCenter:true
+    });
+});
+</script>
 </html>

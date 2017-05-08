@@ -58,7 +58,7 @@
     box-sizing: border-box;
 }
 
-.details_show .pic_shadow {
+ .pic_shadow {
     width: 2.25rem;
     height: 2.2rem;
     box-shadow: .08rem .08rem .08rem #ccc;
@@ -75,10 +75,13 @@
 }
 
 .pic_show li {
-    padding: .1rem .22rem 0 .22rem;
-    width: 100%;
     box-sizing: border-box;
     position: relative;
+}
+
+.pic_show.maxW li{
+   width: 100%;
+   padding: .1rem .22rem 0 .22rem;
 }
 
 .pic_show li:after {
@@ -98,13 +101,10 @@
 }
 
 .art_name {
-    padding: .05rem 0;
-}
-
-.art_name {
     font: 400 0.2rem/0.2rem "黑体";
     color: #222222;
-    float: left;
+    text-align: left;
+    padding: .05rem 0;
 }
 
 .pic_masseag {
