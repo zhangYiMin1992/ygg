@@ -115,7 +115,7 @@ header {
 
 .scale {
     transform-origin: center;
-    transform: scale(1)!important;
+    transform: scale(0.8)!important;
 }
 
 ul.production {
@@ -137,8 +137,8 @@ ul.production {
     transition: all 1s ease;
     font-size: 0;
     position: relative;
-    transform-origin: center;
-    transform: scale(0.8);
+/*    transform-origin: center;
+    transform: scale(0.8);*/
 }
 
 .box_shadow {
@@ -215,4 +215,74 @@ ul.production {
     height: .64rem;
     width: 100%;
     padding-top: .13rem;
+}
+
+
+
+.album{
+    width: 100%;
+    height: 0;
+    padding-bottom: 124.4%;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top:.27rem;
+}
+
+.album_list{
+    /*position: absolute;*/
+    /*left:-57%;*/
+}
+
+.album_list li{
+    position: absolute;
+    /*width: 70%;*/
+    /*box-sizing: border-box;*/
+    /*padding:0 .2rem;*/
+    /*display: inline-block;*/
+    /*margin:0 .13rem;*/
+
+
+}
+
+.album_show{
+ /*   width: 100%;
+    box-sizing: border-box;*/
+    /*padding:0 .2rem;*/
+}
+
+.album_shadow{
+    width: 2.25rem;
+    height: 2.2rem;
+    box-shadow: 0.08rem 0.08rem 0.08rem #ccc;
+    background: url(../images/pic_box.png)no-repeat;
+    background-size: 2.25rem 2.2rem;
+    margin: 0 auto .2rem;
+}
+
+.album_box {
+    width: 86%;
+    height: 0;
+    padding: 7.5% 0 84% 7%;
+    overflow: hidden;
+}
+
+.album_box img {
+    width: 100%;
+    height: auto;
+}
+
+.album .pic_message{
+    position: relative;
+}
+
+.album .pic_message:after{
+    content: "";
+    display: block;
+    width: 120%;
+    height: 0;
+    border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: .78rem;
+   left: -10.25%;
 }

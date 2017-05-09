@@ -1,0 +1,161 @@
+newwap接口
+服务器路径 http://www.artgogo.com:888/newwap/
+    登录/注册:
+        /user/userExist   判断用户是否存在
+        参数  String username 用户名
+        返回JSONObject {"isExist": true/false, "message": String}
+        
+        /user/userLogin   用户登录
+        参数  String username 用户名, String password 密码
+        返回JSONObject {"isSuccess": true/false, "message": String}
+        
+        /user/userSignup   用户注册
+        参数  String username 用户名,   String password 密码,  String verificationCode 验证码
+        返回JSONObject {"isSuccess": true/false, "message": String}
+        
+        /message/sendVerificationCode  发送验证码
+        参数  String mobile 手机号
+        返回JSONObject {"isSuccess": true/false, "message": String}
+        
+        /message/verifyVerificationCode   校验验证码
+        参数  String verificationCode 验证码
+        返回JSONObject {"isSuccess": true/false, "message": String}
+    艺术品:
+        /artwork/getRandomArtworks  获取随机艺术品
+        参数  int size 数量(为空或0则使用默认值)
+        返回  JSONArray 数据字段参照下面艺术品字段
+        
+        /artwork/getRecommendArtworks  获取推荐艺术品
+        参数  int index 索引(页数),   int size 数量(为空或0则使用默认值)
+        返回  JSONArray 数据字段参照下面艺术品字段
+        
+        /artwork/getArtwork  获取指定id号艺术品
+        参数  int artworkId
+        返回  JSONObject 艺术品字段
+        
+        /artwork/getArtworks  获取id降序艺术品列表
+        参数  int index 索引(页数),   int size 数量(为空或0则使用默认值)
+        返回  JSONObject 艺术品字段
+        
+        /artwork/getArtistArtworks 获取指定艺术家的艺术品
+        参数  int artistId 艺术家id, int index 索引(页数),  int size 数量(为空或0则使用默认值)
+        返回  JSONArray 艺术品字段
+    艺术家:
+        /artist/getRecommendArtists  获取推荐艺术家
+        参数  int index 索引(页数),   int size 数量(为空或0则使用默认值)
+        返回  JSONArray 艺术家字段
+        
+        /artist/getArtist  获取指定id号艺术家
+        参数  int artistId
+        返回  JSONObject 艺术家字段
+        
+        /artist/getArtist  获取id降序艺术家
+        参数  int index 索引(页数),   int size 数量(为空或0则使用默认值)
+        返回  JSONObject 艺术家字段
+        
+        
+数据结构
+    基本(CMS所有数据都有的字段, 除外链数据):
+        long id 序号,主键
+        long GlobalID 全局序号
+        String Title 标题
+        String SubTitle 副标题
+        long PublishDate 发布日期
+        String DocFrom 
+        String Content 内容
+        String Summary 简介
+        String Keyword 关键字
+        String Tag 标签
+        int Category 子频道
+        String ChannelCode 频道代码
+        long User 添加用户
+        int TotalPage 
+        long OrderNumber 排序号码
+        int Status 0表示未审核,1表示通过
+        int Active 0表示删除, 1表示存在
+        int IsPhotoNews 
+        long Random 随机生成数
+        int Weight 
+        long CreateDate 创建日期
+        int ModifiedDate 修改日期
+        int GenerateFileDate 模板页面生成日期
+        String Photo 图片
+        
+    艺术品:
+        String agg_channel
+        String name 艺术家名字
+        long art_gid  艺术家id
+        String pinlei 艺术品品类
+        String zhuti 主题
+        String fengge 风格
+        String caizhi 材质
+        double width 宽度
+        double height 高度
+        double length 深度
+        double zb_width 装裱宽度
+        double zb_length 装裱高度
+        double actual_width 画心宽度
+        double actual_height 画心高度
+        String is_derivative 是否为衍生品
+        String czsj 创作时间
+        String chushou 销售状态
+        String qianming 签名
+        double price 价格
+        String chuzu 出租
+        String paimai 拍卖
+        String dizhi 地址
+        String zhuangbiao 装裱
+        String zb_fangshi 装裱方式
+        String big_photo 高清大图
+        String Litle_photo 缩略图
+        String cover 封面
+        String zpms 作品描述
+        String m_name 卖家名字
+        long uid 卖家ID
+        String isStatus 艺术品状态
+        String isup 是否置顶
+        long attention 关注数量
+        String list_disable 列表屏蔽
+        double bargain_price 促销价格
+        Date bargain_start_time 促销开始时间
+        int bargain_duration 促销时长
+        String is_print 是否版画
+        int print_count 版画总数
+        String print_cate 版画类型
+        private String artistPhoto 艺术家照片
+        
+    艺术家:
+        String first_word 
+        String m_photo 艺术家头像缩略图
+        String birthday 生日
+        String gender 性别
+        String zhuti 主题
+        String pinlei 品类
+        String constellation 星座
+        String school 毕业学校
+        String teacher 师从
+        String profession 现职
+        String live 现住地址
+        String exhibitors 展览记录
+        String collection 收藏记录
+        String reward 获奖记录
+        String proxy 代理记录
+        String data 成交记录
+        String ip 登录IP
+        long uid 用户编号
+        String url
+        String stat 审核状态
+        String reson
+        String adver 广告
+        String source 艺术家来源
+        String video_pic 视频封面图
+        String video
+        long artnums 艺术家作品数
+        long attention 关注数量
+        long cj_num 成交量
+        String name_pinyin 姓名拼音
+        long fangwenliang 访问量
+        String conn_way
+        String Story 
+        String banner_pic 封面图
+        double tipAmount 打赏金额

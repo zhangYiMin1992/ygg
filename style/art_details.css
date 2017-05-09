@@ -1,6 +1,7 @@
 
 .details_pic{
     padding-top:0.5rem;
+    position: relative;
 }
 
 .art_details .art_pic {
@@ -17,7 +18,7 @@
 }
 
 .details_pic .atlas_menu {
-    z-index: 1000;
+    z-index: 10;
     display: block;
     background: url(../images/art_details.png) no-repeat;
     background-size: .26rem 1.7rem;
@@ -64,10 +65,12 @@
     padding: .09rem 0;
     border-bottom: 1px solid #d2d2d2;
     border-top: 1px solid #d2d2d2;
+    max-height: 2.8rem;
+    overflow: hidden;
+    font: 400 12px/.3rem "黑体";
+    color: #1a1a1a;
 }
 
 .description p {
-    padding: .09rem 0;
-    font: 400 12px/.18rem "黑体";
     color: #1a1a1a;
 }

@@ -185,6 +185,10 @@ $(function(){
     $("#benlai_banner").Banner()
 })
 
+// $(function(){
+//     $("#album").Banner()
+// })
+
 
 /**
  * 侧边栏 二级菜单
