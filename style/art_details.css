@@ -69,6 +69,7 @@
     overflow: hidden;
     font: 400 12px/.3rem "黑体";
     color: #1a1a1a;
+    text-overflow: ellipsis;
 }
 
 .description p {

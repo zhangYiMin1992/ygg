@@ -1,4 +1,4 @@
-newwap接口
+﻿newwap接口
 服务器路径 http://www.artgogo.com:888/newwap/
     登录/注册:
         /user/userExist   判断用户是否存在
@@ -108,7 +108,7 @@ newwap接口
         String zb_fangshi 装裱方式
         String big_photo 高清大图
         String Litle_photo 缩略图
-        String cover 封面
+        String cover 封面/////////////////////////////////////////////////
         String zpms 作品描述
         String m_name 卖家名字
         long uid 卖家ID
@@ -159,3 +159,5 @@ newwap接口
         String Story 
         String banner_pic 封面图
         double tipAmount 打赏金额
+
+   
