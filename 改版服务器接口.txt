@@ -1,4 +1,4 @@
-newwap接口
+﻿newwap接口
 服务器路径 http://www.artgogo.com:888/newwap/
     登录/注册:
         /user/userExist   判断用户是否存在
@@ -82,6 +82,17 @@ newwap接口
         String Photo 图片
         
     艺术品:
+	{
+		[{
+                  name:'小春哥',
+                  pinlei:'油画',
+		  width:'23',
+		  height:'37',
+		  price:'25000',
+		  zhuti:'外面的世界'
+         	},
+        	]
+	}
         String agg_channel
         String name 艺术家名字
         long art_gid  艺术家id
