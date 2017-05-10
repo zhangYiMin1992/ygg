@@ -77,8 +77,58 @@
                      "pwdAgain":"333333"
                },
                 "response": {"isSuccess":true,"message": "修改成功"} 
-            }
+            },
+           //艺术品列表页面
+           "POST /artwork/getArtworks " :{
+                    "request":{
+                        "int index":"2",
+                        "int size":"5"
+                    },
+                    "response":{
+                        "id":"134723",
+                        "cover":"http://www.artgogo.com/images/2017/4/25/1493099328olyhis752_c.jpg",                                           
+                        "title":"外面的世界",
+                        "name":"小春哥",
+                        "width":"23",
+                        "height":"36",
+                        "pinlei":"水彩",
+                        "price":"2800"
+                    }
+           },
+           // 艺术家列表页面
+           "POST /artist/getArtist ":{
+                    "request":{
+                        "int index":"1",
+                        "int size":"10"
+                    },
+                    "response":{
+                        "photo":"http://www.artgogo.com/images/2017/4/13/20174131492081607484_376.png",
+                        "title":"张志楷",
+                        "attention":"28",
+                        "artnums":"5",
+                        "id":"134708",
+                        "cover":"http://www.artgogo.com/images/2017/4/25/1493099328olyhis752_c.jpg",
+                    }      
 
+           },
+           //相关推荐艺术品
+           "POST /artwork/getArtistArtworks ":{
+                    "request":{
+                        "int artistId":"1546",
+                        "int index":"1",
+                        "int size":"4"
+                    },
+                    "response":{
+                        "id":"134723",
+                        "cover":"http://www.artgogo.com/images/2017/4/25/1493099328olyhis752_c.jpg",                                           
+                        "title":"外面的世界",
+                        "name":"小春哥",
+                        "width":"23",
+                        "height":"36",
+                        "pinlei":"水彩",
+                        "price":"2800"
+                    }
+           }
 
     }
 }

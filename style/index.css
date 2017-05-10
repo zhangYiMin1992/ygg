@@ -10,7 +10,7 @@ header {
     left: 0;
     z-index:3;
 }
-
+/*首页*/
 .sign {
     width: 100%;
     height: .435rem;
@@ -289,3 +289,72 @@ ul.production {
     bottom: .78rem;
    left: -2.25%;
 }
+/*收货地址页面*/
+.address_con{
+    width:100%;
+    padding:.5rem 0 .45rem 0;
+}
+
+.address_con .address:first-child{
+    border-top: 1px solid #ddd;
+}
+
+.address_con .address{
+    border-bottom: 1px solid #f0f0f0;
+    width:100%;
+    box-sizing: border-box;
+    padding:.21rem .18rem .15rem;
+}
+
+.address dt {
+    margin-bottom:.14rem;
+}
+.address dt label{
+    font-size:.12rem;
+    color:#777;
+    transform:scale(0.88);
+    transform-origin: left;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 74%;
+    white-space: nowrap;
+    vertical-align: bottom;
+}
+
+/*.address dt .address_mes{
+    font-size:.12rem;
+    color:#777;
+    transform:scale(0.88);
+    transform-origin: left;
+    overflow: hidden;
+}*/
+
+.address dd{
+    line-height: .19rem;
+}
+
+.address dd a{
+    display: inline-block;
+    height: .19rem;
+}
+
+.address dd .set{
+    width:1rem;
+    padding-left:.31rem;
+    margin-right:.9rem;
+}
+
+.address dd .xiugai,.address dd .delete{
+    width:.25rem;
+    background: url(../images/pay.png) no-repeat;
+    background-size:.26rem 2.48rem;
+    vertical-align:bottom;
+}
+
+.address dd .xiugai{
+    background-position: 0.1rem -1.75rem;
+}
+.address dd .delete{
+    background-position: 0.1rem -1.94rem;
+}
+

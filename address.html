@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style/basic.css">
-    <meta name="Keywords" content="确认订单页面">
-    <meta name="description" content="确认订单页面">
+    <link rel="stylesheet" type="text/css" href="style/index.css">
+    <meta name="Keywords" content="收货地址页面">
+    <meta name="description" content="收货地址页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
@@ -24,57 +25,41 @@
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
         </div>
-        <!-- 内容部分 -->
-        <div class="confrim_order">
-        <!-- 订单信息 -->
-            <div class="order_box">
-                <dl class="order">
-                    <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
-                    <dd>
-                        <a href="javascript:;">
-                            <div class="order_pic"><img src="images/01.jpg"></div>
-                            <div class="order_message">
-                                <h1>外面的世界</h1>
-                                <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                <h2>原创艺术品</h2>
-                                <h3>￥<span>25000.00</span>元</h3>
-                            </div>
-                        </a>
-                    </dd>
-                </dl>                      
-            </div>
-            <!-- 个人信息部分 -->
-            <div class="city">
-                <ul>
-                    <li>姓&nbsp;&nbsp;&nbsp;&nbsp;名:
-                        <input class="receive_contact" id="receiveContact" type="text" value="" placeholder="请填写收货人姓名">
-                    </li>
-                    <li>联系方式:
-                        <input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="" placeholder="手机号码">
-                    </li>
-                    <li>联系地址:
-                        <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" readonly="readonly">  
-                        <span class="add">+</span>
-                    </li>   
-                    <li>备&nbsp;&nbsp;&nbsp;&nbsp;注:
-                        <input class="receive_message"  id="receiveMessage" type="text" value="" placeholder="选填" >  
-                    </li> 
-                    <li>选择支付方式:
-                        <input readonly="readonly">
-                    </li>  
-                </ul>
-                <a class="weixin"><div class="chose"></div><span>微信钱包</span></a>
-                <a class="bank"><div class="chose_no"></div><span>中国银联</span></a>
-            </div>
+        <!-- 地址信息部分 -->
+        <div class="address_con">
+            <dl class="address">
+                <dt>联系地址：
+                    <!-- <input class="address_mes" type="text" name="" readonly="readonly"> -->
+                    <!-- <label name="user-name">王女士</label>
+                    <label name="phone-num">186666666</label> -->
+                    <label name="address">上海市长宁区江苏路愚园路753号C座201艺高高</label>
+                </dt>
+                <dd>
+                    <a href="javascript:;" class="set chose">默认收货地址</a>
+                    <a href="javascript:;" class="xiugai"></a>
+                    <a href="javascript:;" class="delete"></a>
+                </dd>
+            </dl> 
+             <dl class="address">
+                <dt>联系地址：
+                    <!-- <input class="address_mes" type="text" name="" readonly="readonly"> -->
+                    <!-- <label name="user-name">王女士</label>
+                    <label name="phone-num">186666666</label> -->
+                    <label name="address">上海市长宁区江苏路愚园路753号C座201艺高高</label>
+                </dt>
+                <dd>
+                    <a href="javascript:;" class="set chose_no">设为默认收货地址</a>
+                    <a href="javascript:;" class="xiugai"></a>
+                    <a href="javascript:;" class="delete"></a>
+                </dd>
+            </dl> 
         </div>
-        
-        <footer class="buy_car">
-            <div class="count">￥<span>25000.00</span>元</div>
-            <a><em></em><span  class="purchase">立即购买</span></a>
+      <!-- 底部 -->
+        <footer class="address">
+            <a class="add_address">新增地址</a>
+            <a class="save_address">保存地址</a>
         </footer>
     </div>
-
-
     <!-- 侧边栏 -->
     <div class="panel-overlay"></div>
     <div class="panel left_sidebar panel-left" id="leftSidebar">
