@@ -70,8 +70,8 @@
             </div>
         </div>
         <div class="art_list">
-            <ul class="pic_list">
-                <li>
+            <ul class="pic_list" id="ablumDom">
+               <!--  <li>
                     <a href="javascript:;">
                         <div class="pic">
                             <img src="images/08.jpg" lazyload='images/05.jpg'>
@@ -118,7 +118,7 @@
                         <p class="artist">小春哥</p>
                         <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <div class="ad">
                 <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'></div>
@@ -211,13 +211,41 @@
         </dl>
     </div>
     <!-- 侧边栏结束-->
+
+    <textarea id="ablumTmpl" style="display: none;">
+        <%$.each(this,function(k,v){%>
+        <li>
+            <a href="javascript:;">
+                <div class="pic">
+                    <img src="images/08.jpg" lazyload='http://www.artgogo.com<%v.cover%>'>
+                    <div class="gradients"></div>
+                    <span>￥25000.00</span>
+                </div>
+                <p class="pic_name"><%v.Title%></p>
+                <p class="artist"><%v.name%></p>
+                <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+            </a>
+        </li>
+        <%});%>
+    </textarea>
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script type="text/javascript">
 $(function(){
-    LazyLoad.Run({
-        isImgCenter:true
+
+    $.ajax({
+        url:'/newwap/artwork/getArtworks',
+        data:{
+            index:1,
+            size:4
+        },
+        success:function(res){
+            $.YGG.tmpl({ dom: $("#ablumDom"), v: $('#ablumTmpl').val(), datas:res});
+            LazyLoad.Run({
+                isImgCenter:true
+            });
+        }
     });
 })
 </script>
