@@ -249,14 +249,18 @@ $(function(){
             }, false);
         }
         var Scroll=function($h){
+            var num=200;
             bindScroll(function(direction) {
-              if(direction=='down'){
+              if(direction=='down' && document.body.scrollTop>num){
                 $h.fadeOut({height:'0%'},1500);
               }
               if(direction=='up'){
                   if($h.css('opacity')==1) return;
                   $h.fadeIn({height:'100%'},1500);
                   $h.css('opacity','1');
+              }
+              if(document.body.scrollTop==0){
+                return;
               }
             });
         }

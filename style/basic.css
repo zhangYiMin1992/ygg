@@ -126,7 +126,7 @@ h6 {
 }
 
 a {
-    color: #666;
+    color:#191919;
     text-decoration: none;
     outline: 0;
 }
@@ -235,7 +235,7 @@ a {
 .con_top .top_menu {
     width: 8.92%;
     height: 0;
-    padding-bottom: .13rem;
+    padding-bottom: .14rem;
     background: url(../images/result.png) no-repeat;
     background-color: #fff;
     background-size: 1.485rem 2.12rem;
@@ -673,11 +673,11 @@ body.panel-closing .page {
 .praise s{
     display: inline-block;
     width:.2rem;
-    height:.2rem;
+    height:.22rem;
     float: right;
    background: url(../images/result.png) no-repeat;
    background-size: 1.485rem 2.12rem;
-   background-position: left 0 top -1.94rem ;
+   background-position: left 0 top -1.92rem ;
    margin-left: .03rem;
 }
 
@@ -690,9 +690,7 @@ body.panel-closing .page {
 }
 
 .praise.color s{
-    background: url(../images/art_details.png) no-repeat;
-    background-position: left 0 top -0.23rem;
-    background-size: .26rem 1.7rem;
+   background-position: right 0 top -1.92rem ;
 }
 
 .original{

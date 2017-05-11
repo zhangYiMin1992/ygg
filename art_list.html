@@ -71,54 +71,7 @@
         </div>
         <div class="art_list">
             <ul class="pic_list" id="ablumDom">
-               <!--  <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/08.jpg" lazyload='images/05.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界外面的世界外面的世界</p>
-                        <p class="artist">小春哥小春哥小春哥小春哥小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/07.jpg" lazyload='images/07.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/04.jpg" lazyload='images/08.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/05.jpg" lazyload='images/06.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li> -->
+            
             </ul>
             <div class="ad">
                 <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'></div>
@@ -223,7 +176,7 @@
                 </div>
                 <p class="pic_name"><%v.Title%></p>
                 <p class="artist"><%v.name%></p>
-                <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                <p class="pic_size"><span><%v.pinlei%></span>|<em><%v.width%>*<%v.height%>cm</em></p>
             </a>
         </li>
         <%});%>
@@ -231,6 +184,7 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
+<script src='./js/dropload.min.js'></script>
 <script type="text/javascript">
 $(function(){
 
@@ -238,7 +192,7 @@ $(function(){
         url:'/newwap/artwork/getArtworks',
         data:{
             index:1,
-            size:4
+            size:5
         },
         success:function(res){
             $.YGG.tmpl({ dom: $("#ablumDom"), v: $('#ablumTmpl').val(), datas:res});
@@ -248,5 +202,6 @@ $(function(){
         }
     });
 })
+
 </script>
 </html>
