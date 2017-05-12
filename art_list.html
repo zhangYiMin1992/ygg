@@ -23,7 +23,7 @@
             line-height: 50px;
             text-align: center;
             color:#666;
-            font-size: 14px;
+            font-size: 12px;
         }
     </style>
 </head>
@@ -32,13 +32,11 @@
 <div class="wrap page page-current">
     <div class="art_list_top" id="conTop" data-header="scroll">
         <!-- 头部 -->
-        <div class="con_top">
             <div class="con_top">
                 <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
                 <div class="top_logo"></div>
                 <div class="search" id="search"></div>
             </div>
-        </div>
         <!-- 分类列表 -->
         <div class="list_menu">
             <dl>
@@ -87,11 +85,11 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/08.jpg" lazyload='images/05.jpg'>
+                            <img src="images/load.jpg" lazyload='images/05.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
-                        <p class="pic_name">外面的世界外面的世界外面的世界</p>
+                        <p class="pic_name">外面的世界</p>
                         <p class="artist">小春哥小春哥小春哥小春哥小春哥</p>
                         <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
                     </a>
@@ -99,7 +97,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/07.jpg" lazyload='images/07.jpg'>
+                            <img src="images/load.jpg" lazyload='images/07.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -111,7 +109,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/04.jpg" lazyload='images/08.jpg'>
+                            <img src="images/load.jpg" lazyload='images/08.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -123,7 +121,7 @@
                 <li>
                     <a href="javascript:;">
                         <div class="pic">
-                            <img src="images/05.jpg" lazyload='images/06.jpg'>
+                            <img src="images/load.jpg" lazyload='images/06.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -133,9 +131,9 @@
                     </a>
                 </li>
             </ul>
-            <div class="ad" data-module="ad">
-                <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'>
-            </div>
+            <a class="ad" data-module="ad">
+                    <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'>
+            </a>
         </div>
         <!--php render end-->
         <div id="ablumDom">
@@ -239,18 +237,18 @@
                     <div class="pic">
                         <img src="images/08.jpg" lazyload='http://www.artgogo.com<%this[i].cover%>'>
                         <div class="gradients"></div>
-                        <span>￥25000.00</span>
+                        <span>￥<%this[i].price%>.00</span>
                     </div>
                     <p class="pic_name"><%this[i].Title%></p>
                     <p class="artist"><%this[i].name%></p>
-                    <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                    <p class="pic_size"><span><%this[i].pinlei%></span>|<em><%this[i].width%>*<%this[i].height%>cm</em></p>
                 </a>
             </li>
             <%}%>
         </ul>
-        <div class="ad" data-module="ad">
+        <a class="ad" data-module="ad">
             <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'>
-        </div>
+        </a>
     </textarea>
 </body>
 <script src='./js/basic.js'></script>
