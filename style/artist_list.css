@@ -1,10 +1,9 @@
 
 .artist_list {
-    padding-top: .31rem;
+    padding-top: .5rem;
 }
 
 .rec_title {
-    border-top: 1px solid #ccc;
     padding: 0 .2rem;
     box-sizing: border-box;
     margin-top: .19rem;
@@ -53,7 +52,6 @@
     width: 100%;
     padding: 0 0 0 .2rem;
     box-sizing: border-box;
-    /*overflow: hidden*/
 }
 
 ul.art_book {
@@ -62,22 +60,20 @@ ul.art_book {
     overflow: hidden;
 }
 
-ul.art_book li {
-    /*float: left;*/
-    position: relative;
+ul.art_book li {    position: relative;
     margin-right: .03rem;
     display: inline-block;
     width:28.58%;
     box-sizing: border-box;
-    /*padding-right:.03rem;*/
 }
 
 ul.art_book li a {
     display: block;
-    /*width: .84rem;*/
     width:100%;
     height: 0;
     padding-bottom: 100%;
+    background: url(../images/load.jpg) no-repeat center center;
+    background-size: 100%;
 }
 
 ul.art_book li a img {

@@ -336,7 +336,7 @@ $(function(){
                      var rate =imgBoxW / imgBoxH;
                      var ratio = imgW / imgH;
                      var sw, sh, sx, sy;
-                     console.log(imgBoxW);
+                     // console.log(imgBoxW);
                      // if (ratio > rate) {
                      //     sw = imgBoxW;
                      //     sh = imgBoxW/ratio;

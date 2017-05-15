@@ -485,6 +485,11 @@ body.panel-closing .page {
     padding-bottom: 100%;
     overflow:hidden;
     position: relative;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    background: url(../images/load.jpg) no-repeat center center;
+    background-size: 100%;
 }
 
 .pic_list li .pic img {

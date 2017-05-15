@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="style/art_list.css">
-    <link rel="stylesheet" type="text/css" href="style/basic.css">
+    <title>艺术品列表</title>
+    <link rel="stylesheet" type="text/css" href="../style/art_list.css">
+    <link rel="stylesheet" type="text/css" href="../style/basic.css">
     <meta name="Keywords" content="艺术品列表">
     <meta name="description" content="艺术品列表">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,9 +14,8 @@
     <meta property="qc:admins" content="2275617726564116375">
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
-    <meta name="viewport"
-          content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <style>
+    <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <style>
         .loading{
             width:100%;
             height:50px;
@@ -29,213 +28,92 @@
 </head>
 
 <body>
-<div class="wrap page page-current">
-    <div class="art_list_top" id="conTop" data-header="scroll">
-        <!-- 头部 -->
-            <div class="con_top">
-                <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
-                <div class="top_logo"></div>
-                <div class="search" id="search"></div>
+    <div class="wrap page page-current">
+        <div class="art_list_top"  id="conTop" data-header="scroll">
+            <#-- 头部 --> 
+            <#include "../component/nav.ftl"/>
+            <!-- 分类列表 -->
+            <div class="list_menu">
+                 <dl>
+                    <dt>类别</dt>
+                    <dd>
+                        <a href="javascript:;">原创艺术品</a>
+                        <a href="javascript:;">创意作品</a>
+                        <a href="javascript:;">限量版本</a> 
+                        <a href="javascript:;">创意作品</a>
+                        <a href="javascript:;">限量版本</a>
+                        <a href="javascript:;">衍生品</a> 
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>题材</dt>
+                    <dd>
+                        <a href="javascript:;">限量版本</a>
+                        <a href="javascript:;">衍生品</a>
+                        <a href="javascript:;">原创版画</a>
+                        <a href="javascript:;">原创版画</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>排序</dt>
+                    <dd>
+                        <a href="javascript:;">创意作品</a>
+                         <a href="javascript:;">原创艺术品</a>
+                          <a href="javascript:;">原创艺术品</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>筛选</dt>
+                    <dd>
+                        <a href="javascript:;">雕塑</a>
+                        <a href="javascript:;">原创艺术品</a>
+                    </dd>
+                </dl>
             </div>
-        <!-- 分类列表 -->
-        <div class="list_menu">
-            <dl>
-                <dt>类别</dt>
-                <dd>
-                    <a href="javascript:;">原创艺术品</a>
-                    <a href="javascript:;">创意作品</a>
-                    <a href="javascript:;">限量版本</a>
-                    <a href="javascript:;">创意作品</a>
-                    <a href="javascript:;">限量版本</a>
-                    <a href="javascript:;">衍生品</a>
-                </dd>
-            </dl>
-            <dl>
-                <dt>题材</dt>
-                <dd>
-                    <a href="javascript:;">限量版本</a>
-                    <a href="javascript:;">衍生品</a>
-                    <a href="javascript:;">原创版画</a>
-                    <a href="javascript:;">原创版画</a>
-                </dd>
-            </dl>
-            <dl>
-                <dt>排序</dt>
-                <dd>
-                    <a href="javascript:;">创意作品</a>
-                    <a href="javascript:;">原创艺术品</a>
-                    <a href="javascript:;">原创艺术品</a>
-                </dd>
-            </dl>
-            <dl>
-                <dt>筛选</dt>
-                <dd>
-
-                    <a href="javascript:;">雕塑</a>
-                    <a href="javascript:;">原创艺术品</a>
-
-                </dd>
-            </dl>
         </div>
-    </div>
-    <div class="art_list">
-        <!--php render-->
-        <div data-module="wrapper-ablum">
+        <div class="art_list"> 
+     <div data-module="wrapper-ablum">
             <ul class="pic_list">
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/load.jpg" lazyload='images/05.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥小春哥小春哥小春哥小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/load.jpg" lazyload='images/07.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/load.jpg" lazyload='images/08.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/load.jpg" lazyload='images/06.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
+                <#list obj.artworks as artwork>
+                    <li>
+                        <a href="${base}/artwork/detail?artworkId=${artwork.id}">
+                            <div class="pic">
+                                <img lazyload="http://www.artgogo.com${artwork.cover}">
+                                <div class="gradients"></div>
+                                <span>￥${artwork.price}</span>
+                            </div>
+                            <p class="pic_name">${artwork.title}</p>
+                            <p class="artist">${artwork.name}</p>
+                            <p class="pic_size"><span>${artwork.pinlei}</span>|<em><#if artwork.length?? && artwork.length!=0> ${artwork.width}*${artwork.height}*${artwork.length}cm<#else>${artwork.width}*${artwork.height}cm </#if></em>
+                            </p>
+                        </a>
+                    </li>
+                </#list>
             </ul>
-            <a class="ad" data-module="ad">
-                    <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'>
+            <#-- banner广告位 -->
+            <a href="${obj.indexContent.href!""}" class="ad">
+               <img lazyload="http://www.artgogo.com${obj.indexContent.photo}">
             </a>
-        </div>
-        <!--php render end-->
+         </div>
+            
         <div id="ablumDom">
-            <!--<ul class="pic_list">-->
-            <!--<li>-->
-            <!--<a href="javascript:;">-->
-            <!--<div class="pic">-->
-            <!--<img src="images/02.jpg">-->
-            <!--<div class="gradients"></div>-->
-            <!--<span>￥25000.00</span>-->
-            <!--</div>-->
-            <!--<p class="pic_name">外面的世界</p>-->
-            <!--<p class="artist">小春哥</p>-->
-            <!--<p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a href="javascript:;">-->
-            <!--<div class="pic">-->
-            <!--<img src="images/07.jpg" lazyload='images/06.jpg'>-->
-            <!--<div class="gradients"></div>-->
-            <!--<span>￥25000.00</span>-->
-            <!--</div>-->
-            <!--<p class="pic_name">外面的世界</p>-->
-            <!--<p class="artist">小春哥</p>-->
-            <!--<p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a href="javascript:;">-->
-            <!--<div class="pic">-->
-            <!--<img src="images/02.jpg">-->
-            <!--<div class="gradients"></div>-->
-            <!--<span>￥25000.00</span>-->
-            <!--</div>-->
-            <!--<p class="pic_name">外面的世界</p>-->
-            <!--<p class="artist">小春哥</p>-->
-            <!--<p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--<li>-->
-            <!--<a href="javascript:;">-->
-            <!--<div class="pic">-->
-            <!--<img src="images/01.jpg">-->
-            <!--<div class="gradients"></div>-->
-            <!--<span>￥25000.00</span>-->
-            <!--</div>-->
-            <!--<p class="pic_name">外面的世界</p>-->
-            <!--<p class="artist">小春哥</p>-->
-            <!--<p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>-->
-            <!--</a>-->
-            <!--</li>-->
-            <!--</ul>-->
+                                   
+            </div>    
+                <div class="loading">加载中...</div>
+          
         </div>
-        <div class="loading">加载中...</div>
     </div>
-</div>
-<!-- 侧边栏 -->
-<div class="panel-overlay"></div>
-<div class="panel left_sidebar panel-left" id="leftSidebar">
-    <dl>
-        <dt class="list_bck1">首页</dt>
-    </dl>
-    <dl>
-        <dt class="list_bck2">中国爱艺术</dt>
-    </dl>
-    <dl>
-        <dt class="list_bck3">万人展</dt>
-    </dl>
-    <dl class="select">
-        <dt class="list_bck4">发现艺术</dt>
-        <dd><a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a></dd>
-    </dl>
-    <dl class="select">
-        <dt class="list_bck5">艺术x品牌</dt>
-        <dd><a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a></dd>
-    </dl>
-    <dl class="select">
-        <dt class="list_bck6">艺术品</dt>
-        <dd><a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a></dd>
-    </dl>
-    <dl class="select">
-        <dt class="list_bck7">艺术家</dt>
-        <dd><a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a></dd>
-    </dl>
-    <dl>
-        <dt class="list_bck8">关于我们</dt>
-    </dl>
-    <dl class="noline">
-        <dt class="list_bck9">个人中心<span>2</span></dt>
-    </dl>
-</div>
-<!-- 侧边栏结束-->
-
+    <#-- 侧边栏 -->
+    <#include "../component/sidebar.ftl"/>
+    
     <textarea id="ablumTmpl" style="display: none;">
         <ul class="pic_list">
         <!-- $.each(this,function(k,v){ -->
-            <%for(var i=0,len=this.length;i<len;i++){%>
+            <%for(var i=0,len=this.length-1;i<len;i++){%>
             <li>
                 <a href="javascript:;">
                     <div class="pic">
-                        <img src="images/08.jpg" lazyload='http://www.artgogo.com<%this[i].cover%>'>
+                        <img lazyload='http://www.artgogo.com<%this[i].cover%>'>
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
@@ -247,12 +125,12 @@
             <%}%>
         </ul>
         <a class="ad" data-module="ad">
-            <img src="images/art_details_pic.jpg" lazyload='images/art_details_pic.jpg'>
+            <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'>
         </a>
     </textarea>
 </body>
-<script src='./js/basic.js'></script>
-<script src='./js/index.js'></script>
+<script src='../js/basic.js'></script>
+<script src='../js/index.js'></script>
 <script type="text/javascript">
     // 简单的节流函数
     function throttle(func, wait, mustRun) {
@@ -278,13 +156,15 @@
     function isSendAjax($el) {
         return $(window).height() + $(window).scrollTop() > $el.offset().top
     }
-    var curIndex = 0;
+    var curIndex = 1;
     var loaded=false;
     ;$(function () {
-
+        LazyLoad.Run({
+                            isImgCenter: true
+                        });
         function realFunc() {
             var $el;
-            var $wa = curIndex == 0 ? $('[data-module=wrapper-ablum]') : $('#ablumDom');
+            var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#ablumDom');
             if ($wa.last().attr('data-module')=='ad') {
                 $el=$wa.last();
             } else {
@@ -293,10 +173,10 @@
             if (isSendAjax($el)&&!loaded) {
                 curIndex++;
                 $.ajax({
-                    url: 'api/newwap/artwork/getArtworks',
+                    url: '/newwap/artwork/getArtworks',
                     data: {
                         index:curIndex,
-                        size: 4
+                        size: 5
                     },
                     success: function (res) {
                         var tempDom=document.createDocumentFragment();
@@ -309,6 +189,10 @@
                             loaded=true;
                             $('.loading').html('亲，只有这么多啦～');
                         }
+                    },
+                    error:function(){
+                         loaded=true;
+                         $('.loading').html('亲，只有这么多啦～');
                     }
                 });
             }
