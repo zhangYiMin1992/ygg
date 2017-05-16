@@ -20,9 +20,22 @@
 <body>
     <div class=" wrap page page-current">
         <!-- 头部 -->
-      
+        <div class="con_top" id="conTop" data-header="scroll">
+            <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
+            <div class="top_logo"> </div>
+            <div class="search" id="search"></div>
+        </div>
         <!-- 地址信息部分 -->
-       
+        <div class="city add_address">
+            <ul>
+                <li>所在地区:
+                    <input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="" placeholder="请选择" readonly="readonly">
+                </li>
+                <li>详细地址:
+                    <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="填写收货地址" > 
+                </li>  
+            </ul>
+        </div>
       <!-- 底部 -->
         <footer class="address">
             <a class="save_address">保存地址</a>

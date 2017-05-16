@@ -62,7 +62,8 @@
                 </div>
             </div>
             <a class="ad" data-module="ad">
-                <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'>
+                <!-- <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'> -->
+                <img src="images/08.jpg">
             </a>
             <div id="artistDom"></div>
         </div>
@@ -103,51 +104,44 @@
         </dl>
     </div>
     <!-- 侧边栏结束-->
-      <textarea style="display: none;" id="artistList">
-      <%$.each(this,function(k,v){%>
+      <textarea id="artistList"  style="display: none;">
+            <%for(var i=0,len=this.length;i<len;i++){%>
             <div class="artist_rec">
                 <div class="artists">
                     <div class="artist_box">
-                        <span class="artist_img"><img lazyload='http://www.artgogo.com<%v.photo%>'></span>
-                        <span class="artist_name"><%v.title%></span>
-                        <span class="zan"><%v.attention%>次赞</span>
+                        <span class="artist_img"><img lazyload='http://www.artgogo.com<%this[i].photo%>'></span>
+                        <span class="artist_name"><%this[i].Title%></span>
+                        <span class="zan"><%this[i].attention%>次赞</span>
                         <span class="line">|</span>
-                        <span class="num"><%v.artnums%>件作品</span>
+                        <span class="num"><%this[i].artnums%>件作品</span>
                     </div>
                 </div>
-                <div class="art_book_box" data-module='hscroll' id="art_book_box">
+                <div class="art_book_box" data-module='hscroll'>
+                 
                 </div>
             </div>
-      <%});%>
+      <%}%>
       </textarea>
-      <textarea style="display: none;" id="artistAblum">
-        <ul class="art_book"> 
-           <%$.each(this,function(k,v){%>
-               <li>
-                   <a href="${base}/artwork/detail?artworkId=<%v.id%>"><img lazyload="http://www.artgogo.com$<%v.cover%>"></a>
-               </li>
-           <%});%>
-       </ul>
-      </textarea> 
+      
 </body>
-<script src='./js/basic.js'></script>
-<script src='./js/index.js'></script>
+<script src='../js/basic.js'></script>
+<script src='../js/index.js'></script>
 <script type="text/javascript">
-// $(function(){
-//     $.ajax({
-//         type:'POST',
-//         url:'api/newwap/artist/getArtist',
-//         data:{
-//             index:1,
-//             size:4
-//         },
-//         success:function(res){
-//             var artistDom=document.createDocumentFragment();
-//             $.YGG.tmpl({dom: $(artistDom),v: $('#artistList').val(),datas:res});
-//             $('#artistList').get(0).appendChild(artistDom);
-//         }
-//     });
-// });
+$(function(){
+    $.YGG.ajax({
+        type:'get',
+        url:'/newwap/artist/getArtist',
+        data:{
+            index:1,
+            size:1
+        },
+        success:function(res){
+            var artistDom=document.createDocumentFragment();
+            $.YGG.tmpl({dom: $(artistDom), v: $('#artistList').val(), datas: res});
+            $('#artistList').get(0).appendChild(artistDom);
+             }
+    });
+});
 
 </script>
 </html>

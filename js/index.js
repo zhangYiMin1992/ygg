@@ -287,10 +287,14 @@ $(function(){
             }
         });
         $('.list_menu dd a').click(function(e){
-            $(this).addClass('on');
-        });
-
+            if($(this).attr('class')!='on'){
+              $(this).addClass('on');
+            }else{
+              $(this).removeClass('on');            
+            }
     });
+
+ });
     // 艺术家列表页滑动效果
  $(function(){
     $('body').on("touchstart","[data-module=hscroll] ul",function(t){

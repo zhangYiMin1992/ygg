@@ -582,7 +582,7 @@ body.panel-closing .page {
 }
 
 .line{
-    padding:0 0.03rem;
+    padding:0 0.02rem;
 }
 
 .artist_box {
@@ -1129,7 +1129,7 @@ footer.address a{
 /*订单部分*/
 .confrim_order{
     width:100%;
-    padding-top:.5rem;
+    padding:.5rem 0;
     
 }
 
@@ -1190,8 +1190,16 @@ footer.address a{
 .order_message h3 span{
     font-size:.14rem;
 }
+
+.order_message h3 .delete{
+    width: .25rem;
+    height: .25rem;
+    background: url(../images/pay.png) no-repeat;
+    background-size: .26rem 2.48rem;
+}
 /*收货信息部分*/
-.city{
+.add_address{
+    padding-top:.5rem;
 }
 
 .city ul{
@@ -1290,3 +1298,71 @@ footer.address a{
 .chose_no{
     background-position:0 -.935rem;   
 }
+
+/*购物车页面*/
+.buy_car_order_box{
+    padding:.23rem .17rem;
+}
+
+.chose_all{
+    width: 100%;
+    height: .42rem;
+    border-bottom:1px solid #ddd;
+    box-sizing: border-box;
+    padding:0 .17rem;
+    line-height: .42rem;
+}
+
+.chose_all a{
+    display: block;
+    float: left;
+    width: 50%;
+    height:.2rem;
+    padding-left:.32rem;
+    margin-top: .11rem;
+    line-height: .2rem;
+}
+
+.order.buy_car_order dt{
+    padding-bottom: 0;
+}
+
+.order.buy_car_order dd{
+    margin-bottom:.17rem;
+    float: left;
+    position: relative;
+}
+
+.order.buy_car_order dd:last-child{
+    margin-bottom:0;
+}
+
+.order.buy_car_order dd a,.buy_car_chose{
+    display: inline-block;
+}
+
+.order.buy_car_order dd h3{
+    height: .32rem;
+    line-height: .5rem;
+}
+
+.buy_car_chose a{
+    margin-bottom:.25rem;
+}
+
+.buy_car_chose .chose{
+    margin-right: .09rem;
+}
+
+dd .cancel{
+    width: .25rem;
+    height:.25rem;
+    background: url(../images/pay.png) no-repeat;
+    background-size: .26rem 2.48rem;
+    vertical-align: bottom;
+    background-position: 0.1rem -1.94rem;
+    position: absolute;
+    right:0;
+    bottom:0;
+}
+  

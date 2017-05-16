@@ -26,7 +26,7 @@
         </div>
         <div class="artist_works">
             <a href="javascript:;">
-                <img src="images/art_details_pic.jpg">
+                <img lazyload="images/08.jpg">
             </a>
         </div>
         <!-- 艺术家个人信息部分 -->
@@ -167,6 +167,9 @@ $(function(){
         }
       
     });
+      LazyLoad.Run({
+            isImgCenter: true
+                        });
 });
 </script>
 </html>

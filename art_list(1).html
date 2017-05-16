@@ -29,9 +29,11 @@
 
 <body>
     <div class="wrap page page-current">
-        <div class="art_list_top"  id="conTop" data-header="scroll">
-            <#-- 头部 --> 
-            <#include "../component/nav.ftl"/>
+        <div class="con_top" id="conTop" data-header="scroll">
+            <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
+            <div class="top_logo"> </div>
+            <div class="search" id="search"></div>
+        </div>
             <!-- 分类列表 -->
             <div class="list_menu">
                  <dl>
@@ -70,10 +72,10 @@
                     </dd>
                 </dl>
             </div>
-        </div>
-        <div class="art_list"> 
+        <!-- </div> -->
+        <!-- <div class="art_list">  -->
      <div data-module="wrapper-ablum">
-            <ul class="pic_list">
+            <!-- <ul class="pic_list">
                 <#list obj.artworks as artwork>
                     <li>
                         <a href="${base}/artwork/detail?artworkId=${artwork.id}">
@@ -91,8 +93,62 @@
                 </#list>
             </ul>
             <#-- banner广告位 -->
-            <a href="${obj.indexContent.href!""}" class="ad">
+            <!-- <a href="${obj.indexContent.href!""}" class="ad">
                <img lazyload="http://www.artgogo.com${obj.indexContent.photo}">
+            </a> --> 
+            <ul class="pic_list no_padding">
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/01.jpg"  lazyload='images/09.jpg'>
+                            <div class="gradients"></div>
+                            <span>￥25000.00</span>
+                        </div>
+                        <p class="pic_name">外面的世界</p>
+                        <p class="artist">小春哥</p>
+                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/03.jpg"   lazyload='images/10.jpg'>
+                            <div class="gradients"></div>
+                            <span>￥25000.00</span>
+                        </div>
+                        <p class="pic_name">外面的世界</p>
+                        <p class="artist">小春哥</p>
+                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/02.jpg"  lazyload='images/08.jpg'>
+                            <div class="gradients"></div>
+                            <span>￥25000.00</span>
+                        </div>
+                        <p class="pic_name">外面的世界</p>
+                        <p class="artist">小春哥</p>
+                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="pic">
+                            <img src="images/02.jpg"  lazyload='images/07.jpg'>
+                            <div class="gradients"></div>
+                            <span>￥25000.00</span>
+                        </div>
+                        <p class="pic_name">外面的世界</p>
+                        <p class="artist">小春哥</p>
+                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                    </a>
+                </li>
+            </ul>
+            <a class="ad" data-module="ad">
+                <!-- <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'> -->
+                <img src="images/08.jpg">
             </a>
          </div>
             
@@ -103,8 +159,8 @@
           
         </div>
     </div>
-    <#-- 侧边栏 -->
-    <#include "../component/sidebar.ftl"/>
+ <!--    <#-- 侧边栏 -->
+    <!-- <#include "../component/sidebar.ftl"/> --> 
     
     <textarea id="ablumTmpl" style="display: none;">
         <ul class="pic_list">
@@ -173,7 +229,7 @@
             if (isSendAjax($el)&&!loaded) {
                 curIndex++;
                 $.ajax({
-                    url: '/newwap/artwork/getArtworks',
+                    url: 'api/newwap/artwork/getArtworks',
                     data: {
                         index:curIndex,
                         size: 5
