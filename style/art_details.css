@@ -1,7 +1,7 @@
 
 .details_pic{
     padding-top:0.5rem;
-    position: relative;
+    
 }
 
 .art_details .art_pic {
@@ -10,6 +10,7 @@
     height: 0;
     padding-bottom: 96.8%;
     overflow: hidden;
+    position: relative;
 }
 
 .art_details .art_pic img {

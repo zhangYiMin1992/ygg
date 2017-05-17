@@ -411,7 +411,7 @@
            "GET /newwap/artist/getArtist ":{
                     "request":{
                         "index":1,
-                        "size":1
+                        "size":5
                     },
                     "response":[{
                         
@@ -434,7 +434,7 @@
                            "IsPhotoNews" :0,
                            "first_word" :"g",
                            "adver" :"",
-                           "Photo" :"/images/2015/1/13/20151131421132147615_259.jpg",
+                           "Photo" :"/yishupin/images/2017/5/4/2017541493896801720_376_a.jpg",
                            "url" :null,
                            "Summary" :"2013年毕业于成都美术学院油画系,现工作生活于北京\r\n\r\n创作思路\r\n   我的作品没有明确的目标，也没有明确的主题，因为我要做的是从感观与理性上的冲突及对立，从宗教及人文自然环境，我试图用粗糙和厚重的笔触表达这些环境而使观者产生微妙的心理景象，它看似对立而又显的统一，试图让它能对所有一切景象产生怀疑，表现心理与空间的错位，人们迷恋其中而现实中又无法\r\n深入.\r\n                                              展览                                            \r\n\r\n2015 \u201cGo！Young！青年新锐艺术家邀请展\u201d   上海张江当代艺术馆   上海\r\n\r\n2014 亚洲青年艺术家提名展 798艺术工厂+宋洋美术馆  北京                                                                            \r\n2014  首届交通银行\u201c艺术之星\u201d青年美术作品展   中国武汉\r\n    \r\n2014  额滴神呐/群展     ACTION空间   中国北京\r\n   \r\n2013  你的世界第二届当代艺术WEIDO大展  宋庄美术馆  中国北京\r\n\r\n2013  大学生艺术博览会 广州琶洲南丰国际会展中心   广州\r\n\r\n2013   一年行为表演《向谢德庆致敬》  UCCA当代艺术中心 北京\r\n \r\n2013 \u201c独立的品格-2013\u2019潜质艺术家年度提名展\u201d大河湾美术馆   北京\r\n\r\n2013  我们说要有空间于是就有了空间  中国北京\r\n\r\n2013  川音成都美术学院油画系毕业展\u201c自由发挥\u201d获优秀毕业生作品奖及俸正杰奖学金    中国成都\r\n\r\n2012 \u201c二子乘舟\u201d\u2014北村独立工场SOLO第七季展re\u2014C（廊桥） 廊桥美术馆 中国成都",
                            "Active" :1,
@@ -446,7 +446,28 @@
                            "birthday" :"1989年",
                            "GlobalID" :1017844,
                            "Keyword" :"",
-                           "artworks" :null,
+                           "artworks" :[{
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                                {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            }
+
+                           ],
                            "exhibitors" :"",
                            "data" :"",
                            "collection" :"",
@@ -499,7 +520,7 @@
                            "IsPhotoNews" :0,
                            "first_word" :"g",
                            "adver" :"",
-                           "Photo" :"/images/2015/1/13/20151131421132147615_259.jpg",
+                           "Photo" :"/yishupin/images/2017/5/4/2017541493896801720_376_a.jpg",
                            "url" :null,
                            "Summary" :"2013年毕业于成都美术学院油画系,现工作生活于北京\r\n\r\n创作思路\r\n   我的作品没有明确的目标，也没有明确的主题，因为我要做的是从感观与理性上的冲突及对立，从宗教及人文自然环境，我试图用粗糙和厚重的笔触表达这些环境而使观者产生微妙的心理景象，它看似对立而又显的统一，试图让它能对所有一切景象产生怀疑，表现心理与空间的错位，人们迷恋其中而现实中又无法\r\n深入.\r\n                                              展览                                            \r\n\r\n2015 \u201cGo！Young！青年新锐艺术家邀请展\u201d   上海张江当代艺术馆   上海\r\n\r\n2014 亚洲青年艺术家提名展 798艺术工厂+宋洋美术馆  北京                                                                            \r\n2014  首届交通银行\u201c艺术之星\u201d青年美术作品展   中国武汉\r\n    \r\n2014  额滴神呐/群展     ACTION空间   中国北京\r\n   \r\n2013  你的世界第二届当代艺术WEIDO大展  宋庄美术馆  中国北京\r\n\r\n2013  大学生艺术博览会 广州琶洲南丰国际会展中心   广州\r\n\r\n2013   一年行为表演《向谢德庆致敬》  UCCA当代艺术中心 北京\r\n \r\n2013 \u201c独立的品格-2013\u2019潜质艺术家年度提名展\u201d大河湾美术馆   北京\r\n\r\n2013  我们说要有空间于是就有了空间  中国北京\r\n\r\n2013  川音成都美术学院油画系毕业展\u201c自由发挥\u201d获优秀毕业生作品奖及俸正杰奖学金    中国成都\r\n\r\n2012 \u201c二子乘舟\u201d\u2014北村独立工场SOLO第七季展re\u2014C（廊桥） 廊桥美术馆 中国成都",
                            "Active" :1,
@@ -511,7 +532,28 @@
                            "birthday" :"1989年",
                            "GlobalID" :1017844,
                            "Keyword" :"",
-                           "artworks" :null,
+                           "artworks" :[{
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                                {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            }
+
+                           ],
                            "exhibitors" :"",
                            "data" :"",
                            "collection" :"",
@@ -562,7 +604,7 @@
                            "IsPhotoNews" :0,
                            "first_word" :"g",
                            "adver" :"",
-                           "Photo" :"/images/2015/1/13/20151131421132147615_259.jpg",
+                           "Photo" :"/yishupin/images/2017/5/4/2017541493896801720_376_a.jpg",
                            "url" :null,
                            "Summary" :"2013年毕业于成都美术学院油画系,现工作生活于北京\r\n\r\n创作思路\r\n   我的作品没有明确的目标，也没有明确的主题，因为我要做的是从感观与理性上的冲突及对立，从宗教及人文自然环境，我试图用粗糙和厚重的笔触表达这些环境而使观者产生微妙的心理景象，它看似对立而又显的统一，试图让它能对所有一切景象产生怀疑，表现心理与空间的错位，人们迷恋其中而现实中又无法\r\n深入.\r\n                                              展览                                            \r\n\r\n2015 \u201cGo！Young！青年新锐艺术家邀请展\u201d   上海张江当代艺术馆   上海\r\n\r\n2014 亚洲青年艺术家提名展 798艺术工厂+宋洋美术馆  北京                                                                            \r\n2014  首届交通银行\u201c艺术之星\u201d青年美术作品展   中国武汉\r\n    \r\n2014  额滴神呐/群展     ACTION空间   中国北京\r\n   \r\n2013  你的世界第二届当代艺术WEIDO大展  宋庄美术馆  中国北京\r\n\r\n2013  大学生艺术博览会 广州琶洲南丰国际会展中心   广州\r\n\r\n2013   一年行为表演《向谢德庆致敬》  UCCA当代艺术中心 北京\r\n \r\n2013 \u201c独立的品格-2013\u2019潜质艺术家年度提名展\u201d大河湾美术馆   北京\r\n\r\n2013  我们说要有空间于是就有了空间  中国北京\r\n\r\n2013  川音成都美术学院油画系毕业展\u201c自由发挥\u201d获优秀毕业生作品奖及俸正杰奖学金    中国成都\r\n\r\n2012 \u201c二子乘舟\u201d\u2014北村独立工场SOLO第七季展re\u2014C（廊桥） 廊桥美术馆 中国成都",
                            "Active" :1,
@@ -574,7 +616,28 @@
                            "birthday" :"1989年",
                            "GlobalID" :1017844,
                            "Keyword" :"",
-                           "artworks" :null,
+                          "artworks" :[{
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                                {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            }
+
+                           ],
                            "exhibitors" :"",
                            "data" :"",
                            "collection" :"",
@@ -625,7 +688,7 @@
                            "IsPhotoNews" :0,
                            "first_word" :"g",
                            "adver" :"",
-                           "Photo" :"/images/2015/1/13/20151131421132147615_259.jpg",
+                           "Photo" :"/yishupin/images/2017/5/4/2017541493896801720_376_a.jpg",
                            "url" :null,
                            "Summary" :"2013年毕业于成都美术学院油画系,现工作生活于北京\r\n\r\n创作思路\r\n   我的作品没有明确的目标，也没有明确的主题，因为我要做的是从感观与理性上的冲突及对立，从宗教及人文自然环境，我试图用粗糙和厚重的笔触表达这些环境而使观者产生微妙的心理景象，它看似对立而又显的统一，试图让它能对所有一切景象产生怀疑，表现心理与空间的错位，人们迷恋其中而现实中又无法\r\n深入.\r\n                                              展览                                            \r\n\r\n2015 \u201cGo！Young！青年新锐艺术家邀请展\u201d   上海张江当代艺术馆   上海\r\n\r\n2014 亚洲青年艺术家提名展 798艺术工厂+宋洋美术馆  北京                                                                            \r\n2014  首届交通银行\u201c艺术之星\u201d青年美术作品展   中国武汉\r\n    \r\n2014  额滴神呐/群展     ACTION空间   中国北京\r\n   \r\n2013  你的世界第二届当代艺术WEIDO大展  宋庄美术馆  中国北京\r\n\r\n2013  大学生艺术博览会 广州琶洲南丰国际会展中心   广州\r\n\r\n2013   一年行为表演《向谢德庆致敬》  UCCA当代艺术中心 北京\r\n \r\n2013 \u201c独立的品格-2013\u2019潜质艺术家年度提名展\u201d大河湾美术馆   北京\r\n\r\n2013  我们说要有空间于是就有了空间  中国北京\r\n\r\n2013  川音成都美术学院油画系毕业展\u201c自由发挥\u201d获优秀毕业生作品奖及俸正杰奖学金    中国成都\r\n\r\n2012 \u201c二子乘舟\u201d\u2014北村独立工场SOLO第七季展re\u2014C（廊桥） 廊桥美术馆 中国成都",
                            "Active" :1,
@@ -637,7 +700,36 @@
                            "birthday" :"1989年",
                            "GlobalID" :1017844,
                            "Keyword" :"",
-                           "artworks" :null,
+                           "artworks" :[{
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                                {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            },
+                            {
+                                "id":161532,
+                                "cover":"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg"
+                            }
+
+                           ],
                            "exhibitors" :"",
                            "data" :"",
                            "collection" :"",
@@ -666,9 +758,10 @@
                            "Random" :467,
                            "PublishDate" :1383616174,
                            "cj_num" :0
+                       }
                      ]     
 
-           }
+           },
            //相关推荐艺术品
            // "POST /artwork/getArtistArtworks ":{
            //          "request":{
@@ -687,6 +780,146 @@
            //              "price":"2800"
            //          }
            // }
+           //艺术家广告处
+            "GET /newwap/index_content/getContent ":{
+                    "request":{
+                        "index":"1",
+                        "size":"4"
+                    },
+                    "response":[{
+
+                           "date" :null,
+                           "PublishDate" :1387163825,
+                           "Category" :14463,
+                           "User" :20,
+                           "gid" :0,
+                           "DocFrom" :"",
+                           "ChannelCode" :"3625_14460_14463_",
+                           "OrderNumber" :100,
+                           "Photo" :"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg",
+                           "ModifiedDate" :1404125874,
+                           "CreateDate" :1404125874,
+                           "GlobalID" :1050455,
+                           "Random" :196,
+                           "TotalPage" :1,
+                           "id" :1,
+                           "SubTitle" :"",
+                           "Status" :0,
+                           "IsPhotoNews" :0,
+                           "Keyword" :"",
+                           "subjectTitle" :null,
+                           "Href" :"",
+                           "Title" :"HIHEY.COM推出\"裸拍\"专场",
+                           "Weight" :0,
+                           "Active" :0,
+                           "Content" :"",
+                           "GenerateFileDate" :0,
+                           "Summary" :"",
+                           "Tag" :"",
+                           "subjectDate" :null
+                       
+                    },
+                    {
+
+                           "date" :null,
+                           "PublishDate" :1387163825,
+                           "Category" :14463,
+                           "User" :20,
+                           "gid" :0,
+                           "DocFrom" :"",
+                           "ChannelCode" :"3625_14460_14463_",
+                           "OrderNumber" :100,
+                           "Photo" :"/yishupin/images/2017/4/18/20174181492511449224_376_a.jpg",
+                           "ModifiedDate" :1404125874,
+                           "CreateDate" :1404125874,
+                           "GlobalID" :1050455,
+                           "Random" :196,
+                           "TotalPage" :1,
+                           "id" :1,
+                           "SubTitle" :"",
+                           "Status" :0,
+                           "IsPhotoNews" :0,
+                           "Keyword" :"",
+                           "subjectTitle" :null,
+                           "Href" :"",
+                           "Title" :"HIHEY.COM推出\"裸拍\"专场",
+                           "Weight" :0,
+                           "Active" :0,
+                           "Content" :"",
+                           "GenerateFileDate" :0,
+                           "Summary" :"",
+                           "Tag" :"",
+                           "subjectDate" :null
+                       
+                    },
+                    {
+
+                           "date" :null,
+                           "PublishDate" :1387163825,
+                           "Category" :14463,
+                           "User" :20,
+                           "gid" :0,
+                           "DocFrom" :"",
+                           "ChannelCode" :"3625_14460_14463_",
+                           "OrderNumber" :100,
+                           "Photo" :"/yishupin/images/2017/4/14/1492166355ratogyhs4_a.jpg",
+                           "ModifiedDate" :1404125874,
+                           "CreateDate" :1404125874,
+                           "GlobalID" :1050455,
+                           "Random" :196,
+                           "TotalPage" :1,
+                           "id" :1,
+                           "SubTitle" :"",
+                           "Status" :0,
+                           "IsPhotoNews" :0,
+                           "Keyword" :"",
+                           "subjectTitle" :null,
+                           "Href" :"",
+                           "Title" :"HIHEY.COM推出\"裸拍\"专场",
+                           "Weight" :0,
+                           "Active" :0,
+                           "Content" :"",
+                           "GenerateFileDate" :0,
+                           "Summary" :"",
+                           "Tag" :"",
+                           "subjectDate" :null
+                       
+                    },
+                    {
+
+                           "date" :null,
+                           "PublishDate" :1387163825,
+                           "Category" :14463,
+                           "User" :20,
+                           "gid" :0,
+                           "DocFrom" :"",
+                           "ChannelCode" :"3625_14460_14463_",
+                           "OrderNumber" :100,
+                           "Photo" :"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg",
+                           "ModifiedDate" :1404125874,
+                           "CreateDate" :1404125874,
+                           "GlobalID" :1050455,
+                           "Random" :196,
+                           "TotalPage" :1,
+                           "id" :1,
+                           "SubTitle" :"",
+                           "Status" :0,
+                           "IsPhotoNews" :0,
+                           "Keyword" :"",
+                           "subjectTitle" :null,
+                           "Href" :"",
+                           "Title" :"HIHEY.COM推出\"裸拍\"专场",
+                           "Weight" :0,
+                           "Active" :0,
+                           "Content" :"",
+                           "GenerateFileDate" :0,
+                           "Summary" :"",
+                           "Tag" :"",
+                           "subjectDate" :null
+                       
+                    }
+                ]
+            }
 
     }
 }

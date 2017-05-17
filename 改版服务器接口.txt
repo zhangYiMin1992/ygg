@@ -171,14 +171,6 @@
         String banner_pic 封面图
         double tipAmount 打赏金额
 
-   <!-- <textarea style="display: none;">
-                      <ul class="art_book"> 
-                         <%$.each(v.artworks,function(index,value){%>
-                             <li>
-                                 <a href="newwap/artwork/detail?artworkId=<%value.id%>"><img lazyload="http://www.artgogo.com<%value.cover%>"></a>
-                             </li>
-                         <%});%>
-                     </ul>
-                    </textarea>  -->
+
 
    

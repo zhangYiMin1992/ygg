@@ -165,7 +165,7 @@
     <textarea id="ablumTmpl" style="display: none;">
         <ul class="pic_list">
         <!-- $.each(this,function(k,v){ -->
-            <%for(var i=0,len=this.length;i<len;i++){%>
+            <%for(var i=0,len=this.length-1;i<len;i++){%>
             <li>
                 <a href="javascript:;">
                     <div class="pic">
@@ -180,9 +180,9 @@
             </li>
             <%}%>
         </ul>
-        <!-- <a class="ad" data-module="ad">
-            <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'>
-        </a> -->
+        <a href="${obj.indexContent.href!""}" class="ad">
+               <img lazyload="http://www.artgogo.com${obj.indexContent.photo}">
+        </a>
     </textarea>
 </body>
 <script src='../js/basic.js'></script>
@@ -213,7 +213,6 @@
         return $(window).height() + $(window).scrollTop() > $el.offset().top
     }
     var curIndex = 1;
-    var adIndex = 1;
     var loaded=false;
     ;$(function () {
         LazyLoad.Run({
@@ -229,34 +228,20 @@
             }
             if (isSendAjax($el)&&!loaded) {
                 curIndex++;
-                adIndex++;
                 $.ajax({
                     url: 'api/newwap/artwork/getArtworks',
                     data: {
                         index:curIndex,
-                        size: 4
+                        size: 5
                     },
                     success: function (res) {
                         var tempDom=document.createDocumentFragment();
                         $.YGG.tmpl({dom: $(tempDom), v: $('#ablumTmpl').val(), datas: res});
                         $('#ablumDom').get(0).appendChild(tempDom);
-                          adIndex++;
-                        // console.log($('#artistList'));
-                         $.ajax({
-                                type:'get',
-                                url: 'api/newwap/index_content/getContent',
-                                data: {
-                                    index:adIndex,
-                                    size:1
-                                },
-                                success:function(res){
-                                    var html='<a class="ad" data-module="ad"><img lazyload="http://www.artgogo.com'+res.Photo+'"></a>';
-                                    $('#ablumDom').append(html);   
-                                }
-                         });
                         LazyLoad.Run({
                             isImgCenter: true
                         });
+                        
                         if(!res || (res && res.length==0)){
                             loaded=true;
                             $('.loading').html('亲，只有这么多啦～');
