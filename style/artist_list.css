@@ -60,7 +60,7 @@ ul.art_book {
     overflow: hidden;
 }
 
-ul.art_book li {    position: relative;
+ul.art_book li {   
     margin-right: .03rem;
     display: inline-block;
     width:28.58%;
@@ -74,6 +74,8 @@ ul.art_book li a {
     padding-bottom: 100%;
     background: url(../images/load.jpg) no-repeat center center;
     background-size: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 ul.art_book li a img {
