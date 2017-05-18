@@ -385,3 +385,7 @@ $(function(){
          _self.bind = true
      }
  };
+
+ // $(function(){
+ //    $('.nav-tab-top ul li').
+ // });

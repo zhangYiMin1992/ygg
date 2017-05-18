@@ -582,7 +582,7 @@ body.panel-closing .page {
 }
 
 .line{
-    padding:0 0.02rem;
+    padding:0 0.03rem;
 }
 
 .artist_box {
@@ -1150,13 +1150,16 @@ footer.address a{
 }
 
 .order dt{
-    padding-bottom:.14rem;
+    padding-bottom:.1rem;
 }
 
-.order dd{
-
+.order dt,.order_message h1,.order_message h2,.order_message .pic_type{
+    transform: scale(0.88);
+    transform-origin: top left;
 }
-
+dt dd{
+    font-size: 0;
+}
 .order dd a{
     display: block;
 }
@@ -1179,6 +1182,7 @@ footer.address a{
     float:left;
     line-height: .18rem;
     width: 70%;
+    height:.7rem;
 }
 
 .order dt,.order_message h1,.order_message h2,.order_message h3,.order_message .pic_type{
@@ -1216,27 +1220,21 @@ footer.address a{
 .city li input{
     padding:.14rem .1rem .12rem 0rem;
     width:65%;
-    color:#7f7f7f;
+    color:#545454;
+    font-size:.12rem;
+    transform: scale(0.88);
+    transform-origin: left;
 }
 
 .city li input::-webkit-input-placeholder{ 
-    font-size:.12rem;
-    transform: scale(0.88);
-    transform-origin: left;
     color:#bbb;
 }
 
-.city li input::-moz-input-placeholder{ 
-    font-size:.12rem;
-    transform: scale(0.88);
-    transform-origin: left;
+.city li input::-moz-input-placeholder{   
     color:#bbb;
 }
 
 .city li input::-ms-input-placeholder{ 
-    font-size:.12rem;
-    transform: scale(0.88);
-    transform-origin: left;
     color:#bbb;
 }
 
@@ -1301,9 +1299,6 @@ footer.address a{
 }
 
 /*购物车页面*/
-.buy_car_order_box{
-    padding:.23rem .17rem;
-}
 
 .chose_all{
     width: 100%;
@@ -1324,46 +1319,155 @@ footer.address a{
     line-height: .2rem;
 }
 
-.order.buy_car_order dt{
-    padding-bottom: 0;
+.chose_all p{
+    float: right;
 }
 
-.order.buy_car_order dd{
-    margin-bottom:.17rem;
+.chose_all p span{
+    padding:0 .02rem;
+}
+
+.buy_car_order_box{
+    padding:.23rem .17rem 0;
+}
+
+.buy_car_list li{
+    margin-bottom:.27rem;
+}
+
+.buy_car_list li .order{
+    width: 87.94%;
+}
+
+.buy_car_list li .buy_car_chose,.buy_car_list li .order{
     float: left;
-    position: relative;
-}
-
-.order.buy_car_order dd:last-child{
-    margin-bottom:0;
-}
-
-.order.buy_car_order dd a,.buy_car_chose{
-    display: inline-block;
-}
-
-.order.buy_car_order dd h3{
-    height: .32rem;
-    line-height: .5rem;
-}
-
-.buy_car_chose a{
-    margin-bottom:.25rem;
 }
 
 .buy_car_chose .chose{
-    margin-right: .09rem;
+    margin-top: .5rem;
+    margin-right: .16rem;
 }
 
-dd .cancel{
-    width: .25rem;
-    height:.25rem;
-    background: url(../images/pay.png) no-repeat;
-    background-size: .26rem 2.48rem;
-    vertical-align: bottom;
-    background-position: 0.1rem -1.94rem;
+.buy_car_list dd .order_pic{
+    width: 27.44%;
+    padding-bottom: 27.44%;
+}
+
+.buy_car_list dd .order_message{
+    width: 67%;
+}
+/*后台订单页面*/
+.order_page{
+    padding-top:.5rem;           
+}
+
+.nav-tab-top{
+    width: 100%;
+    height:.42rem;
+    border-bottom:1px solid #ddd;
+    box-sizing: border-box;
+    padding-left:.14rem;
+    line-height: .42rem;
+    margin-bottom: .05rem;
+}
+
+.nav-tab-top li{
+    float: left;
+    margin-right:.1rem;
+    color:#555555;
+    padding: 0 .07rem;
+    position: relative;
+}
+
+.nav-tab-top li.cur{
+    color: #191919;
+    border-bottom: 0.025rem solid #fbc400;
+    line-height: .34rem;
+    padding-top: .04rem;
+}
+
+.order_list .order dt, .order_list .order dd{
+    float: left;
+}
+
+.order_list .order dt{
+    padding-bottom: .14rem;
+}
+
+.order_list .order dd{
+    margin-bottom:.23rem;
+    position: relative;
+}
+
+.order_list ul li{
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 0 .18rem;
+}
+
+.order_mes{
+    height: .49rem;
+    line-height: .49rem;
+}
+
+.order_num{
+    float: left;
+}
+
+.state{
+    float: right;
+}
+
+.state.non_payment a{
+    padding:.06rem .17rem;
+    border:1px solid #605957;
+    border-radius: 0.02rem;
+}
+
+/*订单详情页面*/
+
+.order_list_pt{
+    padding-top:.55rem;
+}
+
+.refund{
     position: absolute;
-    right:0;
     bottom:0;
+    right:0;
+    color:#999;
+}
+
+.refund_btn{
+    padding:.03rem .07rem;
+    border:1px solid #999;
+    border-radius: 0.02rem;
+}
+
+.pay_method span{
+    padding-left: .35rem;
 }
   
+.weixin.pay_method:before, .bank.pay_method:before {
+    left:.2rem;
+}
+
+.no_order{
+    text-align: center;
+}
+
+.no_order_img{
+    width:39.84%;
+    height: 0;
+    padding-bottom: 39.84%;
+    margin:0.475rem auto 0.28rem;
+}
+
+.no_order_img img{
+    width: 100%;
+    height:auto;
+
+}
+
+.no_order p{
+    color:#666;
+}

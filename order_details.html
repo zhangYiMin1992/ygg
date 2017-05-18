@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style/basic.css">
-    <meta name="Keywords" content="购物车页面">
-    <meta name="description" content="购物车页面">
+     <link rel="stylesheet" type="text/css" href="style/index.css">
+    <meta name="Keywords" content="订单详情页面">
+    <meta name="description" content="订单详情页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
@@ -17,7 +18,7 @@
 </head>
 
 <body>
-    <div class="wrap page page-current">
+    <div class=" wrap page page-current">
         <!-- 头部 -->
         <div class="con_top" id="conTop" data-header="scroll">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
@@ -25,20 +26,14 @@
             <div class="search" id="search"></div>
         </div>
         <!-- 内容部分 -->
-        
-        <div class="confrim_order">
-        <div class="chose_all">
-            <a class="chose">全选</a> 
-            <p>已选<span class="pic_number">2</span>件</p>      
-        </div>
-        <!-- 订单信息 -->
-            <div class="buy_car_order_box order_box">
-                <ul class="buy_car_list">
-                    <li class="clearfix">
-                        <div class="buy_car_chose">
-                             <a class="chose"></a>  
-                         </div>
-                        <dl class="order">
+         <div class="order_list order_list_pt">
+                <ul>
+                     <li>
+                        <div class="order_mes clearfix">
+                            <div class="order_num">订单号：<span>00000000000000</span> ></div>
+                            <div class="state"><a>待收货</a></div>
+                        </div>
+                        <dl class="order clearfix">
                             <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
                             <dd>
                                 <a href="javascript:;" class="clearfix">
@@ -49,60 +44,65 @@
                                         <h2>原创艺术品</h2>
                                         <h3>￥<span>25000.00</span>元</h3>
                                     </div>
+                                    <div class="refund refund_btn">退款</div>
                                 </a>
                             </dd>
                         </dl> 
+                        <dl class="order clearfix">
+                            <dt>卖家：<a href="javascript:;" class="shop">小卖部</a></dt>
+                            <dd>
+                                <a href="javascript:;" class="clearfix">
+                                    <div class="order_pic"><img src="images/01.jpg"></div>
+                                    <div class="order_message">
+                                        <h1>外面的世界</h1>
+                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                        <h2>原创艺术品</h2>
+                                        <h3>￥<span>25000.00</span>元</h3>
+                                    </div>
+                                    <div class="refund">已退款</div>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" class="clearfix">
+                                    <div class="order_pic"><img src="images/01.jpg"></div>
+                                    <div class="order_message">
+                                        <h1>外面的世界</h1>
+                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                        <h2>原创艺术品</h2>
+                                        <h3>￥<span>25000.00</span>元</h3>
+                                    </div>
+                                    <div class="refund">已退款</div>
+                                </a>
+                            </dd>
+                        </dl>        
                     </li>
-                    <li class="clearfix">
-                        <div class="buy_car_chose">
-                             <a class="chose"></a>  
-                         </div>
-                        <dl class="order">
-                            <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
-                            <dd>
-                                <a href="javascript:;" class="clearfix">
-                                    <div class="order_pic"><img src="images/01.jpg"></div>
-                                    <div class="order_message">
-                                        <h1>外面的世界</h1>
-                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                        <h2>原创艺术品</h2>
-                                        <h3>￥<span>25000.00</span>元</h3>
-                                    </div>
-                                </a>
-                            </dd>
-                        </dl> 
-                    </li>              
                 </ul>
             </div>
             <!-- 个人信息部分 -->
             <div class="city">
                 <ul>
+                    <li>下单时间:
+                        <input class="receive_time" id="receiveTime" type="text" value="2017/5/12" readonly="readonly">
+                    </li>
                     <li>姓&nbsp;&nbsp;&nbsp;&nbsp;名:
-                        <input class="receive_contact" id="receiveContact" type="text" value="" placeholder="请填写收货人姓名">
+                        <input class="receive_contact" id="receiveContact" type="text" readonly="readonly">
                     </li>
                     <li>联系方式:
-                        <input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="" placeholder="手机号码">
+                        <input class="receive_cellPhone" id="receiveCellPhone" type="tel" readonly="readonly">
                     </li>
                     <li>联系地址:
-                        <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" readonly="readonly">  
-                        <span class="add">+</span>
+                        <input class="distSelect_event"  id="distSelectEvent" type="text" readonly="readonly">
                     </li>   
                     <li>备&nbsp;&nbsp;&nbsp;&nbsp;注:
-                        <input class="receive_message"  id="receiveMessage" type="text" value="" placeholder="选填" >  
+                        <input class="receive_message"  id="receiveMessage" type="text"  readonly="readonly" >  
                     </li> 
-                    <li>选择支付方式:
+                    <li>支付方式:
                         <input readonly="readonly">
                     </li>  
                 </ul>
-                <a class="weixin"><div class="chose"></div><span>微信钱包</span></a>
-                <a class="bank"><div class="chose_no"></div><span>中国银联</span></a>
+                <a class="weixin pay_method"><span>微信钱包</span></a>
             </div>
         </div>
-        
-        <footer class="buy_car">
-            <div class="count">￥<span>25000.00</span>元</div>
-            <a><em></em><span  class="purchase">立即购买</span></a>
-        </footer>
     </div>
 
 

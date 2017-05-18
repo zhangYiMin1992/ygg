@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style/basic.css">
+     <link rel="stylesheet" type="text/css" href="style/index.css">
+    <meta name="Keywords" content="订单详情页面">
+    <meta name="description" content="订单详情页面">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta property="qc:admins" content="2275617726564116375">
+    <meta http-equiv="Cache-Control" content="no-transform ">
+    <meta name="applicable-device" content="mobile">
+    <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+</head>
+
+<body>
+    <div class=" wrap page page-current">
+        <!-- 头部 -->
+        <div class="con_top" id="conTop" data-header="scroll">
+            <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
+            <div class="top_logo"> </div>
+            <div class="search" id="search"></div>
+        </div>
+        <!-- 内容部分 -->
+        <div class="order_page">
+         <!-- 订单列表 -->
+            <div class="nav-tab-top">
+                <ul class="clearfix"> 
+                    <li class="cur" data-code="all">全部</li>
+                    <li data-code="waitPay" >待付款</li>
+                    <li data-code="waitSend" >待收货</li>
+                    <li data-code="waitConfirm">已完成</li>
+                    <li data-code="waitRate" >退款/售后 </li> 
+                </ul> 
+            </div>
+            <div class="no_order">
+                <div class="no_order_img"><img src="images/no_order.png"></div>
+                <p>您还没有相关订单</p>
+            </div>
+        </div>
+
+
+    <!-- 侧边栏 -->
+    <div class="panel-overlay"></div>
+    <div class="panel left_sidebar panel-left" id="leftSidebar">
+        <dl>
+            <dt class="list_bck1">首页</dt>
+        </dl>
+        <dl>
+            <dt class="list_bck2">中国爱艺术</dt>
+        </dl>
+        <dl>
+            <dt class="list_bck3">万人展</dt>
+        </dl>
+        <dl class="select">
+            <dt class="list_bck4">发现艺术</dt>
+            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
+        </dl>
+        <dl class="select">
+            <dt class="list_bck5">艺术x品牌</dt>
+            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
+        </dl>
+        <dl class="select">
+            <dt class="list_bck6">艺术品</dt>
+            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
+        </dl>
+        <dl class="select">
+            <dt class="list_bck7">艺术家</dt>
+            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
+        </dl>
+        <dl>
+            <dt class="list_bck8">关于我们</dt>
+        </dl>
+        <dl class="noline">
+            <dt class="list_bck9">个人中心<span>2</span></dt>
+        </dl>
+    </div>
+    <!-- 侧边栏结束-->
+</body>
+<script src='./js/basic.js'></script>
+<script src='./js/index.js'></script>
+
+</html>
