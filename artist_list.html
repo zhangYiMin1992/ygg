@@ -164,6 +164,7 @@
                 <img src="images/08.jpg">
             </a>
             <div id="artistCon"></div>
+            <div class="loading">加载中...</div>
         </div>
     </div>
     <!-- 侧边栏 -->
@@ -229,6 +230,7 @@
 </body>
 <script src='../js/basic.js'></script>
 <script src='../js/index.js'></script>
+<
 <script type="text/javascript">
 // 简单的节流函数
 function throttle(func, wait, mustRun) {
@@ -256,23 +258,27 @@ function loading($el){
 }
 var curIndex=1;
 var adIndex=1;
+var loaded=false;
 ;$(function(){
+    LazyLoad.Run({
+        isImgCenter: true
+                });
     function realFun(){
         var $el;
-        var $wa = curIndex == 1 ? $('[data-module=ad]') : $('#artistCon');
+        var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#artistCon');
         if ($wa.last().attr('data-module')=='ad') {
             $el=$wa.last();
         } else {
             $el = $wa.last().children().last();
         }
-        if(loading($el)){
+        if(loading($el)&&!loaded){
             curIndex++;
              $.YGG.ajax({
                     type:'get',
-                    url:'newwap/artist/getArtist',
+                    url:'/newwap/artist/getArtists',
                     data:{
                         index:curIndex,
-                        size:5
+                        size:4
                     },
                     success:function(res){
                         var artistTmpl=document.createDocumentFragment();
@@ -280,29 +286,37 @@ var adIndex=1;
                         $('#artistCon').get(0).appendChild(artistTmpl);
                         adIndex++;
                         // console.log($('#artistList'));
-                         $.ajax({
-                                type:'get',
-                                url: 'newwap/index_content/getContent',
-                                data: {
-                                    index:adIndex,
-                                    size:1
-                                },
-                                success:function(res){
-                                    var html='<a class="ad" data-module="ad"><img lazyload="http://www.artgogo.com'+res.Photo+'"></a>';
-                                    $('#artistCon').append(html);   
-                                }
-                         });
+                        $.ajax({
+                            type:'get',
+                            url: '/newwap/index_content/getContent',
+                            data: {
+                                index:adIndex,
+                                size:1
+                            },
+                            success:function(res){
+                                var html='<a href="http://www.artgogo.com'+res.Href+'" class="ad" data-module="ad"><img lazyload="http://www.artgogo.com'+res.Photo+'"></a>';
+                                $('#artistCon').append(html);   
+                            }
+                        });
+                        LazyLoad.Run({
+                            isImgCenter:true
+                        });
+                        if(!res || (res && res.length==0)){
+                            loaded=true;
+                            $('.loaede').html('亲只有这么多啦~');
+                        }
+                    },
+                    error:function(){
+                        loaded=true;
+                        $('.loaded').html('亲只有这么多啦~');
                     }
                 });
         }
     };
-     window.addEventListener('scroll', throttle(realFun, 500, 1000));    
+     window.addEventListener('scroll', throttle(realFun, 500, 1000));
+
+    
 });
 
-$(function(){
-    LazyLoad.Run({
-        isImgCenter:true
-    });
-});
 </script>
 </html>

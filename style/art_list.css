@@ -41,7 +41,7 @@
 .list_menu dl {
     display: block;
     font: 400 .12rem/.425rem "黑体";
-    width: 18%;
+    width: 14%;
     height: .425rem;
 }
 
@@ -65,31 +65,30 @@
 
 .list_menu dl:last-child dt{
     color: #953338;
-    margin-right: .16rem;
 }
 
 .list_menu dl:last-child dt:after {
     content: "";
     display: block;
     width: .09rem;
-    height: .07rem;
-    background: url(../images/result.png) no-repeat 0 -1.08rem;
+    height: .1rem;
+    background: url(../images/result.png) no-repeat 0 -1.06rem;
     background-size: 1.485rem 2.12rem;
     background-color: #fff;
     position: absolute;
     left: .28rem;
-    top: .18rem;
+    top: .16rem;
 }
 
 .list_menu dl dd{
-    z-index: 5;
+    z-index: 50;
     position: absolute;
     left: 0;
     top:.42rem;
     background: #f9f9f9;
     width:100%;
     box-sizing: border-box;
-    padding:.15rem 0 .2rem .2rem;
+    padding:.1rem 0 .16rem .2rem;
     display: none;
 }
 
@@ -98,11 +97,38 @@
 }
 
 .list_menu dl dd a{
-    width:50%;
+    width:48%;
     color:#1d1d1d;
     float: left;
-    font:400 .12rem/.27rem "黑体";
+    /*font:400 .12rem/.27rem "simsun";*/
+    font:400 .12rem/.27rem "微软雅黑";
 
+
+}
+
+.screen dd{
+    padding:0!important;
+}
+
+.screen_list{
+    border-bottom:1px solid #cfcfcf;
+    width:100%;
+    box-sizing: border-box;
+    padding:0 .2rem .1rem;
+    background: #f9f9f9;
+}
+
+.screen_list p{
+    width: 100%;
+    height:.42rem;
+    line-height: .49rem;
+    border-bottom:1px solid #e3e3e3;
+    color:#7f7f7f;
+    margin-bottom:0.05rem;
+}
+
+.screen_list a{
+    width:50%!important;
 }
 
 .list_menu dl dd a.on{
@@ -110,5 +136,9 @@
 }
 .art_list .ad{
     margin:.06rem 0 .18rem 0;
+}
+
+.screen dd .screen_list:last-child{
+    padding-bottom:0.18rem;
 }
 

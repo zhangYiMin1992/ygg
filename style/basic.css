@@ -41,7 +41,9 @@ body {
 }
 
 html,body,form,img,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,b,u,i,p,em,td,th,input,textarea,select,iframe {
-    font-family: "黑体", Arial;
+    font-family: "黑体", Arial,"simsun";
+    /*font-family:"simsun";*/
+
     color: #191919;
     padding: 0;
     margin: 0;
@@ -1153,7 +1155,7 @@ footer.address a{
     padding-bottom:.1rem;
 }
 
-.order dt,.order_message h1,.order_message h2,.order_message .pic_type{
+.order dt,.order_message p,.order_message .pic_type{
     transform: scale(0.88);
     transform-origin: top left;
 }
@@ -1185,15 +1187,15 @@ dt dd{
     height:.7rem;
 }
 
-.order dt,.order_message h1,.order_message h2,.order_message h3,.order_message .pic_type{
+.order dt,.order_message p,.order_message .pic_type{
     font-weight: normal;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.order_message h3 span{
-    font-size:.14rem;
+.o_price{
+    /*font-family:"simsun";*/
 }
 
 .order_message h3 .delete{
@@ -1215,15 +1217,16 @@ dt dd{
     color: #191919;
     padding-left:.18rem;
     border-bottom:1px solid #dddddd;
+    line-height: .4rem;
 }
 
 .city li input{
-    padding:.14rem .1rem .12rem 0rem;
+    padding:.14rem .1rem .12rem 0.05rem;
     width:65%;
     color:#545454;
     font-size:.12rem;
     transform: scale(0.88);
-    transform-origin: left;
+    transform-origin:left;
 }
 
 .city li input::-webkit-input-placeholder{ 
@@ -1265,23 +1268,24 @@ dt dd{
     content:'';
     display: block;
     width:.29rem;
-    height:.21rem;
     position: absolute;
     left:.51rem;
+    top:.1rem;
     background: url(../images/pay.png) no-repeat;
     background-size:.26rem 2.48rem;
 }
 
 .weixin:before{
     background-position:0 -1.16rem;
+    height:.22rem;
 }
 
 .bank:before{
     background-position:0 -1.43rem;
+    height:.2rem;
 }
 
 .chose,.chose_no{
-    /*margin-top:.1rem;*/
     display: inline-block;
     margin-right:.48rem;
     display: inline-block;
@@ -1374,16 +1378,28 @@ dt dd{
 .nav-tab-top li{
     float: left;
     margin-right:.1rem;
-    color:#555555;
     padding: 0 .07rem;
     position: relative;
 }
 
-.nav-tab-top li.cur{
+.nav-tab-top li a{
+
+    color:#7f7f7f;   
+}
+
+.nav-tab-top li.cur a{
     color: #191919;
+}
+
+.nav-tab-top li.cur:after{
+    content: "";
+    display: block;
+    height:.025rem;
+    width:100%;
     border-bottom: 0.025rem solid #fbc400;
-    line-height: .34rem;
-    padding-top: .04rem;
+    position: absolute;
+    bottom:0px;
+    left: 0;
 }
 
 .order_list .order dt, .order_list .order dd{
@@ -1412,6 +1428,11 @@ dt dd{
 
 .order_num{
     float: left;
+    font-family: "simsun";
+}
+
+.order_num span{
+    font-family: "黑体";
 }
 
 .state{
@@ -1420,7 +1441,7 @@ dt dd{
 
 .state.non_payment a{
     padding:.06rem .17rem;
-    border:1px solid #605957;
+    border:1px solid #837d7c;
     border-radius: 0.02rem;
 }
 
@@ -1471,3 +1492,12 @@ dt dd{
 .no_order p{
     color:#666;
 }
+
+ .loading{
+            width:100%;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            color:#666;
+            font-size: 12px;
+        }

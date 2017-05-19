@@ -82,7 +82,7 @@
            "GET /newwap/artwork/getArtworks ": {
                     "request":{
                         "index":2,
-                        "size":5
+                        "size":4
                     },
                     "response":[
                                   {
@@ -408,7 +408,7 @@
                                 ]
            },   
            // 艺术家列表页面
-           "GET /newwap/artist/getArtist ":{
+           "GET /newwap/artist/getArtists ":{
                     "request":{
                         "index":1,
                         "size":5

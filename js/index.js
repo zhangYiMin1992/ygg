@@ -274,7 +274,7 @@ $(function(){
     $(function(){
     $("[data-header=scroll]").Scroll()
 });
-    // 列表页面分类菜单
+    // 列表页面筛选功能
     $(function(){
         
         $('.list_menu dt').click(function(e){
@@ -282,11 +282,12 @@ $(function(){
                 $(this).siblings().addClass('on');
                 $(this).parent().siblings().find('dd').removeClass('on');
             } else {
-                $(this).siblings().removeClass('on');
-                $(this).parent().siblings().find('dd').removeClass('on');
+                $('.list_menu dd').removeClass('on');
             }
         });
-        $('.list_menu dd a').click(function(e){
+
+        // $('.select_one dd a')
+        $('.screen dd a').click(function(e){
             if($(this).attr('class')!='on'){
               $(this).addClass('on');
             }else{

@@ -36,39 +36,88 @@
         </div>
             <!-- 分类列表 -->
             <div class="list_menu">
-                 <dl>
+                 <dl class="select_one" >
                     <dt>类别</dt>
                     <dd>
-                        <a href="javascript:;">原创艺术品</a>
-                        <a href="javascript:;">创意作品</a>
-                        <a href="javascript:;">限量版本</a> 
-                        <a href="javascript:;">创意作品</a>
-                        <a href="javascript:;">限量版本</a>
-                        <a href="javascript:;">衍生品</a> 
+                        <a href="javascript:;">全部</a>
+                        <a href="javascript:;">版画</a>
+                        <a href="javascript:;">国画</a> 
+                        <a href="javascript:;">油画</a>
+                        <a href="javascript:;">丙烯</a>
+                        <a href="javascript:;">雕塑</a>
+                        <a href="javascript:;">素描</a>
+                        <a href="javascript:;">水彩</a>
+                        <a href="javascript:;">摄影</a>
+                        <a href="javascript:;">装置</a>
+                        <a href="javascript:;">插画</a>
+                        <a href="javascript:;">数码绘图</a>
+                        <a href="javascript:;">综合材料</a>
+                        <a href="javascript:;">艺术衍生品</a>
+                        <a href="javascript:;">漆画</a>
+                        <a href="javascript:;">民间艺术</a>
+                        <a href="javascript:;">其他</a>
+                        
                     </dd>
                 </dl>
-                <dl>
-                    <dt>题材</dt>
+                <dl class="select_one">
+                    <dt>价格</dt>
                     <dd>
-                        <a href="javascript:;">限量版本</a>
-                        <a href="javascript:;">衍生品</a>
-                        <a href="javascript:;">原创版画</a>
-                        <a href="javascript:;">原创版画</a>
+                        <a href="javascript:;">全部</a>
+                        <a href="javascript:;">1万元～3万元</a>
+                        <a href="javascript:;">1000元以下</a>
+                        <a href="javascript:;">3万～5万</a>
+                        <a href="javascript:;">1000～5000元</a>
+                        <a href="javascript:;">5万元～10万元</a>
+                        <a href="javascript:;">5000～1万元</a>
+                        <a href="javascript:;">10万元以上</a>
                     </dd>
                 </dl>
-                <dl>
+                <dl class="select_one">
                     <dt>排序</dt>
                     <dd>
-                        <a href="javascript:;">创意作品</a>
-                        <a href="javascript:;">原创艺术品</a>
-                        <a href="javascript:;">原创艺术品</a>
+                        <a href="javascript:;">默认排序</a>
+                        <a href="javascript:;">价格由低到高</a>
+                        <a href="javascript:;">最新发布</a>
+                        <a href="javascript:;">价格由高到低</a>
                     </dd>
                 </dl>
-                <dl>
+                <dl class="screen">
                     <dt>筛选</dt>
                     <dd>
-                        <a href="javascript:;">雕塑</a>
-                        <a href="javascript:;">原创艺术品</a>
+                        <div class="clearfix screen_list">
+                            <P>销售</P>
+                            <a href="javascript:;">全部</a>
+                            <a href="javascript:;">未售</a>
+                            <a href="javascript:;">已售</a>
+                            <a href="javascript:;">可议价</a>
+                            <a href="javascript:;">非卖品</a>
+                        </div>
+                        <div class="clearfix screen_list">
+                            <P>尺寸</P>
+                            <a href="javascript:;">全部</a>
+                            <a href="javascript:;">80～120cm</a>
+                            <a href="javascript:;">0～20cm</a>
+                            <a href="javascript:;">120～150cm</a>
+                            <a href="javascript:;">20～50cm</a>
+                            <a href="javascript:;">150～200cm</a>
+                            <a href="javascript:;">50～80cm</a>
+                            <a href="javascript:;">200cm以上</a>
+                        </div>
+                        <div class="clearfix screen_list">
+                            <P>年份</P>
+                            <a href="javascript:;">全部</a>
+                            <a href="javascript:;">5年以内</a>
+                            <a href="javascript:;">2017年</a>
+                            <a href="javascript:;">2010～2013年</a>
+                            <a href="javascript:;">2016年</a>
+                            <a href="javascript:;">2000～2009年</a>
+                            <a href="javascript:;">2015年</a>
+                            <a href="javascript:;">1990～1999年</a>
+                            <a href="javascript:;">2014年</a>
+                            <a href="javascript:;">1980～1989年</a>
+                            <a href="javascript:;">2013年</a>
+                            <a href="javascript:;">1980以前</a>
+                        </div>
                     </dd>
                 </dl>
             </div>
@@ -165,7 +214,7 @@
     <textarea id="ablumTmpl" style="display: none;">
         <ul class="pic_list">
         <!-- $.each(this,function(k,v){ -->
-            <%for(var i=0,len=this.length;i<len;i++){%>
+            <%for(var i=0,len=this.length-1;i<len;i++){%>
             <li>
                 <a href="javascript:;">
                     <div class="pic">
@@ -231,7 +280,7 @@
                 curIndex++;
                 adIndex++;
                 $.ajax({
-                    url: 'api/newwap/artwork/getArtworks',
+                    url: 'newwap/artwork/getArtworks',
                     data: {
                         index:curIndex,
                         size: 4
@@ -244,7 +293,7 @@
                         // console.log($('#artistList'));
                          $.ajax({
                                 type:'get',
-                                url: 'api/newwap/index_content/getContent',
+                                url: 'newwap/index_content/getContent',
                                 data: {
                                     index:adIndex,
                                     size:1
