@@ -278,22 +278,38 @@ $(function(){
     $(function(){
         
         $('.list_menu dt').click(function(e){
-            if ($(this).siblings().attr('class') != 'on') {
-                $(this).siblings().addClass('on');
-                $(this).parent().siblings().find('dd').removeClass('on');
+            if ($(this).siblings().attr('class') != 'action') {
+                $(this).siblings().addClass('action');
+                $(this).parent().siblings().find('dd').removeClass('action');
+                $(this).parent().siblings().find('dd').find('a').removeClass('screen_on');
             } else {
-                $('.list_menu dd').removeClass('on');
+                $('.list_menu dd').removeClass('action');
             }
         });
 
-        // $('.select_one dd a')
+        $('.select_one dd a').click(function(){
+            $(this).addClass('screen_on');
+            $(this).siblings().removeClass('screen_on');
+            $(this).parent().removeClass('action');
+            
+        });
+
         $('.screen dd a').click(function(e){
-            if($(this).attr('class')!='on'){
-              $(this).addClass('on');
+            if($(this).attr('class')!='screen_on'){
+                $(this).addClass('screen_on');
             }else{
-              $(this).removeClass('on');            
+                $(this).removeClass('screen_on');            
             }
-    });
+        });
+        $('.cancel_screen').click(function(){
+            console.log($('.screen_list a').attr('class'));
+            if($('.screen_list a').attr('class')=='screen_on'){
+                $('.screen_list a').removeClass('screen_on');
+            }
+            // }else{
+            //     return;
+            // }
+        });
 
  });
     // 艺术家列表页滑动效果
