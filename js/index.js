@@ -302,10 +302,11 @@ $(function(){
             }
         });
         $('.cancel_screen').click(function(){
-            console.log($('.screen_list a').attr('class'));
-            if($('.screen_list a').attr('class')=='screen_on'){
+            // console.log($('.screen_list a').attr('class'));
+            // if($('.screen_list a').attr('class')=='screen_on'){
                 $('.screen_list a').removeClass('screen_on');
-            }
+                $('.screen dd').removeClass('action');
+            // }
             // }else{
             //     return;
             // }
