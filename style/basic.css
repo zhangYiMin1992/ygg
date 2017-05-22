@@ -820,11 +820,7 @@ body.panel-closing .page {
     text-align: center;
 }
 
-.cut {
-    width: .24rem;
-    height: .28rem;
-    background: url(../images/art_details.png) no-repeat 0 -1.42rem;
-    background-size: .26rem 1.7rem;
+.artist_personal .cut {
     margin: .275rem auto .23rem;
 }
 
@@ -896,6 +892,7 @@ body.panel-closing .page {
     color: #1a1a1a;
     text-align: center;
 }
+
 
 .explain .title {
     font: 400 .12rem "黑体";
@@ -1030,9 +1027,10 @@ body.panel-closing .page {
     float: left;
     transform-origin: left;
     overflow: hidden;
-   text-overflow: ellipsis;
-   white-space: nowrap;
-   max-width: 86%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 86%;
+    color:#191919;
 }
 
 
@@ -1285,21 +1283,22 @@ dt dd{
     height:.2rem;
 }
 
-.chose,.chose_no{
-    display: inline-block;
-    margin-right:.48rem;
-    display: inline-block;
+.buy_car_chose{
+    cursor:pointer;
+}
+
+.payment a div,.chose_all a,.buy_car_chose a{
+    display: block;
     width:.18rem;
     height:.19rem;
     background: url(../images/pay.png) no-repeat;
     background-size:.26rem 2.48rem;
-}
-.chose{   
-    background-position:0 -.705rem;
+    background-position:0 -.935rem; 
+    margin-right:.48rem;
 }
 
-.chose_no{
-    background-position:0 -.935rem;   
+.payment div.chose,.chose_all a.chose,.buy_car_chose a.chose{ 
+    background-position:0 -.705rem!important;
 }
 
 /*购物车页面*/
@@ -1316,7 +1315,7 @@ dt dd{
 .chose_all a{
     display: block;
     float: left;
-    width: 50%;
+    width: 15%;
     height:.2rem;
     padding-left:.32rem;
     margin-top: .11rem;
@@ -1347,7 +1346,7 @@ dt dd{
     float: left;
 }
 
-.buy_car_chose .chose{
+.buy_car_chose a{
     margin-top: .5rem;
     margin-right: .16rem;
 }
@@ -1394,12 +1393,13 @@ dt dd{
 .nav-tab-top li.cur:after{
     content: "";
     display: block;
-    height:.025rem;
-    width:100%;
+    height: .025rem;
+    width: 0.375rem;
     border-bottom: 0.025rem solid #fbc400;
     position: absolute;
-    bottom:0px;
-    left: 0;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .order_list .order dt, .order_list .order dd{
@@ -1500,4 +1500,9 @@ dt dd{
             text-align: center;
             color:#666;
             font-size: 12px;
-        }
+}
+
+/*订单列表*/
+.order_con_list li{
+    display:none;
+}

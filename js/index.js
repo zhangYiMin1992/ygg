@@ -301,15 +301,18 @@ $(function(){
                 $(this).removeClass('screen_on');            
             }
         });
+
+        $('.sell a,.size a,.year a').click(function(){
+            $(this).addClass('screen_on');
+            $(this).siblings().removeClass('screen_on');
+        });
+
         $('.cancel_screen').click(function(){
-            // console.log($('.screen_list a').attr('class'));
-            // if($('.screen_list a').attr('class')=='screen_on'){
-                $('.screen_list a').removeClass('screen_on');
-                $('.screen dd').removeClass('action');
-            // }
-            // }else{
-            //     return;
-            // }
+            $('.screen_list a').removeClass('screen_on');
+        });
+
+        $('.screen_str').click(function(){
+            $('.screen dd').removeClass('action');
         });
 
  });
@@ -404,6 +407,54 @@ $(function(){
      }
  };
 
- // $(function(){
- //    $('.nav-tab-top ul li').
- // });
+// 订单页面顶部table切换
+ $(function(){
+    var curI='';
+    $('.nav-tab-top ul li').click(function(){
+        var curI=$(this).index();
+        if($(this).attr('class')!='cur'){
+            $(this).addClass('cur');
+            $(this).siblings().removeClass('cur');
+            $('.order_con_list li').eq(curI).css('display','block');
+            $('.order_con_list li').eq(curI).siblings().css('display','none');
+        }
+
+    });
+ });
+
+ // 支付方式选择
+$(function(){
+    $('.payment a').click(function(){
+      if($(this).find('div').attr('class')!='chose'){
+          $(this).find('div').addClass('chose');
+          $(this).siblings().find('div').removeClass('chose');
+        }
+    });
+
+ // 购物车页面订单全选功能
+    $('.chose_all a').click(function(){
+        if($(this).attr('class')!='chose'){
+            $(this).addClass('chose');
+            $('.buy_car_chose a').addClass('chose');
+        }else{
+            $(this).removeClass('chose');
+            $('.buy_car_chose a').removeClass('chose');
+        }
+     });
+
+    $('.buy_car_chose').click(function(){
+        var $a=$(this).find('a');
+        if($a.attr('class')!='chose'){
+            $a.addClass('chose');
+        }else{
+            $a.removeClass('chose');
+        }
+        if($a.attr('class')=="chose"  && $(this).parent().siblings().find('.buy_car_chose a').attr('class')=="chose"){
+            $('.chose_all a').addClass('chose');  
+        }else{
+            $('.chose_all a').removeClass('chose');  
+        }
+        
+    });
+
+});

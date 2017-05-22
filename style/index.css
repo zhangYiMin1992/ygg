@@ -391,3 +391,68 @@ ul.production {
     top:0;
 }
 
+/*文章页面*/
+
+.article{
+    padding-top: 0.5rem;
+}
+
+.title.bold{
+    font-weight: bold;
+}
+
+.article .explain .time{
+    font-family: "Microsoft YaHei";
+}
+
+.article .explain .pt{
+    padding:.22rem 0 0 0;
+}
+
+.boxarea{
+    height:2.17rem;
+    width:100%;
+    background: #ccc;
+    margin:.43rem 0 .29rem 0;
+}
+
+.related_links{
+    width: 100%;
+    padding:0 .22rem;
+    box-sizing: border-box;
+}
+
+.related_links .cut{
+    margin:.47rem auto .35rem;
+}
+
+.related_links .recommend{
+    border-top: 1px solid #d2d2d2;
+}
+
+.article_list{
+    padding:0 .22rem;
+}
+
+.article_list li{
+    width:47.5%;
+    height:1.42rem;
+}
+
+.article_list .cover{
+    width:100%;
+    height:0;
+    padding-bottom:66.54%;
+    overflow: hidden;
+}
+
+.article_list .cover img{
+    width:100%;
+    height:auto;
+}
+
+.article_list li{
+    margin-right:5%;
+}
+
+
