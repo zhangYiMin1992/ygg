@@ -455,4 +455,9 @@ ul.production {
     margin-right:5%;
 }
 
+.article_title p{
+    margin-top: .075rem;
+    font: 400 .12rem/.18rem "黑体";
+}
+
 
