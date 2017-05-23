@@ -239,6 +239,11 @@ ul.production {
     -webkit-transform: scale(0.8);
 }
 
+.explain .album_shadow{
+    transform: scale(1);
+    -webkit-transform: scale(1);
+}
+
 .album_box {
     width: 86%;
     height: 0;
@@ -455,9 +460,12 @@ ul.production {
     margin-right:5%;
 }
 
-.article_title p{
+.article_title{
+    width:110%;
     margin-top: .075rem;
-    font: 400 .12rem/.18rem "黑体";
+    font: 400 .12rem/.17rem "黑体";
+    transform:scale(0.88);
+    transform-origin: left;
 }
 
 
