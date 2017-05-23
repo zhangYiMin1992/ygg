@@ -415,8 +415,8 @@ $(function(){
         if($(this).attr('class')!='cur'){
             $(this).addClass('cur');
             $(this).siblings().removeClass('cur');
-            $('.order_con_list li').eq(curI).css('display','block');
-            $('.order_con_list li').eq(curI).siblings().css('display','none');
+            $('.order_con_list>li').eq(curI).css('display','block');
+            $('.order_con_list>li').eq(curI).siblings().css('display','none');
         }
 
     });

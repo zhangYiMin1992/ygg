@@ -370,7 +370,7 @@
                                 "price": 15000.0,
                                 "caizhi": "布面",
                                 "actual_width": 0.0,
-                                "artistPhoto": "/images/2017/3/10/20173101489126470870_371.png",
+                                "artistPhoto": "/images/2017/3/10/20173101489126470870_371.png",//////////////////////////////////////////////////////////////////////
                                 "SubTitle": "",
                                 "zb_width": 0.0,
                                 "qianming": "有",
@@ -829,7 +829,7 @@
                            "DocFrom" :"",
                            "ChannelCode" :"3625_14460_14463_",
                            "OrderNumber" :100,
-                           "Photo" :"/yishupin/images/2017/4/18/20174181492511449224_376_a.jpg",
+                           "Photo" :"/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg",
                            "ModifiedDate" :1404125874,
                            "CreateDate" :1404125874,
                            "GlobalID" :1050455,
@@ -935,7 +935,7 @@
                         "consignee_name": "涂期富",
                         "buyer_name": "涂期富",
                         "OrderNumber": 1058400,
-                        "Photo": "/yishupin/images/2017/4/10/20174101491819108378_259_c.png",
+                        "Photo": "/yishupin/images/2017/5/8/2017581494239074242_376_c.jpg",
                         "CreateDate": 1491834882,
                         "logistics_status": "未发货",
                         "GlobalID": 1360249,
@@ -946,7 +946,7 @@
                         "is_paid_artist": "否",
                         "Status": 1,
                         "cancel_time": 0,
-                        "goods_name": "\u201c鸡与尾巴\u201d鸡年纪念T恤",
+                        "goods_name": "\u201c鸡与尾巴",
                         "consignee_id": 0,
                         "ip": "125.88.189.18",
                         "goods_id": 134520,
@@ -999,7 +999,7 @@
                         "consignee_name": "涂期富1",
                         "buyer_name": "涂期富1",
                         "OrderNumber": 1058400,
-                        "Photo": "/yishupin/images/2017/4/10/20174101491819108378_259_c.png",
+                        "Photo": "/yishupin/images/2017/5/4/2017541493896801720_376_a.jpg",
                         "CreateDate": 1491834882,
                         "logistics_status": "已发货",
                         "GlobalID": 1360249,
@@ -1010,7 +1010,7 @@
                         "is_paid_artist": "否",
                         "Status": 1,
                         "cancel_time": 0,
-                        "goods_name": "\u201c鸡与尾巴\u201d鸡年纪念T恤",
+                        "goods_name": "\u201c鸡",
                         "consignee_id": 0,
                         "ip": "125.88.189.18",
                         "goods_id": 134520,
@@ -1063,7 +1063,7 @@
                         "consignee_name": "涂期富2",
                         "buyer_name": "涂期富2",
                         "OrderNumber": 1058400,
-                        "Photo": "/yishupin/images/2017/4/10/20174101491819108378_259_c.png",
+                        "Photo": "/images/2017/3/10/20173101489126470870_371.png",
                         "CreateDate": 1491834882,
                         "logistics_status": "未付款",
                         "GlobalID": 1360249,
@@ -1138,7 +1138,7 @@
                         "is_paid_artist": "否",
                         "Status": 1,
                         "cancel_time": 0,
-                        "goods_name": "\u201c鸡与尾巴\u201d鸡年纪念T恤3",
+                        "goods_name": "鸡年纪念T恤3",
                         "consignee_id": 0,
                         "ip": "125.88.189.18",
                         "goods_id": 134520,
@@ -1180,6 +1180,7 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
+                        "m_name":"小卖部",
                         "order_sn": "20170410189505"
                       },
                       {
@@ -1191,7 +1192,7 @@
                         "consignee_name": "涂期富4",
                         "buyer_name": "涂期富4",
                         "OrderNumber": 1058400,
-                        "Photo": "/yishupin/images/2017/4/10/20174101491819108378_259_c.png",
+                        "Photo": "/images/artwork/2017-4/1493373473rtolyhi01.jpg",
                         "CreateDate": 1491834882,
                         "logistics_status": "未发货",
                         "GlobalID": 1360249,
@@ -1202,7 +1203,7 @@
                         "is_paid_artist": "否",
                         "Status": 1,
                         "cancel_time": 0,
-                        "goods_name": "\u201c鸡与尾巴\u201d鸡年纪念T恤",
+                        "goods_name": "酒红T",
                         "consignee_id": 0,
                         "ip": "125.88.189.18",
                         "goods_id": 134520,
@@ -1247,5 +1248,6 @@
                         "order_sn": "20170410189505"
                       }
                     ]
+                }
     }
 }

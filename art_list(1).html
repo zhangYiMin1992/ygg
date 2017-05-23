@@ -286,7 +286,7 @@
                 curIndex++;
                 adIndex++;
                 $.ajax({
-                    url: '/api/newwap/artwork/getArtworks',
+                    url: '/newwap/artwork/getArtworks',
                     data: {
                         index:curIndex,
                         size: 4
@@ -299,7 +299,7 @@
                         // console.log($('#artistList'));
                          $.ajax({
                                 type:'get',
-                                url: '/api/newwap/index_content/getContent',
+                                url: '/newwap/index_content/getContent',
                                 data: {
                                     index:adIndex,
                                     size:1

@@ -64,11 +64,20 @@
     String logistics_status; // 物流状态
     String is_gy; // 是否为高艺订单 是/否
 
-
-
 类型直接传其中的文本就可以,全部或空值则不作筛选
 
-价格
+
+
+
+/artwork/getFiltedArtworks
+参数: String pinlei, String price, String sort, String saleStatus, int index, int size
+返回 JSONArray(数据结构同Artwork)
+
+index 搜索页数
+size 数据数量
+pinlei类型直接传其中的文本就可以,全部或空值则不作筛选
+
+price价格
 全部或空值则不作筛选
 <1000
 1000-5000
@@ -78,13 +87,13 @@
 50000-100000
 >100000
 
-排序
+sort排序
 default或空值 默认
 publish_date_desc 最新发布
 price_asc 价格由低到高
 price_desc 价格由高到低
 
-年份
+year年份
 2017
 2016
 2015
@@ -97,10 +106,10 @@ five_year 5年以内
 1980-1989
 <1980
 
-销售直接传其中的文本就可以,全部或空值则不作筛选
+saleStatus销售直接传其中的文本就可以,全部或空值则不作筛选
 
 
-url:"/newwap/order/getOrders"
+订单测试接口  url:"/newwap/order/getOrders"
 
 
 order/getTestOrder 无参数  返回JSONObject
