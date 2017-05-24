@@ -185,3 +185,26 @@ order/getTestOrders 参数 int index, int size  返回JSONArray
     "order_sn": "20170410189505"
   }
 ]
+
+getTestFiltedOrders
+测试用接口, 返回数据与用户无关
+参数: String orderStatus, int index, int size
+
+参数说明: 
+    orderStatus 订单状态(待付款, 待收货, 已完成, 退款/售后), 全部或空值不做筛选
+    index 检索页数
+    size 数据数量
+返回
+JSONArray Order数据字段
+
+
+getFiltedOrders
+正式用接口, 返回数据与用户登陆信息有关
+参数: String orderStatus, int index, int size
+
+参数说明: 
+    orderStatus 订单状态(待付款, 待收货, 已完成, 退款/售后), 全部或空值不做筛选
+    index 检索页数
+    size 数据数量
+返回
+JSONArray Order数据字段

@@ -45,6 +45,10 @@ header {
     margin-top:.92rem;
 }
 
+.log_index{
+   margin-top:.5rem!important; 
+}
+
 .banner{
     width:100%;
     height:0;
@@ -141,6 +145,21 @@ ul.production {
     background: url(../images/pic_box.png)no-repeat;
     background-size: 2.25rem 2.2rem;
     margin: 0 auto .2rem;
+}
+
+.album_box {
+    width: 1.93rem;
+    height: 1.89rem;
+    padding: 7.5% 0 0 6.5%;
+    overflow: hidden;
+}
+.lazy_load_img{
+    background: url(./images/load.jpg) no-repeat center center;
+    background-size: 100%;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .pro_pic {
@@ -356,24 +375,32 @@ ul.production {
     margin-bottom:.49rem;
 }
 
-.payment .btn{
+.payment .btn,.refund_page .btn{
     height:.6rem;
-    width: 61.56%;
+    width: 60.56%;
     margin:0 auto;
 }
 
-.payment .btn a{
+.refund_page .btn{
+    margin-top:.25rem;
+}
+
+.refund_page p a{
+    color:#2693ff;
+}
+
+.payment .btn a,.refund_page .btn a{
     display:block;
     padding: .06rem .16rem;
-    border:1px solid #241a18;
+    border:1px solid #918c8a;
     border-radius: .02rem
 }
 
-.payment .btn .continue{
+.btn .continue{
     float: left;
 }
 
-.payment .btn .check{
+.btn .check{
     float: right;
 }
 

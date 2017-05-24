@@ -1248,8 +1248,7 @@ dt dd{
     cursor:pointer;
 }
 
-.weixin,.bank{
-
+.weixin,.bank,.zhifubao{
     display:block;
     height:.42rem;
     width:100%;
@@ -1262,15 +1261,18 @@ dt dd{
     box-sizing: border-box;
 }
 
-.weixin:before,.bank:before{
+.weixin:before,.bank:before,.zhifubao:before{
     content:'';
     display: block;
     width:.29rem;
     position: absolute;
     left:.51rem;
     top:.1rem;
+}
+
+.weixin:before,.bank:before{
     background: url(../images/pay.png) no-repeat;
-    background-size:.26rem 2.48rem;
+    background-size:.26rem 2.48rem;   
 }
 
 .weixin:before{
@@ -1279,8 +1281,15 @@ dt dd{
 }
 
 .bank:before{
-    background-position:0 -1.43rem;
+    background-position:0 -1.4rem;
     height:.2rem;
+}
+
+.zhifubao:before{
+    height:.24rem;
+    background: url(../images/result.png) no-repeat;
+    background-size: 1.485rem 2.12rem;
+    background-position:0 -.59rem;
 }
 
 .buy_car_chose{
@@ -1474,21 +1483,25 @@ dt dd{
     left:.2rem;
 }
 
-.no_order{
+.no_order,.refund_page{
     text-align: center;
 }
 
-.no_order_img{
+.no_order_img,.refund_img{
     width:39.84%;
     height: 0;
     padding-bottom: 39.84%;
     margin:0.475rem auto 0.28rem;
 }
 
-.no_order_img img{
+.no_order_img img,.refund_img img{
     width: 100%;
     height:auto;
 
+}
+
+.refund_page p{
+    line-height: .22rem;
 }
 
 .no_order p{

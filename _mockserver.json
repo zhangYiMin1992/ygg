@@ -123,7 +123,7 @@
                                 "Keyword": "",
                                 "zhuangbiao": "否",
                                 "zb_length": 0.0,
-                                "is_print": "否",
+                                "is_print": "否",/////////////////////////////////////////////////////////
                                 "big_photo": "/images/2017/5/8/1494238737eaolyphi9_a.jpg",
                                 "zpms": "",
                                 "id": 134728,
@@ -988,7 +988,14 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
-                        "order_sn": "20170410189505"
+                        "order_sn": "20170410189505",
+                        "Title": "夜",
+                        "m_name":"小卖部",
+                        "width":291,
+                        "height":306,
+                        "pinlei":"国画",
+                        "czsj":2015,
+                        "name":"张先生"
                       },
                       {
                         "PublishDate": 1491834327,
@@ -1052,7 +1059,14 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
-                        "order_sn": "20170410189505"
+                        "order_sn": "20170410189505",
+                        "Title": "外面的世界",
+                        "m_name":"artgogo官方直售",
+                        "width":23,
+                        "height":36,
+                        "pinlei":"油画",
+                        "czsj":2017,
+                        "name":"小春哥"
                       },
                       {
                         "PublishDate": 1491834327,
@@ -1116,7 +1130,14 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
-                        "order_sn": "20170410189505"
+                        "order_sn": "20170410189505",
+                        "Title": "春花秋月",
+                        "m_name":"小卖部",
+                        "width":23,
+                        "height":36,
+                        "pinlei":"油画",
+                        "czsj":2017,
+                        "name":"小李"
                       },
                       {
                         "PublishDate": 1491834327,
@@ -1180,8 +1201,14 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
-                        "m_name":"小卖部",
-                        "order_sn": "20170410189505"
+                        "order_sn": "201704101895606",
+                        "Title": "摩纳哥王妃",
+                        "m_name":"小小的艺术品",
+                        "width":23,
+                        "height":36,
+                        "pinlei":"油画",
+                        "czsj":2017,
+                        "name":"小春哥"
                       },
                       {
                         "PublishDate": 1491834327,
@@ -1235,7 +1262,7 @@
                         "address": "上海市长宁区愚园路753号C栋2楼艺高高4",
                         "Keyword": "",
                         "mobile": "13002171632",
-                        "Title": "20170410189505",
+                        "Title": "20170410189507",
                         "pay_method": 4,
                         "print_number": 0,
                         "order_payment": 99.0,
@@ -1245,7 +1272,14 @@
                         "user_valid": "1",
                         "add_time": 1491834882,
                         "channelID": 14188,
-                        "order_sn": "20170410189505"
+                        "order_sn": "201704101895057",
+                        "Title": "风",
+                        "m_name":"小卖部",
+                        "width":23,
+                        "height":36,
+                        "pinlei":"丙烯",
+                        "czsj":2013,
+                        "name":"peter"
                       }
                     ]
                 }

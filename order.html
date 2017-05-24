@@ -159,5 +159,90 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
+<script>
+    $(function(){
+        LazyLoad.Run({
+                 isImgCenter: true
+             });
+        if($('#all').attr('class')=='cur'){
+            var num=1;
+            // num++;
+            $.ajax({
+                  type: "POST",
+                  dataType: "json",
+                  url:"/newwap/order/getTestOrders",
+                  data:{
+                  index:1,
+                  size:4
+                  },
+                  success:function(res){
+                   
+                     for(var i=0;i<res.length;i++){
+                        if(res.order_sn===res.order_sn){
 
+                            var html1=' <li><div class="order_mes clearfix"><div class="order_num">订单号：<span>'+res[i].order_sn+'</span> ></div><div class="state non_payment"><a>'+res[i].logistics_status+'</a></div></div><dl class="order clearfix"><dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>';
+                            console.log(1);
+                            for(var j=0;j<res.length;j++){
+                                html1+='<dd><a href="javascript:;" class="clearfix"><div class="order_pic"><img lazyload="http://www.artgogo.com'+res[j].Photo+'"></div><div class="order_message"><p>'+res[j].goods_name+'</p><p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p><p>原创艺术品</p><em class="o_price">￥'+res[j].order_payment+'.00元</em></div></a></dd>';
+                            }
+                            html1+='</dl></li>';
+                            $('.order').append(html1);
+                         }
+
+                        //else{
+                        //     var html='<ul>'
+                        //     for(var j=0;j<res.length;j++){
+                        //         html+=' <li><div class="order_mes clearfix"><div class="order_num">订单号：<span>'+res[j].order_sn+'</span> ></div><div class="state non_payment"><a>'+res[j].logistics_status+'</a></div></div><dl class="order clearfix"><dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt> <dd><a href="javascript:;" class="clearfix"><div class="order_pic"><img lazyload="http://www.artgogo.com'+res[j].Photo+'"></div><div class="order_message"><p>'+res[j].goods_name+'</p><p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p><p>原创艺术品</p><em class="o_price">￥'+res[j].order_payment+'.00元</em></div></a></dd></dl></li>';
+                        //     }
+                        //    html+='</ul>';
+                        //    $('#all_order').append(html); 
+                        // }
+                       
+                      
+                     }
+
+                    // html+='</ul>';
+                    // html.append(html1); 
+                    $('#all_order').append(html1);
+                  }
+
+            });
+             
+        }
+    });
+</script>
+<!-- <script>
+    $(function(){
+        LazyLoad.Run({
+                 isImgCenter: true
+             });
+        if($('#all').attr('class')=='cur'){
+            var num=1;
+            // num++;
+            $.ajax({
+                  type: "POST",
+                  dataType: "json",
+                  url:"/newwap/order/getTestOrders",
+                  data:{
+                  index:1,
+                  size:4
+                  },
+                  success:function(res){
+                   
+                     var html='<ul>';
+                     for(var i=0;i<res.length;i++){
+                       // if(res.order_sn===res.order_sn){console.log(1)}
+                       html+=' <li><div class="order_mes clearfix"><div class="order_num">订单号：<span>'+res[i].order_sn+'</span> ></div><div class="state non_payment"><a>'+res[i].logistics_status+'</a></div></div><dl class="order clearfix"><dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt> <dd><a href="javascript:;" class="clearfix"><div class="order_pic"><img lazyload="http://www.artgogo.com'+res[i].Photo+'"></div><div class="order_message"><p>'+res[i].goods_name+'</p><p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p><p>原创艺术品</p><em class="o_price">￥'+res[i].order_payment+'.00元</em></div></a></dd></dl></li>';
+                     }
+
+                     html+='</ul>';
+                     $('#all_order').append(html); 
+                    
+                  }
+
+            });
+             
+        }
+    });
+</script> -->
 </html>
