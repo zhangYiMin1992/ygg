@@ -243,90 +243,93 @@
 <script src='js/index.js'></script>
 <!-- <script src='../js/zepto.min.js'></script> -->
 <script type="text/javascript">
-    // 简单的节流函数
-    function throttle(func, wait, mustRun) {
-        var timeout,
-                startTime = new Date();
+// 简单的节流函数
+function throttle(func, wait, mustRun) {
+    var timeout,
+        startTime = new Date();
 
-        return function () {
-            var context = this,
-                    args = arguments,
-                    curTime = new Date();
+    return function() {
+        var context = this,
+            args = arguments,
+            curTime = new Date();
 
-            clearTimeout(timeout);
-            // 如果达到了规定的触发时间间隔，触发 handler
-            if (curTime - startTime >= mustRun) {
-                func.apply(context, args);
-                startTime = curTime;
-                // 没达到触发间隔，重新设定定时器
-            } else {
-                timeout = setTimeout(func, wait);
-            }
-        };
-    }
-    function isSendAjax($el) {
-        return $(window).height() + $(window).scrollTop() > $el.offset().top
-    }
-    var curIndex = 1;
-    var adIndex = 1;
-    var loaded=false;
-    ;$(function () {
-        LazyLoad.Run({
-            isImgCenter: true
-                        });
-        function realFunc() {
-            var $el;
-            var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#ablumDom');
-            if ($wa.last().attr('data-module')=='ad') {
-                $el=$wa.last();
-            } else {
-                $el = $wa.last().children().last();
-            }
-            if (isSendAjax($el)&&!loaded) {
-                curIndex++;
-                adIndex++;
-                $.ajax({
-                    url: '/newwap/artwork/getArtworks',
-                    data: {
-                        index:curIndex,
-                        size: 4
-                    },
-                    success: function (res) {
-                        var tempDom=document.createDocumentFragment();
-                        $.YGG.tmpl({dom: $(tempDom), v: $('#ablumTmpl').val(), datas: res});
-                        $('#ablumDom').get(0).appendChild(tempDom);
-                          adIndex++;
-                        // console.log($('#artistList'));
-                         $.ajax({
-                                type:'get',
-                                url: '/newwap/index_content/getContent',
-                                data: {
-                                    index:adIndex,
-                                    size:1
-                                },
-                                success:function(res){
-                                    var html='<a class="ad" data-module="ad"><img lazyload="http://www.artgogo.com'+res.Photo+'"></a>';
-                                    $('#ablumDom').append(html);   
-                                }
-                         });
-                        LazyLoad.Run({
-                            isImgCenter: true
-                        });
-                        if(!res || (res && res.length==0)){
-                            loaded=true;
-                            $('.loading').html('亲，只有这么多啦～');
-                        }
-                    },
-                    error:function(){
-                         loaded=true;
-                         $('.loading').html('亲，只有这么多啦～');
-                    }
-                });
-            }
+        clearTimeout(timeout);
+        // 如果达到了规定的触发时间间隔，触发 handler
+        if (curTime - startTime >= mustRun) {
+            func.apply(context, args);
+            startTime = curTime;
+            // 没达到触发间隔，重新设定定时器
+        } else {
+            timeout = setTimeout(func, wait);
         }
-
-        // 采用了节流函数
-        window.addEventListener('scroll', throttle(realFunc, 500, 1000));
-    })
+    };
+}
+function isSendAjax($el) {
+    return $(window).height() + $(window).scrollTop() > $el.offset().top
+}
+var curIndex = 1;
+var adIndex = 1;
+var loaded = false;;
+$(function() {
+    LazyLoad.Run({
+        isImgCenter: true
+    });
+    function realFunc() {
+        var $el;
+        var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#ablumDom');
+        if ($wa.last().attr('data-module') == 'ad') {
+            $el = $wa.last();
+        } else {
+            $el = $wa.last().children().last();
+        }
+        if (isSendAjax($el) && !loaded) {
+            curIndex++;
+            adIndex++;
+            $.ajax({
+                url: '/newwap/artwork/getArtworks',
+                data: {
+                    index: curIndex,
+                    size: 4
+                },
+                success: function(res) {
+                    var tempDom = document.createDocumentFragment();
+                    $.YGG.tmpl({
+                        dom: $(tempDom),
+                        v: $('#ablumTmpl').val(),
+                        datas: res
+                    });
+                    $('#ablumDom').get(0).appendChild(tempDom);
+                    adIndex++;
+                    // console.log($('#artistList'));
+                    $.ajax({
+                        type: 'get',
+                        url: '/newwap/index_content/getContent',
+                        data: {
+                            index: adIndex,
+                            size: 1
+                        },
+                        success: function(res) {
+                            var html = '<a class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
+                            $('#ablumDom').append(html);
+                        }
+                    });
+                    LazyLoad.Run({
+                        isImgCenter: true
+                    });
+                    if (!res || (res && res.length == 0)) {
+                        loaded = true;
+                        $('.loading').html('亲，只有这么多啦～');
+                    }
+                },
+                error: function() {
+                    loaded = true;
+                    $('.loading').html('亲，只有这么多啦～');
+                }
+            });
+        }
+    }
+    // 采用了节流函数
+    window.addEventListener('scroll', throttle(realFunc, 500, 1000));
+})
 </script>
 </html>
