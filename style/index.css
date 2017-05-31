@@ -248,6 +248,7 @@ ul.production {
 }
 
 .album_shadow{
+    display: block;
     width: 2.25rem;
     height: 2.2rem;
     box-shadow: 0.08rem 0.08rem 0.08rem #ccc;
@@ -259,6 +260,7 @@ ul.production {
 }
 
 .explain .album_shadow{
+    display: block;
     transform: scale(1);
     -webkit-transform: scale(1);
 }
