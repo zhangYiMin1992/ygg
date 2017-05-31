@@ -1,5 +1,3 @@
-
-
 //遮罩弹框提醒
 var timer_dialog = null;
 function maskShow(message) {
@@ -52,10 +50,12 @@ $(function(){
             type: "POST",
             dataType: "json",
             url: "/newwap/user/userLogin",
-            data: "username=" + name + "&password=" + psw,
+            data: "username=" + name + "&password=" + MD5(psw),
             success: function(res) {
                 if (res.isSuccess) {
-                    window.location.href = '/newwap/usercenter/artwork_add.php';
+                    alert("登录成功");
+                    //window.location.href = '/newwap/usercenter/artwork_add.php';
+                    
                 } else {
                     maskShow('您输入的账户名和密码不匹配');
                 }
@@ -94,7 +94,7 @@ $(function() {
         $.YGG.ajax({
             type: "POST",
             dataType: "json",
-            url: "newwap/user/userExist?username=" +mobile,
+            url: "/newwap/user/userExist?username=" +mobile,
             success: function(res) {
                 if (res.isExist) { 
                     maskShow("此手机号已经注册");
@@ -155,10 +155,10 @@ $(function() {
                      $.YGG.ajax({
                          type: "POST",
                          dataType: "json",
-                         url: 'newwap/user/userSignup',
+                         url: '/newwap/user/userSignup',
                          data: {
                              username: mobile,
-                             password: pwdAgain,
+                             password: MD5(pwdAgain),
                              verificationCode: mobileCode
                          },
                          success: function(res) {
@@ -188,7 +188,7 @@ $(function() {
         $.YGG.ajax({
             type: "POST",
             dataType: "json",
-            url: "newwap/user/userExist?username=" +mobile,
+            url: "/newwap/user/userExist?username=" +mobile,
             success: function(res) {
                 if (res.isExist) {
                     $.YGG.ajax({
@@ -231,7 +231,7 @@ $(function() {
                 $.YGG.ajax({
                     type:"POST",
                     dataType:"json",
-                    url:"newwap/user/userFindPassword",
+                    url:"/newwap/user/userFindPassword",
                     data:{
                         username: mobile,
                         verificationCode: mobileCode
@@ -246,7 +246,7 @@ $(function() {
                         }
                     }
                 });
-            }
+            }s
            }
         });
     });
@@ -269,7 +269,7 @@ $(function() {
         $.YGG.ajax({
             type:"POST",
             dataType:"json",
-            url:"/newwap/user/userreset=" + pwdAgain, 
+            url:"/newwap/user/userreset=" + MD5(pwdAgain), 
             success:function(res){
                 if(res.isSuccess){
                     maskShow("修改成功");

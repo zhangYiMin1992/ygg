@@ -274,48 +274,7 @@ $(function(){
     $(function(){
     $("[data-header=scroll]").Scroll()
 });
-    // 列表页面筛选功能
-    $(function(){
-        
-        $('.list_menu dt').click(function(e){
-            if ($(this).siblings().attr('class') != 'action') {
-                $(this).siblings().addClass('action');
-                $(this).parent().siblings().find('dd').removeClass('action');
-                $(this).parent().siblings().find('dd').find('a').removeClass('screen_on');
-            } else {
-                $('.list_menu dd').removeClass('action');
-            }
-        });
 
-        $('.select_one dd a').click(function(){
-            $(this).addClass('screen_on');
-            $(this).siblings().removeClass('screen_on');
-            $(this).parent().removeClass('action');
-            
-        });
-
-        $('.screen dd a').click(function(e){
-            if($(this).attr('class')!='screen_on'){
-                $(this).addClass('screen_on');
-            }else{
-                $(this).removeClass('screen_on');            
-            }
-        });
-
-        $('.sell a,.size a,.year a').click(function(){
-            $(this).addClass('screen_on');
-            $(this).siblings().removeClass('screen_on');
-        });
-
-        $('.cancel_screen').click(function(){
-            $('.screen_list a').removeClass('screen_on');
-        });
-
-        $('.screen_str').click(function(){
-            $('.screen dd').removeClass('action');
-        });
-
- });
     // 艺术家列表页滑动效果
  $(function(){
     $('body').on("touchstart","[data-module=hscroll] ul",function(t){
@@ -410,20 +369,6 @@ $(function(){
      }
  };
 
-// 订单页面顶部table切换
- // $(function(){
- //    var curI='';
- //    $('.nav-tab-top ul li').click(function(){
- //        var curI=$(this).index();
- //        if($(this).attr('class')!='cur'){
- //            $(this).addClass('cur');
- //            $(this).siblings().removeClass('cur');
- //            $('.order_con_list>li').eq(curI).css('display','block');
- //            $('.order_con_list>li').eq(curI).siblings().css('display','none');
- //        }
-
- //    });
- // });
 
  // 支付方式选择
 $(function(){
@@ -461,3 +406,5 @@ $(function(){
     });
 
 });
+
+

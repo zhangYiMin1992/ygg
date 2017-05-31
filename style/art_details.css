@@ -76,3 +76,13 @@
 .description p {
     color: #1a1a1a;
 }
+
+.description p span{
+    width: 100%;
+    padding: .09rem 0;
+    max-height: 2.8rem;
+    overflow: hidden;
+    font: 400 .12rem/.3rem "黑体";
+    color: #1a1a1a;
+    text-overflow: ellipsis;
+}

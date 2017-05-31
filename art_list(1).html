@@ -24,6 +24,10 @@
             color:#666;
             font-size: 12px;
         }
+        .list_menu dl dd{
+            max-height: 5rem;
+            overflow-y: scroll;
+        }
     </style>
 </head>
 
@@ -219,7 +223,7 @@
     <textarea id="ablumTmpl" style="display: none;">
         <ul class="pic_list">
         <!-- $.each(this,function(k,v){ -->
-            <%for(var i=0,len=this.length-1;i<len;i++){%>
+            <%for(var i=0,len=this.length;i<len;i++){%>
             <li>
                 <a href="javascript:;">
                     <div class="pic">
@@ -234,102 +238,203 @@
             </li>
             <%}%>
         </ul>
-        <!-- <a class="ad" data-module="ad">
-            <img lazyload='http://www.artgogo.com<%this[this.length-1].big_photo%>'>
-        </a> -->
     </textarea>
 </body>
 <script src='js/basic.js'></script>
 <script src='js/index.js'></script>
-<!-- <script src='../js/zepto.min.js'></script> -->
 <script type="text/javascript">
-// 简单的节流函数
-function throttle(func, wait, mustRun) {
-    var timeout,
-        startTime = new Date();
+    // 简单的节流函数
+    function throttle(func, wait, mustRun) {
+        var timeout,
+                startTime = new Date();
 
-    return function() {
-        var context = this,
-            args = arguments,
-            curTime = new Date();
+        return function () {
+            var context = this,
+                    args = arguments,
+                    curTime = new Date();
 
-        clearTimeout(timeout);
-        // 如果达到了规定的触发时间间隔，触发 handler
-        if (curTime - startTime >= mustRun) {
-            func.apply(context, args);
-            startTime = curTime;
-            // 没达到触发间隔，重新设定定时器
-        } else {
-            timeout = setTimeout(func, wait);
-        }
-    };
-}
-function isSendAjax($el) {
-    return $(window).height() + $(window).scrollTop() > $el.offset().top
-}
-var curIndex = 1;
-var adIndex = 1;
-var loaded = false;;
-$(function() {
-    LazyLoad.Run({
-        isImgCenter: true
-    });
-    function realFunc() {
-        var $el;
-        var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#ablumDom');
-        if ($wa.last().attr('data-module') == 'ad') {
-            $el = $wa.last();
-        } else {
-            $el = $wa.last().children().last();
-        }
-        if (isSendAjax($el) && !loaded) {
-            curIndex++;
-            adIndex++;
-            $.ajax({
-                url: '/newwap/artwork/getArtworks',
-                data: {
-                    index: curIndex,
-                    size: 4
-                },
-                success: function(res) {
-                    var tempDom = document.createDocumentFragment();
-                    $.YGG.tmpl({
-                        dom: $(tempDom),
-                        v: $('#ablumTmpl').val(),
-                        datas: res
-                    });
-                    $('#ablumDom').get(0).appendChild(tempDom);
-                    adIndex++;
-                    // console.log($('#artistList'));
-                    $.ajax({
-                        type: 'get',
-                        url: '/newwap/index_content/getContent',
-                        data: {
-                            index: adIndex,
-                            size: 1
-                        },
-                        success: function(res) {
-                            var html = '<a class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
-                            $('#ablumDom').append(html);
-                        }
-                    });
-                    LazyLoad.Run({
-                        isImgCenter: true
-                    });
-                    if (!res || (res && res.length == 0)) {
-                        loaded = true;
-                        $('.loading').html('亲，只有这么多啦～');
-                    }
-                },
-                error: function() {
-                    loaded = true;
-                    $('.loading').html('亲，只有这么多啦～');
-                }
-            });
-        }
+            clearTimeout(timeout);
+            // 如果达到了规定的触发时间间隔，触发 handler
+            if (curTime - startTime >= mustRun) {
+                func.apply(context, args);
+                startTime = curTime;
+                // 没达到触发间隔，重新设定定时器
+            } else {
+                timeout = setTimeout(func, wait);
+            }
+        };
     }
-    // 采用了节流函数
-    window.addEventListener('scroll', throttle(realFunc, 500, 1000));
-})
+    function isSendAjax($el) {
+        return $(window).height() + $(window).scrollTop() > $el.offset().top
+    }
+    var curIndex = 1;
+    var adIndex = 1;
+    var loaded=false;
+    var filter={
+        pinlei:"",
+        price:"",
+        sort:"",
+        saleStatus:"",
+        dimension :""
+    };
+    $(function () {
+        LazyLoad.Run({
+            isImgCenter: true
+        });
+
+        var getArtWorks=function(opt){
+            var defaultOpt={
+                index:1,
+                size:4
+            };
+            $.extend(defaultOpt,opt);
+            $.ajax({
+                    url: 'api/newwap/artwork/getFiltedArtworks',
+                    data: defaultOpt,
+                    // success: function (res) {
+                    //     var tempDom=document.createDocumentFragment();
+                    //     $.YGG.tmpl({dom: $(tempDom), v: $('#ablumTmpl').val(), datas: res});
+                    //     $('#ablumDom').get(0).appendChild(tempDom);
+                    //     LazyLoad.Run({
+                    //         isImgCenter: true
+                    //     });
+                    //     if(!res || (res && res.length==0)){
+                    //         loaded=true;
+                    //         $('.loading').html('亲，只有这么多啦～');
+                    //     }
+                    // },
+                    success: function(res) {
+                        if(!res || (res && res.length==0 || res=='')){
+                            loaded=true;
+                            var txt='亲，只有这么多啦～';
+                            txt=index=0?'暂无数据':txt;
+                            $('.loading').html(txt);
+                            return;
+                        }
+                        var tempDom = document.createDocumentFragment();
+                        $.YGG.tmpl({
+                            dom: $(tempDom),
+                            v: $('#ablumTmpl').val(),
+                            datas: res
+                        });
+                        $('#ablumDom').get(0).appendChild(tempDom);
+                        adIndex++;
+                        // console.log($('#artistList'));
+                        $.ajax({
+                            type: 'get',
+                            url: '/newwap/index_content/getContent',
+                            data: {
+                                index: adIndex,
+                                size: 1
+                            },
+                            success: function(res) {
+                               var html = '<a href="' + res.Href + '" class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
+                                $('#ablumDom').append(html);
+                            }
+                        });
+                        LazyLoad.Run({
+                            isImgCenter: true
+                        });
+                    },
+                    error:function(){
+                         loaded=true;
+                         $('.loading').html('亲，只有这么多啦～');
+                    }
+                });
+        }
+
+        function realFunc() {
+            var $el=$('.loading');
+            if (isSendAjax($el)&&!loaded) {
+                curIndex++;
+                var opt={
+                    index:curIndex,
+                    size:4
+                }
+                $.extend(filter,opt);
+                getArtWorks(filter);
+            }
+        }
+
+
+        // 采用了节流函数
+        window.addEventListener('scroll', throttle(realFunc, 500, 1000),false);
+
+
+        //重置状态
+        var reset=function(filter){
+            curIndex = 0;
+            loaded=false;
+            if($("[data-module=wrapper-ablum]").length>0){
+                $("[data-module=wrapper-ablum]").remove();
+            }
+            $("#ablumDom").html('');
+            $.extend(filter,{index:curIndex});
+            getArtWorks(filter);
+        }
+
+        // 列表页面筛选功能
+        $('.list_menu dt').click(function(e){
+            if ($(this).siblings().attr('class') != 'action') {
+                $(this).siblings().addClass('action');
+                $(this).parent().siblings().find('dd').removeClass('action');
+                $(this).parent().siblings().find('dd').find('a').removeClass('screen_on');
+            } else {
+                $('.list_menu dd').removeClass('action');
+            }
+        });
+
+        $('.select_one dd a').click(function(){
+            if($(this).hasClass("screen_on")){
+                $(this).parent().removeClass('action');
+                return;
+            };
+
+           var pinlei="";
+           var price="";
+           var sort ="";
+           switch($(this).parent().parent().index()){
+            case 0:pinlei=$(this).text();break;
+            case 1:price=$(this).attr('data-code');break;
+            case 2:sort=$(this).attr('data-code');break;
+           }
+            filter={
+                pinlei:pinlei,
+                price:price,
+                sort:sort,
+                saleStatus:""
+            }
+            reset(filter);
+            $(this).addClass('screen_on');
+            $(this).siblings().removeClass('screen_on');
+            $(this).parent().removeClass('action');
+        });
+
+        $('.screen_list a').click(function(e){
+            if($(this).attr('class')!='screen_on'){
+                $(this).addClass('screen_on');
+                $(this).siblings().removeClass('screen_on');
+            }else{
+                $(this).removeClass('screen_on');            
+            }
+        });
+
+        $('.cancel_screen').click(function(){
+            $('.screen_list a').removeClass('screen_on');
+        });
+
+        $('.screen_str').click(function(){
+            $('.screen dd').removeClass('action');
+            var saleStatus=$(".sell .screen_on").text();
+            var year=$(".year .screen_on").attr("data-code");
+            var size=$(".size .screen_on").attr("data-code");
+            filter={
+               saleStatus:saleStatus,
+               year:year,
+               dimension:size
+            }
+            reset(filter);
+        });
+    })
 </script>
 </html>

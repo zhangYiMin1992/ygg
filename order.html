@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,225 +13,349 @@
     <meta property="qc:admins" content="2275617726564116375">
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
-    <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="viewport"
+          content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+          <style type="text/css">
+              .order dd .order_pic{
+                position: relative;
+              }
+          </style>
 </head>
 
 <body>
-    <div class="wrap page page-current">
-        <div class="con_top" id="conTop" data-header="scroll">
-            <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
-            <div class="top_logo"> </div>
-            <div class="search" id="search"></div>
-        </div>
-        <!-- 内容部分 -->
-        <div class="order_page">
-         <!-- 订单列表 -->
-            <div class="nav-tab-top">
-                <ul class="clearfix"> 
-                    <li class="cur" data-code="all"><a href="javascript:;">全部</a></li>
-                    <li data-code="waitPay" ><a href="javascript:;">待付款</a></li>
-                    <li data-code="waitSend" ><a href="javascript:;">待收货</a></li>
-                    <li data-code="waitConfirm"><a href="javascript:;">已完成</a></li>
-                    <li data-code="waitRate" ><a href="javascript:;">退款/售后</a></li> 
-                </ul> 
-            </div>
-            <div class="order_con">
-            <ul class="order_con_list">
-                <li style="display: block">全部</li>
-                <li>代付款</li>
-                <li>待收货</li>
-                <li>已完成</li>
-                <li>退款/售后</li>
+<div class="wrap page page-current">
+    <div class="con_top" id="conTop" data-header="scroll">
+        <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
+        <div class="top_logo"></div>
+        <div class="search" id="search"></div>
+    </div>
+    <!-- 内容部分 -->
+    <div class="order_page">
+        <!-- 订单列表 -->
+        <div class="nav-tab-top">
+            <ul class="clearfix">
+                <li class="cur" data-code="allOrdersDom" id="all" isrender="1"><a href="javascript:;">全部</a></li>
+                <li data-code="daifukuangDom" isrender="1"><a href="javascript:;">待付款</a></li>
+                <li data-code="daishouhuoDom" isrender="1"><a href="javascript:;">待收货</a></li>
+                <li data-code="wanchengDom" isrender="1"><a href="javascript:;">已完成</a></li>
+                <li data-code="shouhouDom" isrender="1"><a href="javascript:;">退款/售后</a></li>
             </ul>
-            </div>
-            <!-- 订单内容结束 -->
-            <!-- <div class="order_list">
-                <ul>
-                    <li>
-                        <div class="order_mes clearfix">
-                            <div class="order_num">订单号：<span>12345678901234</span> ></div>
-                            <div class="state non_payment"><a>立即支付</a></div>
-                        </div>
-                        <dl class="order clearfix">
-                            <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
-                            <dd>
-                                <a href="javascript:;" class="clearfix">
-                                    <div class="order_pic"><img src="images/01.jpg"></div>
-                                    <div class="order_message">
-                                        <p>外面的世界</p>
-                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                        <p>原创艺术品</p>
-                                       <em class="o_price">￥25000.00元</em>
-                                    </div>
-                                </a>
-                            </dd>
-                        </dl>        
-                    </li>
-
-                     <li>
-                        <div class="order_mes clearfix">
-                            <div class="order_num">订单号：<span>00000000000000</span> ></div>
-                            <div class="state"><a>待发货</a></div>
-                        </div>
-                        <dl class="order clearfix">
-                            <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
-                            <dd>
-                                <a href="javascript:;" class="clearfix">
-                                    <div class="order_pic"><img src="images/01.jpg"></div>
-                                    <div class="order_message">
-                                        <p>外面的世界</p>
-                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                        <p>原创艺术品</p>
-                                       <em class="o_price">￥25000.00元</em>
-                                    </div>
-                                </a>
-                            </dd>
-                        </dl> 
-                        <dl class="order clearfix">
-                            <dt>卖家：<a href="javascript:;" class="shop">小卖部</a></dt>
-                            <dd>
-                                <a href="javascript:;" class="clearfix">
-                                    <div class="order_pic"><img src="images/01.jpg"></div>
-                                    <div class="order_message">
-                                       <p>外面的世界</p>
-                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                        <p>原创艺术品</p>
-                                       <em class="o_price">￥25000.00元</em>
-                                    </div>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="javascript:;" class="clearfix">
-                                    <div class="order_pic"><img src="images/01.jpg"></div>
-                                    <div class="order_message">
-                                        <p>外面的世界</p>
-                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
-                                        <p>原创艺术品</p>
-                                       <em class="o_price">￥25000.00元</em>
-                                    </div>
-                                </a>
-                            </dd>
-                        </dl>        
-                    </li>
-                </ul>
-            </div> -->
-
         </div>
-         <!-- 内容部分 -->
+        <ul class="order_con_list">
+            <li style="display: block" id="allOrdersDom">
+               <!--  <div class="order_list">
+                    <ul>
+                        <li>
+                            <div class="order_mes clearfix">
+                                <div class="order_num">订单号：<span>12345678901234</span> ></div>
+                                <div class="state non_payment"><a>立即支付</a></div>
+                            </div>
+                            <dl class="order clearfix">
+                                <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
+                                <dd>
+                                    <a href="javascript:;" class="clearfix">
+                                        <div class="order_pic"><img src="images/01.jpg"></div>
+                                        <div class="order_message">
+                                            <p>外面的世界</p>
+                                            <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                    class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                            <p>原创艺术品</p>
+                                            <em class="o_price">￥25000.00元</em>
+                                        </div>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <li>
+                            <div class="order_mes clearfix">
+                                <div class="order_num">订单号：<span>00000000000000</span> ></div>
+                                <div class="state"><a>待发货</a></div>
+                            </div>
+                            <dl class="order clearfix">
+                                <dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>
+                                <dd>
+                                    <a href="javascript:;" class="clearfix">
+                                        <div class="order_pic"><img src="images/01.jpg"></div>
+                                        <div class="order_message">
+                                            <p>外面的世界</p>
+                                            <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                    class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                            <p>原创艺术品</p>
+                                            <em class="o_price">￥25000.00元</em>
+                                        </div>
+                                    </a>
+                                </dd>
+                            </dl>
+                            <dl class="order clearfix">
+                                <dt>卖家：<a href="javascript:;" class="shop">小卖部</a></dt>
+                                <dd>
+                                    <a href="javascript:;" class="clearfix">
+                                        <div class="order_pic"><img src="images/01.jpg"></div>
+                                        <div class="order_message">
+                                            <p>外面的世界</p>
+                                            <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                    class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                            <p>原创艺术品</p>
+                                            <em class="o_price">￥25000.00元</em>
+                                        </div>
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="clearfix">
+                                        <div class="order_pic"><img src="images/01.jpg"></div>
+                                        <div class="order_message">
+                                            <p>外面的世界</p>
+                                            <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                    class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                            <p>原创艺术品</p>
+                                            <em class="o_price">￥25000.00元</em>
+                                        </div>
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="loading">加载中...</div>
+                <div class="null-data" style="display: none;">暂无订单</div>
+            </li>
+            <li id="daifukuangDom">
+                <div class="null-data">
+                    <div class="no_order">
+                        <div class="no_order_img"><img src="images/no_order.png"></div>
+                        <p>您还没有相关订单</p>
+                    </div>
+                </div>
+            </li>
+            <li id="daishouhuoDom">
+                <div class="null-data">
+                    <div class="no_order">
+                        <div class="no_order_img"><img src="images/no_order.png"></div>
+                        <p>您还没有相关订单</p>
+                    </div>
+                </div>
+            </li>
+            <li id="wanchengDom">
+                <div class="null-data">
+                    <div class="no_order">
+                        <div class="no_order_img"><img src="images/no_order.png"></div>
+                        <p>您还没有相关订单</p>
+                    </div>
+                </div>
+            </li>
+            <li id="shouhouDom">
+                <div class="null-data">
+                    <div class="no_order">
+                        <div class="no_order_img"><img src="images/no_order.png"></div>
+                        <p>您还没有相关订单</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
     </div>
-    <!-- 侧边栏 -->
-    <div class="panel-overlay"></div>
-    <div class="panel left_sidebar panel-left" id="leftSidebar">
-        <dl>
-            <dt class="list_bck1">首页</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck2">中国爱艺术</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck3">万人展</dt>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck4">发现艺术</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck5">艺术x品牌</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck6">艺术品</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck7">艺术家</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl>
-            <dt class="list_bck8">关于我们</dt>
-        </dl>
-        <dl class="noline">
-            <dt class="list_bck9">个人中心<span>2</span></dt>
-        </dl>
-    </div>
-    <!-- 侧边栏结束-->
+    <!-- 内容部分 -->
+</div>
+<!-- <textarea style="display: none" id="allOrdersTmpl">
+    <div class="order_list">
+                    <ul>
+                        <%$.each(this,function(k,v){%>
+                             <%for(od in v){%>
+                        <li>
+                            <div class="order_mes clearfix">    
+                                <div class="order_num">订单号：<span><%od.split("#")[0]%></span></div>
+                                <div class="state"><a><%orderStatus[od.split("#")[1]]%></a></div>
+                            </div>
+                            <%$.each(v[od],function(k2,v2){%>
+                                 <%for(nm in v2){%>
+                                    <dl class="order clearfix">
+                                        <dt>卖家：<a href="javascript:;" class="shop"><%nm%></a></dt>
+                                         <%$.each(v2[nm],function(k3,v3){%>
+                                            <dd>
+                                                <a href="javascript:;" class="clearfix">
+                                                    <div class="order_pic"><img src="http://www.artgogo.com<%v3.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
+                                                    <div class="order_message">
+                                                        <p><%v3.goods_name%></p>
+                                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                                class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                                        <p>原创艺术品</p>
+                                                        <em class="o_price">￥25000.00元</em>
+                                                    </div>
+                                                </a>
+                                            </dd>
+                                         <%});%>
+                                    </dl>
+                               <%}%>
+                            <%});%>
+                        </li>
+                        <%}%>
+                     <%});%>
+                    </ul>
+            </div>
+</textarea> -->
+<textarea style="display: none" id="allOrdersTmpl">
+    <div class="order_list">
+                    <ul>
+                        <%$.each(this,function(k,v){%>
+                             <%for(od in v){%>
+                        <li>
+                            <div class="order_mes clearfix">    
+                                <div class="order_num">订单号：<span><%od.split("m #")[0]%></span></div>
+                                <div class="state"><a><%orderStatus[od.split("#")[1]]%></a></div>
+                            </div>
+                            <%$.each(v[od],function(k2,v2){%>
+                                 <%for(nm in v2){%>
+                                    <dl class="order clearfix">
+                                        <dt>卖家：<a href="javascript:;" class="shop"><%nm%></a></dt>
+                                         <%$.each(v2[nm],function(k3,v3){%>
+                                            <dd>
+                                                <a href="javascript:;" class="clearfix">
+                                                    <div class="order_pic"><img src="http://www.artgogo.com<%v3.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
+                                                    <div class="order_message">
+                                                        <p><%v3.goods_name%></p>
+                                                        <p class="pic_type">水彩<span class="line">|</span>小春哥<span
+                                                                class="line">|</span>25*37cm<span class="line">|</span>2016</p>
+                                                        <p>原创艺术品</p>
+                                                        <em class="o_price">￥25000.00元</em>
+                                                    </div>
+                                                </a>
+                                            </dd>
+                                         <%});%>
+                                    </dl>
+                               <%}%>
+                            <%});%>
+                        </li>
+                        <%}%>
+                     <%});%>
+                    </ul>
+            </div>
+</textarea>
+
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script>
-    $(function(){
-        LazyLoad.Run({
-                 isImgCenter: true
-             });
-        if($('#all').attr('class')=='cur'){
-            var num=1;
-            // num++;
-            $.ajax({
-                  type: "POST",
-                  dataType: "json",
-                  url:"/newwap/order/getTestOrders",
-                  data:{
-                  index:1,
-                  size:4
-                  },
-                  success:function(res){
-                   
-                     for(var i=0;i<res.length;i++){
-                        if(res.order_sn===res.order_sn){
+var orderStatus={
+    "1":"待付款",
+    "2":"待收货",
+    "3":"已完成",
+    "4":"退款／售后"
+};
+var orderData={
+    "daifukuangDom":[],
+    "daishouhuoDom":[],
+    "wanchengDom":[],
+    "shouhouDom":[]
+}
 
-                            var html1=' <li><div class="order_mes clearfix"><div class="order_num">订单号：<span>'+res[i].order_sn+'</span> ></div><div class="state non_payment"><a>'+res[i].logistics_status+'</a></div></div><dl class="order clearfix"><dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt>';
-                            console.log(1);
-                            for(var j=0;j<res.length;j++){
-                                html1+='<dd><a href="javascript:;" class="clearfix"><div class="order_pic"><img lazyload="http://www.artgogo.com'+res[j].Photo+'"></div><div class="order_message"><p>'+res[j].goods_name+'</p><p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p><p>原创艺术品</p><em class="o_price">￥'+res[j].order_payment+'.00元</em></div></a></dd>';
-                            }
-                            html1+='</dl></li>';
-                            $('.order').append(html1);
+var imgClip=function($this,$parent){
+    var imgBoxW=$parent.width();
+    var imgBoxH=$parent.height();
+    var imgW=$this.width();
+    var imgH=$this.height();
+    var rate =imgBoxW / imgBoxH;
+    var ratio = imgW / imgH;
+    var sw, sh, sx, sy;
+    if(ratio>rate){
+    sh=imgBoxH;
+    sw=ratio*imgBoxH;
+    sy=0;
+    sx=(imgBoxW-sw)/2;
+    }else{
+    sw=imgBoxW;
+    sh=imgBoxW/ratio;
+    sx=0;
+    sy=(imgBoxH-sh)/2;
+    }
+    $this.css({
+     position:'absolute',
+     left:sx+'px',
+     top:sy+'px',
+     width:sw+'px',
+     height:sh+'px'
+    });
+}
+
+    $(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                // url: "/newwap/order/getTestOrders",
+                url:"/api/newwap/order/getTestFiltedOrders",
+                data: {
+                    index: 1,
+                    size: 3
+                },
+                success: function (res) {
+                    if(res && res.length>0){
+                        $.YGG.tmpl({dom: $("#allOrdersDom"), v: $('#allOrdersTmpl').val(), datas: res});
+                        $("[data-code=allOrdersDom]").attr("isrender",0);
+                         for(var i=0,len=res.length;i<len;i++){
+                            for(od in res[i]){
+                                if(od.split("#")[1]==1){
+                                    orderData["daifukuangDom"].push(res[i]);
+                                }
+                                if(od.split("#")[1]==2){
+                                    orderData["daishouhuoDom"].push(res[i]);
+                                }
+                                if(od.split("#")[1]==3){
+                                    orderData["wanchengDom"].push(res[i]);
+                                }
+                                if(od.split("#")[1]==4){
+                                    orderData["shouhouDom"].push(res[i]);
+                                }
+                            } 
                          }
-                      
-                     }
-
-                    // html+='</ul>';
-                    // html.append(html1); 
-                    $('#all_order').append(html1);
-                  }
-
-            });
-             
-        }
-    });
-</script>
-<!-- <script>
-    $(function(){
-        LazyLoad.Run({
-                 isImgCenter: true
-             });
-        if($('#all').attr('class')=='cur'){
-            var num=1;
-            // num++;
-            $.ajax({
-                  type: "POST",
-                  dataType: "json",
-                  url:"/newwap/order/getTestOrders",
-                  data:{
-                  index:1,
-                  size:4
-                  },
-                  success:function(res){
-                   
-                     var html='<ul>';
-                     for(var i=0;i<res.length;i++){
-                       // if(res.order_sn===res.order_sn){console.log(1)}
-                       html+=' <li><div class="order_mes clearfix"><div class="order_num">订单号：<span>'+res[i].order_sn+'</span> ></div><div class="state non_payment"><a>'+res[i].logistics_status+'</a></div></div><dl class="order clearfix"><dt>卖家：<a href="javascript:;" class="shop">艺高高直营店</a></dt> <dd><a href="javascript:;" class="clearfix"><div class="order_pic"><img lazyload="http://www.artgogo.com'+res[i].Photo+'"></div><div class="order_message"><p>'+res[i].goods_name+'</p><p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p><p>原创艺术品</p><em class="o_price">￥'+res[i].order_payment+'.00元</em></div></a></dd></dl></li>';
-                     }
-
-                     html+='</ul>';
-                     $('#all_order').append(html); 
+                         
+                         var imglth=$("#allOrdersDom").find('img').length;
+                         var a=function(e){
+                                d++;
+                                if(d == imglth){
+                                    $("#allOrdersDom").find('img').each(function(){
+                                            imgClip($(this),$(this).parent());
+                                        });
+                                }
+                            }
+                        for (var c = imglth, d = 0, e = 0; c > e; e++) {
+                            var g = new Image;
+                            g.onload = a,g.src =$("#allOrdersDom").find('img').eq(d).attr("src");
+                        }                  
                     
-                  }
 
+                            // 订单页面顶部table切换
+                            var curI='';
+                            $('.nav-tab-top ul li').click(function(){
+                                var curI=$(this).index();
+                                if($(this).attr('class')!='cur'){
+                                    $(this).addClass('cur');
+                                    $(this).siblings().removeClass('cur');
+                                    $('.order_con_list>li').eq(curI).css('display','block');
+                                    $('.order_con_list>li').eq(curI).siblings().css('display','none');
+                                    if($(this).attr('isrender')==0){
+                                        return;
+                                    }
+                                    var dataCode=$(this).attr('data-code');
+                                    $(this).attr('isrender',0);
+                                    if(orderData[dataCode] && orderData[dataCode].length==0) return;
+                                    $.YGG.tmpl({dom: $("#"+dataCode), v: $('#allOrdersTmpl').val(), datas: orderData[dataCode]});
+                                    $("#"+dataCode).find('img').each(function(){
+                                            imgClip($(this),$(this).parent());
+                                        });
+                                }
+
+                            });
+                        
+                    }else{
+                        $("#allOrdersDom .loading").hide();
+                        $("#allOrdersDom .null-data").show();
+                  
+                    }
+                }
             });
-             
-        }
+
     });
-</script> -->
+   
+</script>
+
 </html>
