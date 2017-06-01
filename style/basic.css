@@ -1088,7 +1088,7 @@ footer.buy_car .count span{
     font-size:.14rem;
 }
 
-footer.buy_car a{
+footer.buy_car .buy_now{
     float: right;
 
 }
@@ -1100,7 +1100,7 @@ footer.buy_car .purchase{
     padding:.155rem .32rem; 
 }
 
-footer.buy_car a em{
+footer.buy_car .add_buy_car{
     float: left;
     margin:.13rem .1rem 0 0;
     display: block;
@@ -1294,6 +1294,7 @@ dt dd{
 
 .buy_car_chose{
     cursor:pointer;
+    width: 10%;
 }
 
 .payment a div,.chose_all a,.buy_car_chose a{
@@ -1521,3 +1522,7 @@ dt dd{
 .order_con_list>li{
     display:none;
 }
+
+.order dd .order_pic{
+                position: relative;
+              }

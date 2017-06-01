@@ -146,13 +146,13 @@ ul.production {
     background-size: 2.25rem 2.2rem;
     margin: 0 auto .2rem;
 }
-
+/*
 .album_box {
     width: 1.93rem;
     height: 1.89rem;
     padding: 7.5% 0 0 6.5%;
     overflow: hidden;
-}
+}*/
 .lazy_load_img{
     background: url(./images/load.jpg) no-repeat center center;
     background-size: 100%;
@@ -265,12 +265,19 @@ ul.production {
     -webkit-transform: scale(1);
 }
 
-.album_box {
+/*.album_box {
     width: 86%;
     height: 0;
     padding: 7.5% 0 84% 7%;
     overflow: hidden;
-}
+}*/
+
+  .album_box {
+    width: 1.93rem;
+    height: 1.89rem;
+    padding: 7.5% 0 0 6.5%;
+    overflow: hidden;
+    }
 
 .album_box img {
     width: 100%;

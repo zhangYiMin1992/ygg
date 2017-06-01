@@ -15,6 +15,10 @@
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+  
+   
+    </style>
 </head>
 
 <body>
@@ -57,7 +61,7 @@
         </div>
         <!-- 作品列表 -->
        
-        <div  class="album" id="album">
+        <div  class="album" id="album" data-module="wrapper-ablum">
              <ul class="album_list" data-module="content2">
                 <li class="">
                     <div class="album_show  clearfix">
@@ -163,36 +167,11 @@
             </ul>
         </div>
         <!-- 作品列表结束 -->
-        <div class="ad">
+        <div class="ad" data-module="ad">
             <img src="images/art_details_pic.jpg">
         </div>
-        <div class="explain">
+        <!-- <div class="explain">
             <ul class="pic_show maxW">
-                <li>
-                    <div class="details_show  clearfix">
-                        <div class="pic_shadow">
-                            <div class="pic_box"><img src="images/art_details_pic.jpg"></div>
-                        </div>
-                        <div class="pic_masseag">
-                            <p class="art_name">
-                                <span>外面的世界</span>
-                            </p>
-                            <p class="art_type clearfix">
-                                <a class="pic_font">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</a>
-                                <a href="javascript:;">详情</a>
-                            </p>
-                            <div class="artist_box clearfix">
-                                <span class="artist_img"><img src="images/art_details_pic.jpg"></span>
-                                <span class="artist_name">小春哥</span>
-                                <a class="praise mt"><font>56</font>次赞<s></s></a>
-                            </div>
-                            <div class="buy">
-                                <span class="price">￥25000.00</span>
-                                <a href="javascript:;" class="buy_menu">立即购买</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
                 <li>
                     <div class="details_show  clearfix">
                         <div class="pic_shadow">
@@ -219,10 +198,11 @@
                     </div>
                 </li>
             </ul>
-        </div>
-
+        </div> -->
+        <div id="indexCon"></div>
+        <div class="loading">加载中...</div>
         <!-- 底部广告 -->
-        <div class="ad">
+        <div class="ad" data-module="ad">
             <img src="images/art_details_pic.jpg">
         </div>
         <div class="explain">
@@ -239,42 +219,43 @@
             <span class="date">2017/2/28<span></span></span>
         </div>
     </div>
-    <!-- 侧边栏 -->
-    <div class="panel-overlay"></div>
-    <div class="panel left_sidebar panel-left" id="leftSidebar">
-        <dl>
-            <dt class="list_bck1">首页</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck2">中国爱艺术</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck3">万人展</dt>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck4">发现艺术</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck5">艺术x品牌</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck6">艺术品</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck7">艺术家</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl>
-            <dt class="list_bck8">关于我们</dt>
-        </dl>
-        <dl class="noline">
-            <dt class="list_bck9">个人中心<span>2</span></dt>
-        </dl>
-    </div>
-    <!-- 侧边栏 -->
+   <textarea style="display: none" id="indexDom">
+       <div class="explain">
+           <ul class="pic_show maxW">
+           <%for(var i=0,len=this.length;i<len;i++){%>
+               <li>
+                    <div class="album_show  clearfix">
+                        <a href="http://www.artgogo.com/newwap/artwork/detail?artworkId=<%this[i].id%>" class="album_shadow">
+                            <div class="album_box">
+                                <div class="lazy_load_img">
+                                    <img lazyload='http://www.artgogo.com<%this[i].cover%>'>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="pic_message">
+                            <p class="art_name">
+                                <span><%this[i].title%></span>
+                            </p>
+                            <p class="art_type clearfix">
+                               <a class="pic_font"><%this[i].pinlei%><span class="line">|</span><%this[i].name%><span class="line">|</span><%this[i].width%>*<%this[i].height%>cm<span class="line">|</span><%this[i].czsj%></a>
+                                <a href="javascript:;">详情</a>
+                            </p>
+                            <div class="artist_box clearfix">
+                                <span class="artist_img"><img src="http://www.artgogo.com<%this[i].artistPhoto%>"></span>
+                                <span class="artist_name"><%this[i].name%></span>
+                                <a class="praise mt"><font><%this[i].attention%></font>次赞<s></s></a>
+                            </div>
+                            <div class="buy">
+                                <span class="price">￥<%this[i].price%>.00</span>
+                                <a href="javascript:;" class="buy_menu">立即购买</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+               <%}%>
+           </ul>
+       </div>
+   </textarea>
 </body>
 <script type="text/javascript" src='./js/basic.js'></script>
 <script type="text/javascript" src='./js/index.js'></script>
@@ -485,6 +466,95 @@ $(function(){
 $(function(){
     $("#album").Swiper()
 })
+
+});
+// 简单的节流函数
+function throttle(func, wait, mustRun) {
+    var timeout,
+        startTime = new Date();
+
+    return function() {
+        var context = this,
+            args = arguments,
+            curTime = new Date();
+
+        clearTimeout(timeout);
+        // 如果达到了规定的触发时间间隔，触发 handler
+        if (curTime - startTime >= mustRun) {
+            func.apply(context, args);
+            startTime = curTime;
+            // 没达到触发间隔，重新设定定时器
+        } else {
+            timeout = setTimeout(func, wait);
+        }
+    };
+}
+function loading($el) {
+    return $(window).height() + $(window).scrollTop() > $el.offset().top
+}
+var curIndex = 1;
+var adIndex = 1;
+var loaded = false;;
+$(function() {
+    LazyLoad.Run({
+        isImgCenter: true
+    });
+    function realFun() {
+        var $el;
+        var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#indexCon');
+        if ($wa.last().attr('data-module') == 'ad') {
+            $el = $wa.last();
+        } else {
+            $el = $wa.last().children().last();
+        }
+        if (loading($el) && !loaded) {
+            curIndex++;
+            $.YGG.ajax({
+                url: '/api/newwap/artwork/getArtworks',
+                data: {
+                    index: curIndex,
+                    size: 4
+                },
+                success: function(res) {
+                    var indexTmpl = document.createDocumentFragment();
+                    $.YGG.tmpl({
+                        dom: $(indexTmpl),
+                        v: $('#indexDom').val(),
+                        datas: res
+                    });
+                    $('#indexCon').get(0).appendChild(indexTmpl);
+
+                    adIndex++;
+                    // console.log($('#artistList'));
+                    $.ajax({
+                        type: 'get',
+                        url: '/api/newwap/index_content/getContent',
+                        data: {
+                            index: adIndex,
+                            size: 1
+                        },
+                        success: function(res) {
+                            var html = '<a href="http://www.artgogo.com' + res.Href + '" class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
+                            $('#indexCon').append(html);
+                        }
+                    });
+                    LazyLoad.Run({
+                        isImgCenter: true
+                    });
+                    if (!res || (res && res.length == 0)) {
+                        loaded = true;
+                        $('.loaede').html('亲只有这么多啦～');
+                    }
+                },
+                error: function() {
+                    loaded = true;
+                    $('.loaded').html('亲只有这么多啦～');
+                }
+            });
+        }
+    };
+    window.addEventListener('scroll', throttle(realFun, 500, 1000));
+
 
 });
 </script>

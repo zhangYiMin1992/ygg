@@ -382,6 +382,7 @@ $(function(){
  // 购物车页面订单全选功能
     $('.chose_all a').click(function(){
         if($(this).attr('class')!='chose'){
+          //console.log(1);
             $(this).addClass('chose');
             $('.buy_car_chose a').addClass('chose');
         }else{
@@ -390,19 +391,13 @@ $(function(){
         }
      });
 
-    $('.buy_car_chose').click(function(){
-        var $a=$(this).find('a');
+    $('.buy_car_list').on('click','.buy_car_chose',function(){
+        var $a=$(this).children();
         if($a.attr('class')!='chose'){
             $a.addClass('chose');
         }else{
             $a.removeClass('chose');
         }
-        if($a.attr('class')=="chose"  && $(this).parent().siblings().find('.buy_car_chose a').attr('class')=="chose"){
-            $('.chose_all a').addClass('chose');  
-        }else{
-            $('.chose_all a').removeClass('chose');  
-        }
-        
     });
 
 });

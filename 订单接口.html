@@ -143,172 +143,31 @@ getFiltedOrders
 JSONArray Order数据字段
 
 
-
-
-package com.artgogo.newwap.service;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import org.nutz.dao.Cnd;
-import org.nutz.dao.Condition;
-import org.nutz.dao.pager.Pager;
-import org.nutz.dao.util.cri.SqlExpressionGroup;
-import org.nutz.ioc.loader.annotation.IocBean;
-import org.nutz.log.Log;
-import org.nutz.log.Logs;
-import org.nutz.service.IdNameEntityService;
-
-import com.artgogo.newwap.pojo.IndexContent;
-
-@IocBean(fields="dao")
-public class IndexContentService extends IdNameEntityService<IndexContent> {
-  private static final Log log = Logs.get();
-  final private int PAGER_SIZE = 1; // 默认pager大小
-  final private int EXHIBITION_CATEGORY = 14471; // 展销频道号
-  final private int INFORMATION_CATEGORY = 14472; // 咨询频道号
-  final private int NEWS_CATEGORY = 14473; // 新闻频道号
-  final private int BANNER_CATEGORY = 14648; // 线上活动频道号
-    // 通用SQL条件  未删除以及状态为通过, 封面图不为空
-    final private SqlExpressionGroup commonSqlExpression = Cnd.exps ("Active", "=", 1).and("Status", "=", 1)
-        .and("Photo", "!=", "").and("Href", "!=", "");
-  
-
-  
-  // 获取首页展销
-  public IndexContent fetchExhibition(int index) {
-    IndexContent indexContent = null;
-    List<IndexContent> indexContents = dao().query(IndexContent.class, Cnd.where(commonSqlExpression)
-        .and("Category", "=", EXHIBITION_CATEGORY)
-        .desc("id"), getPager(index));
-    if(indexContents.size() >= 1){
-      indexContent = indexContents.get(0);
-      // 转换时间
-      if(indexContent.getSubjectDate() != null)
-        indexContent.setDate(formatDate(indexContent.getSubjectDate()));
-      
-      return indexContent;
-    } else return null;
-  }
-  
-  // 获取首页资讯
-  public IndexContent fetchInformation(int index) {
-    IndexContent indexContent = null;
-    List<IndexContent> indexContents = dao().query(IndexContent.class, Cnd.where(commonSqlExpression)
-        .and("Category", "=", INFORMATION_CATEGORY)
-        .desc("id"), getPager(index));
-    if(indexContents.size() >= 1){
-      indexContent = indexContents.get(0);
-      // 转换时间
-      if(indexContent.getSubjectDate() != null)
-        indexContent.setDate(formatDate(indexContent.getSubjectDate()));
-      
-      return indexContent;
-    } else return null;
-  }
-  
-  // 获取首页新闻
-  public IndexContent fetchNews(int index) {
-    IndexContent indexContent = null;
-    List<IndexContent> indexContents = dao().query(IndexContent.class, Cnd.where(commonSqlExpression)
-        .and("Category", "=", NEWS_CATEGORY)
-        .desc("id"), getPager(index));
-    if(indexContents.size() >= 1){
-      indexContent = indexContents.get(0);
-      // 转换时间
-      if(indexContent.getSubjectDate() != null)
-        indexContent.setDate(formatDate(indexContent.getSubjectDate()));
-      
-      return indexContent;
-    } else return null;
-  }
-  
-  public IndexContent fetchContent(int index) {
-    SqlExpressionGroup expression = Cnd.exps("Category", "=", BANNER_CATEGORY).or("Category", "=", EXHIBITION_CATEGORY)
-                .or("Category", "=", INFORMATION_CATEGORY).or("Category", "=", NEWS_CATEGORY);
-    IndexContent indexContent = null;
-    List<IndexContent> indexContents = dao().query(IndexContent.class, Cnd.where(commonSqlExpression)
-        .and(expression)
-        .desc("id"), getPager(index));
-    if(indexContents.size() >= 1){
-      indexContent = indexContents.get(0);
-      // 转换时间
-      if(indexContent.getSubjectDate() != null)
-        indexContent.setDate(formatDate(indexContent.getSubjectDate()));
-      
-      return indexContent;
-    } else return null;
-  }
-  
-  public List<IndexContent> getContents(int index, int size) {
-    SqlExpressionGroup expression = Cnd.exps("Category", "=", BANNER_CATEGORY).or("Category", "=", EXHIBITION_CATEGORY)
-                .or("Category", "=", INFORMATION_CATEGORY).or("Category", "=", NEWS_CATEGORY);
-    List<IndexContent> indexContents = dao().query(IndexContent.class, Cnd.where(commonSqlExpression)
-        .and(expression)
-        .desc("id"), getPager(index));
-    
-    return indexContents;
-  }
-  
-  public IndexContent fetch(long indexContentId) {
-    return fetch(indexContentId);
-  }
-  
-  public List<IndexContent> query(){
-    return dao().query(IndexContent.class, null, getPager());
-  }
-
-  public List<IndexContent> query(Pager pager){
-    return dao().query(IndexContent.class, null, pager);
-  }
-  
-  public List<IndexContent> query(Condition condition){
-    return dao().query(IndexContent.class, condition, getPager());
-  }
-  
-  public List<IndexContent> query(Condition condition, Pager pager){
-    return dao().query(IndexContent.class, condition, pager);
-  }
-  
-  public Pager getPager(){
-    Pager pager = dao().createPager(1, PAGER_SIZE);
-    pager.setRecordCount(dao().count(IndexContent.class));
-    return pager;
-  }
-  
-  public Pager getPager(int index){
-    if(index <= 0) {
-      return getPager();
-    } else {
-      Pager pager = dao().createPager(index, PAGER_SIZE);
-      pager.setRecordCount(dao().count(IndexContent.class));
-      return pager;
-    }
-  }
-  
-  public Pager getPager(int index, int PAGER_SIZE){
-    if(PAGER_SIZE <= 0) {
-      return getPager(index);
-    } else if(index <= 0) {
-      return getPager();
-    } else {
-      Pager pager = dao().createPager(index, PAGER_SIZE);
-      pager.setRecordCount(dao().count(IndexContent.class));
-      return pager;
-    }
-  }
-  
-  public String formatDate(long seconds){
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-    Date date = new Date(seconds);
-    
-    return simpleDateFormat.format(date);
-  }
-  
-  public String formatDate(Date date){
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
-    
-    return simpleDateFormat.format(date);
-  }
-}
+购物车
+        getCart
+        参数 必须先登录
+        返回 JSONArray Cart
+        
+        getTestCart
+        参数 无
+        返回 JSONArray Cart
+        
+        add
+        参数 int artworkId艺术品id, int num数量(必须先登录)
+        返回 JSONObject{"isSuccess": true/false, "message" : String}
+        
+        remove
+        参数 int cartId(需要先登录)
+        返回 JSONObject{"isSuccess": true/false, "message" : String}
+        
+        Cart
+            long cart_id; // 购物车id
+            long user_id; // 用户id
+            long pa_id; // 艺术品id
+            long pd_id; // 版画id
+            long print_number; // 版号
+            int num; // 数量
+            double price; //总价
+            double subtotal; // 单价
+            int cart_type; // 购物车类型 默认为1
+            Artwork artwork; // 对应艺术品信息

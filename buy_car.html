@@ -33,8 +33,8 @@
         </div>
         <!-- 订单信息 -->
             <div class="buy_car_order_box order_box">
-                <ul class="buy_car_list">
-                    <li class="clearfix">
+                <ul class="buy_car_list" id="buyCarList">
+                  <!--   <li class="clearfix">
                         <div class="buy_car_chose">
                              <a class="chose"></a>  
                          </div>
@@ -71,7 +71,7 @@
                                 </a>
                             </dd>
                         </dl> 
-                    </li>              
+                    </li> -->              
                 </ul>
             </div>
             <!-- 个人信息部分 -->
@@ -104,49 +104,57 @@
         
         <footer class="buy_car">
             <div class="count">￥<span>25000.00</span>元</div>
-            <a><em></em><span  class="purchase">立即购买</span></a>
+            <div class="buy_now">
+                <a class="add_buy_car"></a>
+                <a class="purchase">立即支付</a>
+            </div>
         </footer>
     </div>
 
-
+<textarea id="buyCar" style="display: none">
+    <%for(var i=0,len=this.length;i<len;i++){%>
+        <li class="clearfix list_li">
+            <div class="buy_car_chose">
+                 <a class="chose"></a>  
+             </div>
+            <dl class="order">
+                <dt>卖家：<a href="javascript:;" class="shop"><%this[i].artwork.m_name%></a></dt>
+                <dd>
+                    <a href="javascript:;" class="clearfix">
+                        <div class="order_pic"><img lazyload="http://www.artgogo.com<%this[i].artwork.cover%>"></div>
+                        <div class="order_message">
+                            <p><%this[i].artwork.Title%></p>
+                            <p class="pic_type"><%this[i].artwork.pinlei%><span class="line">|</span><%this[i].artwork.name%><span class="line">|</span><%this[i].artwork.width%>*<%this[i].artwork.height%>cm<span class="line">|</span><%this[i].artwork.czsj%></p>
+                            <p>原创艺术品</p>
+                           <em class="o_price">￥<%this[i].artwork.price%>.00元</em>
+                        </div>
+                    </a>
+                </dd>
+            </dl> 
+        </li>
+    <%}%>
+</textarea>
     <!-- 侧边栏 -->
-    <div class="panel-overlay"></div>
-    <div class="panel left_sidebar panel-left" id="leftSidebar">
-        <dl>
-            <dt class="list_bck1">首页</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck2">中国爱艺术</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck3">万人展</dt>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck4">发现艺术</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck5">艺术x品牌</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck6">艺术品</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck7">艺术家</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl>
-            <dt class="list_bck8">关于我们</dt>
-        </dl>
-        <dl class="noline">
-            <dt class="list_bck9">个人中心<span>2</span></dt>
-        </dl>
-    </div>
     <!-- 侧边栏结束-->
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
-
+<script>
+    $(function(){
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url:'/api/newwap/cart/getTestCart',
+            success:function(res){
+                var buyCarDom=document.createDocumentFragment();
+                $.YGG.tmpl({dom: $(buyCarDom), v: $('#buyCar').val(), datas: res});
+                $('#buyCarList').get(0).appendChild(buyCarDom);
+                LazyLoad.Run({
+                           isImgCenter: true
+                       });
+            }
+        });
+        
+    });
+</script>
 </html>
