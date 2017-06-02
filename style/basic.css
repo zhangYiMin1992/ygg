@@ -1193,7 +1193,7 @@ dt dd{
 }
 
 .o_price{
-    /*font-family:"simsun";*/
+    transform: scale(1)!important;
 }
 
 .order_message h3 .delete{
@@ -1297,8 +1297,8 @@ dt dd{
     width: 10%;
 }
 
-.payment a div,.chose_all a,.buy_car_chose a{
-    display: block;
+.payment a div,.chose_all a,.buy_car_chose a,.address dd .set{
+    display: inline-block;
     width:.18rem;
     height:.19rem;
     background: url(../images/pay.png) no-repeat;
@@ -1307,7 +1307,7 @@ dt dd{
     margin-right:.48rem;
 }
 
-.payment div.chose,.chose_all a.chose,.buy_car_chose a.chose{ 
+.payment div.chose,.chose_all a.chose,.buy_car_chose a.chose,.address dd .set.chose{ 
     background-position:0 -.705rem!important;
 }
 

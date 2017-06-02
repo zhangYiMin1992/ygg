@@ -47,7 +47,7 @@
                                         <p>外面的世界</p>
                                         <p class="pic_type">水彩<span class="line">|</span>小春哥<span class="line">|</span>25*37cm<span class="line">|</span>2016</p>
                                         <p>原创艺术品</p>
-                                       <em class="o_price">￥25000.00元</em>
+                                       <p class="o_price">￥<span>25000.00</span>元</p>
                                     </div>
                                 </a>
                             </dd>
@@ -84,8 +84,10 @@
                         <input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="" placeholder="手机号码">
                     </li>
                     <li>联系地址:
-                        <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" readonly="readonly">  
-                        <span class="add">+</span>
+                        <a href="address.html">
+                            <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" readonly="readonly">  
+                            <span class="add">+</span>
+                        </a>
                     </li>   
                     <li>备&#12288;&#12288;注:
                         <input class="receive_message"  id="receiveMessage" type="text" value="" placeholder="选填" >  
@@ -126,7 +128,7 @@
                             <p><%this[i].artwork.Title%></p>
                             <p class="pic_type"><%this[i].artwork.pinlei%><span class="line">|</span><%this[i].artwork.name%><span class="line">|</span><%this[i].artwork.width%>*<%this[i].artwork.height%>cm<span class="line">|</span><%this[i].artwork.czsj%></p>
                             <p>原创艺术品</p>
-                           <em class="o_price">￥<%this[i].artwork.price%>.00元</em>
+                           <p class="o_price">￥<span><%this[i].artwork.price%>.00</span>元</p>
                         </div>
                     </a>
                 </dd>
@@ -146,15 +148,80 @@
             dataType: "json",
             url:'/api/newwap/cart/getTestCart',
             success:function(res){
+                $('.pic_number').html(res.length);
                 var buyCarDom=document.createDocumentFragment();
                 $.YGG.tmpl({dom: $(buyCarDom), v: $('#buyCar').val(), datas: res});
                 $('#buyCarList').get(0).appendChild(buyCarDom);
                 LazyLoad.Run({
                            isImgCenter: true
                        });
+                getPrice();
             }
+        }); 
+       //支付方式选择
+       $('.payment a').click(function(){
+           if($(this).find('div').attr('class')!='chose'){
+               $(this).find('div').addClass('chose');
+               $(this).siblings().find('div').removeClass('chose');
+           }
+       });
+
+    // 购物车页面订单全选功能
+       $('.chose_all a').click(function(){
+
+           if($(this).attr('class')!='chose'){
+               $(this).addClass('chose');
+               $('.buy_car_chose a').addClass('chose');
+
+           }else{
+               $(this).removeClass('chose');
+               $('.buy_car_chose a').removeClass('chose');
+           }
+           $('.pic_number').html($('.buy_car_chose .chose').length);
+           getPrice();
+
         });
-        
+
+
+       $('.buy_car_list').on('click','.buy_car_chose',function(){
+           
+           var $a=$(this).children();
+           if($a.attr('class')!='chose'){
+               $a.addClass('chose');
+           }else{
+               $a.removeClass('chose');
+           }
+       
+           if($('.buy_car_chose .chose').length==$('.buy_car_chose a').length){
+               $('.chose_all a').addClass('chose');
+           }else{
+               $('.chose_all a').removeClass('chose');
+           }
+           $('.pic_number').html($('.buy_car_chose .chose').length);
+           getPrice();
+       });
+        // 点击立即支付
+        // $('.purchase').click(function(){
+
+        // });
+        // 点击添加地址
+        $('#distSelectEvent').click(function(){
+
+        })
     });
+    var getPrice=function(){
+       var $li=$('.buy_car_list li');
+       var Price=[];
+       var count=0;
+       for(var i=0;i<$li.length;i++){
+            if($li.eq(i).find('.buy_car_chose a').hasClass('chose')){
+                Price.push(parseInt($li.eq(i).find('.o_price span').html()));
+            }
+       }
+       Price.forEach(function(item,index,array){
+           count+=item;
+       });
+       $('.count span').html(parseInt(count)+'.00');
+    }; 
 </script>
 </html>

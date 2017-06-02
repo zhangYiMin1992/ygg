@@ -371,35 +371,89 @@ $(function(){
 
 
  // 支付方式选择
-$(function(){
-    $('.payment a').click(function(){
-      if($(this).find('div').attr('class')!='chose'){
-          $(this).find('div').addClass('chose');
-          $(this).siblings().find('div').removeClass('chose');
-        }
-    });
+// $(function(){
+  
+//     $('.payment a').click(function(){
+//         if($(this).find('div').attr('class')!='chose'){
+//             $(this).find('div').addClass('chose');
+//             $(this).siblings().find('div').removeClass('chose');
+//         }
+//     });
 
- // 购物车页面订单全选功能
-    $('.chose_all a').click(function(){
-        if($(this).attr('class')!='chose'){
-          //console.log(1);
-            $(this).addClass('chose');
-            $('.buy_car_chose a').addClass('chose');
-        }else{
-            $(this).removeClass('chose');
-            $('.buy_car_chose a').removeClass('chose');
-        }
-     });
+//  // 购物车页面订单全选功能
+//     $('.chose_all a').click(function(){
 
-    $('.buy_car_list').on('click','.buy_car_chose',function(){
-        var $a=$(this).children();
-        if($a.attr('class')!='chose'){
-            $a.addClass('chose');
-        }else{
-            $a.removeClass('chose');
-        }
-    });
+//         if($(this).attr('class')!='chose'){
+//             $(this).addClass('chose');
+//             $('.buy_car_chose a').addClass('chose');
+//         }else{
+//             $(this).removeClass('chose');
+//             $('.buy_car_chose a').removeClass('chose');
+//         }
+//         $('.pic_number').html($('.buy_car_chose .chose').length);
+//      });
 
-});
+//     $('.buy_car_list').on('click','.buy_car_chose',function(){
+//         var $a=$(this).children();
+//         if($a.attr('class')!='chose'){
+//             $a.addClass('chose');
+//         }else{
+//             $a.removeClass('chose');
+//         }
+    
+//         if($('.buy_car_chose .chose').length==$('.buy_car_chose a').length){
+//             $('.chose_all a').addClass('chose');
+//         }else{
+//             $('.chose_all a').removeClass('chose');
+//         }
+//         $('.pic_number').html($('.buy_car_chose .chose').length);
+//     });
+
+// });
 
 
+//   var digitsRE = /(\d{3})(?=\d)/g;
+
+//   function currency (value, currency, decimals) {
+//     value = parseFloat(value)
+//     if (!isFinite(value) || (!value && value !== 0)) return ''
+//     currency = currency != null ? currency : '¥'
+//     decimals = decimals != null ? decimals : 2
+//     var stringified = Math.abs(value).toFixed(decimals)
+//     var _int = decimals
+//       ? stringified.slice(0, -1 - decimals)
+//       : stringified
+//     var i = _int.length % 3
+//     var head = i > 0
+//       ? (_int.slice(0, i) + (_int.length > 3 ? ',' : ''))
+//       : ''
+//     var _float = decimals
+//       ? stringified.slice(-1 - decimals)
+//       : ''
+//     var sign = value < 0 ? '-' : ''
+//     return sign + currency + head +
+//       _int.slice(i).replace(digitsRE, '$1,') +
+//       _float
+//   }
+//   undefined
+//   currency(1000);
+//   "¥1,000.00"
+//   currency(20000);
+//   "¥20,000.00"
+
+//   var products=[{
+//     price:100,
+//     title:'111',
+//     quantity:2
+// },{
+//     price:200,
+//     title:'111',
+//     quantity:1
+// },{
+//     price:300,
+//     title:'111',
+//     quantity:3
+// }];
+// products.reduce(function(total,p){
+//     return total+p.price * p.quantity
+// },0);
