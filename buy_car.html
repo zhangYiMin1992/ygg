@@ -146,7 +146,7 @@
         $.ajax({
             type: "POST",
             dataType: "json",
-            url:'/api/newwap/cart/getTestCart',
+            url:'/newwap/cart/getTestCart',
             success:function(res){
                 $('.pic_number').html(res.length);
                 var buyCarDom=document.createDocumentFragment();
