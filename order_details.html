@@ -25,9 +25,10 @@
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
         </div>
+        <div id="order_details_page" class="order_list_pt"></div>
         <!-- 内容部分 -->
-         <div class="order_list order_list_pt">
-                <ul>
+         <!--  <div class="order_list order_list_pt">
+               <ul>
                      <li>
                         <div class="order_mes clearfix">
                             <div class="order_num">订单号：<span>00000000000000</span> ></div>
@@ -76,10 +77,10 @@
                             </dd>
                         </dl>        
                     </li>
-                </ul>
-            </div>
+                </ul> 
+            </div>-->
             <!-- 个人信息部分 -->
-            <div class="city">
+            <!-- <div class="city">
                 <ul>
                     <li>下单时间:
                         <input class="receive_time" id="receiveTime" type="text" value="2017/5/12" readonly="readonly">
@@ -101,31 +102,97 @@
                     </li>  
                 </ul>
                 <a class="weixin pay_method"><span>微信钱包</span></a>
-            </div>
-        </div>
+            </div> -->
+        <!-- </div> -->
     </div>
 
 
     <!-- 侧边栏 -->
   
     <!-- 侧边栏结束-->
+
+    <textarea style="display: none" id="orderDetailsTmpl">
+        <div class="order_list">
+            <ul>
+            
+                    <%for(od in this){%>
+                        <li class="order_list_li">
+                            <div class="order_mes clearfix">
+                                <div class="order_num">订单号：<span><%od.split("m")[1].split("#")[0]%></span> ></div>
+                                <div class="state"><a><%orderStatus[od.split("#")[1]]%></a></div>
+                            </div>
+                            <%$.each(this[od],function(k2,v2){%>
+                                <%for(nm in v2){%>
+                                    <dl class="order clearfix">
+                                        <dt>卖家：<a href="javascript:;" class="shop"><%nm%></a></dt>
+                                        <%$.each(v2[nm],function(k3,v3){%>
+                                            <dd>
+                                                <a href="javascript:;" class="clearfix">
+                                                    <div class="order_pic"><img src="http://www.artgogo.com<%v3.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
+                                                    <div class="order_message">
+                                                        <p><%v3.goods_name%></p>
+                                                        <p class="pic_type"><%v3.artwork.pinlei%><span class="line">|</span><%v3.artwork.name%><span
+                                                                class="line">|</span><%v3.artwork.width%>*<%v3.artwork.height%>cm<span class="line">|</span><%v3.artwork.czsj%></p>
+                                                        <p>原创艺术品</p>
+                                                        <em class="o_price">￥<%v3.artwork.price%>.00元</em>
+                                                    </div>
+                                                </a>
+                                            </dd>
+                                            <%if(!orderInfo.address){%>
+                                            <div style="display: none;">
+                                                <%orderInfo.address=v3.address%>
+                                            </div>
+                                            <%}%>
+                                        <%});%>
+                                    </dl>
+                                <%}%>
+                            <%});%>
+                        </li>
+                    <%}%>
+       
+            </ul>
+        </div>
+
+    </textarea>
+
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
-<!-- <script>
-   $(function(){
+<script>
+var orderStatus={
+    "1":"待付款",
+    "2":"待收货",
+    "3":"已完成",
+    "4":"退款／售后"
+};
+var orderInfo={};
+$(function(){
+    var order=getParam().orderId;
+    console.log(order);
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/api/newwap/order/getOrderBySN",
+        url: "/newwap/order/getOrderBySN",
         data: {
-            order_sn:orderSn
+            order_sn:order
         },
         success:function(res){
-            $('.order_list.order_list_pt').html(11111);
+            var orderDetailsDom=document.createDocumentFragment();
+            $.YGG.tmpl({dom: $(orderDetailsDom), v: $('#orderDetailsTmpl').val(), datas: res});
+            $('#order_details_page').get(0).appendChild(orderDetailsDom);
         }
     });
-   })
-   
-</script> -->
+});
+function getParam() {
+    var t = location.search
+      , e = new Object;
+    if (-1 != t.indexOf("?")) {
+        var n = t.substr(1);
+        strs = n.split("&");
+        for (var i = 0; i < strs.length; i++)
+            e[strs[i].split("=")[0]] = strs[i].split("=")[1]
+    }
+    return e
+}
+</script>
 </html>
