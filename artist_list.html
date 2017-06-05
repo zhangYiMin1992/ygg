@@ -262,7 +262,7 @@ var loaded=false;
 ;$(function(){
     LazyLoad.Run({
         isImgCenter: true
-                });
+    });
     function realFun(){
         var $el;
         var $wa = curIndex == 1 ? $('[data-module=wrapper-ablum]') : $('#artistCon');
@@ -285,7 +285,6 @@ var loaded=false;
                         $.YGG.tmpl({dom: $(artistTmpl), v: $('#artistList').val(), datas: res});
                         $('#artistCon').get(0).appendChild(artistTmpl);
                         adIndex++;
-                        // console.log($('#artistList'));
                         $.ajax({
                             type:'get',
                             url: '/newwap/index_content/getContent',
@@ -313,7 +312,7 @@ var loaded=false;
                 });
         }
     };
-     window.addEventListener('scroll', throttle(realFun, 500, 1000));
+    window.addEventListener('scroll', throttle(realFun, 500, 1000));
 
     
 });

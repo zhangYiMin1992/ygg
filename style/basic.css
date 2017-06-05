@@ -1124,7 +1124,7 @@ footer.address a{
     padding:.06rem 0;
 }
 
-.add_address{
+.address .add_address{
     margin-right:6.25%;
 }
 /*订单部分*/
@@ -1225,6 +1225,10 @@ dt dd{
     font-size:.12rem;
     transform: scale(0.88);
     transform-origin:left;
+}
+
+.city.add_address li input{
+    width:75%;
 }
 
 .city li input::-webkit-input-placeholder{ 
@@ -1521,8 +1525,9 @@ dt dd{
 /*订单列表*/
 .order_con_list>li{
     display:none;
+    cursor:pointer;
 }
 
 .order dd .order_pic{
-                position: relative;
-              }
+    position: relative;
+}
