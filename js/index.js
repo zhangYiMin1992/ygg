@@ -457,3 +457,14 @@ $(function(){
 // products.reduce(function(total,p){
 //     return total+p.price * p.quantity
 // },0);
+// 待付款订单状态显示
+var change=function(){
+    var $state=$('.state a');
+    // console.log($state);
+    for(var i=0;i<$state.length;i++){
+        if($state.eq(i).html()=='待付款'){
+            $state.eq(i).html('立即支付');
+            $state.eq(i).parent().addClass('non_payment');
+        }
+    }
+}

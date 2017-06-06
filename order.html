@@ -172,8 +172,8 @@ var imgClip=function($this,$parent){
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: "/newwap/order/getTestOrders",
-                // url:"/api/newwap/order/getTestFiltedOrders",
+                // url: "/newwap/order/getTestOrders",
+                url:"/api/newwap/order/getTestFiltedOrders",
                 data: {
                     index: 1,
                     size: 3
@@ -254,17 +254,6 @@ var imgClip=function($this,$parent){
           
         })  
     });
-
-var change=function(){
-    var $state=$('.state a');
-    // console.log($state);
-    for(var i=0;i<$state.length;i++){
-        if($state.eq(i).html()=='待付款'){
-            $state.eq(i).html('立即支付');
-            $state.eq(i).parent().addClass('non_payment');
-        }
-    }
-}
    
 </script>
 

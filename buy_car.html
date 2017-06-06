@@ -84,10 +84,10 @@
                         <input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="" placeholder="手机号码">
                     </li>
                     <li>联系地址:
-                        <a href="address.html">
-                            <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" readonly="readonly">  
-                            <span class="add">+</span>
-                        </a>
+                        <!-- <a href="address.html"> -->
+                            <input class="distSelect_event"  id="distSelectEvent" type="text" value="" placeholder="添加收货地址" >  
+                            <!-- <span class="add">+</span> -->
+                        <!-- </a> -->
                     </li>   
                     <li>备&#12288;&#12288;注:
                         <input class="receive_message"  id="receiveMessage" type="text" value="" placeholder="选填" >  
@@ -201,13 +201,9 @@
            getPrice();
        });
         // 点击立即支付
-        // $('.purchase').click(function(){
-
-        // });
-        // 点击添加地址
-        $('#distSelectEvent').click(function(){
-
-        })
+        $('.purchase').click(function(){
+        });
+       
     });
     var getPrice=function(){
        var $li=$('.buy_car_list li');

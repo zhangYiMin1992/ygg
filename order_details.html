@@ -136,11 +136,18 @@
                                                         <p>原创艺术品</p>
                                                         <em class="o_price">￥<%v3.artwork.price%>.00元</em>
                                                     </div>
+                                                    <div class="refund"><%v3.orderStatus%></div>
                                                 </a>
                                             </dd>
                                             <%if(!orderInfo.address){%>
                                             <div style="display: none;">
-                                                <%orderInfo.address=v3.address%>
+                                                <%orderInfo.address=v3.address%><!-- 收货地址 -->
+                                                <%orderInfo.add_time=v3.add_time%><!-- 下单时间 -->
+                                                <%orderInfo.buyer_name=v3.buyer_name%><!-- 收货姓名 -->
+                                                <%orderInfo.mobile=v3.mobile%><!-- 联系电话 -->
+                                                <%orderInfo.buy_notes=v3.buy_notes%><!--  买家备注 -->
+                                                <%orderInfo.pay_method=payMethod[v3.pay_method]%><!--  支付方式 -->
+                                                <%orderInfo.payClass=payClass[v3.pay_method]%><!--  -->
                                             </div>
                                             <%}%>
                                         <%});%>
@@ -165,14 +172,30 @@ var orderStatus={
     "3":"已完成",
     "4":"退款／售后"
 };
+var payMethod={
+    "1":"支付宝",
+    "2":"银联",
+    "3":"财付通",
+    "4":"微信支付",
+    "5":"现金支付",
+    "6":"pos机付款",
+    "7":"银行转账"
+};
+
+var payClass={
+    "1":"zhifubao",
+    "2":"bank",
+    "4":"weixin"
+};
+
+
 var orderInfo={};
 $(function(){
     var order=getParam().orderId;
-    console.log(order);
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/newwap/order/getOrderBySN",
+        url: "/api/newwap/order/getOrderBySN",
         data: {
             order_sn:order
         },
@@ -180,7 +203,14 @@ $(function(){
             var orderDetailsDom=document.createDocumentFragment();
             $.YGG.tmpl({dom: $(orderDetailsDom), v: $('#orderDetailsTmpl').val(), datas: res});
             $('#order_details_page').get(0).appendChild(orderDetailsDom);
+            var html='<div class="city"><ul><li>下单时间:<input class="receive_time" id="receiveTime" type="text" value="'+orderInfo.add_time+'" readonly="readonly"></li><li>姓&#12288;&#12288;名:<input class="receive_contact" id="receiveContact" type="text" value="'+orderInfo.buyer_name+'" readonly="readonly"></li><li>联系方式:<input class="receive_cellPhone" id="receiveCellPhone" type="tel" value="'+orderInfo.mobile+'"  readonly="readonly"></li><li>联系地址:<input class="distSelect_event"  id="distSelectEvent" type="text" value="'+orderInfo.address+'"  readonly="readonly"></li><li>备&#12288;&#12288;注:<input class="receive_message"  id="receiveMessage" type="text" value="'+orderInfo.buy_notes+'"  readonly="readonly" ></li> <li>支付方式: <input readonly="readonly" > </li></ul><a class="'+orderInfo.payClass+' pay_method"><span>'+orderInfo.pay_method+'</span></a></div>'
+            $('#order_details_page').append(html);
+            change();
+            setRefund();
         }
+    });
+    $('#order_details_page').on('click','.refund_btn',function(){
+        window.location.href="refund.html";
     });
 });
 function getParam() {
@@ -194,5 +224,19 @@ function getParam() {
     }
     return e
 }
+
+var setRefund=function(){
+    var $dd=$('.order dd');
+    if($('.state a').html()=='待收货'){
+        $('.refund').css('display','block');
+    }
+    for(var i=0;i<$dd.length;i++){
+        if($dd.eq(i).find($('.refund')).html()=='待收货'){
+            $dd.eq(i).find($('.refund')).html('退款');
+            $dd.eq(i).find($('.refund')).addClass('refund_btn');
+        }
+    }   
+};
+
 </script>
 </html>

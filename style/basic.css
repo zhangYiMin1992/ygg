@@ -1472,6 +1472,7 @@ dt dd{
     bottom:0;
     right:0;
     color:#999;
+    display: none;
 }
 
 .refund_btn{
