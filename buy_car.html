@@ -99,7 +99,7 @@
                 <div class="payment">
                     <a class="weixin "><div class="chose"></div><span>微信钱包</span></a>
                     <a class="zhifubao"><div></div><span>支付宝</span></a>
-                    <a class="bank"><div></div><span>中国银联</span></a>
+                    <!-- <a class="bank"><div></div><span>中国银联</span></a> -->
                 </div>
             </div>
         </div>
@@ -115,6 +115,9 @@
 
 <textarea id="buyCar" style="display: none">
     <%for(var i=0,len=this.length;i<len;i++){%>
+            <div class="hasId" style="display: none"> 
+                {"pa_id":<%this[i].pa_id%>,"pd_id":<%this[i].pd_id%>}
+            </div>
         <li class="clearfix list_li">
             <div class="buy_car_chose">
                  <a class="chose"></a>  
@@ -128,7 +131,8 @@
                             <p><%this[i].artwork.Title%></p>
                             <p class="pic_type"><%this[i].artwork.pinlei%><span class="line">|</span><%this[i].artwork.name%><span class="line">|</span><%this[i].artwork.width%>*<%this[i].artwork.height%>cm<span class="line">|</span><%this[i].artwork.czsj%></p>
                             <p>原创艺术品</p>
-                           <p class="o_price">￥<span><%this[i].artwork.price%>.00</span>元</p>
+                            <p class="o_price">￥<span><%this[i].artwork.price%>.00</span>元</p>
+                            
                         </div>
                     </a>
                 </dd>
@@ -142,7 +146,10 @@
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script>
+var artId=[];
+ // {"pa_id":<%this[i].pa_id%>,"pd_id":<%this[i].pd_id%>}
     $(function(){
+        
         $.ajax({
             type: "POST",
             dataType: "json",
@@ -202,6 +209,29 @@
        });
         // 点击立即支付
         $('.purchase').click(function(){
+            var Id=[];
+            var num=$('.pic_number').html();
+            var count=$('.count span').html();
+            var $li=$('.buy_car_list li');
+            var Address=$('.receive_contact').val() + $('.receive_cellPhone').val() + $('.distSelect_event').val();
+            var receives=$('.receive_message').val();
+            for(var i=0;i<$li.length;i++){
+                Id.push($('.hasId').eq(i).html());
+            }
+            var pay_method=$('.payment .chose').siblings().html();
+            $.ajax({
+                // url:"",
+                data:{
+                    id:Id,
+                    size:num,
+                    price:count,
+                    address:Address,
+                    receive:receives,
+                    method:pay_method
+                }
+
+            });
+            console.log(data);
         });
        
     });

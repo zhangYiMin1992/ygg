@@ -140,15 +140,15 @@
                                                 </a>
                                             </dd>
                                             <%if(!orderInfo.address){%>
-                                            <div style="display: none;">
-                                                <%orderInfo.address=v3.address%><!-- 收货地址 -->
-                                                <%orderInfo.add_time=v3.add_time%><!-- 下单时间 -->
-                                                <%orderInfo.buyer_name=v3.buyer_name%><!-- 收货姓名 -->
-                                                <%orderInfo.mobile=v3.mobile%><!-- 联系电话 -->
-                                                <%orderInfo.buy_notes=v3.buy_notes%><!--  买家备注 -->
-                                                <%orderInfo.pay_method=payMethod[v3.pay_method]%><!--  支付方式 -->
-                                                <%orderInfo.payClass=payClass[v3.pay_method]%><!--  -->
-                                            </div>
+                                                <div style="display: none;">
+                                                    <%orderInfo.address=v3.address%><!-- 收货地址 -->
+                                                    <%orderInfo.add_time=v3.add_time%><!-- 下单时间 -->
+                                                    <%orderInfo.buyer_name=v3.buyer_name%><!-- 收货姓名 -->
+                                                    <%orderInfo.mobile=v3.mobile%><!-- 联系电话 -->
+                                                    <%orderInfo.buy_notes=v3.buy_notes%><!--  买家备注 -->
+                                                    <%orderInfo.pay_method=payMethod[v3.pay_method]%><!--  支付方式 -->
+                                                    <%orderInfo.payClass=payClass[v3.pay_method]%><!--  -->
+                                                </div>
                                             <%}%>
                                         <%});%>
                                     </dl>
@@ -190,12 +190,13 @@ var payClass={
 
 
 var orderInfo={};
+console.log(orderInfo);
 $(function(){
     var order=getParam().orderId;
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/api/newwap/order/getOrderBySN",
+        url: "/newwap/order/getOrderBySN",
         data: {
             order_sn:order
         },
