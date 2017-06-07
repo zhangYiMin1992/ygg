@@ -185,15 +185,6 @@ $(function(){
     $("#benlai_banner").Banner()
 })
 
-// $(function(){
-//     $("#album").Banner()
-// })
-
-
-/**
- * 侧边栏 二级菜单
- */
-
 ;$(function(){
     $(document).on("click",".open-panel",function(e){
         var panel = $(e.target).data('panel');
@@ -368,49 +359,6 @@ $(function(){
          _self.bind = true
      }
  };
-
-
- // 支付方式选择
-// $(function(){
-  
-//     $('.payment a').click(function(){
-//         if($(this).find('div').attr('class')!='chose'){
-//             $(this).find('div').addClass('chose');
-//             $(this).siblings().find('div').removeClass('chose');
-//         }
-//     });
-
-//  // 购物车页面订单全选功能
-//     $('.chose_all a').click(function(){
-
-//         if($(this).attr('class')!='chose'){
-//             $(this).addClass('chose');
-//             $('.buy_car_chose a').addClass('chose');
-//         }else{
-//             $(this).removeClass('chose');
-//             $('.buy_car_chose a').removeClass('chose');
-//         }
-//         $('.pic_number').html($('.buy_car_chose .chose').length);
-//      });
-
-//     $('.buy_car_list').on('click','.buy_car_chose',function(){
-//         var $a=$(this).children();
-//         if($a.attr('class')!='chose'){
-//             $a.addClass('chose');
-//         }else{
-//             $a.removeClass('chose');
-//         }
-    
-//         if($('.buy_car_chose .chose').length==$('.buy_car_chose a').length){
-//             $('.chose_all a').addClass('chose');
-//         }else{
-//             $('.chose_all a').removeClass('chose');
-//         }
-//         $('.pic_number').html($('.buy_car_chose .chose').length);
-//     });
-
-// });
-
 
 //   var digitsRE = /(\d{3})(?=\d)/g;
 
