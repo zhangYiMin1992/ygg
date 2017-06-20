@@ -127,7 +127,7 @@
                                         <dt>卖家：<a href="javascript:;" class="shop"><%nm%></a></dt>
                                         <%$.each(v2[nm],function(k3,v3){%>
                                             <dd>
-                                                <a href="javascript:;" class="clearfix">
+                                                <a href="http://www.artgogo.com:888/newwap/artwork/detail?artworkId=<%v3.artwork.id%>" class="clearfix">
                                                     <div class="order_pic"><img src="http://www.artgogo.com<%v3.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
                                                     <div class="order_message">
                                                         <p><%v3.goods_name%></p>
@@ -136,8 +136,9 @@
                                                         <p>原创艺术品</p>
                                                         <em class="o_price">￥<%v3.artwork.price%>.00元</em>
                                                     </div>
-                                                    <div class="refund"><%v3.orderStatus%></div>
+                                                    <!-- <div class="refund"><%v3.orderStatus%></div> -->
                                                 </a>
+                                                <div class="refund"><%v3.orderStatus%></div>
                                             </dd>
                                             <%if(!orderInfo.address){%>
                                                 <div style="display: none;">
@@ -190,13 +191,13 @@ var payClass={
 
 
 var orderInfo={};
-console.log(orderInfo);
 $(function(){
     var order=getParam().orderId;
+    console.log(order);
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/newwap/order/getOrderBySN",
+        url: "/api/newwap/order/getOrderBySN",
         data: {
             order_sn:order
         },

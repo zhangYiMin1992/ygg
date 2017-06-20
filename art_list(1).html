@@ -66,23 +66,23 @@
                 <dl class="select_one">
                     <dt>价格</dt>
                     <dd>
-                        <a href="javascript:;">全部</a>
-                        <a href="javascript:;">1万元～3万元</a>
-                        <a href="javascript:;">1000元以下</a>
-                        <a href="javascript:;">3万～5万</a>
-                        <a href="javascript:;">1000～5000元</a>
-                        <a href="javascript:;">5万元～10万元</a>
-                        <a href="javascript:;">5000～1万元</a>
-                        <a href="javascript:;">10万元以上</a>
+                        <a href="javascript:;" data-code="">全部</a>
+                        <a href="javascript:;" data-code="10000-30000">1万元～3万元</a>
+                        <a href="javascript:;" data-code="<1000">1000元以下</a>
+                        <a href="javascript:;" data-code="30000-50000">3万～5万</a>
+                        <a href="javascript:;" data-code="1000-5000">1000～5000元</a>
+                        <a href="javascript:;" data-code="50000-100000">5万元～10万元</a>
+                        <a href="javascript:;" data-code="5000-10000">5000～1万元</a>
+                        <a href="javascript:;" data-code=">100000">10万元以上</a>
                     </dd>
                 </dl>
                 <dl class="select_one">
                     <dt>排序</dt>
                     <dd>
-                        <a href="javascript:;">默认排序</a>
-                        <a href="javascript:;">价格由低到高</a>
-                        <a href="javascript:;">最新发布</a>
-                        <a href="javascript:;">价格由高到低</a>
+                        <a href="javascript:;" data-code="default">默认排序</a>
+                        <a href="javascript:;" data-code="publish_date_desc">价格由低到高</a>
+                        <a href="javascript:;" data-code="price_asc">最新发布</a>
+                        <a href="javascript:;" data-code="price_desc">价格由高到低</a>
                     </dd>
                 </dl>
                 <dl class="screen">
@@ -103,29 +103,29 @@
                         </div>
                         <div class="clearfix screen_list size">
                             <P>尺寸</P>
-                            <a href="javascript:;">全部</a>
-                            <a href="javascript:;">80～120cm</a>
-                            <a href="javascript:;">0～20cm</a>
-                            <a href="javascript:;">120～150cm</a>
-                            <a href="javascript:;">20～50cm</a>
-                            <a href="javascript:;">150～200cm</a>
-                            <a href="javascript:;">50～80cm</a>
-                            <a href="javascript:;">200cm以上</a>
+                            <a href="javascript:;" data-code="">全部</a>
+                            <a href="javascript:;" data-code="80-120cm">80～120cm</a>
+                            <a href="javascript:;" data-code="0-20cm">0～20cm</a>
+                            <a href="javascript:;" data-code="120-150cm">120～150cm</a>
+                            <a href="javascript:;" data-code="20-50cm">20～50cm</a>
+                            <a href="javascript:;" data-code="150-200cm">150～200cm</a>
+                            <a href="javascript:;" data-code="50-80cm">50～80cm</a>
+                            <a href="javascript:;" data-code=">200cm">200cm以上</a>
                         </div>
                         <div class="clearfix screen_list year">
                             <P>年份</P>
-                            <a href="javascript:;">全部</a>
-                            <a href="javascript:;">5年以内</a>
-                            <a href="javascript:;">2017年</a>
-                            <a href="javascript:;">2010～2013年</a>
-                            <a href="javascript:;">2016年</a>
-                            <a href="javascript:;">2000～2009年</a>
-                            <a href="javascript:;">2015年</a>
-                            <a href="javascript:;">1990～1999年</a>
-                            <a href="javascript:;">2014年</a>
-                            <a href="javascript:;">1980～1989年</a>
-                            <a href="javascript:;">2013年</a>
-                            <a href="javascript:;">1980以前</a>
+                            <a href="javascript:;" data-code="">全部</a>
+                            <a href="javascript:;" data-code="five_year">5年以内</a>
+                            <a href="javascript:;" data-code="2017">2017年</a>
+                            <a href="javascript:;" data-code="2010-2013">2010～2013年</a>
+                            <a href="javascript:;" data-code="2016">2016年</a>
+                            <a href="javascript:;" data-code="2000-2009">2000～2009年</a>
+                            <a href="javascript:;" data-code="2015">2015年</a>
+                            <a href="javascript:;" data-code="1990-1999">1990～1999年</a>
+                            <a href="javascript:;" data-code="2014">2014年</a>
+                            <a href="javascript:;" data-code="1980-1989">1980～1989年</a>
+                            <a href="javascript:;" data-code="2013">2013年</a>
+                            <a href="javascript:;" data-code="<1980">1980以前</a>
                         </div>
                     </dd>
                 </dl>
@@ -289,7 +289,7 @@
             };
             $.extend(defaultOpt,opt);
             $.ajax({
-                    url: 'api/newwap/artwork/getFiltedArtworks',
+                    url: '/api/newwap/artwork/getFiltedArtworks',
                     data: defaultOpt,
                     // success: function (res) {
                     //     var tempDom=document.createDocumentFragment();
@@ -355,8 +355,6 @@
                 getArtWorks(filter);
             }
         }
-
-
         // 采用了节流函数
         window.addEventListener('scroll', throttle(realFunc, 500, 1000),false);
 
@@ -398,6 +396,9 @@
             case 1:price=$(this).attr('data-code');break;
             case 2:sort=$(this).attr('data-code');break;
            }
+           console.log(pinlei);
+            console.log(price);
+            console.log(sort);
             filter={
                 pinlei:pinlei,
                 price:price,

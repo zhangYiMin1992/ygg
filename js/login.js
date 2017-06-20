@@ -213,7 +213,7 @@ $(function() {
     // 点击找回密码按钮
     $('#find_menu').click(function(){
         var mobile=$.trim($('#findPhone').val());
-        var mobileCode=$.trim($('#forgot_get_mobile_code').val());
+        var mobileCode=$.trim($('#forgot_mobile_code').val());
         if (!$.YGG.regExp.cellPhone.test(mobile)) {
             maskShow('请输入正确的手机号码');
             return;

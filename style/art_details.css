@@ -34,11 +34,19 @@
     margin-bottom:0!important;
 }
 
+.pri_d{
+    border-bottom: 1px solid #d2d2d2;
+}
+
+.pri_d .art_call{
+    margin-top:.15rem;
+}
 
 .intro .price {
     font: 400 .15rem/.3rem "微软雅黑";
     color: #444444;
     padding: .11rem 0;
+    float: left;
 }
 
 .artist_box .line{
