@@ -197,7 +197,7 @@ $(function(){
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "/api/newwap/order/getOrderBySN",
+        url: "/newwap/order/getOrderBySN",
         data: {
             order_sn:order
         },
@@ -215,17 +215,6 @@ $(function(){
         window.location.href="refund.html";
     });
 });
-function getParam() {
-    var t = location.search
-      , e = new Object;
-    if (-1 != t.indexOf("?")) {
-        var n = t.substr(1);
-        strs = n.split("&");
-        for (var i = 0; i < strs.length; i++)
-            e[strs[i].split("=")[0]] = strs[i].split("=")[1]
-    }
-    return e
-}
 
 var setRefund=function(){
     var $dd=$('.order dd');

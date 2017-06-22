@@ -242,216 +242,24 @@
 </body>
 <script src='js/basic.js'></script>
 <script src='js/index.js'></script>
-<script type="text/javascript">
-    // 简单的节流函数
-    function throttle(func, wait, mustRun) {
-        var timeout,
-            startTime = new Date();
+<script>
+function throttle(func,wait,mustRun){
+    var timeout,
+        startTime=new Date();
+    return function(){
+        var context=this,
+            args=arguments,
+            curTime=new Date();
 
-        return function () {
-            var context = this,
-                args = arguments,
-                curTime = new Date();
+        clearTimeout(timeout);
 
-            clearTimeout(timeout);
-            // 如果达到了规定的触发时间间隔，触发 handler
-            if (curTime - startTime >= mustRun) {
-                func.apply(context, args);
-                startTime = curTime;
-                // 没达到触发间隔，重新设定定时器
-            } else {
-                timeout = setTimeout(func, wait);
-            }
-        };
+        if(curTime-startTime>=mustRun){
+            func.apply(context,args);
+            startTime=curTime;
+        }else{
+            timeout=setTimeout(func,wait);
+        }
     }
-    // 定义页面滚动到一定位置发送ajax请求的函数
-    function isSendAjax($el) {
-        return $(window).height() + $(window).scrollTop() > $el.offset().top
-    }
-    // 定义初始的索引以及一个布尔值
-    var curIndex = 1;
-    var adIndex = 1;
-    var loaded=false;
-    // 定义ajax请求传入的参数
-    var filter={
-        pinlei:"",
-        price:"",
-        sort:"",
-        saleStatus:"",
-        dimension :""
-    };
-
-    $(function () {
-        // 图片裁切
-        LazyLoad.Run({
-            isImgCenter: true
-        });
-        // 定义发送ajax请求的函数
-        var getArtWorks=function(opt){
-            // ajax初始参数
-            var defaultOpt={
-                index:1,
-                size:4
-            };
-            // 合并传入的参数到初始参数中，作为新的参数
-            $.extend(defaultOpt,opt);
-            $.ajax({
-                    url: '/api/newwap/artwork/getFiltedArtworks',
-                    data: defaultOpt,
-                    // success: function (res) {
-                    //     var tempDom=document.createDocumentFragment();
-                    //     $.YGG.tmpl({dom: $(tempDom), v: $('#ablumTmpl').val(), datas: res});
-                    //     $('#ablumDom').get(0).appendChild(tempDom);
-                    //     LazyLoad.Run({
-                    //         isImgCenter: true
-                    //     });
-                    //     if(!res || (res && res.length==0)){
-                    //         loaded=true;
-                    //         $('.loading').html('亲，只有这么多啦～');
-                    //     }
-                    // },
-                    success: function(res) {
-                        if(!res || (res && res.length==0 || res=='')){
-                            loaded=true;
-                            var txt='亲，只有这么多啦～';
-                            txt=index=0?'暂无数据':txt;
-                            $('.loading').html(txt);    
-                            return;
-                        }
-                        var tempDom = document.createDocumentFragment();
-                        $.YGG.tmpl({
-                            dom: $(tempDom),
-                            v: $('#ablumTmpl').val(),
-                            datas: res
-                        });
-                        $('#ablumDom').get(0).appendChild(tempDom);
-                        adIndex++;
-                        // 回调请求，加载广告位
-                        $.ajax({
-                            type: 'get',
-                            url: '/newwap/index_content/getContent',
-                            data: {
-                                index: adIndex,
-                                size: 1
-                            },
-                            success: function(res) {
-                               var html = '<a href="' + res.Href + '" class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
-                                $('#ablumDom').append(html);
-                            }
-                        });
-                        LazyLoad.Run({
-                            isImgCenter: true
-                        });
-                    },
-                    error:function(){
-                         loaded=true;
-                         $('.loading').html('亲，只有这么多啦～');
-                    }
-                });
-        }
-        // 定义满足加载ajax函数的条件函数
-        function realFunc() {
-            // 当布尔值为ture，‘加载中’出现的时候，就开始加载，并且设置传入的参数，合并参数，调用发送ajax请求的函数
-            var $el=$('.loading');
-            if (isSendAjax($el)&&!loaded) {
-                curIndex++;
-                var opt={
-                    index:curIndex,
-                    size:4
-                }
-                $.extend(filter,opt);
-                getArtWorks(filter);
-            }
-        }
-        // 采用了节流函数
-        window.addEventListener('scroll', throttle(realFunc, 500, 1000),false);
-
-
-        //重置状态
-        // 重置下参数，为筛选做准备
-        var reset=function(filter){
-            curIndex = 0;
-            loaded=false;
-            // 如果页面有内容的话把内容先删除
-            if($("[data-module=wrapper-ablum]").length>0){
-                $("[data-module=wrapper-ablum]").remove();
-            }
-            $("#ablumDom").html('');
-            // 把索引置为0，再发送ajax请求
-            $.extend(filter,{index:curIndex});
-            getArtWorks(filter);
-        }
-
-        // 列表页面筛选功能
-        $('.list_menu dt').click(function(e){
-            // 点击上面的分类的时候，$(this).siblings()指的是dd，就是分类的父元素
-            if ($(this).siblings().attr('class') != 'action') {
-
-                $(this).siblings().addClass('action');
-                $(this).parent().siblings().find('dd').removeClass('action');
-                // 一旦点击了就把其他分类里面的点击样式去掉
-                $(this).parent().siblings().find('dd').find('a').removeClass('screen_on');
-            } else {
-                $('.list_menu dd').removeClass('action');
-            }
-        });
-        // 当点击具体的单选项的时候
-        $('.select_one dd a').click(function(){
-            if($(this).hasClass("screen_on")){
-                // 点击完就把他的父盒子隐藏
-                $(this).parent().removeClass('action');
-                return;
-            }
-            // 定义要传入的参数变量
-            var pinlei="";
-            var price="";
-            var sort ="";
-            // 获取当前点击的a链接的内容，就是筛选的词条
-            switch($(this).parent().parent().index()){
-                case 0:pinlei=$(this).text();break;
-                case 1:price=$(this).attr('data-code');break;
-                case 2:sort=$(this).attr('data-code');break;
-            }
-            // 把变量存入filter
-            filter={
-                pinlei:pinlei,
-                price:price,
-                sort:sort,
-                saleStatus:""
-            }
-            // 重置下参数以及把页面html清空
-            reset(filter);
-            // 改变样式
-            $(this).addClass('screen_on');
-            $(this).siblings().removeClass('screen_on');
-            $(this).parent().removeClass('action');
-        });
-        // 点击筛选里面的项的时候
-        $('.screen_list a').click(function(e){
-            if($(this).attr('class')!='screen_on'){
-                $(this).addClass('screen_on');
-                $(this).siblings().removeClass('screen_on');
-            }else{
-                $(this).removeClass('screen_on');            
-            }
-        });
-        // 点击取消的时候
-        $('.cancel_screen').click(function(){
-            $('.screen_list a').removeClass('screen_on');
-        });
-        // 点击确定的时候
-        $('.screen_str').click(function(){
-            $('.screen dd').removeClass('action');
-            var saleStatus=$(".sell .screen_on").text();
-            var year=$(".year .screen_on").attr("data-code");
-            var size=$(".size .screen_on").attr("data-code");
-            filter={
-               saleStatus:saleStatus,
-               year:year,
-               dimension:size
-            }
-            reset(filter);
-        });
-    })
+}
 </script>
 </html>

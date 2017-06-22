@@ -114,49 +114,62 @@
         <footer class="buy_car">
             <div class="count">￥<span>25000.00</span>元</div>
             <div class="buy_now">
-                <a class="add_buy_car"></a>
-                <a class="purchase">立即购买</a>
+                <a class="add_buy_car" id="add"></a>
+                <a class="purchase" id="buyMenu">立即购买</a>
             </div>
         </footer>
     </div>
+    <!-- 错误弹框提示 -->
+    <div class="km-dialog-mask"></div>
+    <div class="regist_phone_dialog"><span></span></div>
     <!-- 侧边栏 -->
-    <div class="panel-overlay"></div>
-    <div class="panel left_sidebar panel-left" id="leftSidebar">
-        <dl>
-            <dt class="list_bck1">首页</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck2">中国爱艺术</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck3">万人展</dt>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck4">发现艺术</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck5">艺术x品牌</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck6">艺术品</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck7">艺术家</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl>
-            <dt class="list_bck8">关于我们</dt>
-        </dl>
-        <dl class="noline">
-            <dt class="list_bck9">个人中心<span>2</span></dt>
-        </dl>
-    </div>
+ 
     <!-- 侧边栏结束-->
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
+<script type="text/javascript">
+    $(function(){
+        var isAdd=true;
+        LazyLoad.Run({
+            isImgCenter:true
+        });
+        if($('.count span').html()==0){
+            $('.price').html('展示');
+            $('.buy .buy_menu').html('详情');
+            $('.buy_car').css('display','none');
+        }
+        var Id=($('.artwork_id p').html());
+        // var Id=45551;
+        $('#buyMenu').tap(function(){
+            window.location.href="confrim_order.html?artId="+Id;
+        });
+        $('#add').tap(function(){
+            if(isAdd){
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url:'/newwap/cart/add',
+                    data:{
+                        artworkId:Id,
+                        num:1
+                    },  
+                    success:function(res){
+                        if(res.isSuccess){
+                            maskShow('添加成功，在购物车等亲亲～');
+                            isAdd=false;
+                        }else{
+                            maskShow('哎呀出错了，等会儿再试一次～');
+                        }
+                    }
 
+                });
+            }else if(!isAdd){
+                maskShow('已经成功添加了哦～');
+                return
+            }
+            
+        });
+    })
+</script>
 </html>

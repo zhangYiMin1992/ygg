@@ -149,34 +149,4 @@ body {
     color: #bfbfbf;
 }
 
-.km-dialog-mask,.regist_phone_dialog{
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-}
 
-.km-dialog-mask {
-    width: 100%;
-    height: 100%;
-    z-index: 6000;
-    background-color: #000;
-    opacity: .6;
-}
-
-.regist_phone_dialog {
-    font-size: .12rem;
-    right:0;
-    bottom:0;
-    margin:auto;
-    border-radius: .05rem;
-    background-color: #fff;
-    color:#000;
-    z-index: 6001;
-    text-align: center; 
-    padding:.05rem;
-    line-height: .3rem;
-    height: .3rem;
-    min-width: .16rem;
-    max-width: 2rem;
-}

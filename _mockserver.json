@@ -762,24 +762,7 @@
                      ]     
 
            },
-           //相关推荐艺术品
-           // "POST /artwork/getArtistArtworks ":{
-           //          "request":{
-           //              "artistId":"1546",
-           //              "index":"1",
-           //              "size":"4"
-           //          },
-           //          "response":{
-           //              "id":"134723",
-           //              "cover":"http://www.artgogo.com/images/2017/4/25/1493099328olyhis752_c.jpg",                                           
-           //              "title":"外面的世界",
-           //              "name":"小春哥",
-           //              "width":"23",
-           //              "height":"36",
-           //              "pinlei":"水彩",
-           //              "price":"2800"
-           //          }
-           // }
+         
            //艺术家广告处
             "GET /newwap/index_content/getContent ":{
                     "request":{
@@ -2816,6 +2799,87 @@
                         ]
                     }
               
+            },
+            "POST /newwap/artwork/getArtwork ":{
+                    "request":{
+                        "artworkId":"15615"
+                    },
+                    "response":[
+                        {
+
+                            "qianming": "有",
+                            "PublishDate": 1492061507,
+                            "OrderNumber": 13465900,
+                            "Photo": "/images/artwork/2017-4/1492061409maolhi570.jpg",
+                            "is_derivative": "否",
+                            "chushou": "是",
+                            "CreateDate": 1492062061,
+                            "GlobalID": 1360432,
+                            "cover": "/images/2017/4/13/1492061409maolhi570_c.jpg",
+                            "zb_length": 0,
+                            "Random": 636,
+                            "big_photo": "/images/2017/4/13/1492061409maolhi570_a.jpg",
+                            "price": 67500,
+                            "paimai": "否",
+                            "id": 134659,
+                            "is_print": "否",
+                            "agg_channel": "无",
+                            "print_cate": "",
+                            "height": 40,
+                            "Status": 1,
+                            "czsj": "0",
+                            "zb_width": 0,
+                            "caizhi": "纸面",
+                            "zhuangbiao": "否",
+                            "list_disable": "",
+                            "zb_fangshi": "",
+                            "ChannelID": 14064,
+                            "Weight": 0,
+                            "Litle_photo": "/images/2017/4/13/1492061409maolhi570_b.jpg",
+                            "Active": 1,
+                            "art_gid": 4893,
+                            "name": "Luka Brase",
+                            "pinlei": "插画",
+                            "Category": 0,
+                            "User": 0,
+                            "isStatus": "审核通过",
+                            "fengge": "表现",
+                            "ChannelCode": "3625_12586_14064_",
+                            "actual_width": 0,
+                            "ModifiedDate": 1492077198,
+                            "chuzu": "否",
+                            "uid": 2041,
+                            "bargain_price": 0,
+                            "TotalPage": 1,
+                            "zhuti": "风景",
+                            "print_count": 0,
+                            "SubTitle": "",
+                            "IsPhotoNews": 0,
+                            "Keyword": "",
+                            "dizhi": "",
+                            "zpms": "",
+                            "actual_height": 0,
+                            "length": 0,
+                            "Title": "Tour Eiffel",
+                            "bargain_duration": 0,
+                            "m_name": "artgogo官方直售",
+                            "isup": "否",
+                            "GenerateFileDate": 1492481937,
+                            "width": 27,
+                            "attention": 0,
+                            "Tag": ""
+                        
+                    }
+                ]
+            },
+            "POST /newwap/cart/add ":{
+                "request":{
+                    "artworkId":"1561616",
+                    "num":"1"
+                },
+                "response":{
+                    "isSuccess":true,"message": "添加失败"
+                }
             }
     }
 }

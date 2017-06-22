@@ -1,15 +1,4 @@
-//遮罩弹框提醒
-var timer_dialog = null;
-function maskShow(message) {
-    clearTimeout(timer_dialog);
-    timer_dialog = setTimeout(function() {
-        $('.regist_phone_dialog span').html(message);
-        $('.regist_phone_dialog,.km-dialog-mask').css('display', 'block');
-        setTimeout(function() {
-            $('.regist_phone_dialog,.km-dialog-mask').css('display', 'none');
-        }, 2000);
-    }, 100);
-}
+
 
 var phoneInputCheck=function(e){
     var e = event || window.event;

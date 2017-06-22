@@ -1,3 +1,15 @@
+//遮罩弹框提醒
+var timer_dialog = null;
+function maskShow(message) {
+    clearTimeout(timer_dialog);
+    timer_dialog = setTimeout(function() {
+        $('.regist_phone_dialog span').html(message);
+        $('.regist_phone_dialog,.km-dialog-mask').css('display', 'block');
+        setTimeout(function() {
+            $('.regist_phone_dialog,.km-dialog-mask').css('display', 'none');
+        }, 2000);
+    }, 100);
+}
 
 //首页轮播
 ;(function(w, $, undefined) {
@@ -416,3 +428,23 @@ var change=function(){
         }
     }
 }
+
+function getParam() {
+    var t = location.search
+      , e = new Object;
+    if (-1 != t.indexOf("?")) {
+        var n = t.substr(1);
+        strs = n.split("&");
+        for (var i = 0; i < strs.length; i++)
+            e[strs[i].split("=")[0]] = strs[i].split("=")[1]
+    }
+    return e
+}
+
+//支付方式选择
+$('.payment a').click(function(){
+    if($(this).find('div').attr('class')!='chose'){
+        $(this).find('div').addClass('chose');
+        $(this).siblings().find('div').removeClass('chose');
+    }
+});

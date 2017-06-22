@@ -102,7 +102,7 @@
                                     <%$.each(v2[nm],function(k3,v3){%>
                                         <dd>
                                             <a href="javascript:;" class="clearfix">
-                                                <div class="order_pic"><img src="http://www.artgogo.com<%v3.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
+                                                <div class="order_pic"><img src="http://www.artgogo.com<%v3.artwork.Photo%>" onerror="this.onerror=null;this.src='./images/load.jpg';"></div>
                                                 <div class="order_message">
                                                     <p><%v3.goods_name%></p>
                                                     <p class="pic_type"><%v3.artwork.pinlei%><span class="line">|</span><%v3.artwork.name%><span
@@ -172,8 +172,8 @@ var imgClip=function($this,$parent){
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                // url: "/newwap/order/getTestOrders",
-                url:"/api/newwap/order/getTestFiltedOrders",
+                url: "/newwap/order/getTestOrders",
+                // url:"/api/newwap/order/getTestFiltedOrders",
                 data: {
                     index: 1,
                     size: 2
@@ -252,11 +252,11 @@ var imgClip=function($this,$parent){
             var orderSn=$(this).siblings().find($('.order_num span')).html();
             window.location.href="order_details.html?orderId="+orderSn;
         });
-        $('.order_con_list li').on('click','div.non_payment a',function(){
-            var orderSn=$(this).parent().siblings().find('span').html();
-            // console.log(orderSn)
-            window.location.href="confrim_order.html?orderId="+orderSn;
-        });
+        // $('.order_con_list li').on('click','div.non_payment a',function(){
+        //     var orderSn=$(this).parent().siblings().find('span').html();
+        //     // console.log(orderSn)
+        //     window.location.href="confrim_order.html?orderId="+orderSn;
+        // });
     });
    
 </script>
