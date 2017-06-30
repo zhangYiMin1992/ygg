@@ -18,10 +18,10 @@
             -webkit-font-smoothing:antialiased;/*字体抗锯齿*/
         }
 
-        ..slider .main .main-i,
+        .slider .main .main-i,
         .slider .main,
         .slider{
-            width:100px;
+            width:100%;
             height:400px;
             position: relative;
         }
@@ -131,14 +131,32 @@
             position: absolute;
             right:50%;
             top:0;
+            transition:all .5s;
+            z-index: 2;
         }
 
-        .slider .main .main-i h2{}
+        .slider .main .main-i h2{
+            margin-right:45px;
+        }
 
-        .slider .main .main-i h3{}
+        .slider .main .main-i h3{
+            margin-right:-45px;
+        }
+
+        .slider .main .main-i h2,
+        .slider .main .main-i h3{
+            transition:all 1s .8s;
+            opacity: 0
+        }
 
         .slider .main .main-i_active{
             right:0;
+            opacity: 1;
+        }
+
+        .slider .main .main-i_active h2,
+        .slider .main .main-i_active h3{
+            margin-right: 0px;
             opacity: 1;
         }
     </style>
