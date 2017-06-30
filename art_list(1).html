@@ -333,21 +333,22 @@
                             data: {
                                 index: adIndex,
                                 size: 1
-                            },
+       
+                           },
                             success: function(res) {
                                var html = '<a href="' + res.Href + '" class="ad" data-module="ad"><img lazyload="http://www.artgogo.com' + res.Photo + '"></a>';
                                 $('#ablumDom').append(html);
                             }
                         });
-                        LazyLoad.Run({
-                            isImgCenter: true
-                        });
-                    },
-                    error:function(){
-                         loaded=true;
-                         $('.loading').html('亲，只有这么多啦～');
-                    }
-                });
+                    LazyLoad.Run({
+                        isImgCenter: true
+                    });
+                },
+                error:function(){
+                     loaded=true;
+                     $('.loading').html('亲，只有这么多啦～');
+                }
+            });
         }
         // 定义满足加载ajax函数的条件函数
         function realFunc() {
