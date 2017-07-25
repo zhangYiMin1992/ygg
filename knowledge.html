@@ -7,33 +7,167 @@
 2.对象的组成
     方法--函数：过程、动态的
     属性--变量：状态、静态的
+        例：var arr=[1,2,3,4];
+            var a=12;是变量
+            var arr.a=5;是属性 (之前案例添加的 lis[i].index=i 就是属性)
+            可以理解成变量和属性是一个东西，不过变量是自由的，但是属性是属于一个对象的，属于对象的变量
 
+        例：
+            函数：
+                function show(){
+                    alert('a');
+                }
+                show();
 
+            方法：
+                arr.fn=funciton(){
+                    alert('a');
+                }
+                arr.fn();
 
+            属于一个对象的时候就叫方法
 
+3.工厂方式
+    <script>
+        function createPerson(name,sex){
 
+            //1.原料
+            var obj=new Object();
 
+            //2.加工
+            obj.name=name;
+            obj.sex=sex;
 
+            obj.showName=function(){
+                alert('我的名字是'+this.name);
+            }
+            obj.showSex=function(){
+                alert('我是'+this.sex+'的');
 
+            }
 
+            //3.出厂
+            return obj;
+        }
 
+        var p1=createPerson('张义敏','女');
+        var p2=createPerson('冯深海','男');
 
+        p1.showSex();
+        p1.showName();
+        p2.showSex();
+        p2.showName();
+    </script>
+    工厂方式的问题：
+                   1.没有new
+                   2.每个对象都有一套自己的函数--浪费资源
 
+    用了new的写法：
+        <script>
+            function createPerson(name,sex){//构造函数
 
+                //假想的系统内部工作流程
+                // var this=new Object();
 
+                this.name=name;
+                this.sex=sex;
 
+                this.showName=function(){
+                    alert('我的名字是'+this.name);
+                }
+                this.showSex=function(){
+                    alert('我是'+this.sex+'的');
+                }
 
+                //假想的系统内部工作流程
+                //return this;
+            }
+            //下面的构造函数其实跟类是一个东西
+            var p1=new createPerson('张义敏','女');
+            var p2=new createPerson('冯深海','男');
 
+            p1.showSex();
+            p1.showName();
+            p2.showSex();
+            p2.showName();  
+        </script>
 
+4.当函数前面加了new的时候，会改变this的指向，因为系统会自动创建一个对象
+    例：function show(){
+            alert(this);
+        }
+        show();      -->this指window
+        new show();  -->this指新创建的对象
 
-
-1.
+5.
     类      -->模具
     对象    -->蛋糕
 
-    例： var arr=New Array();
+    例： var arr=new Array();
          Array是类，不具备实际功能，只能用来构造对象
          arr是对象，真正有功能的东西，是被类构造出来的
 
-2.
-    原型重要的应用（功能）：可以扩展系统对象，或者是给类添加一些本来没有的方法和属性
+
+6.原型重要的应用（功能）：可以扩展系统对象，或者是给类添加一些本来没有的方法和属性
+
+    简单的原型函数：
+        <script>
+
+            var arr1=new Array(12,4,5,25,5);//
+            var arr2=new Array(56,5,6,5,52,1);
+
+            Array.prototype.sum=function(){
+                var result=0,
+                    i=0;
+
+                for(i=0;i<this.length;i++){
+                    result+=this[i];
+                }
+                return result;
+            };
+
+            alert(arr1.sum());
+            alert(arr2.sum());
+        </script>
+
+7.用工厂方式构造对象
+    <script>
+        function CreatePerson(name,sex){//构造函数
+            //属性：每个对象都各不相同，所以用构造函数添加属性
+            this.name=name;
+            this.sex=sex;
+        }
+
+        //方法：是所有对象都一样的
+        CreatePerson.prototype.showName=function(){
+            alert('我的名字是'+this.name);
+        }
+
+        CreatePerson.prototype.showSex=function(){
+            alert('我是'+this.sex+'的');
+        }
+
+        var p1=new CreatePerson('blue','男');
+        var p2=new CreatePerson('leo','女');
+
+        p1.showSex();
+        p1.showName();
+        p2.showSex();
+        p2.showName();
+
+        //p1.showName()==p2.showName();这里是成立的，这样比较上面的而已就节约了资源
+    </script>
+
+8.给原型添加方法和给对象添加方法的优先级
+    <script>
+        Array.prototype.a=12;
+        var arr=[1,2,3];
+        alert(arr.a);   //12
+        arr.a=5;
+        alert(arr.a);   //5
+    </script>
+
+    给对象本身添加属性的优先级高
+
+9.
+    
