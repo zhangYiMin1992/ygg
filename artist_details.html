@@ -6,8 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="style/artist_details.css">
     <link rel="stylesheet" type="text/css" href="style/basic.css">
-    <meta name="Keywords" content="艺术家列表页面">
-    <meta name="description" content="艺术家列表页面">
+    <meta name="Keywords" content="艺术家详情页面">
+    <meta name="description" content="艺术家详情页面">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
@@ -24,41 +24,28 @@
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
         </div>
-        <div class="artist_works">
-            <a href="javascript:;">
-                <img lazyload="images/08.jpg">
-            </a>
-        </div>
+      
         <!-- 艺术家个人信息部分 -->
-        <div class="artist_personal">
-            <div class="artist_head_box">
+         <div id="Personal" class="artist_personal">
+            <!--<div class="artist_head_box">
                 <div class="artist_head">
                     <img src="images/01.jpg">
                 </div>
                 <span class="yellow"></span>
             </div>
             <p class="artist_name">赵笑笑</p>
-            <p class="artist_message"><span>30件作品</span> | <span>6655次赞</span> | <span>北京</span></p>
+            <p class="artist_message"><span>30件作品</span> | <span>北京</span></p>
             <p class="cut"></p>
             <div class="description" id="description">
                 <p>1989.2.20生于上海</p>
-                <p>2011年本科毕业中央美术学院油画系</p>
-                <p>现工作于上海，北京</p>
-                <p>个展</p>
-                <p>2014《境之无尽》，和画廊，北京，中国</p>
-                <p>2015，国际艺术家圣诞群展————全球印象，柏林狮子行宫，柏林</p>
-                <p>2015，新青年当代艺术国际推广计划，上海新美术馆，上海</p>
-                <p>2014《境之无尽》，和画廊，北京，中国</p>
-                <p>2015，国际艺术家圣诞群展————全球印象，柏林狮子行宫，柏林</p>
-                <p>2015，新青年当代艺术国际推广计划，上海新美术馆，上海</p>
-                <p>个展</p>
-                <p>2014《境之无尽》，和画廊，北京，中国</p>
-                <p>2015，国际艺术家圣诞群展————全球印象，柏林狮子行宫，柏林</p>
-                <p>2015，新青年当代艺术国际推广计划，上海新美术馆，上海</p>
             </div>
             <div class="carry"><span id="spread">展开</span></div>
-            <div class="recommend">
-                <span>相关作品</span>
+            <div class="recommend reco_list">
+                <a href="javascript:;">最新</a>
+                <a href="javascript:;">在售</a>
+                <a class="on" href="javascript:;">已售</a>
+                <a class="on" href="javascript:;">作品集</a>
+                <a href="javascript:;">文章</a>
             </div>
             <ul class="pic_list no_padding">
                 <li>
@@ -73,88 +60,75 @@
                         <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/03.jpg"   lazyload='images/10.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/02.jpg"  lazyload='images/08.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <img src="images/02.jpg"  lazyload='images/07.jpg'>
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            </ul>-->
+        </div> 
+        <!-- 艺术家个人信息 -->
     </div>
     <!-- 侧边栏 -->
-    <div class="panel-overlay"></div>
-    <div class="panel left_sidebar panel-left" id="leftSidebar">
-        <dl>
-            <dt class="list_bck1">首页</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck2">中国爱艺术</dt>
-        </dl>
-        <dl>
-            <dt class="list_bck3">万人展</dt>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck4">发现艺术</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck5">艺术x品牌</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck6">艺术品</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl class="select">
-            <dt class="list_bck7">艺术家</dt>
-            <dd> <a href="javascript:;"> | 艺术介入服务</a> <a href="javascript:;"> | 艺术能量供应</a> </dd>
-        </dl>
-        <dl>
-            <dt class="list_bck8">关于我们</dt>
-        </dl>
-        <dl class="noline">
-            <dt class="list_bck9">个人中心<span>2</span></dt>
-        </dl>
-    </div>
+    
     <!-- 侧边栏结束-->
+    <textarea id="PersonalTmpl" style="display: none;">
+        <%for(var i=0,len=this.length;i<len;i++){%>
+            <!-- <%for(od in v){%> -->
+                <div class="artist_head_box">
+                    <div class="artist_head">
+                        <img src="http://www.artgogo.com<%this[i].mPhoto%>">
+                    </div>
+                    <span class="yellow"></span>
+                </div>
+                <p class="artist_name"><%this[i].title%></p>
+                <p class="artist_message"><span><%this[i].artnums%>件作品</span> | <span><%this[i].live%></span></p>
+                <p class="cut"></p>
+                <div class="description" id="description">
+                    <p><%this[i].summary%></p>
+                </div>
+                <div class="carry"><span id="spread">展开</span></div>
+                <div class="recommend reco_list">
+                    <a href="javascript:;">最新</a>
+                    <a href="javascript:;">在售</a>
+                    <a class="on" href="javascript:;">已售</a>
+                    <a class="on" href="javascript:;">作品集</a>
+                    <a href="javascript:;">文章</a>
+                </div>
+                <ul class="pic_list no_padding">
+                            <li>
+                                <a href="javascript:;">
+                                    <div class="pic">
+                                        <img src="images/load.jpg"  lazyload='http://www.artgogo.com<%v2.artworks.photo%>'>
+                                        <div class="gradients"></div>
+                                        <span>￥25000.00</span>
+                                    </div>
+                                    <p class="pic_name">外面的世界</p>
+                                    <p class="artist">小春哥</p>
+                                    <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
+                                </a>
+                            </li>
+                    
+                </ul>
+            <!-- <%}%> -->
+        <%}%>
+    </textarea>
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
-<script type="text/javascript">
+<script>
 $(function(){
-    LazyLoad.Run({
-        isImgCenter:true
+    $.ajax({
+        type:"POST",
+        url:"/newwap/artist/1234",
+        data:{
+            id:1234
+        },
+        success:function(res){
+                var PersonalDom = document.createDocumentFragment();
+                $.YGG.tmpl({
+                    dom:$(PersonalDom),
+                    v:$('#PersonalTmpl').val(),
+                    datas:res
+                });
+                $('#Personal').get(0).appendChild(PersonalDom);
+            }
+        
     });
 
     $('#spread').click(function(){
@@ -167,9 +141,10 @@ $(function(){
         }
       
     });
-      LazyLoad.Run({
-            isImgCenter: true
-                        });
+    LazyLoad.Run({
+        isImgCenter:true
+    });
+   
 });
 </script>
 </html>

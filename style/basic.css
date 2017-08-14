@@ -764,11 +764,37 @@ body.panel-closing .page {
     background-size: .26rem 1.7rem;
     background-position: right -0.13rem top -.59rem;
 }
+
+.reco_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reco_list a{
+    font: 400 .12rem/.3rem "黑体";
+    color: #1a1a1a;
+    position: relative;
+}
+
+.reco_list a.on:after{
+    content:'';
+    display:inline-block;
+    width:0.28rem;
+    height:0.01rem;
+    background: #191919;
+    position: absolute;
+    left:50%;
+    bottom:0.02rem;
+    transform: translateX(-50%);
+}
+
 /*艺术家详情介绍*/
 .artist_personal {
     width: 100%;
     box-sizing: border-box;
-    padding: .3rem .18rem 0 .18rem;
+    padding: .78rem .18rem 0 .18rem;
 }
 
 .artist_head_box {

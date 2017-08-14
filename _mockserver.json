@@ -2880,6 +2880,116 @@
                 "response":{
                     "isSuccess":true,"message": "添加失败"
                 }
+            },
+
+            "POST /newwap/artist/1234 ":{
+                "request":{
+                    "id":1234
+                },
+                "response": {
+                    "id": 3980,
+                    "mPhoto": "/images/2016/8/23/20168231471935347347_371_a.jpg",
+                    "live": "",
+                    "artnums": 0,
+                    "globalID": 1278815,
+                    "random": 661,
+                    "photo": "/images/2016/8/23/20168231471935347347_371.jpg",
+                    "title": "Peter Riezebos",
+                    "summary": "2米高，荷兰人，写书，画画，不停地画画。画里有自由、有感情、有灵魂，他还说得出个道理。在意自己在照片里面的胖瘦，表示还接着土地呼吸，认真尝试每一个通往成功的可能，保持一致的努力。走过自闭症的路途，明白过高智商的负担，跨国半个地球，努力在他喜欢的中国写下颜色。我从好卖的角度来看他，从好配合的基础用他，从颜值、身高、经历、精力、情商、勤力的每个细节观察他，从受众测试中鉴定他，然后才推荐他。一个陪你走很久的艺术家，年轻就有机会。希望你也发掘他、发觉他。1980年出生的荷兰艺术家，现居上海，创作风格主要是抽象和新表现主义。他自学成才，绘画时往往自由发挥，这种创造力源于他表达情感的强烈欲望，并从其幼小保持至今。 不仅如此，他还是畅销书《Van mavo tot Harvard》的作者，记叙了他从学校辍学到成为品学兼优和专业艺术家的人生故事。 他学习心理学、传播学、企业管理学以及哲学。此外，他正在攻读教育类的博士学位。Peter年幼时患过社交障碍的疾病，而绘画成为了他抵抗疾病的最佳疗法。大约在22岁的时候，他受到身边朋友和亲人的鼓励重新开始画画，从自闭的阴影里走出来的他转而成为了艺术家，并撰写了书籍，在世界各地做演讲，激励人们用艺术的方法战胜心理疾病。Peter努力在创作中让自己变得更加自我，更加纯粹，不害怕做尝试，而是真正得释放自我。Peter的作品是色彩的爆发、抽象图形与风格的融合，它既有抽象表现主义绘画大师杰克逊波洛克的画风，又如毕加索的抽象画作一般不羁。能看到他的作品中充满了重复出现的标志性符号，使用各种几何图形来塑造各种人物和形象，不少作品都是从中国传统人物形象中汲取了灵感。",
+                    "category": 14234,
+                    "active": 1,
+                    "status": 1,
+                    "artworks":[
+                     {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },
+                        {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },
+                        {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },
+                        {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        }
+                    ]
+                }
             }
     }
 }
