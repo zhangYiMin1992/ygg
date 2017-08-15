@@ -62,60 +62,98 @@
                 </li>
             </ul>-->
         </div> 
+        <div class="loading">加载中...</div>
         <!-- 艺术家个人信息 -->
     </div>
     <!-- 侧边栏 -->
     
     <!-- 侧边栏结束-->
     <textarea id="PersonalTmpl" style="display: none;">
-        <%for(var i=0,len=this.length;i<len;i++){%>
-            <!-- <%for(od in v){%> -->
-                <div class="artist_head_box">
-                    <div class="artist_head">
-                        <img src="http://www.artgogo.com<%this[i].mPhoto%>">
-                    </div>
-                    <span class="yellow"></span>
-                </div>
-                <p class="artist_name"><%this[i].title%></p>
-                <p class="artist_message"><span><%this[i].artnums%>件作品</span> | <span><%this[i].live%></span></p>
-                <p class="cut"></p>
-                <div class="description" id="description">
-                    <p><%this[i].summary%></p>
-                </div>
-                <div class="carry"><span id="spread">展开</span></div>
-                <div class="recommend reco_list">
-                    <a href="javascript:;">最新</a>
-                    <a href="javascript:;">在售</a>
-                    <a class="on" href="javascript:;">已售</a>
-                    <a class="on" href="javascript:;">作品集</a>
-                    <a href="javascript:;">文章</a>
-                </div>
-                <ul class="pic_list no_padding">
-                            <li>
-                                <a href="javascript:;">
-                                    <div class="pic">
-                                        <img src="images/load.jpg"  lazyload='http://www.artgogo.com<%v2.artworks.photo%>'>
-                                        <div class="gradients"></div>
-                                        <span>￥25000.00</span>
-                                    </div>
-                                    <p class="pic_name">外面的世界</p>
-                                    <p class="artist">小春哥</p>
-                                    <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                                </a>
-                            </li>
-                    
-                </ul>
-            <!-- <%}%> -->
-        <%}%>
+
+        <div class="artist_head_box">
+            <div class="artist_head">
+                <img src="http://www.artgogo.com<%this.mPhoto%>">
+            </div>
+            <span class="yellow"></span>
+        </div>
+        <p class="artist_name"><%this.title%></p>
+        <p class="artist_message"><span><%this.artnums%>件作品</span> | <span><%this.live%></span></p>
+        <p class="cut"></p>
+        <div class="description" id="description">
+            <p><%this.summary%></p>
+        </div>
+        <a class="carry"><span>展开</span></a>
+        <div class="recommend reco_list">
+            <a id="new" class="on" href="javascript:;">最新</a>
+            <a id="sale" href="javascript:;">在售</a>
+            <a id="sold" href="javascript:;">已售</a>
+            <a id="album" href="javascript:;">作品集</a>
+            <a id="article" href="javascript:;">文章</a>
+        </div>
+        <div style="display:none;" class="o_no_list"><img src="images/no_order.png"/><span>目前暂无作品</span></div>
+        <ul class="pic_list no_padding" data-moudle="picList">
+             <%for(var i=0;i<this.artworks.length;i++){%>
+                <li>
+                    <a href="http://m.artgogo.com/artwork.php?id=<%this.artworks[i].id%>">
+                        <div class="pic">
+                            <img src="images/load.jpg"  lazyload='http://www.artgogo.com<%this.artworks[i].photo%>'>
+                            <div class="gradients"></div>
+                            <span>￥<%this.artworks[i].price%>.00</span>
+                        </div>
+                        <p class="pic_name"><%this.artworks[i].title%></p>
+                        <p class="artist"><%this.artworks[i].name%></p>
+                        <p class="pic_size"><span><%this.artworks[i].pinlei%></span>|<em><%this.artworks[i].width%>*<%this.artworks[i].height%>cm</em></p>
+                    </a>
+                    <div class="get_id" style="display:none;"><h1><%this.artworks[i].id%></h1><h2><%this.artworks[i].artistID%></h2></div>
+                </li>
+            <%}%>
+            
+        </ul>
+        
     </textarea>
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script>
+
+// 简单的节流函数
+function throttle(func, wait, mustRun) {
+    var timeout,
+            startTime = new Date();
+
+    return function () {
+        var context = this,
+                args = arguments,
+                curTime = new Date();
+
+        clearTimeout(timeout);
+        // 如果达到了规定的触发时间间隔，触发 handler
+        if (curTime - startTime >= mustRun) {
+            func.apply(context, args);
+            startTime = curTime;
+            // 没达到触发间隔，重新设定定时器
+        } else {
+            timeout = setTimeout(func, wait);
+        }
+    };
+}
+
+function isSendAjax($el){
+    return $(window).height()+$(window).scrollTop()>$el.offset().top
+}
+
+
+
 $(function(){
+    //获取艺术家id
+    var artist_id;
+    var art_id;
+    var perIndex=1;
+    var loaded=false;
     $.ajax({
-        type:"POST",
+        type:"GET",
         url:"/newwap/artist/1234",
+        //获取艺术家信息，渲染页面
         success:function(res){
                 var PersonalDom = document.createDocumentFragment();
                 $.YGG.tmpl({
@@ -124,24 +162,94 @@ $(function(){
                     datas:res
                 });
                 $('#Personal').get(0).appendChild(PersonalDom);
-            }
-        
+                artist_id=$('.get_id h2').html();
+                art_id=$('.get_id h1').html();               
+            } 
     });
 
-    $('#spread').click(function(){
-        if($('#description').attr('class')!='description details_show'){
-            $('#description').addClass('details_show');
-            $('#spread').html('收起');
+    //点击展开按钮
+    $('#Personal').on('tap','.carry',function(){
+        if($('#description').attr('class')!='description details_showH'){
+            $('#description').addClass('details_showH');
+            $('.carry span').html('收起');
         }else{
-            $('#description').removeClass('details_show');
-            $('#spread').html('展开');
-        }
-      
+            $('#description').removeClass('details_showH');
+            $('.carry span').html('展开');
+        }    
     });
+
+    //懒加载以及图片裁切
     LazyLoad.Run({
         isImgCenter:true
     });
-   
+
+    var filter={
+        new:"/localhost/artist/3980/work",
+        sale:"/localhost/artist/3980/sale",
+        sold:"/localhost/artist/3980/sole",
+        album:"",
+        article:""
+    }
+
+    function showPic(isIndex,isurl){
+        // isIndex++;
+        $.ajax({
+            type:"POST",
+            url:isurl,
+            data:{
+                index:isIndex,
+                size:4
+            },
+            success:function(res){
+                if(!res || (res && res.length==0 || res=='')){
+                    loaded=true;
+                    $('.o_no_list').css({'display':'block'});
+                    $('.loading').css({'display':'none'});
+                    return
+                }else{
+                var tmpl='';
+                for(var i=0;i<res.length;i++){
+                    var html='<li> <a href="http://m.artgogo.com/artwork.php?id='+res[i].id+'"><div class="pic"><img src="images/load.jpg"  lazyload="http://www.artgogo.com'+res[i].photo+'"><div class="gradients"></div><span>￥'+res[i].price+'.00</span></div><p class="pic_name">'+res[i].title+'</p><p class="artist">'+res[i].name+'</p><p class="pic_size"><span>'+res[i].pinlei+'</span>|<em>'+res[i].width+'*'+res[i].height+'cm</em></p></a></li>';
+                    tmpl+=html;
+                }
+              // console.log(tmpl); 
+              $('.pic_list').append(tmpl);
+            }
+        }
+        });
+    }
+
+    // 点击筛选
+    var Index=1;
+    $('#Personal').on('tap','.recommend a',function(){
+        var Id='';
+        if($(this).attr('class')=='on'){
+            return
+        }else{
+            perIndex=1;
+            $(this).addClass('on');
+            $(this).siblings().removeClass('on');
+            $('.pic_list').html('');
+            Id=$(this).attr('id');
+            var sendUrl=filter[Id];
+            showPic(Index,sendUrl);
+        }
+    });
+
+    
+    function startLoad(){
+        var o_id=$('.recommend .on').attr('id');
+        var oUrl=filter[o_id];
+        var $el=$('.loading');
+        
+        if(isSendAjax($el) && !loaded){
+            perIndex++;
+            showPic(perIndex,oUrl);
+        }
+    } 
+
+    window.addEventListener('scroll', throttle(startLoad, 500, 1000),false);
+
 });
 </script>
 </html>

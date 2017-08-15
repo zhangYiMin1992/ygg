@@ -765,6 +765,24 @@ body.panel-closing .page {
     background-position: right -0.13rem top -.59rem;
 }
 
+.o_no_list{
+    text-align: center;
+    margin:.5rem auto;
+    width:1.3rem;
+    height:1.7rem;
+}
+
+.o_no_list img{
+    width:100%;
+    height:auto;
+    margin-bottom:.26rem;
+}
+
+.o_no_list span{
+    color:#828282;
+    font-size:.12rem;
+}
+
 .reco_list{
     display: flex;
     flex-wrap: wrap;
@@ -852,12 +870,16 @@ body.panel-closing .page {
 
 .artist_personal .description {
     width: 100%;
-    max-height: 2.925rem;
+    height: 3.37rem;
     overflow: hidden;
     border-top: 1px solid #d2d2d2;
     line-height: .3rem;
     text-indent: .24rem;
     padding-bottom: .1rem;
+}
+
+.artist_personal .description.details_showH{
+    height:auto;
 }
 
 .artist_personal .online{
@@ -878,8 +900,9 @@ body.panel-closing .page {
 }
 
 .artist_personal .description p {
-    font: 400 .12rem/.3rem "黑体";
+    font: 400 .12rem/.37rem "黑体";
     color: #1a1a1a;
+    margin-top:0.03rem;
 }
 
 .carry {
@@ -887,6 +910,7 @@ body.panel-closing .page {
     height: .44rem;
     border-bottom: 1px solid #d2d2d2;
     text-align: center;
+    display: inline-block;
 }
 
 .carry span {
@@ -1541,12 +1565,12 @@ dt dd{
 }
 
  .loading{
-            width:100%;
-            height:50px;
-            line-height: 50px;
-            text-align: center;
-            color:#666;
-            font-size: 12px;
+    width:100%;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    color:#666;
+    font-size: 12px;
 }
 
 /*订单列表*/

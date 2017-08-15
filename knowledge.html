@@ -169,5 +169,44 @@
 
     给对象本身添加属性的优先级高
 
+9.json数组有长度json.abc.length,如果单纯是json格式，那么不能直接使用json.length方式获取长度，而应该使用其他方法
+
+如：<script>
+        var anObject = {"one":"aa","two":"bb","three":"cc"};//无length属性
+    遍历：$.each(anObject,function(name,value) {
+            console.log(name);//one  two  three
+            console.log(value);//aa  bb  cc
+        });
+
+    或者：for(var i in anObject){
+            console.log(i);           //one  two  three
+            console.log(anObject[i]); //aa  bb  cc
+            console.log(anObject.one);//aa
+          }
+    </script>
+
+    <script>
+        var json1={"abc":[{"name":"txt1"},{"name","txt2"}]};//有length属性
+    
+
+
+        既然json没有length属性，如果要知道他的长度怎么办呢？很简单，把上面的遍历改一下就是了：
+
+        var jslength=0;
+        for(var js2 in anObject){
+            jslength++;
+        }
+        把这段代码写成一个方法，以后调用就行了：
+
+        function getJsonLength(jsonData){
+            var jsonLength = 0;
+            for(var item in jsonData){
+                jsonLength++;
+            }
+            return jsonLength;
+        }
+
+</script>
+
 
     
