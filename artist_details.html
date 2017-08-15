@@ -116,9 +116,6 @@ $(function(){
     $.ajax({
         type:"POST",
         url:"/newwap/artist/1234",
-        data:{
-            id:1234
-        },
         success:function(res){
                 var PersonalDom = document.createDocumentFragment();
                 $.YGG.tmpl({

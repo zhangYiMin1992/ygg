@@ -2882,10 +2882,7 @@
                 }
             },
 
-            "POST /newwap/artist/1234 ":{
-                "request":{
-                    "id":1234
-                },
+            "POST /newwap/artist/1234 ":{  
                 "response": {
                     "id": 3980,
                     "mPhoto": "/images/2016/8/23/20168231471935347347_371_a.jpg",
