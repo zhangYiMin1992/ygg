@@ -3012,7 +3012,7 @@
                             "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
                             "globalID": 1278816,
                             "random": 261,
-                            "photo": "/images/2016/8/23/20168231471935347347_371_a.jpg",
+                            "photo": "/images/2017/8/9/1502248373eatphs586_c.jpg",
                             "title": "Donald on Black 2015",
                             "category": 0,
                             "tag": "自动生成",
@@ -3178,7 +3178,7 @@
                 ]
             },
 
-            "POST /localhost/artist/3980/sole ":{
+            "POST /localhost/artist/3980/sold ":{
                             "request":{
                                 "index":"1",
                                 "size":"4"

@@ -15,15 +15,6 @@
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <style type="text/css">
-    #perList .pic{
-        background-image: url(images/load.jpg);
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-position: center center; 
-        overflow: hidden;
-    }  
-    </style>
 </head>
 
 <body>
@@ -36,7 +27,6 @@
       
         <!-- 艺术家个人信息部分 -->
          <div id="Personal" class="artist_personal">
-
             <!-- <div class="artist_head_box">
                 <div class="artist_head">
                     <img src="images/01.jpg">
@@ -49,7 +39,6 @@
             <div class="description" id="description">
                 <p>1989.2.20生于上海</p>
             </div> -->
-
         </div> 
         <a class="carry"><span id="spread">展开</span></a>
         <!-- 艺术家个人信息 -->
@@ -66,6 +55,7 @@
                  <!-- <li>
                     <a href="javascript:;">
                         <div class="pic">
+                            <img src="images/01.jpg"  lazyload='images/09.jpg'>
                             <div class="gradients"></div>
                             <span>￥25000.00</span>
                         </div>
@@ -73,7 +63,7 @@
                         <p class="artist">小春哥</p>
                         <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
                     </a>
-                </li> -->  
+                </li>  --> 
             </ul>
         </div>
             <!-- 作品列表 结束-->
@@ -105,7 +95,7 @@
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
                     <div class="pic">
-                        <img style="display: none;" src="http://www.artgogo.com<%this[i].photo%>">
+                        <img src="images/load.jpg"  lazyload='http://www.artgogo.com<%this[i].photo%>'>
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
@@ -120,14 +110,12 @@
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script>
+
     var artist_id='';
     var a_id='';
     var isUrl='';
     var curIndex=0;
     var loaded=false;
-    var item=[];
-    var imgSrc=[];
-    var lis=[];
 
     // 简单的节流函数
     function throttle(func, wait, mustRun) {
@@ -155,18 +143,9 @@
         return $(window).height()+$(window).scrollTop()>$el.offset().top
     }
 
-    function changeImg(){
-        item=$('#perList .pic');
-        for(var i=0;i<item.length;i++){
-            $('#perList .pic').eq(i).get(0).style.backgroundImage='url('+imgSrc[i]+')';    
-        }   
-    }
-     
     //加载图片列表数据函数
-    
     function getPic(Url){
         curIndex++;
-
         $.ajax({
             type:"POST",
             url:Url,
@@ -195,26 +174,12 @@
                     }else if(curIndex>1){//追加
                         $('#perList').append(ListDom);
                     }
-                    // LazyLoad.Run({
-                    //     isImgCenter:true
-                    // });  
+                    LazyLoad.Run({
+                        isImgCenter:true
+                    });  
                     $('.loading').css('display','block');
-                    $(window).trigger('scroll');
-
-
-                    item=$('#perList .pic');
-                    lis=item.slice(-4);
-                    console.log(lis);
-                    for(var i=0;i<res.length;i++){
-                        var Src=res[i].photo;
-                        imgSrc.push(Src); 
-                        lis[i].get(0).style.backgroundImage='url('+imgSrc[i]+')';  
-                         
-                    }
-                    imgSrc=[];
-                    item=[]; 
-                    lis=[];
-                }  
+                    $(window).trigger('scroll');                                             
+                } 
             }
         });
     }
@@ -232,9 +197,9 @@
     });
 
     $(function(){
-        // LazyLoad.Run({
-        //     isImgCenter:true
-        // }); 
+        LazyLoad.Run({
+            isImgCenter:true
+        }); 
         //渲染页面加载艺术家信息
         $.ajax({
             type:"GET",
@@ -262,7 +227,6 @@
                 a_id=$(this).attr('id');
                 var sendUrl='/localhost/artist/'+artist_id+'/'+a_id;
                 getPic(sendUrl);
-
             } 
         });
         // 页面滚动的时候发送ajax，以及动态确定url
