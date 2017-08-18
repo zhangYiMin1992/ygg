@@ -2990,7 +2990,7 @@
                 }
             },
 
-            "POST /localhost/artist/3980/work ":{
+            "POST /newwap/artist/3980/work ":{
                 "request":{
                     "index":"1",
                     "size":"4"
@@ -3084,7 +3084,7 @@
                 ]
             },
 
-            "POST /localhost/artist/3980/sale ":{
+            "POST /newwap/artist/3980/sale ":{
                 "request":{
                     "index":"1",
                     "size":"4"
@@ -3178,15 +3178,54 @@
                 ]
             },
 
-            "POST /localhost/artist/3980/sold ":{
-                            "request":{
-                                "index":"1",
-                                "size":"4"
-                            },
-                            "response":[
-                               
-                            ]
-                        }
+            "POST /newwap/artist/3980/sold ":{
+                "request":{
+                    "index":"1",
+                    "size":"4"
+                },
+                "response":[
+                   
+                ]
+            },
+            "POST /newwap/artist/3980/album ":{
+                "request":{
+                    "index":"1",
+                    "size":"5"
+                },
+                "response":[
+                    {
+                        "photoAddress": "/images/artwork/2016-11/1479878095emogpi765.jpg",
+                        "year": "2017",
+                        "artistName": "Peter",
+                        "num": 8
+                    },
+                    {
+                        "photoAddress": "/yishupin/images/2017/8/15/20178151502788894955_376_c.jpg",
+                        "year": "2016",
+                        "artistName": "Peter",
+                        "num": 2
+                    },
+                    {
+                        "photoAddress": "/images/2017/7/27/1501145629mtgphi135_c.jpg",
+                        "year": "2015",
+                        "artistName": "Peter",
+                        "num": 9
+                    },
+                    {
+                        "photoAddress": "/images/2017/7/29/1501324231dertlp842_c.jpg",
+                        "year": "2014",
+                        "artistName": "Peter",
+                        "num": 15
+                    },
+                    {
+                        "photoAddress": "/images/2017/7/27/1501144996dmogc1855_c.jpg",
+                        "year": "other",
+                        "artistName": "Peter",
+                        "num": 20
+                    }
+                ]
+            }
+        
     }
 }
 

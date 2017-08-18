@@ -15,17 +15,7 @@
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <style type="text/css">
-    #perList .pic{
-        background-image: url(images/load.jpg);
-        background-size:cover;
-        background-repeat: no-repeat;
-        background-position: center center; 
-        overflow: hidden;
-    }  
-    </style>
 </head>
-
 <body>
     <div class="wrap page page-current">
         <div class="con_top" id="conTop" data-header="scroll">
@@ -105,7 +95,7 @@
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
                     <div class="pic">
-                        <img style="display: none;" src="http://www.artgogo.com<%this[i].photo%>">
+                        <div style="display: none;" ><img src="http://www.artgogo.com<%this[i].photo%>"></div>
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
@@ -125,9 +115,15 @@
     var isUrl='';
     var curIndex=0;
     var loaded=false;
-    var item=[];
     var imgSrc=[];
-    var lis=[];
+
+    var text={
+        work:"目前暂无作品",
+        sale:"目前暂无在售作品",
+        sold:"目前暂无已售作品",
+        album:"目前暂无作品集",
+        article:"目前暂无文章"
+    }
 
     // 简单的节流函数
     function throttle(func, wait, mustRun) {
@@ -154,13 +150,6 @@
     function isSendAjax($el){
         return $(window).height()+$(window).scrollTop()>$el.offset().top
     }
-
-    function changeImg(){
-        item=$('#perList .pic');
-        for(var i=0;i<item.length;i++){
-            $('#perList .pic').eq(i).get(0).style.backgroundImage='url('+imgSrc[i]+')';    
-        }   
-    }
      
     //加载图片列表数据函数
     
@@ -176,10 +165,17 @@
             },
             success:function(res){
                 //没有作品的情况
+                var o=$('.recommend .on').attr('id');
+
                 if(!res || (res && res.length==0 || res=='')){
-                    var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>目前暂无作品</span></div>';
-                    $('.loading').css('display','none');
-                    $('#perList').html(con);
+                    if(index==0){
+                        $('.loading').html('亲，只有这么多啦～');
+                    }else{
+                        var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>text[o]</span></div>';
+                        $('.loading').css('display','none');
+                        $('#perList').html(con);
+                    }
+                    
                     loaded=true; 
                 }else{//有作品的情况
                     loaded=false;
@@ -194,26 +190,21 @@
                         $('#perList').html(ListDom);
                     }else if(curIndex>1){//追加
                         $('#perList').append(ListDom);
-                    }
-                    // LazyLoad.Run({
-                    //     isImgCenter:true
-                    // });  
+                    } 
                     $('.loading').css('display','block');
                     $(window).trigger('scroll');
 
-
-                    item=$('#perList .pic');
-                    lis=item.slice(-4);
-                    console.log(lis);
+                    //获取返回的图片，作为.pic的背景图，替代LazyLoad.Run({isImgCenter:true});函数裁切
+                    var item=$('#perList .pic');
                     for(var i=0;i<res.length;i++){
                         var Src=res[i].photo;
                         imgSrc.push(Src); 
-                        lis[i].get(0).style.backgroundImage='url('+imgSrc[i]+')';  
-                         
                     }
-                    imgSrc=[];
-                    item=[]; 
-                    lis=[];
+                    for(var i=0;i<item.length;i++){
+                       $('#perList .pic').eq(i).css('background-image','url(http://www.artgogo.com'+imgSrc[i]+')');     
+                    }
+                    console.log(item);
+                    console.log(imgSrc);
                 }  
             }
         });
@@ -231,10 +222,7 @@
         }    
     });
 
-    $(function(){
-        // LazyLoad.Run({
-        //     isImgCenter:true
-        // }); 
+    $(function(){ 
         //渲染页面加载艺术家信息
         $.ajax({
             type:"GET",
@@ -256,20 +244,26 @@
             if($(this).attr('class')=='on'){
                 return
             }else{
+                imgSrc=[];
                 curIndex=0;
                 $(this).addClass('on');
                 $(this).siblings().removeClass('on');
                 a_id=$(this).attr('id');
-                var sendUrl='/localhost/artist/'+artist_id+'/'+a_id;
-                getPic(sendUrl);
+                var sendUrl='/newwap/artist/'+artist_id+'/'+a_id;
 
+                if($(this).attr('id')=='album'){
+                    getAlbum(sendUrl);
+                }else if($(this).attr('id')=='work' || 'sale' ||  'sold'){
+
+                    getPic(sendUrl);
+                }
             } 
         });
         // 页面滚动的时候发送ajax，以及动态确定url
         function isLoad(){
             var $el=$('.loading');
             isUrl=$('.recommend .on').attr('id');
-            var sendUrl='/localhost/artist/'+artist_id+'/'+isUrl;
+            var sendUrl='/newwap/artist/'+artist_id+'/'+isUrl;
             if(isSendAjax($el) && !loaded){
                 getPic(sendUrl);
             }
