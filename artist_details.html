@@ -168,13 +168,11 @@
                 var o=$('.recommend .on').attr('id');
 
                 if(!res || (res && res.length==0 || res=='')){
-                    if(index==0){
-                        $('.loading').html('亲，只有这么多啦～');
-                    }else{
-                        var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>text[o]</span></div>';
+                    
+                        var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>'+text[o]+'</span></div>';
                         $('.loading').css('display','none');
                         $('#perList').html(con);
-                    }
+                    
                     
                     loaded=true; 
                 }else{//有作品的情况
@@ -203,8 +201,8 @@
                     for(var i=0;i<item.length;i++){
                        $('#perList .pic').eq(i).css('background-image','url(http://www.artgogo.com'+imgSrc[i]+')');     
                     }
-                    console.log(item);
-                    console.log(imgSrc);
+                    // console.log(item);
+                    // console.log(imgSrc);
                 }  
             }
         });

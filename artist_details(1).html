@@ -94,8 +94,7 @@
         <%for(var i=0;i<this.length;i++){%>
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
-                    <div class="pic">
-                        <div style="display: none;" ><img src="http://www.artgogo.com<%this[i].photo%>"></div>
+                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].photo%>');" >
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
@@ -106,16 +105,37 @@
             </li>
         <%}%> 
     </textarea>
+
+    <textarea id="AlbumTmpl" style="display: none;">
+        <%for(var i=0;i<this.length;i++){%>
+            <li>
+                <a href="">
+                    <div style="background-image:url('http://www.artgogo.com<%this[i].photoAddress%>');"  class="pic">
+                        <div class="gradients"></div>
+                    </div>
+                    <p class="pic_name"><%this[i].year%>年作品集</p>
+                    <p class="artist"><%this[i].artistName%></p>
+                    <p class="pic_size"><%this[i].num%>件作品</p>
+                </a>
+            </li>
+        <%}%> 
+    </textarea>
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
 <script>
     var artist_id='';
-    var a_id='';
     var isUrl='';
     var curIndex=0;
     var loaded=false;
-    var imgSrc=[];
+
+    var text={
+        work:"目前暂无作品",
+        sale:"目前暂无在售作品",
+        sold:"目前暂无已售作品",
+        album:"目前暂无作品集",
+        article:"目前暂无文章"
+    }
 
     // 简单的节流函数
     function throttle(func, wait, mustRun) {
@@ -142,10 +162,18 @@
     function isSendAjax($el){
         return $(window).height()+$(window).scrollTop()>$el.offset().top
     }
+
+    function renden(doms){
+        if(curIndex==1){//覆盖
+            $('#perList').html(doms);
+        }else if(curIndex>1){//追加
+            $('#perList').append(doms);
+        }
+    }
      
     //加载图片列表数据函数
     
-    function getPic(Url){
+    function getPic(Url,id){
         curIndex++;
 
         $.ajax({
@@ -157,39 +185,38 @@
             },
             success:function(res){
                 //没有作品的情况
-                if(!res || (res && res.length==0 || res=='')){
-                    var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>目前暂无作品</span></div>';
-                    $('.loading').css('display','none');
-                    $('#perList').html(con);
+
+                if(!res || (res && res.length==0 || res=='')){                   
+                        var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>'+text[id]+'</span></div>';
+                        $('.loading').css('display','none');
+                        $('#perList').html(con);
                     loaded=true; 
                 }else{//有作品的情况
                     loaded=false;
-                    var ListDom=document.createDocumentFragment();
-                    $.YGG.tmpl({
-                        dom:$(ListDom),
-                        v:$('#ListTmpl').val(),
-                        datas:res
-                    });
+                    if(id=='work' || 'sale' || 'sold'){
+                        var ListDom=document.createDocumentFragment();
+                        $.YGG.tmpl({
+                            dom:$(ListDom),
+                            v:$('#ListTmpl').val(),
+                            datas:res
+                        });
+                        renden(ListDom);
+                    }if(id=='album'){
+                        var AlbumDom=document.createDocumentFragment();
+                        $.YGG.tmpl({
+                            dom:$(AlbumDom),
+                            v:$('#AlbumTmpl').val(),
+                            datas:res
+                        });
+                        renden(AlbumDom);
+
+                    }
+                    
                     //根据页数index判断是tap事件还是scroll事件
-                    if(curIndex==1){//覆盖
-                        $('#perList').html(ListDom);
-                    }else if(curIndex>1){//追加
-                        $('#perList').append(ListDom);
-                    } 
+                     
                     $('.loading').css('display','block');
                     $(window).trigger('scroll');
 
-                    //获取返回的图片，作为.pic的背景图，替代LazyLoad.Run({isImgCenter:true});函数裁切
-                    var item=$('#perList .pic');
-                    for(var i=0;i<res.length;i++){
-                        var Src=res[i].photo;
-                        imgSrc.push(Src); 
-                    }
-                    for(var i=0;i<item.length;i++){
-                       $('#perList .pic').eq(i).css('background-image','url(http://www.artgogo.com'+imgSrc[i]+')');     
-                    }
-                    console.log(item);
-                    console.log(imgSrc);
                 }  
             }
         });
@@ -225,7 +252,7 @@
             }
         });
         // 点击筛选按钮
-        $('#work,#sale,#sold').tap(function(){
+        $('.recommend a').tap(function(){
             if($(this).attr('class')=='on'){
                 return
             }else{
@@ -233,10 +260,10 @@
                 curIndex=0;
                 $(this).addClass('on');
                 $(this).siblings().removeClass('on');
-                a_id=$(this).attr('id');
-                var sendUrl='/newwap/artist/'+artist_id+'/'+a_id;
-                getPic(sendUrl);
-
+                var a_id=$(this).attr('id');
+                var sendUrl='/newwap/artist/'+artist_id+'/'+a_id; 
+                    getPic(sendUrl,a_id);
+                
             } 
         });
         // 页面滚动的时候发送ajax，以及动态确定url
@@ -245,7 +272,7 @@
             isUrl=$('.recommend .on').attr('id');
             var sendUrl='/newwap/artist/'+artist_id+'/'+isUrl;
             if(isSendAjax($el) && !loaded){
-                getPic(sendUrl);
+                getPic(sendUrl,isUrl);
             }
         }
         window.addEventListener('scroll', throttle(isLoad, 500, 1000),false); 

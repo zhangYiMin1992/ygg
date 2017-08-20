@@ -938,7 +938,7 @@ body.panel-closing .page {
 }
 
 #perList .pic{
-    background-image: url(../images/load.jpg);
+    /*background-image: url(../images/load.jpg);*/
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center center; 

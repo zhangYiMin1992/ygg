@@ -66,8 +66,8 @@
             //找回密码页面获取验证码
             "POST /newwap/user/userFindPassword ": {
                      "request": {
-                     "username":"13576556666",
-                     "verificationCode":"566555"
+                        "username":"13576556666",
+                        "verificationCode":"566555"
                },
                 "response": {"isSuccess":true,"message": "此号码未注册"} 
             },
