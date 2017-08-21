@@ -15,6 +15,26 @@
     <meta http-equiv="Cache-Control" content="no-transform ">
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+        .pic_list li.article_list{
+            width: 100%;
+            margin-right: 0; 
+        }
+
+        .pic_list li a .pic.article_pic{
+            width: 100%;
+            padding-bottom:55.67%;
+        }
+        .article_list .artist_message{
+            text-align: left;
+            margin: .06rem 0 .13rem;
+            transform: scale(0.833);
+            transform-origin: left;
+        }
+        .pic_list li .pic_name .article_list  .pic_name{
+            margin-top:.15rem;
+        }
+    </style>
 </head>
 <body>
     <div class="wrap page page-current">
@@ -22,6 +42,7 @@
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
+       
         </div>
       
         <!-- 艺术家个人信息部分 -->
@@ -63,7 +84,8 @@
                         <p class="artist">小春哥</p>
                         <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
                     </a>
-                </li> -->  
+                </li> --> 
+                
             </ul>
         </div>
             <!-- 作品列表 结束-->
@@ -108,16 +130,29 @@
 
     <textarea id="AlbumTmpl" style="display: none;">
         <%for(var i=0;i<this.length;i++){%>
-            <li>
-                <a href="">
+            <li class="albums_list">
+                <a href="javascript:;">
                     <div style="background-image:url('http://www.artgogo.com<%this[i].photoAddress%>');"  class="pic">
                         <div class="gradients"></div>
                     </div>
                     <p class="pic_name"><%this[i].year%>年作品集</p>
                     <p class="artist"><%this[i].artistName%></p>
                     <p class="pic_size"><%this[i].num%>件作品</p>
+                    <div class="hide_box" style="display: none;"><p><%this[i].year%></p></div>
                 </a>
             </li>
+        <%}%> 
+    </textarea>
+
+    <textarea id="ArticleTmpl" style="display: none;">
+        <%for(var i=0;i<this.length;i++){%>
+            <li class="article_list">
+                <a href="<%this[i].address%>">
+                    <div class="pic article_pic" style="background-image:url('<%this[i].photoAddress%>');"></div>
+                    <p class="pic_name"><%this[i].title%></p>
+                    <p class="artist_message"><span><%this[i].author%></span> / <em><%this[i].pushingTime%></em></p>
+                </a>                
+            </li> 
         <%}%> 
     </textarea>
 </body>
@@ -125,7 +160,6 @@
 <script src='./js/index.js'></script>
 <script>
     var artist_id='';
-    var isUrl='';
     var curIndex=0;
     var loaded=false;
 
@@ -137,36 +171,11 @@
         article:"目前暂无文章"
     }
 
-    // 简单的节流函数
-    function throttle(func, wait, mustRun) {
-        var timeout,
-                startTime = new Date();
-
-        return function () {
-            var context = this,
-                    args = arguments,
-                    curTime = new Date();
-
-            clearTimeout(timeout);
-            // 如果达到了规定的触发时间间隔，触发 handler
-            if (curTime - startTime >= mustRun) {
-                func.apply(context, args);
-                startTime = curTime;
-                // 没达到触发间隔，重新设定定时器
-            } else {
-                timeout = setTimeout(func, wait);
-            }
-        };
-    }
-
-    function isSendAjax($el){
-        return $(window).height()+$(window).scrollTop()>$el.offset().top
-    }
-
     function renden(doms){
         if(curIndex==1){//覆盖
             $('#perList').html(doms);
-        }else if(curIndex>1){//追加
+        }
+        if(curIndex>1){//追加
             $('#perList').append(doms);
         }
     }
@@ -185,7 +194,11 @@
             },
             success:function(res){
                 //没有作品的情况
-
+                if(res.isSuccess==false){
+                     $('.loading').css('display','none');
+                    loaded=true;
+                    return
+                }
                 if(!res || (res && res.length==0 || res=='')){                   
                         var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>'+text[id]+'</span></div>';
                         $('.loading').css('display','none');
@@ -193,15 +206,7 @@
                     loaded=true; 
                 }else{//有作品的情况
                     loaded=false;
-                    if(id=='work' || 'sale' || 'sold'){
-                        var ListDom=document.createDocumentFragment();
-                        $.YGG.tmpl({
-                            dom:$(ListDom),
-                            v:$('#ListTmpl').val(),
-                            datas:res
-                        });
-                        renden(ListDom);
-                    }if(id=='album'){
+                    if(id==='album'){
                         var AlbumDom=document.createDocumentFragment();
                         $.YGG.tmpl({
                             dom:$(AlbumDom),
@@ -209,7 +214,26 @@
                             datas:res
                         });
                         renden(AlbumDom);
-
+                        
+                    }
+                    if(id==='article'){
+                        var ArticleDom=document.createDocumentFragment();
+                        $.YGG.tmpl({
+                            dom:$(ArticleDom),
+                            v:$('#ArticleTmpl').val(),
+                            datas:res
+                        });
+                        renden(ArticleDom);
+                    }
+                    
+                    if((id=='work') || (id=='sale') || (id=='sold')){
+                        var ListDom=document.createDocumentFragment();
+                        $.YGG.tmpl({
+                            dom:$(ListDom),
+                            v:$('#ListTmpl').val(),
+                            datas:res
+                        });
+                        renden(ListDom);
                     }
                     
                     //根据页数index判断是tap事件还是scroll事件
@@ -260,24 +284,28 @@
                 curIndex=0;
                 $(this).addClass('on');
                 $(this).siblings().removeClass('on');
-                var a_id=$(this).attr('id');
+                var a_id=$(this).attr('id'); 
                 var sendUrl='/newwap/artist/'+artist_id+'/'+a_id; 
                     getPic(sendUrl,a_id);
-                
-            } 
+            }
         });
         // 页面滚动的时候发送ajax，以及动态确定url
         function isLoad(){
             var $el=$('.loading');
-            isUrl=$('.recommend .on').attr('id');
-            var sendUrl='/newwap/artist/'+artist_id+'/'+isUrl;
-            if(isSendAjax($el) && !loaded){
-                getPic(sendUrl,isUrl);
+            var isId=$('.recommend .on').attr('id');
+            var isUrl='/newwap/artist/'+artist_id+'/'+isId;
+            if(loading($el) && !loaded){
+                getPic(isUrl,isId);
             }
         }
-        window.addEventListener('scroll', throttle(isLoad, 500, 1000),false); 
-          
+
+        $('#perList').on('tap','#perList .albums_list a',function(){
+            var year=$(this).find($('.hide_box p')).html();
+            window.location.href=  "artist_albums.html?ids="+artist_id+"&years="+year;
+        });
+        window.addEventListener('scroll', throttle(isLoad, 500, 1000),false);    
     });
+
 </script>
 
 </html>

@@ -3216,13 +3216,165 @@
                         "year": "2014",
                         "artistName": "Peter",
                         "num": 15
+                    }
+                ]
+            },
+            "POST /newwap/artist/3980/article ":{
+                "request":{
+                    "index":"1",
+                    "size":"2"
+                },
+                "response":[
+                    {
+                        "photoAddress": "http://www.artgogo.com/images/2017/8/9/2017891502277004427_376.jpg",
+                        "title": "这次一定看得懂 中国式的波普·名家版画",
+                        "author": "Effie",
+                        "pushingTime": "2017-08-10",
+                        "address": "http://m.artgogo.com/wap_auction_content.php?type=zhanxiao&gid=1365979"
                     },
                     {
-                        "photoAddress": "/images/2017/7/27/1501144996dmogc1855_c.jpg",
-                        "year": "other",
-                        "artistName": "Peter",
-                        "num": 20
+                        "photoAddress": "http://www.artgogo.com/images/2017/7/28/20177281501224864399_376.jpg",
+                        "title": "国画不只是你想的梅兰竹菊",
+                        "author": "Effie",
+                        "pushingTime": "2017-07-30",
+                        "address": "http://m.artgogo.com/wap_auction_content.php?type=zhanxiao&gid=1365382"
                     }
+                ]
+            },
+            "POST /artist/3980/album/2017 ":{
+                "request":{
+                    "index":"1",
+                    "size":"4"
+                },
+                "response":[
+                    {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/2017/8/15/1502768837mlyphc608_a.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },{
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/2017/8/10/1502351782maogic391_a.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },{
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/2017/8/10/1502351790drpcs6322_a.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },{
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/2017/8/10/1502351775dogphics5_a.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },{
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        },
+                        {
+                            "id": 32143,
+                            "artistID": 3980,
+                            "name": "Peter Riezebos",
+                            "pinlei": "综合材料",
+                            "zhuti": "卡通",
+                            "fengge": "印象",
+                            "caizhi": "布面",
+                            "price": 15000,
+                            "width": 100,
+                            "height": 100,
+                            "big_photo": "/images/2015/8/28/1440764844ermagys39_a.jpg",
+                            "cover": "/images/2015/8/28/1440764844ermagys39_c.jpg",
+                            "litle_photo": "/images/2015/8/28/1440764844ermagys39_b.jpg",
+                            "globalID": 1278816,
+                            "random": 261,
+                            "photo": "/images/artwork/2015-8/1440764844ermagys39.jpg",
+                            "title": "Donald on Black 2015",
+                            "category": 0,
+                            "tag": "自动生成",
+                            "status": 1
+                        }
                 ]
             }
         
