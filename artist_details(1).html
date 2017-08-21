@@ -25,12 +25,14 @@
             width: 100%;
             padding-bottom:55.67%;
         }
+
         .article_list .artist_message{
             text-align: left;
             margin: .06rem 0 .13rem;
             transform: scale(0.833);
             transform-origin: left;
         }
+
         .pic_list li .pic_name .article_list  .pic_name{
             margin-top:.15rem;
         }
@@ -65,7 +67,7 @@
         <a class="carry"><span id="spread">展开</span></a>
         <!-- 艺术家个人信息 -->
         <div class="person_list">
-            <div class="recommend reco_list">
+            <div class="recommend reco_list" data-menu="href">
                 <a  class="on" id="work" href="javascript:;">最新</a>
                 <a id="sale" href="javascript:;">在售</a>
                 <a id="sold" href="javascript:;">已售</a>
@@ -73,7 +75,7 @@
                 <a id="article" href="javascript:;">文章</a>
             </div>
             <!-- 作品列表 -->
-            <ul class="pic_list no_padding" id="perList">
+            <ul class="pic_list no_padding" id="perList" data-list="">
                  <!-- <li>
                     <a href="javascript:;">
                         <div class="pic">
@@ -116,7 +118,7 @@
         <%for(var i=0;i<this.length;i++){%>
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
-                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].photo%>');" >
+                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].cover%>');" >
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
