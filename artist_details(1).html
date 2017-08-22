@@ -106,7 +106,7 @@
             <span class="yellow"></span>
         </div>
         <p class="artist_name"><%this.title%></p>
-        <p class="artist_message"><span><%this.artnums%>件作品</span> | <span><%this.live%></span></p>
+        <p class="artist_message"><span><%this.artnums%>件作品 </span><span class="live">| <%this.live%></span></p>
         <p class="cut"></p>
         <div class="description" id="description">
             <p><%this.summary%></p>
@@ -216,7 +216,13 @@
                             datas:res
                         });
                         renden(AlbumDom);
-                        
+                        var e=$('.albums_list .pic_name');
+                        for(var i=0;i<e.length;i++){
+                            if(e.eq(i).html()=='其他年作品集'){
+                                e.eq(i).html('其他');
+                            }
+                        }
+
                     }
                     if(id==='article'){
                         var ArticleDom=document.createDocumentFragment();
@@ -275,6 +281,9 @@
                 });
                 $('#Personal').append(PersonalDom);
                 artist_id=$('h1').html();
+                if($('.artist_message .live').html()=='| '){
+                    $('.artist_message .live').hide();
+                }
             }
         });
         // 点击筛选按钮
