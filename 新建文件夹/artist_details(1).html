@@ -25,35 +25,28 @@
             width: 100%;
             padding-bottom:55.67%;
         }
-
         .article_list .artist_message{
             text-align: left;
             margin: .06rem 0 .13rem;
             transform: scale(0.833);
             transform-origin: left;
         }
-
         .pic_list li .pic_name .article_list  .pic_name{
             margin-top:.15rem;
         }
-
-        .description img{
-            width: 100;
-            margin:0 auto;
-            text-indent:0;
-        }
-
     </style>
 </head>
 <body>
     <div class="wrap page page-current">
-        <div class="con_top" id="conTop" data-header="scroll">
-            <a href="http://m.artgogo.com/" class="top_menu open-panel" data-panel=".panel-left"><span>2</span></a>
-            <a href="http://m.artgogo.com/"  class="top_logo"> </a>
-            <a href="http://m.artgogo.com/wap_search.php" class="search" id="search"></a>
-       
-        </div>
-      
+
+        <a href="http://m.artgogo.com/" style="display: block;width:100%;">
+            <div class="con_top" id="conTop" data-header="scroll">
+                <div class="top_menu open-panel" data-panel=".panel-left"></div>
+                <div class="top_logo"> </div>
+                <div class="search" id="search"></div>
+           
+            </div>
+        </a>
         <!-- 艺术家个人信息部分 -->
          <div id="Personal" class="artist_personal">
 
@@ -74,7 +67,7 @@
         <a class="carry"><span id="spread">展开</span></a>
         <!-- 艺术家个人信息 -->
         <div class="person_list">
-            <div class="recommend reco_list" data-menu="href">
+            <div class="recommend reco_list">
                 <a  class="on" id="work" href="javascript:;">最新</a>
                 <a id="sale" href="javascript:;">在售</a>
                 <a id="sold" href="javascript:;">已售</a>
@@ -82,7 +75,7 @@
                 <a id="article" href="javascript:;">文章</a>
             </div>
             <!-- 作品列表 -->
-            <ul class="pic_list no_padding" id="perList" data-list="">
+            <ul class="pic_list no_padding" id="perList">
                  <!-- <li>
                     <a href="javascript:;">
                         <div class="pic">
@@ -110,11 +103,13 @@
             <div class="artist_head">
                 <img src="http://www.artgogo.com<%this.mPhoto%>">
             </div>
+            <span class="yellow"></span>
         </div>
         <p class="artist_name"><%this.title%></p>
-        <p class="artist_message"><span><%this.artnums%>件作品 </span><span class="live">| <%this.live%></span></p>
-        <div class="description" id="description" style="line-height:0.25rem;">
-            <p style="line-height:0.25rem;"><%this.summary%></p>
+        <p class="artist_message"><span><%this.artnums%>件作品</span> | <span><%this.live%></span></p>
+        <p class="cut"></p>
+        <div class="description" id="description">
+            <p><%this.summary%></p>
         </div>
         <h1 style="display: none;"><%this.id%></h1>
     </textarea>
@@ -123,9 +118,9 @@
         <%for(var i=0;i<this.length;i++){%>
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
-                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].cover%>');" >
+                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].photo%>');" >
                         <div class="gradients"></div>
-                        <span class="o_price">￥<%this[i].price%></span>
+                        <span>￥<%this[i].price%>.00</span>
                     </div>
                     <p class="pic_name"><%this[i].title%></p>
                     <p class="artist"><%this[i].name%></p>
@@ -165,8 +160,6 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
-<!-- <script src='./js/jquery.js'></script> -->
-<!-- <script src='./js/jweixin-1.0.0.js'></script> -->
 <script>
     var artist_id='';
     var curIndex=0;
@@ -186,14 +179,6 @@
         }
         if(curIndex>1){//追加
             $('#perList').append(doms);
-        }
-    }
-
-    function changeText(obj,bef,aft){
-        for(var i=0;i<obj.length;i++){
-            if(obj.eq(i).html()==bef){
-                obj.eq(i).html(aft);
-            }
         }
     }
      
@@ -231,8 +216,7 @@
                             datas:res
                         });
                         renden(AlbumDom);
-                        var e=$('.albums_list .pic_name');
-                        changeText(e,'其他年作品集','其他');
+                        
                     }
                     if(id==='article'){
                         var ArticleDom=document.createDocumentFragment();
@@ -252,8 +236,6 @@
                             datas:res
                         });
                         renden(ListDom);
-                        var x=$('li .o_price');
-                        changeText(x,'￥0','展示');
                     }
                     
                     //根据页数index判断是tap事件还是scroll事件
@@ -267,7 +249,7 @@
     }
 
     //点击展开按钮
-    $('.carry').click(function(event){
+    $('.carry').tap(function(event){
         event.stopPropagation();
         if($('#description').attr('class')!='description details_showH'){
             $('#description').addClass('details_showH');
@@ -293,15 +275,10 @@
                 });
                 $('#Personal').append(PersonalDom);
                 artist_id=$('h1').html();
-                if($('.artist_message .live').html()=='| '){
-                    $('.artist_message .live').hide();
-                }
-                var t=$('.artist_name').html();
-                $("title").html(t+'的artgogo主页');
             }
         });
         // 点击筛选按钮
-        $('.recommend a').click(function(){
+        $('.recommend a').tap(function(){
             if($(this).attr('class')=='on'){
                 return
             }else{
@@ -324,15 +301,12 @@
             }
         }
 
-        $('#perList').on('click','#perList .albums_list a',function(){
+        $('#perList').on('tap','#perList .albums_list a',function(){
             var year=$(this).find($('.hide_box p')).html();
-            var titles= $("title").html();
-            // window.location.href=  "artist_albums.html?ids="+artist_id+"&years="+year+"&titles"+titles;
+            window.location.href=  "artist_albums.html?ids="+artist_id+"&years="+year;
         });
-        window.addEventListener('scroll', throttle(isLoad, 500, 1000),false); 
-
+        window.addEventListener('scroll', throttle(isLoad, 500, 1000),false);    
     });
-
 
 </script>
 

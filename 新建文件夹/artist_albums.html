@@ -20,27 +20,18 @@
     padding-top:.5rem;
 }
 
-.go_year{
-    display: inline-block;
-    text-align:center;
-    border:1px solid #1a1a1a;
-    padding:.05rem .12rem;
-    margin:.2rem auto;
-    width:33%;
-}
-
 </style>
 <body>
 <div class=" wrap page page-current">
     <!-- 头部 -->
-    <div class="con_top" id="conTop" data-header="scroll">
-        <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
-        <div class="top_logo"> </div>
-        <div class="search" id="search"></div>
-    </div>
-
+    <a href="http://m.artgogo.com/" style="display: block;width:100%;">
+        <div class="con_top" id="conTop" data-header="scroll">
+            <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
+            <div class="top_logo"> </div>
+            <div class="search" id="search"></div>
+        </div>
+    </a>
 <div class="person_list album_page">
-    <a class="go_year">< <span>2017年作品集</span></a>
     <!-- 作品列表 -->
     <ul class="pic_list no_padding" id="perList">
         <!-- <li>
@@ -63,7 +54,7 @@
         <%for(var i=0;i<this.length;i++){%>
             <li>
                 <a href="http://m.artgogo.com/artwork.php?id=<%this[i].id%>">
-                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].cover%>');" >
+                    <div class="pic" style="background-image:url('http://www.artgogo.com<%this[i].photo%>');" >
                         <div class="gradients"></div>
                         <span>￥<%this[i].price%>.00</span>
                     </div>
@@ -89,8 +80,7 @@
             cdIndex++;
             $.ajax({
                 type:"POST",
-                // url:'/artist/'+id+'/album/'+year+'',
-                url:'/artist/3980/album/2017 ',
+                url:'/artist/'+id+'/album/'+year+'',
                 data:{
                     index:cdIndex,
                     size:6
