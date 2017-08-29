@@ -503,5 +503,26 @@ ul.production {
     transform:scale(0.88);
     transform-origin: left;
 }
+/*艺术品征集页面*/
+.upload_page{
+    padding-top:.5rem;
+}
 
+.upload_pic{
+    box-sizing: border-box;
+    width: 100%;
+    padding:.13rem .17rem .17rem;
+}
+
+.upload_pic p{
+    font:400 .12rem/.29rem "黑体";
+}
+
+.upload_menu{
+    display: block;
+    width: 0.9rem;
+    height:0.88rem;
+    background: url(../images/upload.jpg)no-repeat;
+    background-size:0.9rem 0.88rem;
+}
 

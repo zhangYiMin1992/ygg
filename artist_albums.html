@@ -29,6 +29,15 @@
     width:33%;
 }
 
+.pic_list{
+    text-align: left;
+}
+
+.album_page{
+    text-align: center;
+}
+
+
 </style>
 <body>
 <div class=" wrap page page-current">
@@ -40,7 +49,7 @@
     </div>
 
 <div class="person_list album_page">
-    <a class="go_year">< <span>2017年作品集</span></a>
+    <a class="go_year">< <span></span></a>
     <!-- 作品列表 -->
     <ul class="pic_list no_padding" id="perList">
         <!-- <li>
@@ -84,8 +93,11 @@
 
         var years=getParam().years;
         var ids=getParam().ids;
-
+        years=decodeURI(years);
         function getAlbumPic(year,id){
+            if(year=="其他"){
+                year='other';
+            }
             cdIndex++;
             $.ajax({
                 type:"POST",
@@ -97,7 +109,7 @@
                 },
                 success:function(res){
                     //没有作品的情况
-                    if(res.isSuccess==false){
+                    if(res[0] && res[0].isSuccess==false){
                         $('.loading').css('display','none');
                         loaded=true;
                         return
@@ -110,10 +122,13 @@
                             datas:res
                         });
                         $('#perList').append(ListDom);
+                        if(years=='其他'){
+                            $('.go_year span').html(years);
+                        }else{
+                            $('.go_year span').html(years+'年作品集');
+                        }
+                        $('title').html($('.artist').html()+'的artgogo主页');
                     }
-                        
-                        //根据页数index判断是tap事件还是scroll事件
-                    // $('.loading').css('display','block');
                 }
             });
         }
@@ -126,7 +141,19 @@
         }
 
         getAlbumPic(years,ids);
-        window.addEventListener('scroll', throttle(startLoad, 500, 1000),false); 
+        window.addEventListener('scroll', throttle(startLoad, 500, 1000),false);
+
+        $('.go_year').tap(function(){
+            if (document.referrer.indexOf("artgogo") >= 0) {
+                if (/qq/i.test(navigator.userAgent)) {
+                    window.location = document.referrer
+                } else {
+                    history.go(-1)
+                }
+            } else {
+                    window.location = "/"
+            }
+        });
     });
 </script>
 </html>

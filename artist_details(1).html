@@ -38,67 +38,59 @@
         }
 
         .description img{
-            width: 100;
+            width: 100%;
             margin:0 auto;
             text-indent:0;
         }
 
+        .artist_personal .description{
+            padding-bottom:0;
+            padding-top:.15rem;
+        }
+
+        .carry{
+            margin-top:.1rem;
+        }
+
+        .artist_message{
+            margin-bottom:.2rem;
+            font: 400 .12rem/.14rem "黑体";
+        }
+
+        .artist_personal .description p {
+            font: 400 .12rem/.25rem "黑体";
+            text-indent:0;
+
+        }
     </style>
 </head>
 <body>
-    <div class="wrap page page-current">
-        <div class="con_top" id="conTop" data-header="scroll">
-            <a href="http://m.artgogo.com/" class="top_menu open-panel" data-panel=".panel-left"><span>2</span></a>
+  <div class="wrap page page-current">
+    <div class="con_top" id="conTop" data-header="scroll">
+            <a href="http://m.artgogo.com/" class="top_menu open-panel" data-panel=".panel-left"></a>
             <a href="http://m.artgogo.com/"  class="top_logo"> </a>
             <a href="http://m.artgogo.com/wap_search.php" class="search" id="search"></a>
        
         </div>
-      
         <!-- 艺术家个人信息部分 -->
          <div id="Personal" class="artist_personal">
-
-            <!-- <div class="artist_head_box">
-                <div class="artist_head">
-                    <img src="images/01.jpg">
-                </div>
-                <span class="yellow"></span>
-            </div>
-            <p class="artist_name">赵笑笑</p>
-            <p class="artist_message"><span>30件作品</span> | <span>北京</span></p>
-            <p class="cut"></p>
-            <div class="description" id="description">
-                <p>1989.2.20生于上海</p>
-            </div> -->
-
         </div> 
         <a class="carry"><span id="spread">展开</span></a>
         <!-- 艺术家个人信息 -->
         <div class="person_list">
             <div class="recommend reco_list" data-menu="href">
-                <a  class="on" id="work" href="javascript:;">最新</a>
+                <a class="on" id="work" href="javascript:;">最新</a>
                 <a id="sale" href="javascript:;">在售</a>
                 <a id="sold" href="javascript:;">已售</a>
                 <a id="album" href="javascript:;">作品集</a>
                 <a id="article" href="javascript:;">文章</a>
             </div>
             <!-- 作品列表 -->
-            <ul class="pic_list no_padding" id="perList" data-list="">
-                 <!-- <li>
-                    <a href="javascript:;">
-                        <div class="pic">
-                            <div class="gradients"></div>
-                            <span>￥25000.00</span>
-                        </div>
-                        <p class="pic_name">外面的世界</p>
-                        <p class="artist">小春哥</p>
-                        <p class="pic_size"><span>水彩</span>|<em>25*37cm</em></p>
-                    </a>
-                </li> --> 
-                
+            <ul class="pic_list no_padding" id="perList" data-list="">                 
             </ul>
         </div>
             <!-- 作品列表 结束-->
-        <div style="display:none;" class="o_no_list"><img src="images/no_order.png"/><span>目前暂无作品</span></div>
+        <div style="display:none;" class="o_no_list"><img src="${basePath}/images/no_order.png"/><span>目前暂无作品</span></div>
         <div class="loading">加载中...</div>
         
     </div>
@@ -165,175 +157,184 @@
 </body>
 <script src='./js/basic.js'></script>
 <script src='./js/index.js'></script>
-<!-- <script src='./js/jquery.js'></script> -->
-<!-- <script src='./js/jweixin-1.0.0.js'></script> -->
 <script>
-    var artist_id='';
-    var curIndex=0;
-    var loaded=false;
+      var artist_id='';
+      var curIndex=0;
+      var loaded=false;
 
-    var text={
-        work:"目前暂无作品",
-        sale:"目前暂无在售作品",
-        sold:"目前暂无已售作品",
-        album:"目前暂无作品集",
-        article:"目前暂无文章"
-    }
+      var text={
+          work:"目前暂无作品",
+          sale:"目前暂无在售作品",
+          sold:"目前暂无已售作品",
+          album:"目前暂无作品集",
+          article:"目前暂无文章"
+      }
 
-    function renden(doms){
-        if(curIndex==1){//覆盖
-            $('#perList').html(doms);
-        }
-        if(curIndex>1){//追加
-            $('#perList').append(doms);
-        }
-    }
+      function renden(doms){
+          if(curIndex==1){//覆盖
 
-    function changeText(obj,bef,aft){
-        for(var i=0;i<obj.length;i++){
-            if(obj.eq(i).html()==bef){
-                obj.eq(i).html(aft);
-            }
-        }
-    }
-     
-    //加载图片列表数据函数
-    
-    function getPic(Url,id){
-        curIndex++;
+              $('#perList').html(doms);
+          }
+          if(curIndex>1){//追加
 
-        $.ajax({
-            type:"POST",
-            url:Url,
-            data:{
-                index:curIndex,
-                size:4
-            },
-            success:function(res){
-                //没有作品的情况
-                if(res.isSuccess==false){
-                     $('.loading').css('display','none');
-                    loaded=true;
-                    return
-                }
-                if(!res || (res && res.length==0 || res=='')){                   
-                        var con='<div style="display:block;" class="o_no_list"><img src="images/no_order.png"/><span>'+text[id]+'</span></div>';
-                        $('.loading').css('display','none');
-                        $('#perList').html(con);
-                    loaded=true; 
-                }else{//有作品的情况
-                    loaded=false;
-                    if(id==='album'){
-                        var AlbumDom=document.createDocumentFragment();
-                        $.YGG.tmpl({
-                            dom:$(AlbumDom),
-                            v:$('#AlbumTmpl').val(),
-                            datas:res
-                        });
-                        renden(AlbumDom);
-                        var e=$('.albums_list .pic_name');
-                        changeText(e,'其他年作品集','其他');
-                    }
-                    if(id==='article'){
-                        var ArticleDom=document.createDocumentFragment();
-                        $.YGG.tmpl({
-                            dom:$(ArticleDom),
-                            v:$('#ArticleTmpl').val(),
-                            datas:res
-                        });
-                        renden(ArticleDom);
-                    }
-                    
-                    if((id=='work') || (id=='sale') || (id=='sold')){
-                        var ListDom=document.createDocumentFragment();
-                        $.YGG.tmpl({
-                            dom:$(ListDom),
-                            v:$('#ListTmpl').val(),
-                            datas:res
-                        });
-                        renden(ListDom);
-                        var x=$('li .o_price');
-                        changeText(x,'￥0','展示');
-                    }
-                    
-                    //根据页数index判断是tap事件还是scroll事件
-                     
-                    $('.loading').css('display','block');
-                    $(window).trigger('scroll');
+              $('#perList').append(doms);
+          }
+      }
+       
+      //加载图片列表数据函数
 
-                }  
-            }
-        });
-    }
+      
+      function getPic(Url,id){
+          curIndex++;
 
-    //点击展开按钮
-    $('.carry').click(function(event){
-        event.stopPropagation();
-        if($('#description').attr('class')!='description details_showH'){
-            $('#description').addClass('details_showH');
-            $('.carry span').html('收起');
-        }else{
-            $('#description').removeClass('details_showH');
-            $('.carry span').html('展开');
-        }    
-    });
+          $.ajax({
+              type:"POST",
+              url:Url,
+              data:{
+                  index:curIndex,
+                  size:4
+              },
+              success:function(res){
+                  //没有作品的情况
 
-    $(function(){ 
-        //渲染页面加载艺术家信息
-        $.ajax({
-            type:"GET",
-            url:"/newwap/artist/1234",
-            //获取艺术家信息，渲染页面
-            success:function(res){
-                var PersonalDom=document.createDocumentFragment();
-                $.YGG.tmpl({
-                    dom:$(PersonalDom),
-                    v:$('#PersonalTmpl').val(),
-                    datas:res
-                });
-                $('#Personal').append(PersonalDom);
-                artist_id=$('h1').html();
-                if($('.artist_message .live').html()=='| '){
-                    $('.artist_message .live').hide();
-                }
-                var t=$('.artist_name').html();
-                $("title").html(t+'的artgogo主页');
-            }
-        });
-        // 点击筛选按钮
-        $('.recommend a').click(function(){
-            if($(this).attr('class')=='on'){
-                return
-            }else{
-                imgSrc=[];
-                curIndex=0;
-                $(this).addClass('on');
-                $(this).siblings().removeClass('on');
-                var a_id=$(this).attr('id'); 
-                var sendUrl='/newwap/artist/'+artist_id+'/'+a_id; 
-                    getPic(sendUrl,a_id);
-            }
-        });
-        // 页面滚动的时候发送ajax，以及动态确定url
-        function isLoad(){
-            var $el=$('.loading');
-            var isId=$('.recommend .on').attr('id');
-            var isUrl='/newwap/artist/'+artist_id+'/'+isId;
-            if(loading($el) && !loaded){
-                getPic(isUrl,isId);
-            }
-        }
+                  if(res[0] && res[0].isSussess==false){
+                       $('.loading').html('亲，只有这么多啦～');
+                      loaded=true;
+                      return
+                  }
+                  if(!res || (res && res.length==0) || (res && res=='')){                   
+                          var con='<div style="display:block;" class="o_no_list"><img src="${basePath}/images/no_order.png"/><span>'+text[id]+'</span></div>';
+                          $('.loading').css('display','none');
+                          $('#perList').html(con);
+                      loaded=true; 
+                  }else{//有作品的情况
 
-        $('#perList').on('click','#perList .albums_list a',function(){
-            var year=$(this).find($('.hide_box p')).html();
-            var titles= $("title").html();
-            // window.location.href=  "artist_albums.html?ids="+artist_id+"&years="+year+"&titles"+titles;
-        });
-        window.addEventListener('scroll', throttle(isLoad, 500, 1000),false); 
+                      loaded=false;
+                       $('.loading').html('加载中...');
+                      if(id==='album'){
+                          var AlbumDom=document.createDocumentFragment();
+                          $.YGG.tmpl({
+                              dom:$(AlbumDom),
+                              v:$('#AlbumTmpl').val(),
+                              datas:res
+                          });
+                          renden(AlbumDom);
+                          var e=$('.albums_list .pic_name');
+                          changeText(e,'其他年作品集','其他');
+                      }
+                      if(id==='article'){
+                          var ArticleDom=document.createDocumentFragment();
+                          $.YGG.tmpl({
+                              dom:$(ArticleDom),
+                              v:$('#ArticleTmpl').val(),
+                              datas:res
+                          });
+                          renden(ArticleDom);
+                      }
+                      
+                      if((id=='work') || (id=='sale') || (id=='sold')){
+                          var ListDom=document.createDocumentFragment();
+                          $.YGG.tmpl({
+                              dom:$(ListDom),
+                              v:$('#ListTmpl').val(),
+                              datas:res
+                          });
+                          renden(ListDom);
+                          var x=$('li .o_price');
+                          changeText(x,'￥0','展示');
+                          if(id=='sold'){
+                              var s=$('li .o_price');
+                              for(var i=0;i<s.length;i++){
+                                  s.eq(i).html('已售');
+                              }
+                          }
+                      }
+                      
+                      //根据页数index判断是tap事件还是scroll事件
 
-    });
+                       
+                      $('.loading').css('display','block');
+                      $(window).trigger('scroll');
 
+                  }  
+              }
+          });
+      }
 
+      //点击展开按钮
+
+      $('.carry').tap(function(event){
+          event.stopPropagation();
+          if($('#description').attr('class')!='description details_showH'){
+              $('#description').addClass('details_showH');
+              $('.carry span').html('收起');
+          }else{
+              $('#description').removeClass('details_showH');
+              $('.carry span').html('展开');
+          }    
+      });
+
+      $(function(){ 
+          //渲染页面加载艺术家信息
+
+          $.ajax({
+              type:"GET",
+              // url:"${basePath}/artist/${id}",
+              url:"/newwap/artist/1234",
+              //获取艺术家信息，渲染页面
+
+              success:function(res){
+                  var PersonalDom=document.createDocumentFragment();
+                  $.YGG.tmpl({
+                      dom:$(PersonalDom),
+                      v:$('#PersonalTmpl').val(),
+                      datas:res
+                  });
+                  $('#Personal').append(PersonalDom);
+                  artist_id=$('h1').html();
+                  if($('.artist_message .live').html()=='| '){
+                      $('.artist_message .live').hide();
+                  }
+                  var t=$('.artist_name').html();
+                  $("title").html(t+'的artgogo主页');
+              }
+          });
+          // 点击筛选按钮
+
+          $('.recommend a').tap(function(){
+              if($(this).attr('class')=='on'){
+                  return
+              }else{
+                  imgSrc=[];
+                  curIndex=0;
+                  $(this).addClass('on');
+                  $(this).siblings().removeClass('on');
+                  var a_id=$(this).attr('id'); 
+                  // var sendUrl='${basePath}/artist/'+artist_id+'/'+a_id; 
+                  var sendUrl='/newwap/artist/'+artist_id+'/'+a_id; 
+                      getPic(sendUrl,a_id);
+              }
+          });
+          // 页面滚动的时候发送ajax，以及动态确定url
+
+          function isLoad(){
+              var $el=$('.loading');
+              var isId=$('.recommend .on').attr('id');
+              // var isUrl='${basePath}/artist/'+artist_id+'/'+isId;
+              var isUrl='/newwap/artist/'+artist_id+'/'+isId;
+              if(loading($el) && !loaded){
+                  getPic(isUrl,isId);
+              }
+          }
+
+          $('#perList').on('tap','#perList .albums_list a',function(){
+              var year=$(this).find($('.hide_box p')).html();
+              var titles= $("title").html();
+              window.location.href=  "artist_albums?ids="+artist_id+"&years="+encodeURI(year,"UTF-8");
+          });
+          window.addEventListener('scroll', throttle(isLoad, 500, 1000),false);    
+      });
+   
 </script>
 
 </html>
