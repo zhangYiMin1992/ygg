@@ -17,18 +17,58 @@
     <style>
         img {
             border: none;
-            max-width: 100%;
         }
 
-        input, select, label {
-            vertical-align: middle;
-            font-size: 12px;
-            height: 17px;
+        .upload_page{
+            padding:.5rem .17rem 0;            
+        }
+
+        .upload_pic,.upload_box{
+            /*width: 100%;*/
+            white-space: nowrap; 
+            overflow-x: auto;
+            font-size: 0;
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+        }
+
+        .preview_list,.upload_menu,.upload_box{
+            display: inline-block;
+            vertical-align: top;
+            position: relative; 
+        }
+
+        .preview_list{
+            width: 0.9rem;
+            height:0.9rem;
+            overflow: hidden;
+            margin-right: 0.06rem;
+        }
+
+        .preview_list img{
+            position: relative;
+            left:-20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            height:0px;
+        }
+
+        .preview_list a{
+            display: block;
+            width: .25rem;
+            height:.25rem;
+            position: absolute;
+            right:0.03rem;
+            top:0.04rem;
+            background:url(images/result.png) no-repeat 0 -1.55rem;
+            background-size: 1.485rem 2.12rem;
         }
     </style>
 </head>
 <body>
-    <div class="wrap page page-current">
+    <div class="wrap page page-current" >
         <div class="con_top" id="conTop" data-header="scroll">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
@@ -36,38 +76,70 @@
        
         </div>
         <!-- 头部结束 -->
-        <!-- <div class="upload_page">
+        <div class="upload_page">
+            <p>作品图片：</p>
             <section class="upload_pic">
-                <p>作品图片：</p> 
-                <input type="file" accept="image/*" class="upload_menu"></a>           
-            </section>
-        </div> -->
-        <div name="detailPicturePreview[]" style="position: relative;padding-top: .5rem">
-            <label name="detail_picture_upload[]" style="position: relative; z-index: 1;">
-                <div name="detailPicturePreview1" style="float:left; margin: 5px;overflow: hidden; width: 100px; height: 100px; border: 1px solid rgb(235, 235, 235);">
-                    <img src="images/upload.jpg">
-                </div>
-                <input type="text" name="detailPicture1[]" style="display: none">
-                <input type="text" name="detailPicture2[]" style="display: none">
-                <input type="text" name="detailPicture3[]" style="display: none">
-                <input type="text" name="detailPicture4[]" style="display: none">
-            </label>
-            <div id="html5_1bom674jh11d9ofj1qhs1c5c178j3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;">
-                <input id="html5_1bom674jh11d9ofj1qhs1c5c178j3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png">
-            </div>
-        </div>
-        <div id="container" style="display: none">
+                
+                <div class="upload_box" id="uploadBox">
+                    <!-- <div class="preview_list">
+                        <img src="images/1_03.jpg">
+                        <a href="javascript:;"></a>
+                    </div>   
+                    <div class="preview_list">
+                        <img src="images/02.jpg">
+                        <a href="javascript:;"></a>
                     </div>
-
+                    <div class="preview_list">
+                        <img src="images/05.jpg">
+                        <a href="javascript:;"></a>
+                    </div>
+                    <div class="preview_list">
+                        <img src="images/07.jpg">
+                        <a href="javascript:;"></a>
+                    </div> -->
+                </div> 
+                    <!-- 添加按钮 -->
+                <div class="upload_menu">
+                    <input type="file" accept="image/*" id="upload_button"> 
+                </div>
+                  
+            </section>
+        </div>  
+      <!--   <div class="upload_page" style="
+        overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    white-space: nowrap;
+    box-sizing: border-box;">
+    <p>作品图片：</p> 
+            <div name="detailPicturePreview[]" style="position: relative; font-size: 0">
+                <label name="detail_picture_upload[]" style="position: relative; z-index: 1;">
+                    <div name="detailPicturePreview1" style="float:left; overflow: hidden; width: 100px; height: 100px; ">
+                        <img src="images/upload.jpg">
+                    </div>
+                    <input type="text" name="detailPicture1[]" style="display: none">
+                    <input type="text" name="detailPicture2[]" style="display: none">
+                    <input type="text" name="detailPicture3[]" style="display: none">
+                    <input type="text" name="detailPicture4[]" style="display: none">
+                </label>
+                <div id="html5_1bom674jh11d9ofj1qhs1c5c178j3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;">
+                    <input id="html5_1bom674jh11d9ofj1qhs1c5c178j3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png">
+                </div>
+            </div>
+            <div id="container" style="display: none">
+            </div>
+        </div> -->
     </div>
+  
     <!-- 侧边栏 -->
     
     <!-- 侧边栏结束-->  
 </body>
-<script src="../js/artworkplupload.js"></script>
-<script src="../js/detail_picture_upload.js"></script>
-<script src="../js/plupload.full.min.js"></script>
-<script src="../js/zepto.min.js"></script>
+<script src="js/artworkplupload.js"></script>
+<script src="js/detail_picture_upload.js"></script>
+<script src="js/plupload.full.min.js"></script>
+<script src="js/zepto.min.js"></script>
 <script> 
     $("[name='detailPicturePreview[]']").each(function(){
         var detail_plupload=new DetailUploader();

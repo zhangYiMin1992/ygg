@@ -12,8 +12,9 @@ DetailUploader.prototype.SIZE = 4;
 DetailUploader.prototype.LOADURL = "/center/seller_manage/editArt/loadImg";
 DetailUploader.prototype.UPLOADURL = "/center/seller_manage/editArt/addImg";
 DetailUploader.prototype.closeImg = {
-    before: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAPISURBVHja1JpPaBtHFMZ/u2tLxLZkY1kxVoOgyGkVXwz9Q3LxITn5YKXpuSGHPdSkxdAcwkJDe2jpJZDWYN8DxeTiq88OxpeEJE4LxnVxTaAHm8QRIZJWRralyWFnFUm1Le1qJXU/eIfdfTP7vZ2defPeGwVvcBa4DFwCksCHQBTolc9NYA94AWwCj4CHwCs6iAhwC3gClADhUEqy7S3ZV9swAtwDci5InyQmMAfEWkm8C7gNZD0kXitZ+Y5ur8mfB9ZaSLxWngNjXpH/AnjbRvKVo3GtWfJfA0cdIG/LkeTgCjc7SLxWbjolf7XDX/64kbjaKPkLLV5pmpkTF2rJKjXX3dK5jDsZrmQyydTUFJqm1dUtFossLS2xubnp5rf+E/gcOLRvqDUK3zklDxCPxxsiD6BpGvF43O28HJeeu8o52YgBPzazZG1sbLC6unri84mJCcbGml7efwAWgJ1aA74H+k5rGQ6HGRkZQVGq/7yBgQFrcxSJMD5+8gBGIpGyfjKZrHomhGB3d5dMJlPPgD7gDvBt5RwYAv4FzpzWcmZmhp6enpbtVfL5PHNzc42o7gNx4LU9AtfrkQfK5LPZLMVi0TPimqYRCoWcfJwzkvNspQENY3Fxkb29Pc8MiEaj6LrutNlXwKwqg5FP8B8+BWJdwJVj/MGpiMVi9Pb2esakv7/fTTMFuNwFXHTacnJy8v8yCp91yRi2IayvrzM6OoqqqgQCAYQQFAoFy4V3WzHI4aHlJBVFIRgMUigUEEIcqxMMBlEUhYODA0qlEtvb204N+Bhgy+m+JJFICMMwhK7r5XupVEqkUqnydTQaFYZhiHA4fKKOruvCMAyRSCTc7o+2VGAY/2JYBUI+NiCk4m8cqHKf7VdkVeCljw14owL/+NiALVXmKv2Kv1XgsY8NeKZiZYmFD8kLYNmexGs+NGAN2LH9wIIPDXhQmZVYkGGaa2QyGUzTfB/z7e9jmmZ54wZgmmaVThPYB36vDOpfA/eBb9z2uLKyUnWdy+WYn5+vure8vOzV178vOVdlJX4BbtTLTNTGsnZGwm0s7AI5yfU/eaEd4CfgbqM9DQ4OMj093e5//2c7J1Q5B2zMYhUXTkU6nSafz3uWSkmn042qPwd+q6d0ns4UNOpJBvioUUt9nV634esChw1fl5hsXKNzRb4vvVq62l1m/QMPy6w2Algp+HwLieexUueBVjqSD4Bf8f6owTxwrp0ecQir3PMU94c9nso+htySUDwyZhjruM1FrEqifdymr2L/Yh+3+UtGgQ+9SCi8GwB34/3WpqddxAAAAABJRU5ErkJggg==",  
-    after:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAPISURBVHja1JpPaBtHFMZ/u2tLxLZkY1kxVoOgyGkVXwz9Q3LxITn5YKXpuSGHPdSkxdAcwkJDe2jpJZDWYN8DxeTiq88OxpeEJE4LxnVxTaAHm8QRIZJWRralyWFnFUm1Le1qJXU/eIfdfTP7vZ2defPeGwVvcBa4DFwCksCHQBTolc9NYA94AWwCj4CHwCs6iAhwC3gClADhUEqy7S3ZV9swAtwDci5InyQmMAfEWkm8C7gNZD0kXitZ+Y5ur8mfB9ZaSLxWngNjXpH/AnjbRvKVo3GtWfJfA0cdIG/LkeTgCjc7SLxWbjolf7XDX/64kbjaKPkLLV5pmpkTF2rJKjXX3dK5jDsZrmQyydTUFJqm1dUtFossLS2xubnp5rf+E/gcOLRvqDUK3zklDxCPxxsiD6BpGvF43O28HJeeu8o52YgBPzazZG1sbLC6unri84mJCcbGml7efwAWgJ1aA74H+k5rGQ6HGRkZQVGq/7yBgQFrcxSJMD5+8gBGIpGyfjKZrHomhGB3d5dMJlPPgD7gDvBt5RwYAv4FzpzWcmZmhp6enpbtVfL5PHNzc42o7gNx4LU9AtfrkQfK5LPZLMVi0TPimqYRCoWcfJwzkvNspQENY3Fxkb29Pc8MiEaj6LrutNlXwKwqg5FP8B8+BWJdwJVj/MGpiMVi9Pb2esakv7/fTTMFuNwFXHTacnJy8v8yCp91yRi2IayvrzM6OoqqqgQCAYQQFAoFy4V3WzHI4aHlJBVFIRgMUigUEEIcqxMMBlEUhYODA0qlEtvb204N+Bhgy+m+JJFICMMwhK7r5XupVEqkUqnydTQaFYZhiHA4fKKOruvCMAyRSCTc7o+2VGAY/2JYBUI+NiCk4m8cqHKf7VdkVeCljw14owL/+NiALVXmKv2Kv1XgsY8NeKZiZYmFD8kLYNmexGs+NGAN2LH9wIIPDXhQmZVYkGGaa2QyGUzTfB/z7e9jmmZ54wZgmmaVThPYB36vDOpfA/eBb9z2uLKyUnWdy+WYn5+vure8vOzV178vOVdlJX4BbtTLTNTGsnZGwm0s7AI5yfU/eaEd4CfgbqM9DQ4OMj093e5//2c7J1Q5B2zMYhUXTkU6nSafz3uWSkmn042qPwd+q6d0ns4UNOpJBvioUUt9nV634esChw1fl5hsXKNzRb4vvVq62l1m/QMPy6w2Algp+HwLieexUueBVjqSD4Bf8f6owTxwrp0ecQir3PMU94c9nso+htySUDwyZhjruM1FrEqifdymr2L/Yh+3+UtGgQ+9SCi8GwB34/3WpqddxAAAAABJRU5ErkJggg=="};
+    before: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAOVSURBVHjaYtTUdGdAA4K/fv3U+Pv3rw+QLfT//3+Gf//+vWNiYtjCwsJyAyj2HiT2//8/sGKAAGJB1gkU9Pj581eNnJyctaamMgM/Py8DIyMDw+fPXxlu3rxfdfPmjaPMzIwtTEzMO2B6AAKIBaH5fw4LC1tHeHgQt7u7PYOOjhIDNzcb2IBfv/4x3LjxiGHr1n3WK1duXPPx45sKJiamKSB9AAHECPIC0GZ3ZmbWzQkJkazu7rYMLCyMDD9//gYZCzWcgYGVlRUozsxw9Oh5hv7+Gb8/fXrnC+TvBAggZhERZb7fv3/PdnCwV7C3twT69w+DlpYcw5s3HxkeP34FdP53IPsDg6qqNAMXFxvQIA4GoGXMFy9eVgK6eg1AADH9/ftbW0hIxEpFRQms0MBAlYGDg51BQ0OegZ2dneH58zdAMRUGKSlhBnFxQYY7dx4CvfSHQVBQyAqkFyCAmIWEFDOlpaVtgQHH8O7dB4aXLz8wqKjIMHBysoE1SUqKMCgoSIC90te3lGHNmu0MDx8+Yfjx4xvQmz9eAgQQCzAwhBiBIfX69RugwC+GR4+eAl3yliEx0Y+Bl5eDQU5ODBwG3d0LGdau3QH0AjMwLFiBruQEBjCTEEAAsYBC+du3HwxPnjxnAMY90JCfoLBlePXqLdAAabDNX778AHvl37+/QP9DYubfP0haAAggJlAi+fr1M8Pbt2+Bml4z8PBwMxQURDMoK0uDbf78+QfYJY2N2Qy2thZA//8CGsIMtOg70MI/7wACiAkYkluAfmH48+cPMOHwMbS1FTJoaspB/bwYqHE6w4cP3xn4+DgYWltzgAGqywCMNbABQBdsAQggJmAsX/3+/esxkPNAoX7jxgNQomKYMWMtw65dRxkuXLjGMHHiEobv338x3Lv3DEhDLAO6+hjQq1cBAohRWdkOqOGvOwcHz2Z1dU1WcXEJBgkJYYbbtx+AExIogH/9+s2gra0KDOgPwLTxmOHKlfO/v3z55AtM0jsBAggYjfKg0Lz769eP958/f7FnZ2djAyYUBhERQWBUcgLDhItBWFiY4f37j8AYeshw/frVr1++fCwFal4O8iZAAIENAKdpRoZTwLg99/Llc8VPnz7JffnyFWQwMAa+Mdy/fw+YmW4w3Lp1/eiPH19zgJqXwfIQQACBvQDNiaBsC/K/IDCQNICKfNjYWIVAYQNMH++AIb4FGPrg7IycgwECDADIUZC5UWvTuwAAAABJRU5ErkJggg==",  
+    after:  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH1wwbFhkQHxvdFgAAArpJREFUeNplz1to1QUAx/HP/3/O2c7OrudsR8vmamOL2hw5LaQHgxKCLvQSRVgPFhJKo4cyMsmxKNQgfOuhfKxICQTpocvAIFhai/WSTNIcnK3pbu12tnO2cwsfbZ+H3+MXfgGbfURDgn0xHgiIFskUuPgOE/7njsBxahsYqAnDN1p3765N9/QIYzGL4+Myw8PlbC53fp23j5HZFBhgSxPft27f3tfX36+ure2O+sbKiitnzrg2MjK/xjNH+RUCeJbo41xsSyb3PtR/WLQuLhIGVAJKlEsUSyUBrp8966+xsdkl+o7zTwiP8mqSvffu6ZMLs+565YAVWRvL1xSWrpufvmHr/v3y1dVu30pHIuk4pxCEiCQ4nIyEYk15heakmm3bdR06Zrq0LjM3ruPNI+o7O8V7uy1NTkjV10vw4ns0Rw6Q7uCTdLwS1LfMyM+Mytxa0r73aVse2adp52Oau7pd/eGCq4MHNUxPKc4sy1dEylwOt3FPNUH09gTrWhILSr+d9N3pQfGGpHRXjz9/+tHoqRe0t8yqasyK1lKNKlrDdYpVCEqUixRLLBZTep98DkD7zofFO3pVGqlqJlJDDDEK4TkmQlbXc+QWGZ9P2TMwpHXHLpnL541+dVRtMuWp00NmGncpxCkUCLDGWDjJWp6LG0XmJtn6xOu2PrjLzUvn3fr6JdVXP3btmyNqGlN2vHbC/Dxry5SZ+pTfIyh3MN3Jyxt54cKVYYXVKZPn3peIFkTK5G5ckp34W+bLE7IjeWGOOT78gp8DQPwzBtt5dymkkqTmbuIpYnUEAblZsldIrLLB0AGeX2QlAEDD5xy7n7eWia2GlKsREhaIb9CEZS58wKFRplGJAGD9W36JMXwf9cmKdF1RIlGgrmS1zOU/GDjIyZv8iwoENguRQKqblnqiI8yUWUAWJQD4D4Cg/5i7WltRAAAAAElFTkSuQmCC"  
+};
 
 DetailUploader.prototype.initListen = function(browse_button, preview_widget, container, pictures){
     if( browse_button!==null && browse_button!=='' && preview_widget!=null && preview_widget!==''){
@@ -54,7 +55,6 @@ DetailUploader.prototype.detailPlupload = function(browse_button, container){
                 if(upload.files.length <= that.SIZE){
                     for(var i=0;i<files.length;i++) {
                         that.previewImage(files[i], function(imgsrc, file){
-                            console.log(imgsrc);
                             var div = document.createElement("div");
                             var img = document.createElement("img");
                             div.style.width = that.MAXWIDTH + "px";
@@ -72,10 +72,8 @@ DetailUploader.prototype.detailPlupload = function(browse_button, container){
                                 var rect = that.clacImgZoomParam(that.MAXWIDTH, that.MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                                 img.style.width = rect.width + 'px';
                                 img.style.height = rect.height + 'px';
-                                img.style.position = 'absolute';
-                                // img.style.marginTop = rect.top + 'px';
-                                img.style.top = rect.top + 'px';
-                                img.style.left = rect.left + 'px';
+                                img.style.marginLeft = rect.left + 'px';
+                                img.style.marginTop = rect.top + 'px';
                                 img.style.visibility = "visible";
                                 that.createCloseButton(div, rect.width, rect.height, file, uploader);
                             }
@@ -101,11 +99,8 @@ DetailUploader.prototype.detailPlupload = function(browse_button, container){
                                 var rect = that.clacImgZoomParam(that.MAXWIDTH, that.MAXHEIGHT, img.offsetWidth, img.offsetHeight);
                                 img.style.width = rect.width + 'px';
                                 img.style.height = rect.height + 'px';
-                                // img.style.marginLeft = rect.left + 'px';
-                                // img.style.marginTop = rect.top + 'px';
-                                img.style.position = 'absolute';
-                                img.style.top = rect.top + 'px';
-                                img.style.left = rect.left + 'px';
+                                img.style.marginLeft = rect.left + 'px';
+                                img.style.marginTop = rect.top + 'px';
                                 img.style.visibility = "visible";
                                 that.createCloseButton(div, rect.width, rect.height, file, uploader);
                             }
@@ -167,25 +162,24 @@ DetailUploader.prototype.previewImage = function (file, callback) {
         preloader.load(file.getSource());
     }
 };
-//按比例居中
+//按比例缩放图片  
 DetailUploader.prototype.clacImgZoomParam = function (maxWidth, maxHeight, width, height) {
     var param = { width: width, height: height };
-    var rate=maxWidth/maxHeight;
-    var ratio=width/height;
-    var sx,sy;
-    if(ratio>rate){
-        param.height=maxHeight;
-        param.width=ratio*maxHeight;
-        sy=0;
-        sx=(maxWidth-param.width)/2;
-    }else{
-        param.width=maxWidth;
-        param.height=maxWidth/ratio;
-        sx=0;
-        sy=(maxHeight-param.height)/2;
+    if (width > maxWidth || height > maxHeight) {
+        var rateWidth = width / maxWidth;
+        var rateHeight = height / maxHeight;
+
+        if (rateWidth > rateHeight) {
+            param.width = maxWidth;
+            param.height = Math.round(height / rateWidth);
+        } else {
+            param.width = Math.round(width / rateHeight);
+            param.height = maxHeight;
+        }
     }
-    param.left = Math.round(sx);
-    param.top = Math.round(sy);
+
+    param.left = Math.round((maxWidth - param.width) / 2);
+    param.top = Math.round((maxHeight - param.height) / 2);
     return param;
 };
 DetailUploader.prototype.createCloseButton = function (main, imageWidth, imageHeight, file, uploader) {
@@ -207,41 +201,41 @@ DetailUploader.prototype.createCloseButton = function (main, imageWidth, imageHe
     
     main.appendChild(close);
 };
-// DetailUploader.prototype.addUnloadedPicture = function(uploader, unloaded_pictures){
-//     // 修改url为加载图片路径
-//     uploader.url = this.LOADURL;
-//     var getFileBlob = function (url, callback) {
-//         var xhr = new XMLHttpRequest();
-//         xhr.open("GET", url);
-//         xhr.responseType = "blob";
-//         xhr.addEventListener('load', function() {
-//             callback(xhr.response);
-//         });
-//         xhr.send();
-//     };
+DetailUploader.prototype.addUnloadedPicture = function(uploader, unloaded_pictures){
+    // 修改url为加载图片路径
+    uploader.url = this.LOADURL;
+    var getFileBlob = function (url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.responseType = "blob";
+        xhr.addEventListener('load', function() {
+            callback(xhr.response);
+        });
+        xhr.send();
+    };
 
-//     var blobToFile = function (blob, name) {
-//             blob.lastModifiedDate = new Date();
-//             blob.name = name;
-//             return blob;
-//     };
+    var blobToFile = function (blob, name) {
+            blob.lastModifiedDate = new Date();
+            blob.name = name;
+            return blob;
+    };
 
-//     var getFileObject = function(filePathOrUrl, callback) {
-//            getFileBlob(filePathOrUrl, function (blob) {
-//               callback(blobToFile(blob, 'test.jpg'));
-//            });
-//     };
+    var getFileObject = function(filePathOrUrl, callback) {
+           getFileBlob(filePathOrUrl, function (blob) {
+              callback(blobToFile(blob, 'test.jpg'));
+           });
+    };
     
-//     for(var i=0;i<unloaded_pictures.length;i++) {
-//         if(i==(unloaded_pictures.length-1)) {
-//             getFileObject(unloaded_pictures[i], function (fileObject) {
-//                  uploader.addFile(fileObject);
-//                  uploader.url = this.UPLOADURL;
-//             });
-//         } else {
-//             getFileObject(unloaded_pictures[i], function (fileObject) {
-//                  uploader.addFile(fileObject);
-//             });
-//         }
-//     }
-// };
+    for(var i=0;i<unloaded_pictures.length;i++) {
+        if(i==(unloaded_pictures.length-1)) {
+            getFileObject(unloaded_pictures[i], function (fileObject) {
+                 uploader.addFile(fileObject);
+                 uploader.url = this.UPLOADURL;
+            });
+        } else {
+            getFileObject(unloaded_pictures[i], function (fileObject) {
+                 uploader.addFile(fileObject);
+            });
+        }
+    }
+};
