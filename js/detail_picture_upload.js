@@ -27,6 +27,7 @@ DetailUploader.prototype.initListen = function(browse_button, preview_widget, co
     }
 };
 DetailUploader.prototype.detailPlupload = function(browse_button, container){
+
     var that = this;
     var uploader = new plupload.Uploader({
         runtimes : 'html5,flash,silverlight,html4',
@@ -46,15 +47,16 @@ DetailUploader.prototype.detailPlupload = function(browse_button, container){
         },
         
         init : {
-            Init:function(uploader){
-                if(unloaded_pictures!=null && unloaded_pictures.length > 0)
-                    that.addUnloadedPicture(uploader, unloaded_pictures);
-            },
+            // Init:function(uploader){
+            //     if(unloaded_pictures!=null && unloaded_pictures.length > 0)
+            //         that.addUnloadedPicture(uploader, unloaded_pictures);
+            // },
             FilesAdded: function(upload, files) {
+                console.log(upload.files.length);
                 if(upload.files.length <= that.SIZE){
                     for(var i=0;i<files.length;i++) {
                         that.previewImage(files[i], function(imgsrc, file){
-                            console.log(imgsrc);
+                            // console.log(imgsrc);
                             var div = document.createElement("div");
                             var img = document.createElement("img");
                             div.style.width = that.MAXWIDTH + "px";
@@ -122,27 +124,27 @@ DetailUploader.prototype.detailPlupload = function(browse_button, container){
                 uploader.start(); // 启动上传
                 return true;
             },
-            FileUploaded: function(upload, file, info) {
-                var rs=eval('('+info.response+')');
-                if( rs['suc'] ){
-                    file.name = rs['img'];
-                    // 清空图片地址
-                    for(var i=0;i<that.SIZE;i++){
-                        $(that.preview_div).find("[name='detailPicture"+(i+1)+"[]']").val("");
-                    }
-                    // 写入图片地址
-                    for(var i=0;i<uploader.files.length;i++){
-                        $(that.preview_div).find("[name='detailPicture"+(i+1)+"[]']").val(uploader.files[i].name);
-                    }
-                }else{
-                    if( rs['errorno']===1 ){
-                        uploader.stop();
-                        window.location.href='/center/';//login
-                    }else{
-                        alert(rs['msg']);
-                    }
-                }
-            }
+            // FileUploaded: function(upload, file, info) {
+            //     var rs=eval('('+info.response+')');
+            //     if( rs['suc'] ){
+            //         file.name = rs['img'];
+            //         // 清空图片地址
+            //         for(var i=0;i<that.SIZE;i++){
+            //             $(that.preview_div).find("[name='detailPicture"+(i+1)+"[]']").val("");
+            //         }
+            //         // 写入图片地址
+            //         for(var i=0;i<uploader.files.length;i++){
+            //             $(that.preview_div).find("[name='detailPicture"+(i+1)+"[]']").val(uploader.files[i].name);
+            //         }
+            //     }else{
+            //         if( rs['errorno']===1 ){
+            //             uploader.stop();
+            //             window.location.href='/center/';//login
+            //         }else{
+            //             alert(rs['msg']);
+            //         }
+            //     }
+            // }
         }
     });
     uploader.init();

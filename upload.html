@@ -15,44 +15,49 @@
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <style>
+        ::-webkit-scrollbar {
+            width: 0px;
+            height:0px;
+        }
+
         img {
             border: none;
         }
 
         .upload_page{
-            padding:.5rem .17rem 0;            
+            padding:.5rem 0 0 .17rem;            
         }
 
-        .upload_pic,.upload_box{
-            /*width: 100%;*/
+        .upload_page p{
+            font:400 .12rem/.29rem "黑体";
+            padding-top:.12rem ;
+        }
+
+        .upload_box{
             white-space: nowrap; 
             overflow-x: auto;
             font-size: 0;
             -webkit-overflow-scrolling: touch;
             overflow-scrolling: touch;
+
         }
 
-        .preview_list,.upload_menu,.upload_box{
+        .preview_list,.upload_menu{
             display: inline-block;
             vertical-align: top;
             position: relative; 
+            width: 0.9rem;
+            height:0.9rem;
         }
 
         .preview_list{
-            width: 0.9rem;
-            height:0.9rem;
             overflow: hidden;
             margin-right: 0.06rem;
+            z-index:10;
         }
 
         .preview_list img{
-            position: relative;
-            left:-20px;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0px;
-            height:0px;
+            position: absolute;
         }
 
         .preview_list a{
@@ -64,7 +69,20 @@
             top:0.04rem;
             background:url(images/result.png) no-repeat 0 -1.55rem;
             background-size: 1.485rem 2.12rem;
+            z-index:11;
         }
+
+        .upload_menu{
+            background: url(../images/upload.jpg)no-repeat;
+            background-size:0.9rem 0.9rem;
+        }
+
+        .upload_menu input{
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+
     </style>
 </head>
 <body>
@@ -97,53 +115,152 @@
                         <img src="images/07.jpg">
                         <a href="javascript:;"></a>
                     </div> -->
-                </div> 
                     <!-- 添加按钮 -->
-                <div class="upload_menu">
-                    <input type="file" accept="image/*" id="upload_button"> 
-                </div>
-                  
+                    <div class="upload_menu" id="uploadMenu">
+                        <!-- <input type="file" accept="image/*" id="uploadButton"> -->
+                        <input type="file" multiple="true" id="uploadButton" name="upload" onchange="onChooseFile(this)" accept="image/png,image/jpeg,image/gif" capture="camera"> 
+                    </div>
+                </div>                
             </section>
         </div>  
-      <!--   <div class="upload_page" style="
-        overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    white-space: nowrap;
-    box-sizing: border-box;">
-    <p>作品图片：</p> 
-            <div name="detailPicturePreview[]" style="position: relative; font-size: 0">
-                <label name="detail_picture_upload[]" style="position: relative; z-index: 1;">
-                    <div name="detailPicturePreview1" style="float:left; overflow: hidden; width: 100px; height: 100px; ">
-                        <img src="images/upload.jpg">
-                    </div>
-                    <input type="text" name="detailPicture1[]" style="display: none">
-                    <input type="text" name="detailPicture2[]" style="display: none">
-                    <input type="text" name="detailPicture3[]" style="display: none">
-                    <input type="text" name="detailPicture4[]" style="display: none">
-                </label>
-                <div id="html5_1bom674jh11d9ofj1qhs1c5c178j3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;">
-                    <input id="html5_1bom674jh11d9ofj1qhs1c5c178j3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png">
-                </div>
-            </div>
-            <div id="container" style="display: none">
-            </div>
-        </div> -->
+
     </div>
   
     <!-- 侧边栏 -->
-    
     <!-- 侧边栏结束-->  
 </body>
-<script src="js/artworkplupload.js"></script>
-<script src="js/detail_picture_upload.js"></script>
+<!-- <script src="js/artworkplupload.js"></script> -->
+<!-- <script src="js/detail_picture_upload.js"></script> -->
 <script src="js/plupload.full.min.js"></script>
 <script src="js/zepto.min.js"></script>
 <script> 
-    $("[name='detailPicturePreview[]']").each(function(){
-        var detail_plupload=new DetailUploader();
-        detail_plupload.initListen($(this).find("[name='detail_picture_upload[]']").get(),$(this)[0]);
-    });    
+    function DetailUploader(){}
+    DetailUploader.prototype.SIZE = 4;
+    DetailUploader.prototype.detailPlupload=function(){
+        var that=this;
+        var uploader=new plupload.Uploader({
+            runtimes:'html5,flash,silverlight,html4',
+            browse_button:'uploadButton',
+            container:document.getElementById('uploadBox'),
+            url:'/center/seller_manage/editArt/addImg',
+            flash_swf_url : 'js/Moxie.swf',
+            silverlight_xap_url : 'js/Moxie.xap',
+            // multi_selection:false,
+            filters : {
+                max_file_size : '5mb',
+                mime_types: [
+                    {title : "Image files", extensions : "jpg,gif,png"}
+                ],
+                prevent_duplicates : true 
+            },
+            init:{
+                FilesAdded:function(upload,files){
+                    if(upload.files.length<=that.SIZE){
+                        for(var i=0;i<files.length;i++) {
+                            that.previewImage(files[i],function(imgsrc,file){
+                                var _that_=that;
+                                that.createList(imgsrc,_that_,file, uploader);                  
+                            });
+                        }
+                        
+                    }else if((that.SIZE-(upload.files.length-files.length)) >= 0) {
+                        for(var i=0;i<(that.SIZE-(upload.files.length-files.length));i++) {
+                            that.previewImage(files[i],function(imgsrc,file){
+                                var _that_=that;
+                                that.createList(imgsrc,_that_,file, uploader);                  
+                            });
+                           
+                        }
+                        // 删除超出范围的图片
+                        for(var i=(that.SIZE-(upload.files.length-files.length));i<files.length;i++){
+                            uploader.removeFile(files[i]);
+                        }
+                    }       
+                    // 上传4张后隐藏上传按钮
+                    if(upload.files.length >= that.SIZE) {
+                        document.getElementById('uploadMenu').style.display = "none";
+                    }
+                    uploader.start(); // 启动上传
+                    return true;
+                }
+            }
+        });
+        uploader.init();
+    };
+   
+    // 图片预览
+    DetailUploader.prototype.previewImage = function (file, callback) {
+        if (file.type == 'image/gif') {//gif使用FileReader进行预览,因为mOxie.Image只支持jpg和png
+            var fr = new mOxie.FileReader();
+            fr.onload = function () {
+                callback(fr.result, file);
+                fr.destroy();
+                fr = null;
+            }
+            fr.readAsDataURL(file.getSource());
+        } else {
+            var preloader = new mOxie.Image();
+            preloader.onload = function () {
+                var imgsrc = preloader.type == 'image/jpeg' ? preloader.getAsDataURL('image/jpeg', 80) : preloader.getAsDataURL(); //得到图片src,实质为一个base64编码的数据
+                callback(imgsrc, file);
+                preloader.destroy();
+                preloader = null;
+            };
+            preloader.load(file.getSource());
+        }
+    };
+//穿件图片显示列表
+    DetailUploader.prototype.createList=function(imgsrc,_that_, file, uploader){
+        var uploadMenu=document.getElementById('uploadMenu');
+        var div=document.createElement('div');
+        var img=document.createElement('img');
+        var a=document.createElement('a');
+        div.appendChild(img);
+        div.appendChild(a);
+        uploadMenu.parentNode.insertBefore(div,uploadMenu);
+        div.className=('preview_list');
+        img.src = imgsrc;
+        img.onload=function(){
+            var rect=_that_.Center(div.offsetWidth, div.offsetHeight,img.offsetWidth, img.offsetHeight);
+            img.style.width = rect.width + 'px';
+            img.style.height = rect.height + 'px';
+            img.style.top = rect.top + 'px';
+            img.style.left = rect.left + 'px';
+        }
+
+        $('.preview_list a').click(function(){
+            uploader.removeFile(file);
+            $(this).parent().remove();
+            document.getElementById('uploadMenu').style.display = "inline-block";
+        });
+    };
+
+    // 图片居中显示
+    DetailUploader.prototype.Center=function(divWidth,divHeight,imgWidth,imgHeight){
+        var datas={width:imgWidth,height:imgHeight};
+        var ratio=imgWidth/imgHeight;
+        var rate=divWidth/divHeight;
+        var sx,sy;
+        if(ratio>rate){
+            datas.height=divHeight;
+            datas.width=ratio*divHeight;
+            sy=0;
+            sx=(divWidth-datas.width)/2;
+        }else{
+            datas.width=divWidth;
+            datas.height=divWidth/ratio;
+            sx=0;
+            sy=(divHeight-datas.height)/2;
+        }
+        datas.left=Math.round(sx);
+        datas.top=Math.round(sy);
+        return datas; 
+    };
+
+    var detail_plupload=new DetailUploader();
+    detail_plupload.detailPlupload();
+
+
+
 </script>
 </html>

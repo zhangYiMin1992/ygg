@@ -28,6 +28,7 @@ DetailUploader.prototype.initListen = function(browse_button, preview_widget, co
     }
 };
 DetailUploader.prototype.detailPlupload = function(browse_button, container){
+    
     var that = this;
     var uploader = new plupload.Uploader({
         runtimes : 'html5,flash,silverlight,html4',
