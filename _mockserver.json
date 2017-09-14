@@ -3378,6 +3378,15 @@
                             "status": 1
                         }
                 ]
+            },
+            "POST /seller_manage/editArt/addImg ":{
+                "request":{
+                    "index":"1",
+                    "size":"4"
+                },
+                "response":{
+                    "isSuccess":"true"
+                }
             }
         
     }
