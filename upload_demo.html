@@ -15,16 +15,25 @@
     <meta name="applicable-device" content="mobile">
     <meta name="viewport" content="minimal-ui=yes,width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <style>
+        ::-webkit-scrollbar {
+            width: 0px;
+            height:0px;
+        }
+
         img {
             border: none;
         }
 
         .upload_page{
-            padding:.5rem .17rem 0;            
+            padding:.5rem 0 0 .17rem;            
         }
 
-        .upload_pic,.upload_box{
-            /*width: 100%;*/
+        .upload_page .titles_o{
+            font:400 .12rem/.29rem "黑体";
+            padding-top:.12rem ;
+        }
+
+        .upload_box{
             white-space: nowrap; 
             overflow-x: auto;
             font-size: 0;
@@ -32,27 +41,27 @@
             overflow-scrolling: touch;
         }
 
-        .preview_list,.upload_menu,.upload_box{
+        .preview_list,.upload_menu{
             display: inline-block;
             vertical-align: top;
-            position: relative; 
+            position: relative;
+            width: 0.9rem;
+            height:0.9rem;      
+        }
+
+        .preview_list canvas{
+            width: 0.9rem;
+            height:0.9rem; 
         }
 
         .preview_list{
-            width: 0.9rem;
-            height:0.9rem;
             overflow: hidden;
             margin-right: 0.06rem;
+            z-index:10;
         }
 
         .preview_list img{
-            position: relative;
-            left:-20px;
-        }
-
-        ::-webkit-scrollbar {
-            width: 0px;
-            height:0px;
+            position: absolute;
         }
 
         .preview_list a{
@@ -64,12 +73,24 @@
             top:0.04rem;
             background:url(images/result.png) no-repeat 0 -1.55rem;
             background-size: 1.485rem 2.12rem;
+            z-index:11;
+        }
+
+        .upload_menu{
+            background: url(../images/upload.jpg)no-repeat;
+            background-size:0.9rem 0.9rem;
+        }
+
+        .upload_menu input{
+            width: 100%;
+            height: 100%;
+            opacity: 0;
         }
     </style>
 </head>
 <body>
     <div class="wrap page page-current" >
-      <!--   <div class="con_top" id="conTop" data-header="scroll">
+       <div class="con_top" id="conTop" data-header="scroll">
             <div class="top_menu open-panel" data-panel=".panel-left"><span>2</span></div>
             <div class="top_logo"> </div>
             <div class="search" id="search"></div>
@@ -81,69 +102,98 @@
             <section class="upload_pic">
                 
                 <div class="upload_box" id="uploadBox">
-                    <div class="preview_list">
+                    <!-- <div class="preview_list">
                         <img src="images/1_03.jpg">
                         <a href="javascript:;"></a>
-                    </div>   
-                    <div class="preview_list">
-                        <img src="images/02.jpg">
-                        <a href="javascript:;"></a>
+                    </div>  -->
+                    <!-- 添加按钮 -->
+                    <div class="upload_menu" id="uploadMenu">
+                        <input type="file" id="fileImage" name="image" accept="image/*">
                     </div>
-                    <div class="preview_list">
-                        <img src="images/05.jpg">
-                        <a href="javascript:;"></a>
-                    </div>
-                    <div class="preview_list">
-                        <img src="images/07.jpg">
-                        <a href="javascript:;"></a>
-                    </div>
-                </div> 
-                     添加按钮 
-                <div class="upload_menu">
-                    <input type="file" accept="image/*" id="upload_button"> 
-                </div>
-                  
+                </div>                
             </section>
-        </div>  --> 
-        <div class="upload_page" style="
-        overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-    white-space: nowrap;
-    box-sizing: border-box;">
-    <p>作品图片：</p> 
-            <div name="detailPicturePreview[]" style="position: relative; font-size: 0">
-                <label name="detail_picture_upload[]" style="position: relative; z-index: 1;">
-                    <div name="detailPicturePreview1" style="float:left; overflow: hidden; width: 100px; height: 100px; ">
-                        <img src="images/upload.jpg">
-                    </div>
-                    <input type="text" name="detailPicture1[]" style="display: none">
-                    <input type="text" name="detailPicture2[]" style="display: none">
-                    <input type="text" name="detailPicture3[]" style="display: none">
-                    <input type="text" name="detailPicture4[]" style="display: none">
-                </label>
-                <div id="html5_1bom674jh11d9ofj1qhs1c5c178j3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;">
-                    <input id="html5_1bom674jh11d9ofj1qhs1c5c178j3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" multiple="" accept="image/jpeg,image/gif,image/png">
-                </div>
-            </div>
-            <div id="container" style="display: none">
-            </div>
-        </div> 
+        </div>  
     </div>
-  
     <!-- 侧边栏 -->
     
     <!-- 侧边栏结束-->  
 </body>
-<script src="js/artworkplupload.js"></script>
-<script src="js/detail_picture_upload.js"></script>
-<script src="js/plupload.full.min.js"></script>
+<script src="js/zxxFile.js"></script>
 <script src="js/zepto.min.js"></script>
-<script> 
-    $("[name='detailPicturePreview[]']").each(function(){
-        var detail_plupload=new DetailUploader();
-        detail_plupload.initListen($(this).find("[name='detail_picture_upload[]']").get(),$(this)[0]);
-    });    
+<script>
+    function filter(files) {
+        var arrFiles = [];
+        for (var i = 0, file; file = files[i]; i++) {
+            if (file.type.indexOf("image") == 0) {
+                if (file.size >= 512000) {
+                    alert('您这张"'+ file.name +'"图片大小过大，应小于500k');    
+                } else {
+                    arrFiles.push(file);    
+                }           
+            } else {
+                alert('文件"' + file.name + '"不是图片。');    
+            }
+        }
+        return arrFiles;
+    }   
+
+    $('#fileImage').change(function(){
+            var file=document.getElementById('fileImage').files[0];
+            if(!file){
+                return
+            }
+            filter(file);
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function() {
+                var img = new Image();
+                img.src = this.result;
+                var div=document.createElement('div');
+                var canvas=document.createElement('canvas');
+                var a=document.createElement('a');
+                div.appendChild(canvas);
+                div.appendChild(a);
+                var uploadMenu=document.getElementById('uploadMenu');
+                uploadMenu.parentNode.insertBefore(div,uploadMenu);
+                div.className=('preview_list');
+                var lis=$('.upload_box .preview_list');
+                for(var i=0;i<lis.length;i++){
+                    canvas.id='cvs'+i;
+                    var cvs=$('#cvs'+i)[0].getContext('2d');
+                    img.onload = function () {
+                        var rate = div.offsetWidth / div.offsetHeight;
+                        var ratio = img.width / img.height;
+                        var sw, sh, sx, sy;
+                        if (ratio > rate) {
+                            sw = img.height * rate;
+                            sh = img.height;
+                            sx = (img.width - sw) / 2;
+                            sy = 0;
+                        } else {
+                            sw = img.width;
+                            sh = img.width / rate;
+                            sx = 0;
+                            sy = (img.height - sh) / 2;
+                        }
+                        cvs.width = canvas.width;
+                        cvs.height = canvas.height;
+                        cvs.drawImage(img, sx, sy, sw, sh, 0, 0, cvs.width, cvs.height);
+                        
+                        // canvas.style.transform='scale(0.5)';
+                        // canvas.style.transformOrigin='0 0';
+                    }
+                }
+                if(lis.length>=5){
+                    uploadMenu.style.display="none";
+                }
+                $('.preview_list a').click(function(){
+                    $(this).parent().remove();
+                    uploadMenu.style.display = "inline-block";
+                });
+
+            } 
+        
+    });
+
 </script>
 </html>
