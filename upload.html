@@ -126,8 +126,8 @@
         .pro_mes li{
             border-top:1px solid #f0f0f0;
             font:400 .12rem/.16rem "黑体";
-            height:.37rem;
-            line-height: .37rem;
+            height:.4rem;
+            line-height: .4rem;
             width: 100%;
             box-sizing: border-box;
             padding:0 .17rem 0 .17rem;
@@ -141,11 +141,11 @@
         .pro_mes li input{
             color:#545454;
             font:400 .1rem/.12rem "黑体";
-            width:73%;
+            width:67%;
             height:.3rem;
         }
 
-        .pro_mes li span{
+        .pro_mes li .arrows{
             float: right;
         }
 
@@ -371,6 +371,133 @@
           background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(whitesmoke), color-stop(0.48, rgba(245, 245, 245, 0)), color-stop(0.52, rgba(245, 245, 245, 0)), to(whitesmoke));
           pointer-events: none;
         }
+
+        .pro_mes li .ben_num{
+            width:19%;
+        }
+
+        .pro_mes li .zong_num{
+            width:30%; 
+            margin-left:14%;
+        }
+
+        .pro_mes li .chang{
+            width:15%;
+        }
+
+        .pro_mes li .kuan{
+            width:15%;
+            margin-left:10%;
+        }
+
+        .pro_mes li .gao{
+            width:12%;
+            margin-left:10%;
+        }
+
+        .radio a{
+            display: inline-block;
+            width:.39rem;
+            height:.28rem;
+            background: url(images/result.png) no-repeat;
+            background-color: #fff;
+            background-position: -.32rem -.42rem;
+            background-size: 1.485rem 2.12rem;
+            line-height:.37rem; 
+            text-align: right;
+            margin-right: .66rem;
+        }
+
+        .radio .chose,.pro_mes li.activity a.chose,.pro_mes li.protocol span.chose{
+            background-position:-1.29rem -.42rem;
+        }
+
+        .pro_mes li.jianjie{
+            height:1.12rem;
+        }
+
+        .pro_mes li.jianjie textarea{
+            border: 1px solid #f0f0f0;
+            width: 76%;
+            height:.92rem;
+            margin-top:.1rem;
+            vertical-align: top;
+            outline: none;
+        }
+
+        .pro_mes li.activity{
+            height: .8rem;
+        }
+
+        .pro_mes li.activity .join{
+            float: left;
+        }
+
+        .pro_mes li.activity div{
+            float: right;
+            width:78%;
+        }
+
+        .pro_mes li.activity a,.pro_mes li.protocol span{
+            padding-left: .25rem;
+            display: inline-block;
+            height:.35rem;
+            background: url(images/result.png) no-repeat;
+            background-color: #fff;
+            background-position: -.32rem -.42rem;
+            background-size: 1.485rem 2.12rem;
+            color: #545454;
+            font: 400 .1rem/.37rem "黑体";
+        }
+
+        .pro_mes li.activity a{
+            width: .6rem;            
+            margin-right:.2rem;
+        }
+
+        .pro_mes li.protocol{
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pro_mes li.protocol a{
+            font: 400 .1rem/.37rem "黑体";
+            color:#0059b3;
+        }
+
+        .important{
+            box-sizing: border-box;
+            padding:0 .17rem;
+            color:#1f1f1f;
+            font: 400 .1rem/.21rem "黑体";
+            padding-bottom:.66rem;
+        }
+
+        .important p{
+            color:#fd0100;
+            font: 400 .1rem/.33rem "黑体";
+            margin-bottom: .05rem;
+        }
+
+        .sub_box .delete,.sub_box .submit{
+            display: inline-block;
+            height: .45rem;
+            line-height: .45rem;
+        }
+
+        .sub_box .delete{
+            padding-left: .19rem;
+            width: .4rem;
+            color:#666;
+            float: left;   
+        }
+
+        .sub_box .submit{
+            width: 1.12rem;
+            background:#fac400;
+            color:#fff;
+            text-align: center;
+            float: right;
+        }
     </style>
 </head>
 <body>
@@ -416,34 +543,95 @@
         </div>  
         <!-- 作品信息 -->
         <ul class="pro_mes">
-            <li>作品名称：<input type="text" class="pic_name" value="" placeholder="(必填)"></li>
-            <li>艺&nbsp;术&nbsp;家：<input type="text" class="artist" value="" readonly="readonly" placeholder="(必选)"><span>></span></li>
-            <li>作品类别：<input type="text" class="leibie" value="" readonly="readonly" placeholder="(必选)"><span>></span></li>
-            <li>材&#12288;&#12288;质：<input type="text" class="caizhi" value="" readonly="readonly" placeholder="(必选)"><span>></span></li>
-            <li>主&#12288;&#12288;题：<input type="text" class="zhuti" value="" readonly="readonly" placeholder="(必选)"><span>></span></li>
-            <li>风&#12288;&#12288;格：<input type="text" class="fengge" value="" readonly="readonly" placeholder="(必选)"><span>></span></li>
-            <li>创作年份：<input type="text" class="nianfen" value="" readonly="readonly"  placeholder="(必选)"><span>></span></li>
-            <li>是否版画：</li>
-            <li>版&#12288;&#12288;号：</li>
-            <li>尺&#12288;&#12288;寸：</li>
-            <li>是否框裱：</li>
-            <li>是否出售：<input type="text" class="chushou" value="" readonly="readonly"  placeholder="(必选)"></li>
-            <li>作品价格：<input type="text" class="jiage" value="" placeholder="(必填)"><span>RMB</span></li>
-            <li>是否议价：</li>
-            <li>作品简介：</li>
-            <li>作品标签：</li>
-            <li>参加活动：</li>
-            <li>协&#12288;&#12288;议：</li>
+            <li>作品名称：
+                <input type="text" class="pic_name" value="" placeholder="(必填)">
+            </li>
+            <li>艺&nbsp;术&nbsp;家：
+                <input type="text" class="artist" value="" readonly="readonly" placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>作品类别：
+                <input type="text" class="leibie" value="" readonly="readonly" placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>材&#12288;&#12288;质：
+                <input type="text" class="caizhi" value="" readonly="readonly" placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>主&#12288;&#12288;题：
+                <input type="text" class="zhuti" value="" readonly="readonly" placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>风&#12288;&#12288;格：
+                <input type="text" class="fengge" value="" readonly="readonly" placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>创作年份：
+                <input type="text" class="nianfen" value="" readonly="readonly"  placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li class="radio">是否版画：
+                <a class="chose" href="javascript:;">是</a>
+                <a href="javascript:;">否</a>
+            </li>
+            <li>版&#12288;&#12288;号：
+                <input type="text" class="ben_num" value="" placeholder="本张数">×<input type="text" class="zong_num" value="" placeholder="总生产版数"><span class="arrows"> 张</span>
+            </li>
+            <li>尺&#12288;&#12288;寸：
+                <input type="text" class="chang" value="" placeholder="长">×<input class="kuan" type="text" value="" placeholder="宽">×<input class="gao" type="text" value="" placeholder="高"><span class="arrows">cm</span>
+            </li>
+            <li class="radio">是否框裱：
+                <a class="chose" href="javascript:;">是</a>
+                <a href="javascript:;">否</a>
+            </li>
+            <li>是否出售：
+                <input type="text" class="chushou" value="" readonly="readonly"  placeholder="(必选)">
+                <span class="arrows">></span>
+            </li>
+            <li>作品价格：
+                <input type="text" class="jiage" value="" placeholder="(必填)"><span class="arrows"> RMB</span>
+            </li>
+            <li class="radio">是否议价：
+                <a class="chose" href="javascript:;">是</a>
+                <a href="javascript:;">否</a>
+            </li>
+            <li class="jianjie">作品简介：
+                <textarea class="text_jianli_1" rows="10" cols="30" name="zpms[]" ></textarea>
+            </li>
+            <li>作品标签：
+                <input type="text" class="pic_name" value="" placeholder="每个标签最多6个汉字，用空格分隔">
+            </li>
+            <li class="activity">
+                <span class="join">参加活动：</span>
+                <div>
+                    <a class="chose" href="javascript:;">万人展</a>
+                    <a class="chose" href="javascript:;">竞购秀</a>
+                    <a class="chose" href="javascript:;">中国爱艺术</a>
+                    <a class="chose" href="javascript:;">其他活动</a>
+                </div>     
+            </li>
+            <li class="protocol">协&#12288;&#12288;议：
+                <span class="chose">同意</span><a href="javascript:;">《艺高高艺术品代理销售协议》</a>
+            </li>
         </ul>
+        <div class="important">
+            <p>重要提示</p>
+            1.此作品成交后艺高高将收取 RMB<span>_</span>元(售价的15%|25%)系统服务费，请酌情调整一口价； <br>
+            2.系统服务费已经包括标准包装，防伪标签以及艺高高交付给买家的运费等费用。<br>
+            3.艺高高所有作品的最终售价均包含正规增值税发票，此作品含票价格为 RMB<span>_</span>元。(销售价格 = 艺术品价格 + 销售价格 * 17%税费)   
+        </div>
+        <footer class="sub_box">
+            <a class="delete" href="upload.html">删除</a>
+            <a class="submit" href="javascript:;">发布作品</a>
+        </footer>
     </div>
     <!-- 侧边栏 -->
     <!-- 侧边栏结束--> 
 </body>
-<!-- <script src="js/zepto.min.js"></script> -->
-<script src="js/jquery.js"></script>
+<script src="js/basic.js"></script>
 <script src="js/index.js"></script>
 <script> 
-    $('.look').click(function(){
+    $('.look').tap(function(){
         if($('.require dd').attr('class')!='show'){
             $('.require dd').addClass('show');
         }else{
@@ -496,7 +684,7 @@
             if(lis.length>=5){
                 uploadMenu.style.display="none";
             }
-            $('.preview_list a').click(function(){
+            $('.preview_list a').tap(function(){
                 $(this).parent().remove();
                 uploadMenu.style.display = "inline-block";
             });
@@ -507,23 +695,95 @@
  
 
 
-    var data=[{'name':'油画'},{'name':'丙烯'},{'name':'综合材料'},{'name':'国画'},{'name':'摄影'},{'name':'雕塑'},{'name':'装置'},{'name':'水彩'},{'name':'素描'},{'name':'插画'},{'name':'书法'},{'name':'数码绘图'},{'name':'艺术衍生品'},{'name':'其他'}];
-    window.dataJson = data;
+    var leibie=[{'name':'油画'},{'name':'丙烯'},{'name':'综合材料'},{'name':'国画'},{'name':'摄影'},{'name':'雕塑'},{'name':'装置'},{'name':'水彩'},{'name':'素描'},{'name':'插画'},{'name':'书法'},{'name':'数码绘图'},{'name':'艺术衍生品'},{'name':'其他'}];
+    window.Leibie = leibie;
+
+    var caizhi=[{'name':'布面'},{'name':'纸面'},{'name':'木板'},{'name':'其他'}];
+    window.Caizhi = caizhi;
+
+    var zhuti=[{'name':'风景'},{'name':'人物'},{'name':'上水'},{'name':'静物'},{'name':'动物'},{'name':'城市'},{'name':'动漫'},{'name':'机械'},{'name':'花鸟'},{'name':'文字'},{'name':'卡通'},{'name':'东方'},{'name':'民俗'},{'name':'植物'},{'name':'宗教'},{'name':'其他'}];
+    window.Zhuti = zhuti;
+
+    var fengge=[{'name':'抽象'},{'name':'写实'},{'name':'印象'},{'name':'表现'},{'name':'波普'},{'name':'古典'},{'name':'极简'},{'name':'新工笔'},{'name':'铅笔'},{'name':'其他'}];
+    window.Fengge = fengge;
+
+    var nianfen=[{'name':'2017'},{'name':'2016'},{'name':'2015'},{'name':'2014'},{'name':'2013'},{'name':'2012'},{'name':'2011'},{'name':'2010'},{'name':'2009'},{'name':'2008'},{'name':'2007'},{'name':'2006'},{'name':'2005'},{'name':'2004'},{'name':'2003'},{'name':'2002'},{'name':'2001'},{'name':'2000'},{'name':'1999'},{'name':'1998'},{'name':'1997'},{'name':'1996'},{'name':'1995'},{'name':'1994'},{'name':'1993'},{'name':'1992'},{'name':'1991'},{'name':'1990'},{'name':'1989'},{'name':'1988'}];
+    window.Nianfen = nianfen;
+
+    var chushou=[{'name':'是'},{'name':'否'},{'name':'已售出'},{'name':'预展中'}];
+    window.Chushou = chushou;
 
     $('.leibie').mPicker({
-            level:1,
-            dataJson:dataJson,
-            Linkage:false,
-            rows:6,
-            idDefault:true,
-            // header:'<div class="mPicker-header">单级选择</div>',
-            confirm:function(){
-                //console.info($('.select-value3').data('id1'));
-            },
-            cancel:function(){
-                //console.info($('.select-value3').data('id1'));
-            }
-        })
+        level:1,
+        dataJson:Leibie,
+        Linkage:false,
+        rows:6,
+        idDefault:true,
+        // header:'<div class="mPicker-header">单级选择</div>',
+        confirm:function(){
+            //console.info($('.select-value3').data('id1'));
+        },
+        cancel:function(){
+            //console.info($('.select-value3').data('id1'));
+        }
+    });
 
+    $('.caizhi').mPicker({
+        level:1,
+        dataJson:Caizhi,
+        Linkage:false,
+        rows:6,
+        idDefault:true
+    });
+
+    $('.zhuti').mPicker({
+        level:1,
+        dataJson:Zhuti,
+        Linkage:false,
+        rows:6,
+        idDefault:true
+    });
+
+    $('.fengge').mPicker({
+        level:1,
+        dataJson:Fengge,
+        Linkage:false,
+        rows:6,
+        idDefault:true
+    });
+
+    $('.nianfen').mPicker({
+        level:1,
+        dataJson:Nianfen,
+        Linkage:false,
+        rows:6,
+        idDefault:true
+    });
+
+    $('.chushou').mPicker({
+        level:1,
+        dataJson:Chushou,
+        Linkage:false,
+        rows:6,
+        idDefault:true
+    });
+
+    // 点击切换选择
+    $('.radio a').tap(function(){
+        if($(this).attr('class')!='chose'){
+            $(this).addClass('chose');
+            $(this).siblings().removeClass('chose'); 
+        }else{
+            return;
+        }
+    });
+
+    $('.pro_mes .activity div a').tap(function(){
+        if($(this).attr('class')!='chose'){
+            $(this).addClass('chose');
+        }else{
+            $(this).removeClass('chose');
+        }
+    });
 </script>
 </html>
